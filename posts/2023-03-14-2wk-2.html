@@ -192,6 +192,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#예비개념2-일반화" id="toc-예비개념2-일반화" class="nav-link" data-scroll-target="#예비개념2-일반화">예비개념2: 일반화</a></li>
   <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality">cardinality</a></li>
   <li><a href="#유리수집합의-카디널리티" id="toc-유리수집합의-카디널리티" class="nav-link" data-scroll-target="#유리수집합의-카디널리티">유리수집합의 카디널리티</a></li>
+  <li><a href="#실수집합의-카디널리티" id="toc-실수집합의-카디널리티" class="nav-link" data-scroll-target="#실수집합의-카디널리티">실수집합의 카디널리티</a></li>
   </ul>
 </nav>
     </div>
@@ -327,6 +328,40 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(\aleph_0 \times 2 = \aleph_0\)</span></li>
 <li><span class="math inline">\(\aleph_0 \times \aleph_0 = \aleph_0^2 = \aleph_0\)</span></li>
 </ul>
+</section>
+<section id="실수집합의-카디널리티" class="level1">
+<h1>실수집합의 카디널리티</h1>
+<p><code>-</code> 아래의 관계가 성립했다.</p>
+<ul>
+<li><span class="math inline">\(card(\mathbb{N}) = \aleph_0\)</span></li>
+<li><span class="math inline">\(card(\mathbb{N}\cup \{0\}) = \aleph_0\)</span></li>
+<li><span class="math inline">\(card(\mathbb{Z}) = \aleph_0\)</span></li>
+<li><span class="math inline">\(card(\mathbb{Q}) = \aleph_0\)</span></li>
+</ul>
+<p><code>-</code> 그렇다면 아래는 어떠할까?</p>
+<p><span class="math display">\[card(\mathbb{R})=??\]</span></p>
+<p><strong>(주장)</strong> 무리수의 카디널넘버는 유리수의 카디널넘버 보다 크다.</p>
+<p><span class="math inline">\(\mathbb{N}\)</span>에서 <span class="math inline">\(\mathbb{R}\)</span>으로 가는 one-to-one은 존재하지만 onto는 존재할 수 없음을 보이면 된다.</p>
+<p><strong>(one-to-one)</strong></p>
+<p><span class="math inline">\(f(n)=n\)</span> 은 자연수에서 실수로 가는 one-to-one 이다.</p>
+<p><strong>(onto)</strong></p>
+<p><strong>소망</strong>: onto는 존재할 수 없음을 보이고 싶음 (그런데 직접보이기 어려워)</p>
+<p><strong>전략</strong>: <span class="math inline">\(\mathbb{N}\)</span>에서 <span class="math inline">\(\mathbb{R}\)</span>로 가는 onto가 존재한다고 가정하고 모순을 이끌어 내자.</p>
+<p><code>1</code>. 아래와 같은 주장을 하는 가상의 인물을 세움:</p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(\mathbb{N}\)</span>에서 <span class="math inline">\(\mathbb{R}\)</span>로 향하는 onto function이 존재한다.</p>
+</blockquote>
+<p><code>2</code>. 그 가상의 인물이 하는 주장을 잘 생각해보면 아래와 같음</p>
+<p><span class="math inline">\(f\)</span>는 정의역이 자연수이고 공역이 실수인 함수이므로 아래와 같은 형태일 것임.</p>
+<ul>
+<li><span class="math inline">\(f(1)=0.2344253456\cdots\)</span></li>
+<li><span class="math inline">\(f(2)=0.3459837981\cdots\)</span></li>
+<li><span class="math inline">\(f(3)=0.3452349871\cdots\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p>그 가상의 인물의 주장대로라면</p>
+<p><span class="math display">\[\mathbb{R}=\{0.2344253456\cdots, 0.3459837981\cdots, 0.3452349871\cdots, \dots,\}=\{f(1),f(2),f(3),\dots\}\]</span></p>
+<p>이라는 의미임.</p>
 
 
 </section>
