@@ -203,7 +203,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#시그마필드-motivation" id="toc-시그마필드-motivation" class="nav-link active" data-scroll-target="#시그마필드-motivation">시그마필드 motivation</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#시그마필드-motivation-1" id="toc-시그마필드-motivation-1" class="nav-link" data-scroll-target="#시그마필드-motivation-1">시그마필드 motivation (1)</a></li>
   </ul>
 </nav>
     </div>
@@ -213,19 +214,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="시그마필드-motivation" class="level1">
-<h1>시그마필드 motivation</h1>
-<p><code>-</code> (지난시간요약) 바늘이 하나 있는 시계: <span class="math inline">\(\Omega\)</span>의 모든 부분집합에 대하여 확률을 (모순없이) 정의할 수 없음.</p>
-<ul>
-<li>몇 가지의 까다로운 질문들은 르벡측도라는 것으로 해결가능했음. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\Omega\)</span>의 대부분의 부분집합은 르벡측도로 “길이”라는 개념을 합리적으로 정의가능함.</li>
-<li>그런데 르벡측도로도 해결 불가능한 집합이 존재했음. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\Omega\)</span>의 부분집합중 르벡측도로 “길이”라는 개념을 합리적으로 정의할 수 없는 집합이 존재했음.</li>
-</ul>
-<p><code>-</code> (앞으로 할 것) <span class="math inline">\(\Omega\)</span>의 부분집합 중 잴 수 있는 집합에 한정하여 확률을 정의하자.</p>
-<ul>
-<li><span class="math inline">\(\Omega\)</span>의 모든 부분집합을 고려하는 것이 아니라, <span class="math inline">\(\Omega\)</span>의 부분집합 중 확률을<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 잘 정의할 수 있을 것 같은 새로운 집합들의 묶음 <span class="math inline">\({\cal F}\)</span>를 고려하자.</li>
-<li>그리고 그 묶음 <span class="math inline">\({\cal F}\)</span>가 합리적인지 따져보자.</li>
-</ul>
-<p><strong>(예제1)</strong></p>
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yaBxW0S3fsO1d-kYIqZa62" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yaBxW0S3fsO1d-kYIqZa62</a></p>
+</blockquote>
+</section>
+<section id="시그마필드-motivation-1" class="level1">
+<h1>시그마필드 motivation (1)</h1>
+<p><strong>(예제1)</strong> – 잴 수 있는 집합의 모임</p>
 <p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. 아래집합들은 모두 확률을 정의할 수 있는 집합들이다.</p>
 <p><span class="math display">\[\emptyset, \{H\}, \{T\}, \Omega\]</span></p>
 <p>따라서 <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>가 합리적일 것이다.</p>
@@ -233,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>이때 <span class="math inline">\({\cal F}\)</span>는 집합들의 집합인데, 이러한 집합을 collection 이라고 한다.</p>
 </blockquote>
-<p><strong>(예제2)</strong></p>
+<p><strong>(예제2)</strong> – 집합 <span class="math inline">\(A\)</span>를 잴 수 있다면, 집합 <span class="math inline">\(A^c\)</span>도 잴 수 있어~</p>
 <p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
 <p><span class="math display">\[{\cal F}=\big\{\emptyset, \{H\}, \Omega\big\}\]</span></p>
 <p>(해설1)</p>
@@ -241,12 +238,12 @@ ul.task-list li input[type="checkbox"] {
 <p>(해설2)</p>
 <p><span class="math inline">\(\Omega\)</span>의 어떠한 부분집합 <span class="math inline">\(A\)</span>에 확률이 모순없이 정의된다면 그 집합의 여집합인 <span class="math inline">\(A^c\)</span>에 대하여서도 확률이 모순없이 정의되어야 한다.</p>
 <p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A \subset {\Omega}: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></p>
-<p><strong>(예제3)</strong></p>
+<p><strong>(예제3)</strong> – 전체집합이 잴 수 있는 집합이니까 공집합도 잴 수 있는 집합이야</p>
 <p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. <span class="math inline">\({\cal F}\)</span>를 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
 <p><span class="math display">\[{\cal F}=\big\{ \{H\}, \{T\}, \Omega\big\}\]</span></p>
 <p>(해설)</p>
 <p>전체집합의 확률은 <span class="math inline">\(P(\Omega)=1\)</span>로 정의할 수 있다. 그런데 전체집합의 여집합인 공집합의 확률을 정의할 수 없는건 말이 안되므로 공집합은 <span class="math inline">\(\cal F\)</span>에 포함되어야 한다.</p>
-<p><strong>(예제4)</strong></p>
+<p><strong>(예제4)</strong> – 원소의 수가 유한한 경우 <span class="math inline">\({\cal F}=2^\Omega\)</span>은 잴 수 있는 집합의 모임이야.</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음은 <span class="math inline">\({\cal F}\)</span>은 합리적이다.</p>
 <p><span class="math display">\[{\cal F}=\text{all subset of $\Omega$}= 2^\Omega = \big\{ \emptyset, \{1\}, \{2\}, \dots, \{6\}, \dots, \{1,2,3,4,5\} \dots \Omega\big\}\]</span></p>
 <p>(해설)</p>
@@ -259,11 +256,11 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(\dots\)</span></li>
 </ul>
 <p>이런식으로 정의할 수 있다.</p>
-<p><strong>(예제5)</strong></p>
+<p><strong>(예제5)</strong> – 동일한 <span class="math inline">\(\Omega\)</span>에 대하여 잴 수 있는 집합의 모임 <span class="math inline">\({\cal F}\)</span>는 유니크하지 않음.</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
 <p><span class="math display">\[{\cal F}=\big\{\emptyset, \{6\}, \{1,2,3,4,5\},\Omega \big\}\]</span></p>
 <p>(해설)</p>
-<p>어떠한 특수한 상황을 가정하자. 주사위를 던져야하는데 6이 나오면 살수 있고 6이 나오지 않으면 죽는다고 하자. 따라서 던지는 사람 입장에서는 주사위를 던져서 6이 나오는지 안나오는지만 관심있을 것이다. 이 사람의 머리속에서 순간적으로 떠오르는 확률들은 아래와 같다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>어떠한 특수한 상황을 가정하자. 주사위를 던져야하는데 6이 나오면 살수 있고 6이 나오지 않으면 죽는다고 하자. 따라서 던지는 사람 입장에서는 주사위를 던져서 6이 나오는지 안나오는지만 관심있을 것이다. 이 사람의 머리속에서 순간적으로 떠오르는 확률들은 아래와 같다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <ul>
 <li>살수있다 =&gt; 1/6</li>
 <li>죽는다 =&gt; 5/6</li>
@@ -272,22 +269,22 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>이러한 확률은 합리적이다. 즉 아래의 집합들만 확률을 정의한다고 해도, 확률을 잘 정의할 수 있을 것 같다.</p>
 <p><span class="math display">\[\emptyset, \{6\}, \{1,2,3,4,5\}, \Omega\]</span></p>
-<p><strong>(예제6)</strong></p>
+<p><strong>(예제6)</strong> – <span class="math inline">\(\Omega\)</span>를 어떠한 사건의 집합으로 보느냐에 따라서 <span class="math inline">\({\cal F}\)</span>를 달리 구성할 수 있다.</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
 <p><span class="math display">\[{\cal F}=\big\{\emptyset, \{1,3,5\}, \{2,4,6\},\Omega \big\}\]</span></p>
 <p>(해설)</p>
 <p>전체사건을 “주사위를 던져서 짝이 나오는 사건”, “주사위를 던져서 홀이 나오는 사건” 정도만 구분하겠다는 의미</p>
-<p><strong>(예제7)</strong></p>
+<p><strong>(예제7)</strong> – <span class="math inline">\(A\in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
 <p><span class="math display">\[{\cal F}=\big\{\emptyset, \{1,3,5\}, \Omega \big\}\]</span></p>
 <p>(해설)</p>
 <p>“주사위를 던져서 홀수가 나올 사건”에 대한 확률을 정의할 수 있는데, 짝수가 나올 사건에 대한 확률을 정의할 수 없다는건 말이 안되는 소리임.</p>
-<p><strong>(예제8)</strong></p>
+<p><strong>(예제8)</strong> – trivial <span class="math inline">\(\sigma\)</span>-field</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
 <p><span class="math display">\[{\cal F}=\{\emptyset, \Omega \}\]</span></p>
 <p>(해설)</p>
 <p>아예 이렇게 잡으면 모순이 일어나진 않음. (쓸모가 없겠지)</p>
-<p><strong>(예제9)</strong></p>
+<p><strong>(예제9)</strong> – 서로소인 두 집합의 합, 포함관계에 있는 집합의 차</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4\}\)</span>이라고 하자. 어떠한 필요에 따라서 1이 나올 확률과 2가 나올 확률에만 관심이 있고 나머지는 별로 관심이 없다고 하자. 그래서 <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의했다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
 <p><span class="math display">\[{\cal F}=\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega \}\]</span></p>
 <p>(해설1)</p>
@@ -305,9 +302,9 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></p>
 <p>또한 <span class="math inline">\(\Omega\)</span>의 임의의 두 부분집합이 <span class="math inline">\(A \subset B\)</span>와 같은 포함관계가 성립할때, 집합 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대한 확률이 각각 무모순으로 정의된다면, 집합 <span class="math inline">\(B-A\)</span>에 대한 확률로 무모순으로 정의되어야 한다.</p>
 <p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></p>
-<p><strong>(예제10)</strong></p>
+<p><strong>(예제10)</strong> – <span class="math inline">\({\cal A}=\{\{1\},\{2\}\}\)</span> 일때, <span class="math inline">\(\sigma({\cal A})\)</span> 를 구하는 문제</p>
 <p><span class="math inline">\(\Omega=\{1,2,3,4\}\)</span>이라고 하자. 내가 관심이 있는 확률은 <span class="math inline">\(P(\{1\})\)</span>, <span class="math inline">\(P(\{2\})\)</span> 밖에 없다고 하자. 이러한 확률들이 무모순으로 정의되기 위한 최소한의 <span class="math inline">\({\cal F}\)</span>를 정의하라.</p>
-<p>(해설)</p>
+<p>(해설) – 좀 귀찮네..?</p>
 <p>0차수정: <span class="math inline">\({\cal A} = \big\{\{1\}, \{2\}\big\}\)</span></p>
 <p>1차수정: <span class="math inline">\(\big\{\emptyset, \{1\}, \{2\}, \Omega \big\}\)</span></p>
 <p>2차수정: <span class="math inline">\(\big\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega \big\}\)</span></p>
@@ -323,8 +320,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>혹은 길이나 크기따위를<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>공평한 주사위라고 하자..<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>공평한 주사위라고 하자..<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
