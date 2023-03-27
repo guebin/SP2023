@@ -192,6 +192,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../posts/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link active">4wk-1: 측도론 intro (5)</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../posts/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">4wk-2: 측도론 intro (6) – draft</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -207,11 +212,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#시그마필드-motivation-2" id="toc-시그마필드-motivation-2" class="nav-link" data-scroll-target="#시그마필드-motivation-2">시그마필드 motivation (2)</a></li>
   <li><a href="#시그마필드의-정의" id="toc-시그마필드의-정의" class="nav-link" data-scroll-target="#시그마필드의-정의">시그마필드의 정의</a></li>
   <li><a href="#확률의-정의" id="toc-확률의-정의" class="nav-link" data-scroll-target="#확률의-정의">확률의 정의</a></li>
-  <li><a href="#확률변수의-정의" id="toc-확률변수의-정의" class="nav-link" data-scroll-target="#확률변수의-정의">확률변수의 정의</a>
+  <li><a href="#확률변수의-정의-1" id="toc-확률변수의-정의-1" class="nav-link" data-scroll-target="#확률변수의-정의-1">확률변수의 정의 (1)</a>
   <ul class="collapse">
   <li><a href="#불완전한-정의" id="toc-불완전한-정의" class="nav-link" data-scroll-target="#불완전한-정의">불완전한 정의</a></li>
   <li><a href="#헷갈려-1-starstarstar" id="toc-헷갈려-1-starstarstar" class="nav-link" data-scroll-target="#헷갈려-1-starstarstar">헷갈려 (1) (<span class="math inline">\(\star\star\star\)</span>)</a></li>
-  <li><a href="#확률변수에-대한-통찰" id="toc-확률변수에-대한-통찰" class="nav-link" data-scroll-target="#확률변수에-대한-통찰">확률변수에 대한 통찰</a></li>
+  <li><a href="#확률변수에-대한-통찰-1" id="toc-확률변수에-대한-통찰-1" class="nav-link" data-scroll-target="#확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -416,8 +421,8 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p><code>-</code> 암기!! <span class="math inline">\(P: {\cal F} \to [0,1]\)</span></p>
 </section>
-<section id="확률변수의-정의" class="level1">
-<h1>확률변수의 정의</h1>
+<section id="확률변수의-정의-1" class="level1">
+<h1>확률변수의 정의 (1)</h1>
 <section id="불완전한-정의" class="level2">
 <h2 class="anchored" data-anchor-id="불완전한-정의">불완전한 정의</h2>
 <p><code>-</code> 확률변수: <span class="math inline">\(X:\Omega \to \mathbb{R}\)</span>인 <strong>조금 특별한 성질을 가진</strong> 함수</p>
@@ -459,7 +464,7 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(P(\{H,T\})=1\)</span><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></li>
 <li><span class="math inline">\(P(\omega_1)=\frac{1}{2}\)</span><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></li>
 </ol>
-<p><code>-</code> 질문2: 질문1의 <code>4</code>번의 표현 나 많이 본적 있다. 예를들어서 고등학교에서 두 사건의 독립에 대해 배울때 아래와 같은 방식으로 표현했었다. // 출처: <a href="https://blog.naver.com/hawarjung2/222897509059">네이버 블로그</a></p>
+<p><code>-</code> 질문2: 질문1의 <code>4</code>번의 표현을 많이 본적 있다. 예를들어서 고등학교에서 두 사건의 독립에 대해 배울때 아래와 같은 방식으로 표현했었다. // 출처: <a href="https://blog.naver.com/hawarjung2/222897509059">네이버 블로그</a></p>
 <blockquote class="blockquote">
 <p>두 사건 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대하여 <span class="math inline">\(P(B|A) =P(B|A^c) =P(B)\)</span> 이면 두 사건이 독립이라고 한다~~</p>
 </blockquote>
@@ -467,7 +472,7 @@ ul.task-list li input[type="checkbox"] {
 <p>(해설)</p>
 <p>여기에서 사건 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>는 event을 의미하며 outcome을 의미하는게 아님. 즉 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>는 집합임.</p>
 <p><strong>암기</strong>: 확률은 항상 집합을 입력으로 받아야 함!!</p>
-<p><code>-</code> 질문3(<span class="math inline">\(\star\star\star\)</span>): 나 수리통계 시간에서 아래와 같음 표현 본 적 있다.</p>
+<p><code>-</code> 질문3(<span class="math inline">\(\star\star\star\)</span>): 수리통계 시간에서 아래와 같은 표현 본 적 있다.</p>
 <p><span class="math display">\[P(X=1)=\frac{1}{2}\]</span></p>
 <p>그런데 <span class="math inline">\(P\)</span>의 입력으로는 집합이 들어가야하는데, <span class="math inline">\(X=1\)</span>은 그냥 수식임. 그렇다면 이 표현은 틀린 표현일까??</p>
 <p>(해설)</p>
@@ -477,8 +482,8 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
 <p>이 된다. 따라서 옳은 표현이다.</p>
 </section>
-<section id="확률변수에-대한-통찰" class="level2">
-<h2 class="anchored" data-anchor-id="확률변수에-대한-통찰">확률변수에 대한 통찰</h2>
+<section id="확률변수에-대한-통찰-1" class="level2">
+<h2 class="anchored" data-anchor-id="확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</h2>
 <p><code>-</code> 아래와 같은 표현을 다시 관찰하자.</p>
 <p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
 <p><code>통찰1</code>. 확률변수가 “함수”라는 사실을 떠올리고 <span class="math inline">\(1\)</span>이라는 값이 확률변수의 “상(image)” 라는 사실을 떠올리면, <span class="math inline">\(\{\omega: X(\omega)=1\}\)</span>은 1에 대한 “역상(inverse image)”이라고 해석할 수 있다.<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></p>
