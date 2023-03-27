@@ -1,0 +1,20 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: youtube
+      text: Youtube
+      href: https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&sort=dd&shelf_id=2
+    - icon: github
+      text: Github
+      href: https://github.com/guebin/SP2023
+
+---
+
+확률과정론
+
+<guebin@jbnu.ac.kr>
+
+자연과학대학 본관 205호
