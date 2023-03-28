@@ -39,7 +39,21 @@
     "href": "posts/1. 측도론/2023-03-28-4wk-2.html",
     "title": "4wk-2: 측도론 intro (6)",
     "section": "",
-    "text": "- 셀 수 있는 집합과 셀 수 없는 집합.\n\ncountable: finite, countable many\nuncountable: uncountable many\n\n- 예시1: countable set, uncountable set\n\n\\(\\{1,2,3,4,5\\}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{N}\\)은 셀 수 있는 집합이다.\n\\(\\mathbb{Z}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{Q}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{R}\\)은 셀 수 없는 집합이다.\n\n- 예시2: countable sum: 아래는 모두 countable sum을 의미한다.\n\n\\(\\sum_{i=1}^{n}a_i\\).\n\\(\\sum_{i \\in I} a_i\\), where \\(I=\\{1,2,3,\\dots,10\\}\\).\n\\(\\sum_{i=1}^{\\infty} a_i\\), \\(\\sum_{i=0}^{\\infty} a_i\\).\n\\(\\sum_{i \\in \\mathbb{N}}a_i\\).\n\\(\\sum_{x \\in \\mathbb{Q}}m(\\{x\\})\\), where \\(m\\) is Lebesgue measure\n\n- 예시3: countable union: 아래는 countalbe union을 의미한다.\n\n\\(\\cup_{i=1}^n A_i\\)\n\\(\\cup_{i=1}^{\\infty} A_i\\)\n\\(\\cup_{x \\in \\mathbb{Q}} \\{x\\}\\)\n\n- 예시4: 아래는 uncountable sum을 의미한다.\n\n\\(\\sum_{x \\in [0,1]}m(\\{x\\})\\), where \\(m\\) is Lebesgue measure\n\n- 예시5: 아래는 uncountable union을 의미한다.\n\n\\(\\cup_{x \\in [0,1]} \\{x\\}\\)\n\n\n\n\n\n\n\n집합 (\\(\\mathbb{R}\\)의 부분집합)\n카디널리티\n분류\n르벡메져\n\n\n\n\n\\(\\{1,2,3\\}\\)\n3\n가산집합\n0\n\n\n\\(\\mathbb{N}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\(\\mathbb{Z}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\(\\mathbb{Q}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\([0,1]\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,1]\\cap \\mathbb{Q}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\([0,1]\\cup \\mathbb{Q}\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,1]\\cap \\mathbb{Q}^c\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,\\infty)\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n\\(\\infty\\)\n\n\n비탈리집합\n\\(2^{\\aleph_0}\\)\n비가산집합\nNA\n\n\n칸토어집합\n\\(2^{\\aleph_0}\\)\n비가산집합\n0"
+    "text": "youtube: https://youtube.com/playlist?list=PLQqh36zP38-x7Z5LJZOG4At6NWHs757XG"
+  },
+  {
+    "objectID": "posts/1. 측도론/2023-03-28-4wk-2.html#셀-수-있는",
+    "href": "posts/1. 측도론/2023-03-28-4wk-2.html#셀-수-있는",
+    "title": "4wk-2: 측도론 intro (6)",
+    "section": "셀 수 있는",
+    "text": "셀 수 있는\n- 셀 수 있는 집합과 셀 수 없는 집합.\n\ncountable: finite, countable many\nuncountable: uncountable many\n\n- 예시1: countable set, uncountable set\n\n\\(\\{1,2,3,4,5\\}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{N}\\)은 셀 수 있는 집합이다.\n\\(\\mathbb{Z}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{Q}\\)는 셀 수 있는 집합이다.\n\\(\\mathbb{R}\\)은 셀 수 없는 집합이다.\n\n- 예시2: countable sum: 아래는 모두 countable sum을 의미한다.\n\n\\(\\sum_{i=1}^{n}a_i\\).\n\\(\\sum_{i \\in I} a_i\\), where \\(I=\\{1,2,3,\\dots,10\\}\\).\n\\(\\sum_{i=1}^{\\infty} a_i\\), \\(\\sum_{i=0}^{\\infty} a_i\\).\n\\(\\sum_{i \\in \\mathbb{N}}a_i\\).\n\\(\\sum_{x \\in \\mathbb{Q}}m(\\{x\\})\\), where \\(m\\) is Lebesgue measure\n\n- 예시3: countable union: 아래는 countalbe union을 의미한다.\n\n\\(\\cup_{i=1}^n A_i\\)\n\\(\\cup_{i=1}^{\\infty} A_i\\)\n\\(\\cup_{x \\in \\mathbb{Q}} \\{x\\}\\)\n\n- 예시4: 아래는 uncountable sum을 의미한다.\n\n\\(\\sum_{x \\in [0,1]}m(\\{x\\})\\), where \\(m\\) is Lebesgue measure\n\n- 예시5: 아래는 uncountable union을 의미한다.\n\n\\(\\cup_{x \\in [0,1]} \\{x\\}\\)"
+  },
+  {
+    "objectID": "posts/1. 측도론/2023-03-28-4wk-2.html#여러가지-집합",
+    "href": "posts/1. 측도론/2023-03-28-4wk-2.html#여러가지-집합",
+    "title": "4wk-2: 측도론 intro (6)",
+    "section": "여러가지 집합",
+    "text": "여러가지 집합\n\n\n\n집합 (\\(\\mathbb{R}\\)의 부분집합)\n카디널리티\n분류\n르벡메져\n\n\n\n\n\\(\\{1,2,3\\}\\)\n3\n가산집합\n0\n\n\n\\(\\mathbb{N}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\(\\mathbb{Z}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\(\\mathbb{Q}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\([0,1]\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,1]\\cap \\mathbb{Q}\\)\n\\(\\aleph_0\\)\n가산집합\n0\n\n\n\\([0,1]\\cup \\mathbb{Q}\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,1]\\cap \\mathbb{Q}^c\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n1\n\n\n\\([0,\\infty)\\)\n\\(2^{\\aleph_0}\\)\n비가산집합\n\\(\\infty\\)\n\n\n비탈리집합\n\\(2^{\\aleph_0}\\)\n비가산집합\nNA\n\n\n칸토어집합\n\\(2^{\\aleph_0}\\)\n비가산집합\n0"
   },
   {
     "objectID": "posts/1. 측도론/2023-03-28-4wk-2.html#확률변수의-엄밀한-정의",
