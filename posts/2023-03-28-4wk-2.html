@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -218,7 +281,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#확률변수의-엄밀한-정의" id="toc-확률변수의-엄밀한-정의" class="nav-link" data-scroll-target="#확률변수의-엄밀한-정의">확률변수의 엄밀한 정의</a></li>
   <li><a href="#헷갈려-2-starstarstar" id="toc-헷갈려-2-starstarstar" class="nav-link" data-scroll-target="#헷갈려-2-starstarstar">헷갈려 (2) (<span class="math inline">\(\star\star\star\)</span>)</a></li>
   </ul></li>
-  <li><a href="#확률과정" id="toc-확률과정" class="nav-link" data-scroll-target="#확률과정">확률과정</a></li>
+  <li><a href="#확률벡터" id="toc-확률벡터" class="nav-link" data-scroll-target="#확률벡터">확률벡터</a></li>
+  <li><a href="#평균-star" id="toc-평균-star" class="nav-link" data-scroll-target="#평균-star">평균 (<span class="math inline">\(\star\)</span>)</a>
+  <ul class="collapse">
+  <li><a href="#확률변수의-평균" id="toc-확률변수의-평균" class="nav-link" data-scroll-target="#확률변수의-평균">확률변수의 평균</a></li>
+  <li><a href="#확률벡터의-평균" id="toc-확률벡터의-평균" class="nav-link" data-scroll-target="#확률벡터의-평균">확률벡터의 평균</a></li>
+  </ul></li>
+  <li><a href="#time-average-ensemble-average" id="toc-time-average-ensemble-average" class="nav-link" data-scroll-target="#time-average-ensemble-average">time average, ensemble average</a></li>
+  <li><a href="#생각의-시간" id="toc-생각의-시간" class="nav-link" data-scroll-target="#생각의-시간">생각의 시간</a></li>
   </ul>
 </nav>
     </div>
@@ -438,10 +508,11 @@ ul.task-list li input[type="checkbox"] {
 <li>확률변수는 확률과 관련없다.</li>
 <li>간접적으로는 관련이 있다. <span class="math inline">\(\because\)</span> X의 역상 = <span class="math inline">\(\Omega\)</span>의 부분집합 = <span class="math inline">\(P\)</span>의 정의역</li>
 </ol>
+<p><code>-</code> 표현연습: <span class="math inline">\(P(X=1), P(X \in \{0,1\}),\dots ...\)</span></p>
 </section>
 </section>
-<section id="확률과정" class="level1">
-<h1>확률과정</h1>
+<section id="확률벡터" class="level1">
+<h1>확률벡터</h1>
 <p><code>-</code> 확률변수와 확률벡터</p>
 <ul>
 <li>확률변수 <span class="math inline">\(X: (\Omega,{\cal F}) \to (\mathbb{R},{\cal R})\)</span></li>
@@ -450,8 +521,11 @@ ul.task-list li input[type="checkbox"] {
 <p><code>-</code> 기호표현1</p>
 <ul>
 <li>확률변수: <span class="math inline">\(X(\omega)=x\)</span></li>
-<li>확률벡터: <span class="math inline">\({\boldsymbol X}(\omega)=(x_1,x_2,\dots,x_d)\)</span> &lt;– col-vec, row-vec 구분 없이 길이가 <span class="math inline">\(d\)</span>인 vector 라고 생각</li>
+<li>확률벡터: <span class="math inline">\({\boldsymbol X}(\omega)=(x_1,x_2,\dots,x_d)\)</span></li>
 </ul>
+<blockquote class="blockquote">
+<p>여기에서 <span class="math inline">\((x_1,x_2,\dots,x_d)\)</span>는 col-vec, row-vec 구분 없이 길이가 <span class="math inline">\(d\)</span>인 vector 라고 생각한다. 언제든 편의에 따라 row-vector 혹은 col-vector로 해석할 수 있다.</p>
+</blockquote>
 <p><code>-</code> 기호표현2</p>
 <ul>
 <li>확률변수 <span class="math inline">\(X\)</span></li>
@@ -463,7 +537,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>(예제1)</strong> 동전을 2회 던지자!</p>
 <p><code>1</code>. outcomes: <span class="math inline">\(HH, HT, TH, TT\)</span></p>
-<p><code>2</code>. sample space: $= {HH, HT, TH, TT} $</p>
+<p><code>2</code>. sample space: <span class="math inline">\(\Omega = \{HH, HT, TH, TT\}\)</span></p>
 <p><code>3</code>. event: <span class="math inline">\(\emptyset, \{HH\}, \{HT\}, \{TH\}, \{TT\}, \{HH,HT\}, \dots, \Omega\)</span></p>
 <p><code>4</code>. <span class="math inline">\(\sigma\)</span>-field: <span class="math inline">\({\cal F}=2^{\Omega}\)</span></p>
 <p><code>5</code>. probability measure function: <span class="math inline">\(P: \Omega \to [0,1]\)</span> such that</p>
@@ -486,11 +560,531 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong><em>6의 다른표현들</em></strong></p>
 <ul>
-<li><span class="math inline">\({\boldsymbol X}(\omega_1) = (X_1,X_2)(\omega_1) = \big(X_1(\omega_1),X_2(\omega_2)\big) =(1,1)\)</span></li>
-<li><span class="math inline">\({\boldsymbol X}(\omega_2) = (X_1,X_2)(\omega_2) = \big(X_1(\omega_1),X_2(\omega_2)\big) =(1,0)\)</span></li>
-<li><span class="math inline">\({\boldsymbol X}(\omega_3) = (X_1,X_2)(\omega_3) = \big(X_1(\omega_1),X_2(\omega_2)\big) =(0,1)\)</span></li>
-<li><span class="math inline">\({\boldsymbol X}(\omega_4) = (X_1,X_2)(\omega_4) = \big(X_1(\omega_1),X_2(\omega_2)\big) =(0,0)\)</span></li>
+<li><span class="math inline">\({\boldsymbol X}(\omega_1) = (X_1,X_2)(\omega_1) = \big(X_1(\omega_1),X_2(\omega_1)\big) =(1,1)\)</span></li>
+<li><span class="math inline">\({\boldsymbol X}(\omega_2) = (X_1,X_2)(\omega_2) = \big(X_1(\omega_2),X_2(\omega_2)\big) =(1,0)\)</span></li>
+<li><span class="math inline">\({\boldsymbol X}(\omega_3) = (X_1,X_2)(\omega_3) = \big(X_1(\omega_3),X_2(\omega_3)\big) =(0,1)\)</span></li>
+<li><span class="math inline">\({\boldsymbol X}(\omega_4) = (X_1,X_2)(\omega_4) = \big(X_1(\omega_4),X_2(\omega_4)\big) =(0,0)\)</span></li>
 </ul>
+</section>
+<section id="평균-star" class="level1">
+<h1>평균 (<span class="math inline">\(\star\)</span>)</h1>
+<section id="확률변수의-평균" class="level2">
+<h2 class="anchored" data-anchor-id="확률변수의-평균">확률변수의 평균</h2>
+<p><code>-</code> 예제1: 동전을 던지는 예제</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x=X(\omega)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P(X=x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\therefore E(X)=\sum_{x=0}^{1}x P(X=x) = \big(0\times \frac{1}{2} + 1 \times \frac{1}{2} \big)=\frac{1}{2}(0+1)\]</span></p>
+<p><code>-</code> 예제2: 주사위를 던지는 예제</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x=X(\omega)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P(X=x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{6}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\therefore E(X)=\sum_{x=1}^{6}xP(X=x)=\frac{1}{6}(1+2+3+4+5+6)=3\]</span></p>
+</section>
+<section id="확률벡터의-평균" class="level2">
+<h2 class="anchored" data-anchor-id="확률벡터의-평균">확률벡터의 평균</h2>
+<p><code>-</code> 예제1: 동전을 2회 던지는 예제</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\({\boldsymbol x}={\boldsymbol X}(\omega)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P({\boldsymbol X}={\boldsymbol x})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 0 \\ 0 \end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{4}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 0 \\ 1 \end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{4}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 1 \\ 0 \end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{4}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 1 \\ 1 \end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{4}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\therefore E({\boldsymbol X})=\frac{1}{4}\left(\begin{bmatrix} 0 \\ 0 \end{bmatrix}+\begin{bmatrix} 0 \\ 1 \end{bmatrix}+\begin{bmatrix} 1 \\ 0 \end{bmatrix}+\begin{bmatrix} 1 \\ 1 \end{bmatrix}\right)=\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix} = \begin{bmatrix} E(X_1)\\ E(X_2) \end{bmatrix}\]</span></p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(E(X_1)=E(X_2)\)</span>인 이유?? <code>iid</code> 이니까~</p>
+</blockquote>
+<p><code>-</code> 예제2: 동전을 10회 던지는 예제</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\({\boldsymbol x}={\boldsymbol X}(\omega)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P({\boldsymbol X}={\boldsymbol x})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([0,0,\dots,0]^\top\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2^{10}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([0,0,\dots,1]^\top\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2^{10}}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\omega_{1024}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\([1,1,\dots,1]^\top\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{2^{10}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\therefore E({\boldsymbol X})=\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \\ \dots \\ \frac{1}{2} \end{bmatrix} = \begin{bmatrix} E(X_1)\\ E(X_2) \\ \dots \\ E(X_{10}) \end{bmatrix}\]</span></p>
+<p><code>-</code> 예제3: 동전을 1000번 던진다고 생각해보자.</p>
+<ul>
+<li><span class="math inline">\(E(X_{1000})=\frac{1}{2^{1000}}\big(\text{대충 0 혹은 1이 있는 숫자들을 더한것}\big)=\frac{1}{2}\)</span></li>
+<li>그런데 <span class="math inline">\(E(X_{1000}) \approx \frac{1}{1000}\sum_{i=1}^{1000}X_i\)</span> 로 생각할 수 있음 (<code>iid</code> 니까~)</li>
+</ul>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb2-2"><a href="#cb2-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>array([1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1,
+       1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0,
+       0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0,
+       0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1,
+       1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0,
+       0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+       1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0,
+       0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0,
+       0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0,
+       1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0,
+       0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1,
+       1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0,
+       1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+       0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+       1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+       1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1,
+       1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1,
+       0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+       0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1,
+       1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1,
+       1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1,
+       0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0,
+       1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0,
+       1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1,
+       0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+       0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+       0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1,
+       1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0,
+       1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1,
+       1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0,
+       0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1,
+       0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1,
+       0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+       0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+       1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0,
+       1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1,
+       0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0,
+       1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+       0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1,
+       1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+       0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0,
+       0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,
+       1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1,
+       0, 0, 1, 0, 1, 0, 0, 1, 1, 1])</code></pre>
+</div>
+</div>
+<ul>
+<li>이것은 적당한 <span class="math inline">\(\omega\)</span>에 맵핑되어있는 하나의 realization 이다.</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.mean(x) <span class="co">## 대충 0.5근처이다~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>0.501</code></pre>
+</div>
+</div>
+<p><code>-</code> 확률변수열을 표현할 때 <span class="math inline">\(i\)</span>대신 <span class="math inline">\(t\)</span>로 바꾼다면?</p>
+<ul>
+<li><span class="math inline">\(X_1,X_2,X_3,\dots, X_i, \dots, X_n\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(X_1,X_2,X_3\dots,X_t,\dots X_T\)</span></li>
+<li><span class="math inline">\(E(X_i)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(E(X_t)\)</span></li>
+<li><span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}X_i\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\frac{1}{T}\sum_{t=1}^{T}X_t\)</span></li>
+</ul>
+<p><code>-</code> 용어: <span class="math inline">\(E(X_t)\)</span>를 ensemble average, <span class="math inline">\(\frac{1}{T}\sum_{t=1}^{T}X_t\)</span>을 time average 라고 한다.</p>
+<p><code>-</code> 원래 <span class="math inline">\(E(X_{1000})\)</span>은 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^{T}X_t\)</span>와 같은 방식으로 근사계산할 수 없다. (말도 안되는 소리임..) 그런데 <code>iid</code>가정이 있으니까 가능한 것임.</p>
+<p><strong><em>엄밀하게는 아래와 같이 시뮬레이션해야함</em></strong></p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>sample1 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-2"><a href="#cb6-2"></a>sample2 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-3"><a href="#cb6-3"></a>sample3 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-4"><a href="#cb6-4"></a>sample4 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-5"><a href="#cb6-5"></a>sample5 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-6"><a href="#cb6-6"></a>sample6 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span>
+<span id="cb6-7"><a href="#cb6-7"></a>sample7 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>(sample1<span class="op">+</span>sample2<span class="op">+</span>sample3<span class="op">+</span>sample4<span class="op">+</span>sample5<span class="op">+</span>sample6<span class="op">+</span>sample7)[<span class="op">-</span><span class="dv">1</span>]<span class="op">/</span><span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>0.7142857142857143</code></pre>
+</div>
+</div>
+<p>좀 더 많이…</p>
+<div class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>samples <span class="op">=</span> np.stack([np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)])</span>
+<span id="cb9-2"><a href="#cb9-2"></a>samples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>array([[1, 0, 1, ..., 0, 1, 0],
+       [1, 1, 1, ..., 0, 0, 1],
+       [0, 0, 1, ..., 0, 1, 1],
+       ...,
+       [1, 1, 1, ..., 1, 1, 0],
+       [1, 1, 1, ..., 0, 1, 0],
+       [1, 1, 0, ..., 0, 1, 1]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>samples.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="92">
+<pre><code>(43052, 1000)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># samples.mean(axis=0) # 각각 E(X1), E(X2), ... , E(X_{1000}) 을 근사한 것 </span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>samples.mean(axis<span class="op">=</span><span class="dv">0</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="co"># E(X_{1000})을 근사한것</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="93">
+<pre><code>0.49609774226516773</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="time-average-ensemble-average" class="level1">
+<h1>time average, ensemble average</h1>
+<p><code>-</code> 예제1: 아래와 같은 확률변수열를 고려하자.</p>
+<ul>
+<li><span class="math inline">\(X_1 \sim Ber(0.5)\)</span>.</li>
+<li><span class="math inline">\(X_t= X_{t-1}\)</span> for <span class="math inline">\(t=2,3,4,\dots, 1000\)</span>.</li>
+</ul>
+<p><span class="math inline">\(E(X_{1000})\)</span>을 구하여라. <span class="math inline">\(E(X_{1000})\)</span>을 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^T X_t\)</span>와 같은 방식으로 근사할 수 있는가?</p>
+<p>(풀이)</p>
+<p><span class="math inline">\(E(X_{1000})=0.5\)</span>임. 하지만 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^{T}X_t\)</span>로 <span class="math inline">\(E(X_{1000})\)</span>을 근사할 수 없음.</p>
+<p><strong>시뮬1 – calculating time average of one-sample <span class="math inline">\((x_1,\dots,x_{1000})\)</span></strong></p>
+<div class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>x1 <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1</span>).item()</span>
+<span id="cb15-2"><a href="#cb15-2"></a>x1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>one_sample <span class="op">=</span> np.array([x1]<span class="op">*</span><span class="dv">1000</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>one_sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>np.mean(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<p><strong>시뮬2 – approximating ensemble average with 43052 samples</strong></p>
+<div class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>samples <span class="op">=</span> np.array([[np.random.binomial(n<span class="op">=</span><span class="dv">1</span>,p<span class="op">=</span><span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1</span>).item()] <span class="op">*</span> <span class="dv">1000</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)])</span>
+<span id="cb21-2"><a href="#cb21-2"></a>samples </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>array([[1, 1, 1, ..., 1, 1, 1],
+       [1, 1, 1, ..., 1, 1, 1],
+       [1, 1, 1, ..., 1, 1, 1],
+       ...,
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>samples.mean(axis<span class="op">=</span><span class="dv">0</span>)[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="90">
+<pre><code>0.5025318219827186</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2: 서로 독립인 1000개의 확률변수를 <span class="math inline">\(N(0,1)\)</span>에서 뽑는다고 하자.</p>
+<ul>
+<li><span class="math inline">\(X_t=\epsilon_t \overset{i.i.d.}{\sim} N(0,1)\)</span></li>
+</ul>
+<p>이때는 <span class="math inline">\(E(X_{1000})\)</span>을 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^T X_t\)</span>와 같은 방식으로 근사할 수 있다.</p>
+<p><strong>시뮬1 – calculating time average of one-sample <span class="math inline">\((x_1,\dots,x_{1000})\)</span></strong></p>
+<div class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>one_sample <span class="op">=</span> np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1000</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>np.mean(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="100">
+<pre><code>0.488</code></pre>
+</div>
+</div>
+<p><strong>시뮬2 – approximating ensemble average with 43052 samples</strong></p>
+<div class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>np.stack([np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1000</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)]).mean(axis<span class="op">=</span><span class="dv">0</span>)[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="103">
+<pre><code>0.4989547523924556</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>중요해!: 원래 time-average와 ensemble-average는 “전혀” 다른 개념이다. 그런데, 확률변수열이 iid일 경우는 time-average로 ensemble-average를 근사계산 할 수 있다.</p>
+</blockquote>
+<p><code>-</code> 아래의 그림은 time-average와 ensemble-average의 차이를 파악하기 용이한 예제이다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-28-4wk-2_files/figure-html/a50cd3f1-b37a-413b-abcd-f5d6dc332caa-1-6ca8ec20-c415-4bb7-b2b1-ff941fa33047.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림1: Davidson (1994) 에서 발췌한 그림.</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 예제3: <span class="math inline">\(\epsilon_t \overset{i.i.d.}{\sim} N(0,1)\)</span> 일 때, 아래와 같은 확률변수 열을 고려하자.</p>
+<ul>
+<li><span class="math inline">\(X_1=\epsilon_1\)</span></li>
+<li><span class="math inline">\(X_t=\frac{7}{8}X_{t-1} + \epsilon_t\)</span> for <span class="math inline">\(t=2,3,\dots,T\)</span></li>
+</ul>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>eps <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>x <span class="op">=</span> np.zeros(<span class="dv">1000</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>x[<span class="dv">0</span>] <span class="op">=</span> eps[<span class="dv">0</span>]</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
+<span id="cb29-5"><a href="#cb29-5"></a>    x[t] <span class="op">=</span> (<span class="dv">7</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>x[t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span>eps[t]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.plot(x,<span class="st">'--o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-03-28-4wk-2_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>이때 <span class="math inline">\(E(X_{T})\)</span>을 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^T X_t\)</span>와 같은 방식으로 근사할 수 있을까?</p>
+<p>(풀이)</p>
+<p>우선 독립인지 아닌지 체크해보자.</p>
+<p><strong><em>check: <span class="math inline">\(X_t\)</span>와 <span class="math inline">\(X_{t-1}\)</span>은 독립??</em></strong></p>
+<div class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>plt.plot(x[:<span class="op">-</span><span class="dv">1</span>],x[<span class="dv">1</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-03-28-4wk-2_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>corr이 있음.. <span class="math inline">\(\Rightarrow\)</span> 독립아님 <span class="math inline">\(\Rightarrow\)</span> ensemble-average를 time-average로 근사할 수 없다??</li>
+</ul>
+<hr>
+<p><em>참고로 독립이라면~</em></p>
+<div class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>plt.plot(eps,<span class="st">'--o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-03-28-4wk-2_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>plt.plot(eps[<span class="dv">1</span>:],eps[:<span class="op">-</span><span class="dv">1</span>],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-03-28-4wk-2_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p><strong>시뮬1 – calculating time average of one-sample <span class="math inline">\((x_1,\dots,x_{T})\)</span></strong></p>
+<div class="cell" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">def</span> gen(T<span class="op">=</span><span class="dv">1000</span>):</span>
+<span id="cb35-2"><a href="#cb35-2"></a>    eps <span class="op">=</span> np.random.randn(T)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>    x <span class="op">=</span> np.zeros(T)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>    x[<span class="dv">0</span>] <span class="op">=</span> eps[<span class="dv">0</span>]</span>
+<span id="cb35-5"><a href="#cb35-5"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,T):</span>
+<span id="cb35-6"><a href="#cb35-6"></a>        x[t] <span class="op">=</span> (<span class="dv">7</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>x[t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span>eps[t]</span>
+<span id="cb35-7"><a href="#cb35-7"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>one_sample <span class="op">=</span> gen()</span>
+<span id="cb36-2"><a href="#cb36-2"></a>np.mean(one_sample) <span class="co"># 왜 될 것 같냐??</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+<pre><code>-0.04009083034376779</code></pre>
+</div>
+</div>
+<p><strong>시뮬2 – approximating ensemble average with 43052 samples</strong></p>
+<div class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>samples <span class="op">=</span> np.stack([gen() <span class="cf">for</span> ω <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>samples.mean(axis<span class="op">=</span><span class="dv">0</span>)[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="195">
+<pre><code>-0.007079741764204019</code></pre>
+</div>
+</div>
+<p>근사 되는 것 같은데..?</p>
+</section>
+<section id="생각의-시간" class="level1">
+<h1>생각의 시간</h1>
+<p><code>-</code> 확률변수는 값이 랜덤으로 바뀌는 변수느낌이 아니라 <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> 인 잴 수 있는 함수임.</p>
+<p><code>-</code> 확률벡터는 값이 랜덤으로 바뀌는 벡터느낌이 아니라 <span class="math inline">\(X: \Omega \to \mathbb{R}^d\)</span> 인 잴 수 있는 함수임.</p>
+<p><code>-</code> 동전을 반복하여 던져서 관측한 아래와 같은 확률변수열(=확률벡터)</p>
+<p><span class="math display">\[0,1,0,0,1,1,\dots,1\]</span></p>
+<p>은 어떠한 <span class="math inline">\(\omega \in \Omega\)</span>에 대응하는 하나의 realization <span class="math inline">\({\boldsymbol X}(\omega)={\boldsymbol x}\)</span> 임. (즉 one-sample임)</p>
+<p><code>-</code> 그런데 확률변수열을 독립으로 얻었다면 이러한 one-sample을 쪼개서 마치 여러개의 샘플을 얻은것처럼 생각할 수 있으며 이때</p>
+<p><span class="math display">\[E(X_T)\approx \frac{1}{T}\sum_{t=1}^{T}X_t\]</span></p>
+<p>와 같은 방식으로 근사할 수 있음.</p>
+<p><code>-</code> 사실상 <span class="math inline">\(E(X_1)=E(X_2)=\dots=E(X_T) \approx \frac{1}{T}\sum_{t=1}^{T}X_t\)</span> 이므로 (<span class="math inline">\(\because\)</span> iid) 결국 아직 관측되지 않은 미래시점 <span class="math inline">\(T+1\)</span>의 값에 대해서도</p>
+<p><span class="math display">\[E(X_{T+1}) \approx \frac{1}{T}\sum_{t=1}^T X_t\]</span></p>
+<p>라고 주장할 수 있음.</p>
+<p><code>-</code> 이렇게 one-sample을 여러개의 조각으로 쪼개는 기법은 <code>iid</code>에서만 성립할 것 같음. 만약에 <code>iid</code>가정이 없다면 (시뮬2)와 같은 방식으로 여러샘플을 통하여 ensemble-average를 근사시켜야 함. 정리하면 아래와 같음.</p>
+<ol type="1">
+<li>one-sample만 관측가능, iid 조건 만족 <span class="math inline">\(\Rightarrow\)</span> 분석가능</li>
+<li>여러개의 sample 관측가능 , iid 조건 만족 <span class="math inline">\(\Rightarrow\)</span> 분석가능</li>
+<li>one-sample만 관측가능, iid 조건 만족하지 않음 <span class="math inline">\(\Rightarrow\)</span> 분석불가능??</li>
+<li>여러개의 sample 관측가능 , iid 조건 만족하지 않음 <span class="math inline">\(\Rightarrow\)</span> 분석가능</li>
+</ol>
+<p><code>-</code> 소망: 그런데 실제로 우리가 다루고 싶은 자료의 형태는 3의 경우가 많다. 그래서 <code>iid</code>가 아니지만 마치 <code>iid</code>인것 처럼 one-sample을 가지고 분석하고 싶다.</p>
+<blockquote class="blockquote">
+<p>앞으로 해야 할 것: 독립인듯 독립아닌 독립같은 확률과정은 없을까? (정상성, 에르고드성)</p>
+</blockquote>
+<hr>
+<p><strong><em>독립은듯 독립아닌 독립같은 확률과정</em></strong></p>
+<div class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb41-2"><a href="#cb41-2"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].plot(x[:<span class="op">-</span><span class="dv">1</span>],x[<span class="dv">1</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-3"><a href="#cb41-3"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].plot(x[:<span class="op">-</span><span class="dv">2</span>],x[<span class="dv">2</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-4"><a href="#cb41-4"></a>ax[<span class="dv">0</span>][<span class="dv">2</span>].plot(x[:<span class="op">-</span><span class="dv">3</span>],x[<span class="dv">3</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-5"><a href="#cb41-5"></a>ax[<span class="dv">1</span>][<span class="dv">0</span>].plot(x[:<span class="op">-</span><span class="dv">4</span>],x[<span class="dv">4</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-6"><a href="#cb41-6"></a>ax[<span class="dv">1</span>][<span class="dv">1</span>].plot(x[:<span class="op">-</span><span class="dv">5</span>],x[<span class="dv">5</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-7"><a href="#cb41-7"></a>ax[<span class="dv">1</span>][<span class="dv">2</span>].plot(x[:<span class="op">-</span><span class="dv">6</span>],x[<span class="dv">6</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-8"><a href="#cb41-8"></a>ax[<span class="dv">2</span>][<span class="dv">0</span>].plot(x[:<span class="op">-</span><span class="dv">7</span>],x[<span class="dv">7</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-9"><a href="#cb41-9"></a>ax[<span class="dv">2</span>][<span class="dv">1</span>].plot(x[:<span class="op">-</span><span class="dv">8</span>],x[<span class="dv">8</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb41-10"><a href="#cb41-10"></a>ax[<span class="dv">2</span>][<span class="dv">2</span>].plot(x[:<span class="op">-</span><span class="dv">9</span>],x[<span class="dv">9</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-03-28-4wk-2_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 
 
 </section>
