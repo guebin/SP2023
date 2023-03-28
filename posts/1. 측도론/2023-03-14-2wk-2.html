@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2023-03-14">
+
+<title>SP2023 - 2wk-2: 측도론 intro (2)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">SP2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/SP2023"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"><i class="bi bi-youtube" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">2wk-2: 측도론 intro (2)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">2wk-2: 측도론 intro (2)</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>최규빈 </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 14, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">1wk-2: 강의소개</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">1. 측도론</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">2wk-1: 측도론 intro (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link active">2wk-2: 측도론 intro (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">3wk-1: 측도론 intro (3)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">3wk-2: 측도론 intro (4)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">4wk-1: 측도론 intro (5)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">4wk-2: 측도론 intro (6)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">2. 마코프체인</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">5wk-1: 마코프체인 (1)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#예비개념1-귀류법" id="toc-예비개념1-귀류법" class="nav-link" data-scroll-target="#예비개념1-귀류법">예비개념1: 귀류법</a></li>
+  <li><a href="#예비개념2-일반화" id="toc-예비개념2-일반화" class="nav-link" data-scroll-target="#예비개념2-일반화">예비개념2: 일반화</a></li>
+  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality">cardinality</a></li>
+  <li><a href="#유리수집합의-카디널리티" id="toc-유리수집합의-카디널리티" class="nav-link" data-scroll-target="#유리수집합의-카디널리티">유리수집합의 카디널리티</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p><a href="https://youtube.com/playlist?list=PLQqh36zP38-zQoiFje77DtmGx03QS339J" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-zQoiFje77DtmGx03QS339J</a></p>
+</blockquote>
+</section>
+<section id="예비개념1-귀류법" class="level1">
+<h1>예비개념1: 귀류법</h1>
+<p><code>-</code> 귀류법: <strong>니 논리 대로면…</strong> &lt;- 인터넷 댓글에 많음..</p>
+<pre><code>님 논리대로면..
+- XXX가 문제 없으면 서울 전체가 문제가 없고 (애초에 서울은 문제도 아니라는데 왜 이소리는 하고 계신지 모르겠지만)
+- 수도권 모 대학이 문제가 없으면 전체가 문제가 없겠네요?
+- 지방도 1개 대학이 문제가 없으니 전체가 문제 없겠네요?
+와우! 모든 문제가 해결되었습니다! 출산율 감소로 인한 한국대학의 위기가 해결되었.. 아니 애초에 위기가 없었군요!.
+어휴.. ㅠㅠ</code></pre>
+<blockquote class="blockquote">
+<p>ref: <a href="https://m.hibrain.net/braincafe/cafes/38/posts/205/articles/466461?pagekey=466461&amp;listType=TOTAL&amp;pagesize=5&amp;sortType=RDT&amp;limit=30&amp;displayType=TIT&amp;siteid=1&amp;page=1">하이브레인넷</a></p>
+</blockquote>
+</section>
+<section id="예비개념2-일반화" class="level1">
+<h1>예비개념2: 일반화</h1>
+<p><code>-</code> 연필의 정의: 필기도구의 하나. 흑연과 점토의 혼합물을 구워 만든 가느다란 심을 속에 넣고, 겉은 나무로 둘러싸서 만든다. 1565년에 영국에서 처음으로 만들었다.</p>
+<p><code>-</code> 질문: 아래는 연필인가?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-14-2wk-2_files/figure-html/4da5aaa8-0e84-4c7f-a1ae-eae6a2e34076-1-7f6cdfaf-faf5-464e-9ec6-4668e9b1aab1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">애플펜슬!</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="cardinality" class="level1">
+<h1>cardinality</h1>
+<blockquote class="blockquote">
+<p>ref: <a href="https://en.wikipedia.org/wiki/Cardinality" class="uri">https://en.wikipedia.org/wiki/Cardinality</a></p>
+</blockquote>
+<p><code>-</code> <span class="math inline">\(A=\{2,4,6\}\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|A|=3\)</span>, <span class="math inline">\(A\)</span> has a cardinality of 3.</p>
+<p><code>-</code> <span class="math inline">\(A=\{1,2,3,4,\dots\}=\mathbb{N}\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|A|=?\)</span></p>
+<ul>
+<li>Cardinal number: 유한집합에서의 “갯수”라는 개념을 좀 더 일반화 하여 무한집합으로 적용하고 싶다.</li>
+<li>유한집합: 우리가 친숙한 size 와 그 뜻이 같음</li>
+<li>무한집합: 무한집합의 경우는 그 동작원리가 조금 더 복잡함</li>
+</ul>
+<p><code>-</code> 질문: <span class="math inline">\(|\mathbb{Q}| &lt; |\mathbb{Q}^c|\)</span> ??</p>
+<p><strong><em>Bijection, injection and surjection (예비학습)</em></strong></p>
+<blockquote class="blockquote">
+<p>ref: <a href="https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection" class="uri">https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection</a></p>
+</blockquote>
+<p><img src="2023-03-14-2wk-2_files/figure-html/db8d65e9-6245-48bf-ba03-60cb2be9a3b1-1-1ef07e05-c45c-44c2-8d5a-03992cc26016.png" class="img-fluid"></p>
+<p><code>-</code> 용어 정리</p>
+<ul>
+<li>surjective = onto = 전사 = 위로의 함수</li>
+<li>injective = one-to-one = 단사 = 일대일 함수</li>
+<li>bijective = one-to-one and onto, one-to-one correspondence = 전단사 = 일대일 대응</li>
+</ul>
+<p><code>-</code> 따지는 방법:</p>
+<ul>
+<li>단사: 함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 단사함수이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall x_1,x_2 \in X\)</span>: <span class="math inline">\(x_1\neq x_2 \Rightarrow f(x_1)\neq f(x_2)\)</span></li>
+<li>전사: 함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 전사함수이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall y \in Y ~\exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>.</li>
+</ul>
+<p><code>-</code> 성질1: 어떤함수가 전사함수 &amp; 단사함수 <span class="math inline">\(\Rightarrow\)</span> 전단사함수</p>
+<p><code>-</code> 성질2:</p>
+<ul>
+<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 단사함수 <span class="math inline">\(f\)</span>가 존재한다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X| \leq |Y|\)</span></li>
+<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전사함수 <span class="math inline">\(f\)</span>가 존재한다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X| \geq |Y|\)</span></li>
+</ul>
+<p>(예비학습 끝)</p>
+<p><code>-</code> 성질1~2로 유추하면 아래와 같은 사실을 주장 할 수 있지 않을까?</p>
+<ul>
+<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 향하는 전단사함수가 존재한다 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X|=|Y|\)</span></li>
+</ul>
+<p><code>-</code> 그렇다면 우리가 주장하고 싶은 것은 아래와 같이 된다.</p>
+<ul>
+<li>유리수집합의 무리수집합의 cardinality는 다르다.</li>
+<li>유리수집합과 무리수집합사이의 전단사함수는 존재할 수 없다.</li>
+</ul>
+</section>
+<section id="유리수집합의-카디널리티" class="level1">
+<h1>유리수집합의 카디널리티</h1>
+<p><code>-</code> 우리가 궁극적으로 궁금한 것</p>
+<ul>
+<li>유리수집합과 무리수집합의 카디널리티는 다를까?</li>
+</ul>
+<p><code>-</code> 그냥 궁금한 것</p>
+<ul>
+<li>자연수의 집합, 비음인 정수의 집합, 음의 정수의 집합, 정수의 집합, 짝수의 집합, 홀수의 집합의 카디널리티는 어떠할까?</li>
+</ul>
+<p><code>-</code> (예제1)</p>
+<p>집합 <span class="math inline">\(X=\{1,2,3\}\)</span>, <span class="math inline">\(Y=\{2,4,6\}\)</span>을 생각하자. 적당한 함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
+<ul>
+<li><span class="math inline">\(f(1)=2\)</span></li>
+<li><span class="math inline">\(f(2)=4\)</span></li>
+<li><span class="math inline">\(f(3)=6\)</span></li>
+</ul>
+<p>아래의 질문에 대답해보자.</p>
+<ol type="1">
+<li>(단사) <span class="math inline">\(\forall x_1,x_2 \in X\)</span>, <span class="math inline">\(x_1\neq x_2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f(x_1)\neq f(x_2)\)</span>?</li>
+<li>(전사) <span class="math inline">\(\forall y \in Y~ \exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>?</li>
+</ol>
+<p>1의 질문과 2의 질문이 모두 맞으므로 함수 <span class="math inline">\(f\)</span>는 전단사 함수이다. 집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전단사 함수가 존재하므로 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>의 카디널리티는 동일하다.</p>
+<p><code>-</code> (예제2)</p>
+<p>집합 <span class="math inline">\(X=\{1,2,3,\dots \}\)</span>, <span class="math inline">\(Y=\{2,4,6,\dots \}\)</span>을 생각하자. 적당한 함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
+<ul>
+<li><span class="math inline">\(f(1)=2\)</span></li>
+<li><span class="math inline">\(f(2)=4\)</span></li>
+<li><span class="math inline">\(f(3)=6\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p>아래의 질문에 대답해보자.</p>
+<ol type="1">
+<li>(단사) <span class="math inline">\(\forall x_1,x_2 \in X\)</span>, <span class="math inline">\(x_1\neq x_2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f(x_1)\neq f(x_2)\)</span>?</li>
+<li>(전사) <span class="math inline">\(\forall y \in Y~ \exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>?</li>
+</ol>
+<p>1의 질문과 2의 질문이 모두 맞으므로 함수 <span class="math inline">\(f\)</span>는 전단사함수이다. 집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전단사 함수가 존재하므로 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>의 카디널리티는 동일하다.</p>
+<p><code>-</code> <span class="math inline">\(\aleph_0\)</span> (알레프 널, 혹은 알레프 제로라고 읽음)</p>
+<ul>
+<li>자연수집합 <span class="math inline">\(\mathbb{N}\)</span>의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{N}|=\aleph_0\)</span>.</li>
+<li>짝수인 자연수 집합의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이고, 홀수인 자연수 집합의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다.</li>
+<li>정수집합 <span class="math inline">\(\mathbb{Z}\)</span>의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{Z}|=\aleph_0\)</span>.</li>
+</ul>
+<p><code>-</code> 느낌: <span class="math inline">\(\aleph_0\)</span>를 2배,3배,4배 하여도 <span class="math inline">\(\aleph_0\)</span>이다.</p>
+<ul>
+<li>즉 무한집합의 경우, 본인과 카디널넘버가 같은 진 부분집합이 존재할 수 있다. (유한집합에서는 불가능하겠지)</li>
+<li>무한집합의 정의: 집합 <span class="math inline">\(A\)</span>가 무한집합이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(A\)</span>와 동일한 카디널리티를 가지는 <span class="math inline">\(A\)</span>의 진 부분집합이 존재한다.</li>
+</ul>
+<p><code>-</code> (예제3)</p>
+<p>원소의 수가 <span class="math inline">\(n\)</span>인 임의의 유한집합 <span class="math inline">\(A\)</span>에 대하여 <span class="math inline">\(|A|=n\)</span> 이다.</p>
+<p><code>-</code> (예제4)</p>
+<p>유리수집합의 카디널리티는 얼마인가? (ref: <a href="https://en.wikipedia.org/wiki/Rational_number" class="uri">https://en.wikipedia.org/wiki/Rational_number</a>)</p>
+<p>집합 <span class="math inline">\(X\)</span>를 자연수의 집합이라고 하자. 집합 <span class="math inline">\(Y\)</span>를 아래그림에 있는 숫자들의 집합이라고 하자.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Diagonal_argument.svg/1024px-Diagonal_argument.svg.png" class="img-fluid"></p>
+<p>예를들어 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>를 앞의 몇개만 써보면</p>
+<ul>
+<li><span class="math inline">\(X=\{1,2,3,4,5,6,\dots\}\)</span></li>
+<li><span class="math inline">\(Y=\{1,\frac{2}{1},\frac{1}{2},\frac{3}{1},\frac{2}{2},\frac{1}{3},\dots \}\)</span></li>
+</ul>
+<p>함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
+<ul>
+<li><span class="math inline">\(f(1)=1\)</span></li>
+<li><span class="math inline">\(f(2)=2/1\)</span></li>
+<li><span class="math inline">\(f(3)=1/2\)</span></li>
+<li><span class="math inline">\(f(4)=3/1\)</span></li>
+<li><span class="math inline">\(f(5)=2/2\)</span></li>
+<li><span class="math inline">\(f(6)=1/3\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p>함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 전단사함수이다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X|=\aleph_0=|Y|\)</span></p>
+<p><strong>(관찰)</strong> 임의의 양의 유리수의 집합 <span class="math inline">\(\mathbb{Q}^+\)</span>는 모두 <span class="math inline">\(Y\)</span>에 포함되어 있다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(X \subset \mathbb{Q}^+ \subset Y\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|\mathbb{Q}^+|=\aleph_0\)</span></p>
+<p><strong>(생각)</strong> 그럼 음의 유리수의 집합 <span class="math inline">\(\mathbb{Q}^-\)</span>의 카디널넘버 역시 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{Q}^-|=\aleph_0\)</span>.</p>
+<p><strong>(결론)</strong> 그럼 유리수의 카디널넘버는 <span class="math inline">\(\aleph_0\)</span>이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 좀 더 자극적으로 말하면 “자연수의 갯수와 유리수의 갯수는 같다” 라고 말할 수 있다.</p>
+<p><code>-</code> 조금 무식하게 쓰면 아래와 같이 쓸 수 있다.</p>
+<ul>
+<li><span class="math inline">\(\aleph_0 + 1 = \aleph_0\)</span></li>
+<li><span class="math inline">\(\aleph_0 \times 2 = \aleph_0\)</span></li>
+<li><span class="math inline">\(\aleph_0 \times \aleph_0 = \aleph_0^2 = \aleph_0\)</span></li>
+</ul>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>그래서 일단 집합 <span class="math inline">\(Y\)</span>는 양의 유리수의 집합을 포함한다<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(\mathbb{Q} = \mathbb{Q}^+ \cup \{0\} \cup \mathbb{Q}^-\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
