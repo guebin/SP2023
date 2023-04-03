@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2023-03-30">
 
-<title>SP2023 - 5wk-1: 마코프체인 (1) – draft</title>
+<title>SP2023 - 5wk-1: 마코프체인 (1)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">5wk-1: 마코프체인 (1) – draft</h1>
+      <h1 class="quarto-secondary-nav-title">5wk-1: 마코프체인 (1)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -177,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">5wk-1: 마코프체인 (1) – draft</h1>
+      <h1 class="title d-none d-lg-block">5wk-1: 마코프체인 (1)</h1>
                       </div>
   </div>
     
@@ -285,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link active">5wk-1: 마코프체인 (1) – draft</a>
+  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link active">5wk-1: 마코프체인 (1)</a>
   </div>
 </li>
       </ul>
@@ -301,7 +301,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#확률벡터" id="toc-확률벡터" class="nav-link active" data-scroll-target="#확률벡터">확률벡터</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#확률벡터" id="toc-확률벡터" class="nav-link" data-scroll-target="#확률벡터">확률벡터</a></li>
   <li><a href="#확률벡터의-평균-star" id="toc-확률벡터의-평균-star" class="nav-link" data-scroll-target="#확률벡터의-평균-star">확률벡터의 평균 (<span class="math inline">\(\star\)</span>)</a>
   <ul class="collapse">
   <li><a href="#확률변수의-평균" id="toc-확률변수의-평균" class="nav-link" data-scroll-target="#확률변수의-평균">확률변수의 평균</a></li>
@@ -324,6 +325,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xlV_TS7zhmYyyYNKv8np4W" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xlV_TS7zhmYyyYNKv8np4W</a></p>
+</blockquote>
+</section>
 <section id="확률벡터" class="level1">
 <h1>확률벡터</h1>
 <p><code>-</code> 확률변수와 확률벡터</p>
@@ -696,8 +703,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># samples.mean(axis=0) # 각각 E(X1), E(X2), ... , E(X_{1000}) 을 근사한 것 </span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>np.mean(samples[:,<span class="op">-</span><span class="dv">1</span>]) <span class="co"># E(X_{1000})을 근사한것</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>np.mean(samples[:,<span class="op">-</span><span class="dv">1</span>]) <span class="co"># E(X_{1000})을 근사한것</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>0.7862120226702592</code></pre>
 </div>
@@ -817,18 +823,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>이때는 <span class="math inline">\(E(X_{1000})\)</span>을 <span class="math inline">\(\frac{1}{T}\sum_{t=1}^T X_t\)</span>와 같은 방식으로 근사할 수 있다.</p>
 <p><strong>시뮬1 – calculating time average of one-sample <span class="math inline">\((x_1,\dots,x_{1000})\)</span></strong></p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>one_sample <span class="op">=</span> np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1000</span>)</span>
 <span id="cb30-2"><a href="#cb30-2"></a>np.mean(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>0.5</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>0.536</code></pre>
 </div>
 </div>
 <p><strong>시뮬2 – approximating ensemble average with 43052 samples</strong></p>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>np.stack([np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1000</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)]).mean(axis<span class="op">=</span><span class="dv">0</span>)[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>0.504552634023971</code></pre>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>np.stack([np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1000</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)])[:,<span class="op">-</span><span class="dv">1</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>0.4999535445507758</code></pre>
 </div>
 </div>
 <p><code>-</code> 결론: 원래 time-average와 ensemble-average는 “전혀” 다른 개념이다. 그런데, 확률변수열이 iid일 경우는 time-average로 ensemble-average를 근사계산 할 수 있다.</p>
@@ -847,17 +853,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(X_1=\epsilon_1\)</span></li>
 <li><span class="math inline">\(X_t=\frac{7}{8}X_{t-1} + \epsilon_t\)</span> for <span class="math inline">\(t=2,3,\dots,T\)</span></li>
 </ul>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>eps <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span>
 <span id="cb34-2"><a href="#cb34-2"></a>x <span class="op">=</span> np.zeros(<span class="dv">1000</span>)</span>
 <span id="cb34-3"><a href="#cb34-3"></a>x[<span class="dv">0</span>] <span class="op">=</span> eps[<span class="dv">0</span>]</span>
 <span id="cb34-4"><a href="#cb34-4"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
 <span id="cb34-5"><a href="#cb34-5"></a>    x[t] <span class="op">=</span> (<span class="dv">7</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>x[t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span>eps[t]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>plt.plot(x,<span class="st">'--o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-03-30-5wk-1_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
@@ -867,7 +873,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>(풀이)</p>
 <p>우선 독립인지 아닌지 체크해보자.</p>
 <p><strong><em>check: <span class="math inline">\(X_t\)</span>와 <span class="math inline">\(X_{t-1}\)</span>은 독립??</em></strong></p>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>plt.plot(x[:<span class="op">-</span><span class="dv">1</span>],x[<span class="dv">1</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-03-30-5wk-1_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
@@ -878,13 +884,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <hr>
 <p><em>참고로 독립이라면~</em></p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>plt.plot(eps,<span class="st">'--o'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-03-30-5wk-1_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>plt.plot(eps[<span class="dv">1</span>:],eps[:<span class="op">-</span><span class="dv">1</span>],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-03-30-5wk-1_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -892,7 +898,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <hr>
 <p><strong>시뮬1 – calculating time average of one-sample <span class="math inline">\((x_1,\dots,x_{T})\)</span></strong></p>
-<div class="cell" data-execution_count="42">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw">def</span> gen(T<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb40-2"><a href="#cb40-2"></a>    eps <span class="op">=</span> np.random.randn(T)</span>
 <span id="cb40-3"><a href="#cb40-3"></a>    x <span class="op">=</span> np.zeros(T)</span>
@@ -901,21 +907,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb40-6"><a href="#cb40-6"></a>        x[t] <span class="op">=</span> (<span class="dv">7</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>x[t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span>eps[t]</span>
 <span id="cb40-7"><a href="#cb40-7"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="43">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>one_sample <span class="op">=</span> gen()</span>
 <span id="cb41-2"><a href="#cb41-2"></a>np.mean(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>0.023090107003126605</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>-0.04427929741501683</code></pre>
 </div>
 </div>
 <p><strong>시뮬2 – approximating ensemble average with 43052 samples</strong></p>
-<div class="cell" data-execution_count="44">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>samples <span class="op">=</span> np.stack([gen() <span class="cf">for</span> ω <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">43052</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="45">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>np.mean(samples[:,<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
-<pre><code>-0.011328853565438847</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>-0.001607068412044872</code></pre>
 </div>
 </div>
 <p>근사 되는 것 같은데..?</p>
@@ -947,7 +953,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <hr>
 <p><strong><em>독립인듯 독립아닌 독립같은 확률과정</em></strong></p>
-<div class="cell" data-execution_count="46">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
 <span id="cb46-2"><a href="#cb46-2"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].plot(x[:<span class="op">-</span><span class="dv">1</span>],x[<span class="dv">1</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb46-3"><a href="#cb46-3"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].plot(x[:<span class="op">-</span><span class="dv">2</span>],x[<span class="dv">2</span>:],<span class="st">'o'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
