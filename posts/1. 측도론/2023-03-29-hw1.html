@@ -345,8 +345,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A - B \in {\cal F}\)</span></p></li>
 </ol>
 <p>이제 풀어보자.</p>
-<p>1번 - <span class="math inline">\(\{1,2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1\} \in \sigma({\cal A})\)</span> - <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{1,2\} - \{1\} = \{2\} \in \sigma({\cal A})\)</span> (<span class="math inline">\(\because\)</span> (b))</p>
-<p>2번 - <span class="math inline">\(\{1,2\}-\{1\} = \{2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3\} - \{1,2\} = \{3\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3,4\} - \{1,2,3\} = \{4\} \in \sigma({\cal A})\)</span>. - <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{2\}\cup \{3\} \cup \{4\} = \{2,3,4\} \in \sigma({\cal A})\)</span></p>
+<p>1번</p>
+<ul>
+<li><span class="math inline">\(\{1,2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1\} \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{1,2\} - \{1\} = \{2\} \in \sigma({\cal A})\)</span> (<span class="math inline">\(\because\)</span> (b))</li>
+</ul>
+<p>2번</p>
+<ul>
+<li><span class="math inline">\(\{1,2\}-\{1\} = \{2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3\} - \{1,2\} = \{3\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3,4\} - \{1,2,3\} = \{4\} \in \sigma({\cal A})\)</span>.</li>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{2\}\cup \{3\} \cup \{4\} = \{2,3,4\} \in \sigma({\cal A})\)</span></li>
+</ul>
 <p>3번</p>
 <ul>
 <li><span class="math inline">\(\{3,4,5\} \not \in \sigma({\cal A})\)</span></li>
@@ -354,7 +362,7 @@ ul.task-list li input[type="checkbox"] {
 <p>4번</p>
 <ul>
 <li><span class="math inline">\(\{1,2,3\}\in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{1,2,3\}^c \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\Rightarrow \{1,2,3\}^c \in \sigma({\cal A})\)</span></li>
 </ul>
 <p><code>(4)</code> <span class="math inline">\(\Omega=[0,2\pi)\)</span> 일 때,</p>
 <p><span class="math display">\[{\cal A}=\{ [a,b): 0\leq a&lt; b\leq 2\pi\}\]</span></p>
@@ -371,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
 <p>(풀이)</p>
 <ol type="1">
 <li><span class="math inline">\(a=\frac{\pi}{2}\)</span>, <span class="math inline">\(b=\pi\)</span></li>
-<li><span class="math inline">\([0,\pi)~ \bigcup ~\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi) = [0,\pi) \cup (\pi,2\pi)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Omega - \big([0,\pi) \cup (\pi,2\pi) \big) = \{\pi\}\)</span></li>
+<li><span class="math inline">\([0,\pi)~ \bigcup ~\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi) = [0,\pi) \cup (\pi,2\pi)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Omega - \big([0,\pi) \cup (\pi,2\pi) \big) = \{\pi\} \in \sigma({\cal A})\)</span></li>
 </ol>
 <ul>
 <li><span class="math inline">\([\pi+\frac{1}{n}, 2\pi)\)</span>는 각각 잴 수 있는 집합이므로 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
