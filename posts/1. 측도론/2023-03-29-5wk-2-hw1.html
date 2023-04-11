@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2023-03-21">
+<meta name="dcterms.date" content="2023-03-29">
 
-<title>SP2023 - 3wk-2: 측도론 intro (4)</title>
+<title>SP2023 - 05wk-2: HW1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">3wk-2: 측도론 intro (4)</h1>
+      <h1 class="quarto-secondary-nav-title">05wk-2: HW1</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">3wk-2: 측도론 intro (4)</h1>
+      <h1 class="title d-none d-lg-block">05wk-2: HW1</h1>
                       </div>
   </div>
     
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 21, 2023</p>
+        <p class="date">March 29, 2023</p>
       </div>
     </div>
     
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">05wk-2: HW1</a>
+  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link active">05wk-2: HW1</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -202,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link active">3wk-2: 측도론 intro (4)</a>
+  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">3wk-2: 측도론 intro (4)</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -244,7 +244,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#시그마필드-motivation-1" id="toc-시그마필드-motivation-1" class="nav-link" data-scroll-target="#시그마필드-motivation-1">시그마필드 motivation (1)</a></li>
+  <li><a href="#배점" id="toc-배점" class="nav-link" data-scroll-target="#배점">배점</a></li>
+  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality"><code>1</code>. Cardinality</a></li>
+  <li><a href="#sigma-field" id="toc-sigma-field" class="nav-link" data-scroll-target="#sigma-field"><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</a></li>
+  <li><a href="#확률과-확률변수" id="toc-확률과-확률변수" class="nav-link" data-scroll-target="#확률과-확률변수"><code>3</code>. 확률과 확률변수</a></li>
   </ul>
 </nav>
     </div>
@@ -257,112 +260,199 @@ ul.task-list li input[type="checkbox"] {
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
 <blockquote class="blockquote">
-<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yaBxW0S3fsO1d-kYIqZa62" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yaBxW0S3fsO1d-kYIqZa62</a></p>
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC</a></p>
 </blockquote>
 </section>
-<section id="시그마필드-motivation-1" class="level1">
-<h1>시그마필드 motivation (1)</h1>
-<p><strong>(예제1)</strong> – 잴 수 있는 집합의 모임</p>
-<p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. 아래집합들은 모두 확률을 정의할 수 있는 집합들이다.</p>
-<p><span class="math display">\[\emptyset, \{H\}, \{T\}, \Omega\]</span></p>
-<p>따라서 <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>가 합리적일 것이다.</p>
-<p><span class="math display">\[{\cal F}=\big\{\emptyset, \{H\}, \{T\}, \Omega\big\}\]</span></p>
-<blockquote class="blockquote">
-<p>이때 <span class="math inline">\({\cal F}\)</span>는 집합들의 집합인데, 이러한 집합을 collection 이라고 한다.</p>
-</blockquote>
-<p><strong>(예제2)</strong> – 집합 <span class="math inline">\(A\)</span>를 잴 수 있다면, 집합 <span class="math inline">\(A^c\)</span>도 잴 수 있어~</p>
-<p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
-<p><span class="math display">\[{\cal F}=\big\{\emptyset, \{H\}, \Omega\big\}\]</span></p>
-<p>(해설1)</p>
-<p>이러한 묶음이 의미하는건 “앞면이 나올 확률은 모순없이 정의할 수 있지만, 뒷면이 나오는 확률은 모순없이 정의하는게 불가능해~” 라는 뜻이다. 그런데 뒷면이 나올 확률은 “1-앞면이 나올 확률” 로 모순없이 정의할 수 있으므로 “앞면이 나올 확률이 모순없이 정의되면서” 동시에 “뒷면이 나올 확률이 모순없이 정의되지 않는” 상황은 없다.</p>
-<p>(해설2)</p>
-<p><span class="math inline">\(\Omega\)</span>의 어떠한 부분집합 <span class="math inline">\(A\)</span>에 확률이 모순없이 정의된다면 그 집합의 여집합인 <span class="math inline">\(A^c\)</span>에 대하여서도 확률이 모순없이 정의되어야 한다.</p>
-<p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A \subset {\Omega}: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></p>
-<p><strong>(예제3)</strong> – 전체집합이 잴 수 있는 집합이니까 공집합도 잴 수 있는 집합이야</p>
-<p><span class="math inline">\(\Omega=\{H,T\}\)</span>라고 하자. <span class="math inline">\({\cal F}\)</span>를 아래와 같이 정의한다면 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
-<p><span class="math display">\[{\cal F}=\big\{ \{H\}, \{T\}, \Omega\big\}\]</span></p>
-<p>(해설)</p>
-<p>전체집합의 확률은 <span class="math inline">\(P(\Omega)=1\)</span>로 정의할 수 있다. 그런데 전체집합의 여집합인 공집합의 확률을 정의할 수 없는건 말이 안되므로 공집합은 <span class="math inline">\(\cal F\)</span>에 포함되어야 한다.</p>
-<p><strong>(예제4)</strong> – 원소의 수가 유한한 경우 <span class="math inline">\({\cal F}=2^\Omega\)</span>은 잴 수 있는 집합의 모임이야.</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음은 <span class="math inline">\({\cal F}\)</span>은 합리적이다.</p>
-<p><span class="math display">\[{\cal F}=\text{all subset of $\Omega$}= 2^\Omega = \big\{ \emptyset, \{1\}, \{2\}, \dots, \{6\}, \dots, \{1,2,3,4,5\} \dots \Omega\big\}\]</span></p>
-<p>(해설)</p>
-<p><span class="math inline">\(\Omega\)</span>의 모든 부분집합에 대하여 확률을 모순없이 정의할 수 있다. 예를들면</p>
-<ul>
-<li><span class="math inline">\(P(\Omega)=1\)</span>, <span class="math inline">\(P(\emptyset)=0\)</span></li>
-<li><span class="math inline">\(P(\{1\})=\frac{1}{6}\)</span></li>
-<li><span class="math inline">\(P(\{1,2,4\})=\frac{3}{6}\)</span></li>
-<li><span class="math inline">\(P(\{2,3,4,5,6\})=\frac{5}{6}\)</span></li>
-<li><span class="math inline">\(\dots\)</span></li>
-</ul>
-<p>이런식으로 정의할 수 있다.</p>
-<p><strong>(예제5)</strong> – 동일한 <span class="math inline">\(\Omega\)</span>에 대하여 잴 수 있는 집합의 모임 <span class="math inline">\({\cal F}\)</span>는 유니크하지 않음.</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
-<p><span class="math display">\[{\cal F}=\big\{\emptyset, \{6\}, \{1,2,3,4,5\},\Omega \big\}\]</span></p>
-<p>(해설)</p>
-<p>어떠한 특수한 상황을 가정하자. 주사위를 던져야하는데 6이 나오면 살수 있고 6이 나오지 않으면 죽는다고 하자. 따라서 던지는 사람 입장에서는 주사위를 던져서 6이 나오는지 안나오는지만 관심있을 것이다. 이 사람의 머리속에서 순간적으로 떠오르는 확률들은 아래와 같다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<ul>
-<li>살수있다 =&gt; 1/6</li>
-<li>죽는다 =&gt; 5/6</li>
-<li>살거나 죽는다 =&gt; 1</li>
-<li>살지도 죽지도 않는다 =&gt; 0</li>
-</ul>
-<p>이러한 확률은 합리적이다. 즉 아래의 집합들만 확률을 정의한다고 해도, 확률을 잘 정의할 수 있을 것 같다.</p>
-<p><span class="math display">\[\emptyset, \{6\}, \{1,2,3,4,5\}, \Omega\]</span></p>
-<p><strong>(예제6)</strong> – <span class="math inline">\(\Omega\)</span>를 어떠한 사건의 집합으로 보느냐에 따라서 <span class="math inline">\({\cal F}\)</span>를 달리 구성할 수 있다.</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
-<p><span class="math display">\[{\cal F}=\big\{\emptyset, \{1,3,5\}, \{2,4,6\},\Omega \big\}\]</span></p>
-<p>(해설)</p>
-<p>전체사건을 “주사위를 던져서 짝이 나오는 사건”, “주사위를 던져서 홀이 나오는 사건” 정도만 구분하겠다는 의미</p>
-<p><strong>(예제7)</strong> – <span class="math inline">\(A\in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
-<p><span class="math display">\[{\cal F}=\big\{\emptyset, \{1,3,5\}, \Omega \big\}\]</span></p>
-<p>(해설)</p>
-<p>“주사위를 던져서 홀수가 나올 사건”에 대한 확률을 정의할 수 있는데, 짝수가 나올 사건에 대한 확률을 정의할 수 없다는건 말이 안되는 소리임.</p>
-<p><strong>(예제8)</strong> – trivial <span class="math inline">\(\sigma\)</span>-field</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>이라고 하자. <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의한다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이다.</p>
-<p><span class="math display">\[{\cal F}=\{\emptyset, \Omega \}\]</span></p>
-<p>(해설)</p>
-<p>아예 이렇게 잡으면 모순이 일어나진 않음. (쓸모가 없겠지)</p>
-<p><strong>(예제9)</strong> – 서로소인 두 집합의 합, 포함관계에 있는 집합의 차</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4\}\)</span>이라고 하자. 어떠한 필요에 따라서 1이 나올 확률과 2가 나올 확률에만 관심이 있고 나머지는 별로 관심이 없다고 하자. 그래서 <span class="math inline">\({\cal F}\)</span>을 아래와 같이 정의했다고 하자. 이러한 묶음 <span class="math inline">\({\cal F}\)</span>는 합리적이지 않다.</p>
-<p><span class="math display">\[{\cal F}=\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega \}\]</span></p>
-<p>(해설1)</p>
-<p><span class="math inline">\({\cal F}\)</span>은 전체집합과 공집합을 포함하고 여집합에 닫혀있으므로 언뜻 생각해보면 합리적인듯 보이지만 그렇지 않다. 왜냐하면 <span class="math inline">\(\{1,2\}\)</span>이 빠졌기 때문이다. 1이 나올 확률 <span class="math inline">\(P(\{1\})\)</span>와 2가 나올 확률 <span class="math inline">\(P(\{2\})\)</span>를 각각 정의할 수 있는데, 1 또는 2가 나올 확률 <span class="math inline">\(P(\{1,2\})\)</span>을 정의할 때 모순이 발생한다는 것은 합리적이지 못하다. 왜냐하면 <span class="math inline">\(\{1\} \cap \{2\} = \emptyset\)</span> 이므로</p>
-<p><span class="math display">\[P(\{1\} \cup \{2\})=P(\{1\}) + P(\{2\})\]</span></p>
-<p>와 같이 정의가능하기 때문이다. 따라서 집합이 아래와 같이 수정되어야 한다.</p>
-<p><span class="math display">\[{\cal F}=\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega, \{1,2\}, \{3,4\} \}\]</span></p>
-<p>(해설2)</p>
-<p>생각해보니까 <span class="math inline">\(\{2\}\)</span>는 <span class="math inline">\(\{2,3,4\}\)</span>의 부분집합이다. 그런데 <span class="math inline">\(P(\{2\})\)</span>와 <span class="math inline">\(P(\{2,3,4\})\)</span>를 각각 정의할 수 있는데</p>
-<p><span class="math display">\[P(\{2,3,4\} - \{2\}) = P(\{3,4\})\]</span></p>
-<p>를 정의할 수 없는건 말이 안된다. 따라서 <span class="math inline">\({\cal F}\)</span>를 아래와 같이 수정해야 한다.</p>
-<p><span class="math display">\[{\cal F}=\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega, \{3,4\}, \{1,2\} \}\]</span></p>
-<p>(해설3)</p>
-<p><span class="math inline">\(\Omega\)</span>의 어떠한 두 부분집합 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>가 서로소라고 상상하자. 집합 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대한 확률이 각각 무모순으로 정의된다면, 집합 <span class="math inline">\(A\cup B\)</span>에 대한 확률도 무모순으로 정의되어야 한다.</p>
-<p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></p>
-<p>또한 <span class="math inline">\(\Omega\)</span>의 임의의 두 부분집합이 <span class="math inline">\(A \subset B\)</span>와 같은 포함관계가 성립할때, 집합 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대한 확률이 각각 무모순으로 정의된다면, 집합 <span class="math inline">\(B-A\)</span>에 대한 확률로 무모순으로 정의되어야 한다.</p>
-<p><span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></p>
-<p><strong>(예제10)</strong> – <span class="math inline">\({\cal A}=\{\{1\},\{2\}\}\)</span> 일때, <span class="math inline">\(\sigma({\cal A})\)</span> 를 구하는 문제</p>
-<p><span class="math inline">\(\Omega=\{1,2,3,4\}\)</span>이라고 하자. 내가 관심이 있는 확률은 <span class="math inline">\(P(\{1\})\)</span>, <span class="math inline">\(P(\{2\})\)</span> 밖에 없다고 하자. 이러한 확률들이 무모순으로 정의되기 위한 최소한의 <span class="math inline">\({\cal F}\)</span>를 정의하라.</p>
-<p>(해설) – 좀 귀찮네..?</p>
-<p>0차수정: <span class="math inline">\({\cal A} = \big\{\{1\}, \{2\}\big\}\)</span></p>
-<p>1차수정: <span class="math inline">\(\big\{\emptyset, \{1\}, \{2\}, \Omega \big\}\)</span></p>
-<p>2차수정: <span class="math inline">\(\big\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega \big\}\)</span></p>
-<p>3차수정: <span class="math inline">\(\big\{\emptyset, \{1\}, \{2\}, \{2,3,4\}, \{1,3,4\}, \Omega, \{1,2\}, \{3,4\} \big\}\)</span></p>
-<blockquote class="blockquote">
-<p>사실 우리가 관심 있는건 <span class="math inline">\({\cal A} = \{ \{1\}, \{2\} \}\)</span> 뿐 이었음. 그런데 뭔가 <span class="math inline">\(P(\{1\})\)</span>와 <span class="math inline">\(P(\{2\})\)</span>를 합리적으로 정의하기 위해서 필연적으로 발생하는 어떠한 집합들을 모두 생각하는건 매우 피곤하고 귀찮은 일임. 그래서 “아 모르겠고, <span class="math inline">\(\{1\}\)</span> 와 <span class="math inline">\(\{2\}\)</span>를 포함하고 확률의 뜻에 모순되지 않게 만드는 최소한의 <span class="math inline">\({\cal F}\)</span>가 있을텐데, 거기서만 확률을 정의할래!” 라고 쉽게 생각하고 싶은 사람들이 생김. 그러한 공간을 <span class="math inline">\(\sigma({\cal A})\)</span>라는 기호로 약속하고 smallest <span class="math inline">\(\sigma\)</span>-field containing <span class="math inline">\({\cal A}\)</span> 라는 용어로 부름.</p>
-</blockquote>
-
-
+<section id="배점" class="level1">
+<h1>배점</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">문항</th>
+<th style="text-align: center;">점수</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1-(1)</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1-(2)</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2-(1)</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2-(2)</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2-(3)</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2-(4)</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3-(1)</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3-(2)</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
 </section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>공평한 주사위라고 하자..<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<section id="cardinality" class="level1">
+<h1><code>1</code>. Cardinality</h1>
+<p><code>(1)</code> <span class="math inline">\(\mathbb{Q}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>임을 증명하라.</p>
+<p><code>(풀이)</code> 생략</p>
+<p><code>(2)</code> <span class="math inline">\(\mathbb{R}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>이 아님을 보여라.</p>
+<p><code>(풀이)</code> 생략</p>
+</section>
+<section id="sigma-field" class="level1">
+<h1><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</h1>
+<p><code>(1)</code> <span class="math inline">\(\Omega=\{H,T\}\)</span>일 때, 다음 중 시그마필드의 정의를 만족하는 집합을 모두 골라라.</p>
+<ol type="1">
+<li><span class="math inline">\({\cal F}=\{\emptyset\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\Omega\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\emptyset, \Omega\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\{H\}\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\{H\}, \{T\}\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \Omega\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\emptyset, \{T\}, \Omega\}\)</span></li>
+<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \{T\}, \Omega\}\)</span></li>
 </ol>
-</section></div></main> <!-- /main -->
+<p><code>(풀이)</code> 3,8 이 시그마필드이다. // 시그마필드가 아닌이유를 서술할 필요없음. 답만 쓰면 인정함.</p>
+<p><code>(2)</code> <span class="math inline">\(\Omega=\{1,2,3,4\}\)</span> 일 때,</p>
+<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}\}\]</span></p>
+<p>이라고 하자. <span class="math inline">\(\sigma({\cal A})\)</span>를 구하여라.</p>
+<p><code>(풀이)</code> // 이 문제역시 답만 써도 인정</p>
+<p><span class="math inline">\(\sigma({\cal A}) = \{\emptyset, \{1\},\{2\},\{3,4\}, \{1,2\},\{1,3,4\}, \{2,3,4\}, \Omega\}\)</span></p>
+<blockquote class="blockquote">
+<p>요령: <span class="math inline">\(\{3,4\}\)</span>를 한세트로 보면 편리하다. 즉 전체사건을 <span class="math inline">\(\{1\},\{2\},\{3,4\}\)</span>로 쪼갠뒤에 3개의 원소만 있다고 생각하고 모든 부분집합을 쓰면 된다.</p>
+</blockquote>
+<p><code>(3)</code> <span class="math inline">\(\Omega=\{1,2,3,4,\dots,100\}\)</span> 일 때,</p>
+<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}, \{1,2,3\},\{1,2,3,4\}\}\]</span></p>
+<p>이라고 하자. 아래의 물음에 답하여라.</p>
+<ol type="1">
+<li><span class="math inline">\(\{2\} \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\(\{2,3,4\} \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\(\{3,4,5\} \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\(\Omega - \{1,2,3\} \in \sigma({\cal A})\)</span> 인가?</li>
+</ol>
+<p><code>(풀이)</code> // 답만쓰면 인정하지 않음.</p>
+<p>시그마필드의 정의는 아래와 같다.</p>
+<blockquote class="blockquote">
+<p>시그마필드 <span class="math inline">\({\cal F} \subset 2^\Omega\)</span> 는 1. 전체집합을 포함하고, 2. 여집합에 닫혀있고 3. 가산합집합에 닫혀있는 collection 이다.</p>
+</blockquote>
+<p>먼저 강의노트를 참고하여 아래의 사실을 보이자.</p>
+<ol type="a">
+<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cap B \in {\cal F}\)</span></p></li>
+<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A - B \in {\cal F}\)</span></p></li>
+</ol>
+<p>이제 풀어보자.</p>
+<p>1번</p>
+<ul>
+<li><span class="math inline">\(\{1,2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1\} \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{1,2\} - \{1\} = \{2\} \in \sigma({\cal A})\)</span> (<span class="math inline">\(\because\)</span> (b))</li>
+</ul>
+<p>2번</p>
+<ul>
+<li><span class="math inline">\(\{1,2\}-\{1\} = \{2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3\} - \{1,2\} = \{3\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3,4\} - \{1,2,3\} = \{4\} \in \sigma({\cal A})\)</span>.</li>
+<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{2\}\cup \{3\} \cup \{4\} = \{2,3,4\} \in \sigma({\cal A})\)</span></li>
+</ul>
+<p>3번</p>
+<ul>
+<li><span class="math inline">\(\{3,4,5\} \not \in \sigma({\cal A})\)</span></li>
+</ul>
+<p>4번</p>
+<ul>
+<li><span class="math inline">\(\{1,2,3\}\in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\Rightarrow \{1,2,3\}^c \in \sigma({\cal A})\)</span></li>
+</ul>
+<p><code>(4)</code> <span class="math inline">\(\Omega=[0,2\pi)\)</span> 일 때,</p>
+<p><span class="math display">\[{\cal A}=\{ [a,b): 0\leq a&lt; b\leq 2\pi\}\]</span></p>
+<p>이라고 하자. 아래의 물음에 답하여라.</p>
+<ol type="1">
+<li><span class="math inline">\([\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\(\{\pi\} \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\(\{0,\frac{\pi}{2},\pi,\frac{3\pi}{2}\} \in \sigma({\cal A})\)</span> 인가?</li>
+<li><span class="math inline">\((\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
+</ol>
+<blockquote class="blockquote">
+<p>수업시간에 2번문제 잘못해설했어요. (문제도 잘못냈어요, 너무 어렵게 냈어요. )</p>
+</blockquote>
+<p>(풀이)</p>
+<ol type="1">
+<li><span class="math inline">\(a=\frac{\pi}{2}\)</span>, <span class="math inline">\(b=\pi\)</span></li>
+<li><span class="math inline">\([0,\pi)~ \bigcup ~\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi) = [0,\pi) \cup (\pi,2\pi)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Omega - \big([0,\pi) \cup (\pi,2\pi) \big) = \{\pi\} \in \sigma({\cal A})\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\([\pi+\frac{1}{n}, 2\pi)\)</span>는 각각 잴 수 있는 집합이므로 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
+<li>여기에서 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)=(\pi,2\pi)\)</span> 로 볼 수 있는데, 그 이유는 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span>는 <span class="math inline">\(\pi\)</span>보다 큰 모든수를 포함하지만 <span class="math inline">\(\pi\)</span>는 포함할 수 없기 때문이다.</li>
+<li><span class="math inline">\([0, \pi)\)</span>도 당연히 잴 수 있는 집합이다.</li>
+<li>잴 수 있는 집합의 교집합은 잴 수 있으므로 <span class="math inline">\([0,\pi)~ \cup ~(\pi,2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
+<li>따라서 <span class="math inline">\([0,2\pi) - \big([0,\pi) \cup (\pi,2\pi) \big)\)</span> 역시 잴 수 있다.</li>
+</ul>
+<ol start="3" type="1">
+<li><span class="math inline">\(\{\pi\}\)</span>를 잴수 있다는 것과 동일한 논리전개로 <span class="math inline">\(\{0\},\{\frac{\pi}{2}\}, \{\frac{3\pi}{2}\}\)</span> 모두 잴 수 있는 집합이고, 따라서 이들의 합집합도 잴 수 있다.</li>
+<li><span class="math inline">\([\frac{\pi}{2}, \pi)\)</span>를 잴 수 있고 <span class="math inline">\(\{\frac{\pi}{2}\}\)</span>를 잴 수 있으므로 <span class="math inline">\([\frac{\pi}{2}, \pi) - \{\frac{\pi}{2}\}\)</span> 역시 잴 수 있다.</li>
+</ol>
+</section>
+<section id="확률과-확률변수" class="level1">
+<h1><code>3</code>. 확률과 확률변수</h1>
+<p><code>(1)</code> 아래와 같은 measurable space <span class="math inline">\((\Omega, {\cal F})\)</span>를 고려하자.</p>
+<ul>
+<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
+<li><span class="math inline">\({\cal F}=2^\Omega\)</span></li>
+</ul>
+<p>아래와 같은 확률변수 <span class="math inline">\(X: \Omega \to \{1,2,3,4\}\)</span> 를 고려하자. 다음중 올바른 표현은?</p>
+<ol type="1">
+<li><span class="math inline">\(X(a)\)</span></li>
+<li><span class="math inline">\(X(\{a\})\)</span></li>
+<li><span class="math inline">\(P(a)\)</span></li>
+<li><span class="math inline">\(P(\{a\})\)</span></li>
+<li><span class="math inline">\(P(X=1)\)</span></li>
+<li><span class="math inline">\(X = \begin{cases} 1 &amp; w.p.~\frac{1}{2} \\ 2 &amp; w.p. ~\frac{1}{6} \\ 3 &amp; w.p. ~\frac{1}{6} \\ 4 &amp; w.p. ~\frac{1}{6} \end{cases}\)</span></li>
+</ol>
+<p>(풀이) 생략 (이 문제는 그대로 낼거라서요, 풀이 생략합니다. 스스로 해보세요. 시험에서는 답만쓰면 정답으로 인정합니다)</p>
+<p><code>(2)</code> 아래와 같은 measurable space를 고려하자.</p>
+<ul>
+<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
+<li><span class="math inline">\({\cal F} =\sigma({\cal A})\)</span> where <span class="math inline">\({\cal A} = \{\{a\}\}\)</span>.</li>
+</ul>
+<p>아래와 같은 function <span class="math inline">\(X:\Omega \to A:=\{1,2,3,4\}\)</span>, <span class="math inline">\(Y:\Omega \to B:=\{1,2\}\)</span>을 고려하자.</p>
+<ul>
+<li><span class="math inline">\(X(a)=1, X(b)=2, X(c)=3, X(d)=4\)</span></li>
+<li><span class="math inline">\(Y(a)=1, Y(b)=2, Y(c)=2, Y(c)=2\)</span></li>
+</ul>
+<p>아래의 물음에 답하라.</p>
+<ul>
+<li><span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (A,2^{A})\)</span> 인가? 즉 <span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
+<li><span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (B,2^{B})\)</span> 인가? 즉 <span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
+</ul>
+<p>(풀이)</p>
+<p><strong><span class="math inline">\(X\)</span>는 확률변수가 아님</strong></p>
+<p>집합 <span class="math inline">\(\{2\} \subset 2^A\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in \{2\}\}=\{b\} \not \in \sigma({\cal A})\)</span> 이므로 <span class="math inline">\(X\)</span>는 확률변수가 아님</p>
+<p><strong><span class="math inline">\(Y\)</span>는 확률변수임</strong></p>
+<p><span class="math inline">\(2^B = \{\emptyset,\{1\},\{2\},B\}\)</span> 의 모든 부분집합 <span class="math inline">\(B^\ast\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in B^\ast\} \in \sigma({\cal A})\)</span> 이 성립함.</p>
+<ul>
+<li><span class="math inline">\(\{\omega: X(\omega) \in \emptyset\} = \emptyset \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\{\omega: X(\omega) \in \{1\}\} = \{a\} \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\{\omega: X(\omega) \in \{2\}\} = \{b,c,d\} \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(\{\omega: X(\omega) \in B\} = \{a,b,c,d\} \in \sigma({\cal A})\)</span></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
