@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -243,8 +306,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#배점-hw1와-배점다름" id="toc-배점-hw1와-배점다름" class="nav-link active" data-scroll-target="#배점-hw1와-배점다름">배점 – HW1와 배점다름</a></li>
-  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality"><code>1</code>. Cardinality</a></li>
+  <li><a href="#cardinality" id="toc-cardinality" class="nav-link active" data-scroll-target="#cardinality"><code>1</code>. Cardinality</a></li>
   <li><a href="#sigma-field" id="toc-sigma-field" class="nav-link" data-scroll-target="#sigma-field"><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</a></li>
   <li><a href="#확률과-확률변수" id="toc-확률과-확률변수" class="nav-link" data-scroll-target="#확률과-확률변수"><code>3</code>. 확률과 확률변수</a></li>
   </ul>
@@ -256,55 +318,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="배점-hw1와-배점다름" class="level1">
-<h1>배점 – HW1와 배점다름</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">문항</th>
-<th style="text-align: center;">점수</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1-(1)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1-(2)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(1)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(2)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(3)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(4)</td>
-<td style="text-align: center;">20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3-(1)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3-(2)</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3-(3)</td>
-<td style="text-align: center;">15</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="cardinality" class="level1">
 <h1><code>1</code>. Cardinality</h1>
 <p><code>(1)</code> <span class="math inline">\(\mathbb{Q}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>임을 증명하라.</p>
@@ -323,10 +336,12 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>note</strong>: 답만 써도 무방.</p>
 <p><strong>note</strong>: 정확하게 모두 고를 경우만 정답으로 인정.</p>
+<p><code>(풀이)</code> 1,2,3,4 모두 시그마필드</p>
 <p><code>(2)</code> <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span> 일 때,</p>
 <p><span class="math display">\[{\cal A}=\{\{1,2,3\},\{4,5,6\}\}\]</span></p>
 <p>이라고 하자. <span class="math inline">\(\sigma({\cal A})\)</span>를 구하여라.</p>
 <p><strong>note</strong>: 답만 써도 무방.</p>
+<p><code>(풀이)</code> <span class="math inline">\(\sigma({\cal A}) = \{\emptyset, \Omega, \{1,2,3\},\{4,5,6\}\}\)</span></p>
 <p><code>(3)</code> <span class="math inline">\(\Omega=\mathbb{N}\)</span> 일 때,</p>
 <ul>
 <li><span class="math inline">\({\cal A}=\{\{n\}: n \in \mathbb{N}\}\)</span></li>
@@ -342,6 +357,8 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>note:</strong> 답만 써도 무방.</p>
 <p><strong>note:</strong> 모두 맞출 경우만 정답으로 인정</p>
+<p><code>(풀이)</code> 1,2,3,4 (O) // 5 (X)</p>
+<p>시그마필드는 공집합과 전체집합을 포함하므로 <span class="math inline">\(\mathbb{N}, \emptyset\)</span>은 <span class="math inline">\({\cal F}\)</span>의 원소이어야 한다. 시그마필드의 원소는 <span class="math inline">\(\mathbb{N}\)</span>의 부분집합이어야 하므로 <span class="math inline">\(\mathbb{Z}\)</span>는 <span class="math inline">\({\cal F}\)</span>의 원소가 될 수 없다. <span class="math inline">\({\cal F}\)</span>는 <span class="math inline">\(\{2\},\{4\},\{6\},\dots\)</span> 등을 원소로 포함하고 시그마필드는 가산합집합에 닫혀있으므로 <span class="math inline">\(\{2n: n \in \mathbb{N}\}\)</span> 은 <span class="math inline">\({\cal F}\)</span>의 원소이다.</p>
 <p><code>(4)</code> <span class="math inline">\(\Omega=\mathbb{R}\)</span> 일 때,</p>
 <ul>
 <li><span class="math inline">\({\cal A}=\{(a,b): -\infty &lt;a&lt; b&lt; \infty\}\)</span></li>
@@ -359,13 +376,31 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\([1,3) \cup (3,5] \in {\cal F}\)</span> 인가?</li>
 </ol>
 <p><strong>note</strong>: 답만 쓸 경우 정답으로 인정하지 않음, 답에 대한 근거를 간단히 서술할 것</p>
-<p><strong>note:</strong> 근거는 수식으로 쓰지 않아도 무방함.</p>
-<p>(답안예시)</p>
-<p><span class="math inline">\((1,2) \cup (3,4) \in {\cal F}\)</span> 인가?</p>
-<ul>
-<li>그렇다. <span class="math inline">\((1,2)\)</span>와 <span class="math inline">\((3,4)\)</span>는 모두 <span class="math inline">\({\cal F}\)</span>의 원소이고 시그마필드는 합집합에 닫혀있으므로.</li>
-</ul>
 <p><strong>note:</strong> 시그마필드가 교집합, 차집합등에 닫혀있다는 성질은 증명없이 이용해도 무방함.</p>
+<p><code>(풀이)</code> 1,2,3,4,5,6,7,8 모두 O.</p>
+<p><code>1</code>. <span class="math inline">\((-1,1) - \big((-1,0)\cup (0,1)\big) \in {\cal F}\)</span></p>
+<ul>
+<li>모든 열린구간은 <span class="math inline">\({\cal F}\)</span>의 원소이고, 열린구간의 합집합 역시 <span class="math inline">\({\cal F}\)</span>의 원소이므로 <span class="math inline">\((0,1) \cup (-1,0)\)</span> 역시 <span class="math inline">\({\cal F}\)</span>의 원소이다.</li>
+<li><span class="math inline">\(A=(-1,1)\)</span>, <span class="math inline">\(B=(0,1)\cup (-1,0)\)</span> 이라고 하면, <span class="math inline">\(A-B = \{0\}\)</span> 이고 시그마필드는 차집합에 닫혀있으므로 <span class="math inline">\(A\in {\cal F}, B \in {\cal F}\)</span> 는 <span class="math inline">\(A-B=\{0\} \in {\cal F}\)</span>를 imply한다.</li>
+</ul>
+<p><code>2</code>. <span class="math inline">\(\Omega \in {\cal F}\)</span></p>
+<ul>
+<li>시그마필드는 전체집합을 포함하므로 <span class="math inline">\(\mathbb{R}\)</span>은 <span class="math inline">\({\cal F}\)</span>의 원소이다.</li>
+</ul>
+<p><code>3</code>. <span class="math inline">\(\forall x \in \mathbb{Q}, \{x\} \in \mathbb{Q} ~\Rightarrow ~\cup_{x \in \mathbb{Q}} \{x\} \in {\cal F}\)</span></p>
+<ul>
+<li>1에 의하여 하나의 원소만 포함하는 모든 집합은 <span class="math inline">\({\cal F}\)</span>의 원소이다. 즉 모든 <span class="math inline">\(x\in \mathbb{R}\)</span>에 대하여 <span class="math inline">\(\{x\} \in {\cal F}\)</span> 이 성립한다.</li>
+<li>유리수전체의 집합은 <span class="math inline">\(\mathbb{Q}=\cup_{x \in \mathbb{Q}} \{x\}\)</span> 와 같이 한점만 포함하는 집합들의 countable union으로 표현가능하고, 시그마필드는 countable union에 닫혀있으므로 <span class="math inline">\(\mathbb{Q} \in {\cal F}\)</span> 이다.</li>
+</ul>
+<p><code>4</code>. <span class="math inline">\(\mathbb{Q} \in {\cal F} ~\Rightarrow~ \mathbb{Q}^c \in {\cal F}\)</span></p>
+<ul>
+<li>무리수전체의 집합은 <span class="math inline">\(\mathbb{Q}^c = \cup_{x \in \mathbb{Q}^c}\{x\}\)</span> 와 같이 한점만 포함하는 집합들의 uncountable union으로 표현되므로 3과 같은 방식으로는 증명할 수 없음.</li>
+<li>하지만 <span class="math inline">\(\mathbb{Q} \in \mathbb{R}\)</span>임을 3에서 보였고, 시그마필드는 여집합에 닫혀있으므로 <span class="math inline">\(\mathbb{Q}^c \in \mathbb{R}\)</span> 임을 보일 수 있다.</li>
+</ul>
+<p><code>5-8</code>.</p>
+<ul>
+<li>모든 열린구간은 <span class="math inline">\({\cal F}\)</span>의 원소이며, 한점만 포함된 모든 집합 <span class="math inline">\(\{x\}, x\in\mathbb{R}\)</span> 은 1과 유사한 논리로 <span class="math inline">\({\cal F}\)</span>의 원소임을 보일 수 있으므로 5-8은 모두 성립함.</li>
+</ul>
 </section>
 <section id="확률과-확률변수" class="level1">
 <h1><code>3</code>. 확률과 확률변수</h1>
@@ -385,6 +420,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><strong>note:</strong> 답만 써도 무방.</p>
 <p><strong>note:</strong> 모두 맞출 경우만 정답으로 인정</p>
+<p><code>(풀이)</code> 1,4,5,6</p>
 <p><code>(2)</code> 두개의 잴 수 있는 공간 <span class="math inline">\((\Omega, {\cal F})\)</span>와 <span class="math inline">\((S,{\cal S})\)</span>를 고려하자. 단,</p>
 <ul>
 <li><span class="math inline">\(\Omega=\mathbb{R}\)</span>,</li>
@@ -400,6 +436,15 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span>에서의 확률변수인가? (즉 <span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\to(S,{\cal S})\)</span>인 가측함수인가?)</p>
 <p><strong>note:</strong> 답만 쓸 경우 인정하지 않음. 근거를 쓸 것.</p>
 <p><strong>note</strong>: <span class="math inline">\({\cal A}=\mathbb{Q}\)</span> 가 아님을 유의하라. 즉 <span class="math inline">\({\cal A}\)</span>의 원소수는 1개이다. (<span class="math inline">\({\cal A} = \mathbb{Q}\)</span> 일 경우 원소수는 유리수의 숫자만큼 존재함)</p>
+<p><code>(풀이)</code> 확률변수임.</p>
+<p>Note: <span class="math inline">\(\sigma({\cal A})=\{\emptyset, \mathbb{Q}, \mathbb{Q}^c, \mathbb{R} \}, 2^S = \{\emptyset, \{0\}, \{1\}, \{0,1\}\}\)</span></p>
+<p>확률변수임을 체크하기 위해서는 <span class="math inline">\(2^S\)</span>의 모든 부분집합 <span class="math inline">\(B\)</span>에 대하여 <span class="math inline">\(X^{-1}(B):= \{\omega : X(\omega) \in B\} \in {\cal F}\)</span> 임을 확인하면 된다.</p>
+<ul>
+<li><span class="math inline">\(B=\emptyset\)</span> 일 경우: <span class="math inline">\(\{\omega: X(\omega) \in \emptyset\}=\emptyset \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(B=\{0\}\)</span> 일 경우: <span class="math inline">\(\{\omega: X(\omega) \in \{0\}\}=\mathbb{Q} \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(B=\{1\}\)</span> 일 경우: <span class="math inline">\(\{\omega: X(\omega) \in \{1\}\}=\mathbb{Q}^c \in \sigma({\cal A})\)</span></li>
+<li><span class="math inline">\(B=\{0,1\}\)</span> 일 경우: <span class="math inline">\(\{\omega: X(\omega) \in \{0,1\}\}=\mathbb{R} \in \sigma({\cal A})\)</span></li>
+</ul>
 <p><code>(3)</code> 두개의 잴 수 있는 공간 <span class="math inline">\((\Omega, {\cal F})\)</span>와 <span class="math inline">\((S,{\cal S})\)</span>를 고려하자. 단,</p>
 <ul>
 <li><span class="math inline">\(\Omega=\mathbb{R}\)</span>,</li>
@@ -414,6 +459,66 @@ ul.task-list li input[type="checkbox"] {
 \end{cases}\]</span></p>
 <p><span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span>에서의 확률변수인가? (즉 <span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\to(S,{\cal S})\)</span>인 가측함수인가?)</p>
 <p><strong>note:</strong> 답만 쓸 경우 인정하지 않음. 근거를 쓸 것.</p>
+<p><code>(풀이)</code> 확률변수가 아님. <span class="math inline">\(B=\{0\}\)</span> 일 경우, <span class="math inline">\(\{\omega: X(\omega) \in B\}=\{0\} \notin \sigma({\cal A})\)</span> 이므로 확률변수의 정의에 만족하지 않음.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>git add. </span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>git commit <span class="op">-</span>m .</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">!</span>git push</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">!</span>quarto publish <span class="op">--</span>no<span class="op">-</span>browser <span class="op">--</span>no<span class="op">-</span>prompt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+    add
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+    modified:   ../_site/about.html
+    modified:   ../_site/index.html
+    modified:   ../_site/listings.json
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-09-2wk-1.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-14-2wk-2.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-14-2wk-2_files/figure-html/4da5aaa8-0e84-4c7f-a1ae-eae6a2e34076-1-7f6cdfaf-faf5-464e-9ec6-4668e9b1aab1.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-14-2wk-2_files/figure-html/db8d65e9-6245-48bf-ba03-60cb2be9a3b1-1-1ef07e05-c45c-44c2-8d5a-03992cc26016.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-16-3wk-1.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-21-3wk-2.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1_files/figure-html/0fc30545-4697-4e3e-a19c-9b759dbb92ea-1-cf2e33ce-3af7-4926-859a-98e92811920c.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1_files/figure-html/278c4061-b34a-4d47-84e9-81c3adf3f554-1-image.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1_files/figure-html/4ac7a9a0-6ab5-4587-b7f4-5446bb59d5d9-1-image.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1_files/figure-html/55f5f1af-731b-41a3-a53a-0835fa8f41dc-1-2e3b6cdd-8339-4938-9606-9ceb390e6459.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-23-4wk-1_files/figure-html/66c3c6a1-6772-4605-8302-b8eaf36810f5-1-image.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-28-4wk-2.html"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-28-4wk-2_files/figure-html/6910c6e2-d1ce-49f4-81fa-761d80d95671-1-72ca667e-06cc-4236-98d9-6fdd8cf5e190.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-28-4wk-2_files/figure-html/fee84cd4-4f43-49ca-b7f2-ffe47ff9fc97-1-12848e5a-dc22-4b3c-8694-ffafcde27d2b.png"
+    deleted:    "../_site/posts/1. \341\204\216\341\205\263\341\206\250\341\204\203\341\205\251\341\204\205\341\205\251\341\206\253/2023-03-29-hw1.html"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1.html"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/1ae49750-8166-46b8-a81a-d52b0402a54b-1-6ca8ec20-c415-4bb7-b2b1-ff941fa33047.png"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/cell-22-output-1.png"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/cell-23-output-1.png"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/cell-24-output-1.png"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/cell-25-output-1.png"
+    deleted:    "../_site/posts/2. \341\204\206\341\205\241\341\204\217\341\205\251\341\204\221\341\205\263\341\204\216\341\205\246\341\204\213\341\205\265\341\206\253/2023-03-30-5wk-1_files/figure-html/cell-30-output-1.png"
+    modified:   ../_site/posts/2023-03-07-1wk-2.html
+    modified:   ../_site/search.json
+    modified:   ../_site/site_libs/bootstrap/bootstrap.min.css
+    modified:   .ipynb_checkpoints/2023-04-10-6wk-2-mid-checkpoint.ipynb
+    modified:   2023-04-10-6wk-2-mid.ipynb
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+    "../_site/posts/1. \354\270\241\353\217\204\353\241\240/"
+    "../_site/posts/2. \353\247\210\354\275\224\355\224\204\354\262\264\354\235\270/"
+    ../_site/posts/2023-04-10-6wk-2-mid.html
+    ../_site/sitemap.xml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date</code></pre>
+</div>
+</div>
 
 
 </section>
