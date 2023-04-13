@@ -311,9 +311,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
   <li><a href="#확률과정" id="toc-확률과정" class="nav-link" data-scroll-target="#확률과정">확률과정</a></li>
   <li><a href="#날씨예측" id="toc-날씨예측" class="nav-link" data-scroll-target="#날씨예측">날씨예측</a></li>
+  <li><a href="#풀이1" id="toc-풀이1" class="nav-link" data-scroll-target="#풀이1">풀이1</a></li>
+  <li><a href="#풀이2" id="toc-풀이2" class="nav-link" data-scroll-target="#풀이2">풀이2</a></li>
+  <li><a href="#풀이3" id="toc-풀이3" class="nav-link" data-scroll-target="#풀이3">풀이3</a></li>
+  <li><a href="#풀이4" id="toc-풀이4" class="nav-link" data-scroll-target="#풀이4">풀이4</a></li>
   </ul>
 </nav>
     </div>
@@ -323,6 +328,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-wi47mCKi03xoqvwIzkxG0H" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-wi47mCKi03xoqvwIzkxG0H</a></p>
+</blockquote>
+</section>
 <section id="import" class="level1">
 <h1>import</h1>
 <div class="cell" data-execution_count="32">
@@ -354,6 +365,209 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(X_t=\begin{cases} 0 &amp; \text{맑음} \\ 1 &amp; \text{비} \end{cases}\)</span></li>
 </ul>
 <p><code>-</code> 오늘 (2023년4월13일) 비가 왔다고 치자. 10000일 뒤에도 비가 올 확률은 얼마일까?</p>
+</section>
+<section id="풀이1" class="level1">
+<h1>풀이1</h1>
+<p><code>-</code> <span class="math inline">\(X_t=0\)</span> 이라면? (<span class="math inline">\(t\)</span>시점에 비가 오지 않았다면?)</p>
+<div class="cell" data-execution_count="289">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np.random.rand() <span class="op">&lt;</span> <span class="fl">0.6</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="289">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p><code>-</code> <span class="math inline">\(X_t=1\)</span> 이라면? (<span class="math inline">\(t\)</span>시점에 비가 왔다면?)</p>
+<div class="cell" data-execution_count="290">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.random.rand(<span class="dv">0</span>) <span class="op">&lt;</span> <span class="fl">0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="290">
+<pre><code>array([], dtype=bool)</code></pre>
+</div>
+</div>
+<p><code>-</code> 두 코드를 합쳐보자.</p>
+<div class="cell" data-execution_count="291">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> rain(before):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="cf">if</span> before <span class="op">==</span> <span class="va">True</span>: <span class="co"># 비가 왔음 </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.3</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="cf">else</span>: <span class="co"># 비가 안왔음 </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.6</span> </span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="cf">return</span> after </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 테스트</p>
+<div class="cell" data-execution_count="292">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 비가 왔음, Xt = 1 </span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">sum</span>([rain(<span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="292">
+<pre><code>30</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="293">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># 비가 안왔음, Xt = 0 </span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="bu">sum</span>([rain(<span class="dv">0</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="293">
+<pre><code>60</code></pre>
+</div>
+</div>
+<p><code>-</code> 하나의 <span class="math inline">\(\omega\)</span>에 대응하는 길이가 10000인 확률과정을 관찰</p>
+<div class="cell" data-execution_count="294">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> doctor_strange(today):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    lst <span class="op">=</span> [today]</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>): </span>
+<span id="cb11-4"><a href="#cb11-4"></a>        lst.append(rain(lst[i]))</span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="cf">return</span> lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="295">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>today <span class="op">=</span> <span class="va">True</span> <span class="co"># 오늘 비가 왔다는 뜻 </span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>arr <span class="op">=</span> doctor_strange(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="296">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">len</span>(arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="296">
+<pre><code>10001</code></pre>
+</div>
+</div>
+<p><code>-</code> 4305개의 <span class="math inline">\(\omega\)</span>에 대응하는 길이가 10000인 확률과정을 관찰</p>
+<div class="cell" data-execution_count="297">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>today <span class="op">=</span> <span class="va">True</span> <span class="co"># 오늘 비가 왔다는 뜻 </span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>arr <span class="op">=</span> np.array([doctor_strange(today) <span class="cf">for</span> ω <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4305</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="310">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>arr[:,<span class="op">-</span><span class="dv">1</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="310">
+<pre><code>0.4662020905923345</code></pre>
+</div>
+</div>
+<p><code>-</code> 10000일 뒤에도 비가 올 확률은 약 46% 정도 인듯</p>
+</section>
+<section id="풀이2" class="level1">
+<h1>풀이2</h1>
+<p><code>-</code> 세상의 법칙을 다시 정리해보자.</p>
+<ul>
+<li><span class="math inline">\(X_{t-1}=0 \Rightarrow X_t \sim Ber(0.6)\)</span></li>
+<li><span class="math inline">\(X_{t-1}=1 \Rightarrow X_t \sim Ber(0.3)\)</span></li>
+</ul>
+<p><code>-</code> 정리하면</p>
+<ul>
+<li><span class="math inline">\(P(X_t=0)= P(X_{t-1}=0) \times 0.4 + P(X_{t-1}=1) \times 0.7\)</span></li>
+<li><span class="math inline">\(P(X_t=1)= P(X_{t-1}=0) \times 0.6 + P(X_{t-1}=1) \times 0.3\)</span></li>
+</ul>
+<p><code>-</code> 매트릭스형태로 표현하면</p>
+<ul>
+<li><span class="math inline">\(\begin{bmatrix} P(X_t=0) \\ P(X_t=1) \end{bmatrix}= \begin{bmatrix} 0.4 &amp; 0.7 \\ 0.6 &amp; 0.3 \end{bmatrix} \begin{bmatrix} P(X_{t-1}=0) \\ P(X_{t-1}=1) \end{bmatrix}\)</span></li>
+<li><span class="math inline">\({\boldsymbol \mu}_t = {\bf P} {\boldsymbol \mu}_{t-1}\)</span></li>
+</ul>
+<p><code>-</code> 이렇게 놓고 보니까</p>
+<ul>
+<li><span class="math inline">\({\boldsymbol \mu}_1 ={\bf P}{\boldsymbol \mu}_0\)</span></li>
+<li><span class="math inline">\({\boldsymbol \mu}_2 ={\bf P}{\boldsymbol \mu}_1={\bf P}^2{\boldsymbol \mu}_0\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+<li><span class="math inline">\({\boldsymbol \mu}_{10000} ={\bf P}^{10000}{\boldsymbol \mu}_0\)</span></li>
+</ul>
+<p><code>-</code> 이제 계산을 해보자.</p>
+<div class="cell" data-execution_count="312">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>μ<span class="dv">0</span> <span class="op">=</span> np.array([[<span class="dv">0</span>],[<span class="dv">1</span>]])</span>
+<span id="cb18-2"><a href="#cb18-2"></a>μ<span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="312">
+<pre><code>array([[0],
+       [1]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="314">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.4</span>,<span class="fl">0.7</span>],[<span class="fl">0.6</span>,<span class="fl">0.3</span>]])</span>
+<span id="cb20-2"><a href="#cb20-2"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="314">
+<pre><code>array([[0.4, 0.7],
+       [0.6, 0.3]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="316">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>P<span class="op">@</span>P <span class="co"># P의 제곱</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="316">
+<pre><code>array([[0.58, 0.49],
+       [0.42, 0.51]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="317">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="co"># P의 4제곱</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="317">
+<pre><code>array([[0.5422, 0.5341],
+       [0.4578, 0.4659]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="318">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="op">@</span> P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="co"># P의 8제곱 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="318">
+<pre><code>array([[0.53849182, 0.53842621],
+       [0.46150818, 0.46157379]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="319">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="op">@</span> P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="co"># P의 16제곱 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="319">
+<pre><code>array([[0.53846154, 0.53846154],
+       [0.46153846, 0.46153846]])</code></pre>
+</div>
+</div>
+<p><span class="math inline">\({\bf P}\)</span>가 수렴하는거 같지 않어?</p>
+<div class="cell" data-execution_count="320">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="op">@</span> P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="320">
+<pre><code>array([[0.53846154, 0.53846154],
+       [0.46153846, 0.46153846]])</code></pre>
+</div>
+</div>
+<p>대충 <span class="math inline">\({\bf P}^{10000} \approx {\bf P}^{32}\)</span></p>
+<div class="cell" data-execution_count="324">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>Plim <span class="op">=</span> P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P <span class="op">@</span> P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P<span class="op">@</span>P </span>
+<span id="cb32-2"><a href="#cb32-2"></a>Plim </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="324">
+<pre><code>array([[0.53846154, 0.53846154],
+       [0.46153846, 0.46153846]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="325">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>Plim <span class="op">@</span> μ<span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="325">
+<pre><code>array([[0.53846154],
+       [0.46153846]])</code></pre>
+</div>
+</div>
+<p><code>-</code> 이 풀이에 따르면 10000일 뒤에 비가 올 확률은 46% 정도이다.</p>
+</section>
+<section id="풀이3" class="level1">
+<h1>풀이3</h1>
+<p><code>-</code> 세상의 법칙을 다시 정리해보자.</p>
+<ul>
+<li><span class="math inline">\(X_{t-1}=0 \Rightarrow X_t \sim Ber(0.6)\)</span></li>
+<li><span class="math inline">\(X_{t-1}=1 \Rightarrow X_t \sim Ber(0.3)\)</span></li>
+</ul>
+<p><code>-</code> 추측: 10000일 뒤에 비가 올 확률이 <span class="math inline">\(p\)</span>라고 치자. 그렇다면 9999일 뒤에 비가 올 확률도 <span class="math inline">\(p\)</span> 아닐까?</p>
+<p><strong><em>이걸 가정하고 계산해보자</em></strong></p>
+<p><code>1</code>. 9999일 뒤에 비가 안 올 확률 <span class="math inline">\(1-p\)</span></p>
+<ul>
+<li>9999일 뒤에 비가 안오고, 10000일 뒤에는 비가 올 확률: <span class="math inline">\(0.6(1-p)\)</span></li>
+<li>9999일 뒤에 비가 안오고, 10000일 뒤에는 비가 안 올 확률: <span class="math inline">\(0.4(1-p)\)</span></li>
+</ul>
+<p><code>2</code>. 9999일 뒤에 비가 올 확률 <span class="math inline">\(p\)</span></p>
+<ul>
+<li>9999일 뒤에 비가 오고, 10000일 뒤에도 비가 올 확률: <span class="math inline">\(0.3p\)</span></li>
+<li>9999일 뒤에 비가 오고, 10000일 뒤에는 비가 안 올 확률: <span class="math inline">\(0.7p\)</span></li>
+</ul>
+<p>따라서 <span class="math inline">\(0.6(1-p) + 0.3p = p\)</span></p>
+<p>풀어보면 <span class="math inline">\(0.6/1.3 =p\)</span></p>
+<div class="cell" data-execution_count="336">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="fl">0.6</span><span class="op">/</span><span class="fl">1.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="336">
+<pre><code>0.4615384615384615</code></pre>
+</div>
+</div>
+</section>
+<section id="풀이4" class="level1">
+<h1>풀이4</h1>
+<div class="cell" data-execution_count="335">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>np.mean(doctor_strange(<span class="va">True</span>)[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="335">
+<pre><code>0.462</code></pre>
+</div>
+</div>
 
 
 </section>
