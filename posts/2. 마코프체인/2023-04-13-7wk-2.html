@@ -303,6 +303,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../posts/2. 마코프체인/2023-04-13-7wk-2.html" class="sidebar-item-text sidebar-link active">7wk-2: 마코프체인 (3)</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">8wk-1: 마코프체인 (4)</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -322,10 +327,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#formular" id="toc-formular" class="nav-link" data-scroll-target="#formular">formular</a></li>
   <li><a href="#특징들" id="toc-특징들" class="nav-link" data-scroll-target="#특징들">특징들</a></li>
   <li><a href="#특징3을-위한-약간의-해설" id="toc-특징3을-위한-약간의-해설" class="nav-link" data-scroll-target="#특징3을-위한-약간의-해설">특징3을 위한 약간의 해설</a></li>
-  </ul></li>
-  <li><a href="#마코프체인" id="toc-마코프체인" class="nav-link" data-scroll-target="#마코프체인">마코프체인</a>
-  <ul class="collapse">
-  <li><a href="#정의" id="toc-정의" class="nav-link" data-scroll-target="#정의">정의</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -381,7 +382,7 @@ P(X_{t}=1)
 <p>수식화하면 아래와 같이 된다. (보통 이러한 형태로 책에 많이 쓰니까 이 형태로 외울것!)</p>
 <p><span class="math display">\[{\boldsymbol \mu}_{t+1}^\top ={\boldsymbol \mu}_{t}^\top {\bf P}\]</span></p>
 <blockquote class="blockquote">
-<p>참고: <span class="math inline">\(X_t\)</span>는 0 혹은 1의 값을 가질수 있는데, 이렇게 <span class="math inline">\(X_t\)</span>가 가질 수 있는 값들을 모은 공간을 상태공간이라고 하고 기호로는 <span class="math inline">\(E=\{0,1\}\)</span>와 같이 표현한다.</p>
+<p>참고: <span class="math inline">\(X_t\)</span>는 0 혹은 1의 값을 가질수 있는데, 이렇게 <span class="math inline">\(X_t\)</span>가 가질 수 있는 값들을 모은 공간을 상태공간이라고 하고 기호로는 <span class="math inline">\(V=\{0,1\}\)</span>와 같이 표현한다.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p>참고: 여기에서 확률과정 <span class="math inline">\(\{X_t\}\)</span>는 이전시점의 값 <span class="math inline">\(X_{t-1}\)</span>에 의하여서만 결정된다. 이러한 확률과정을 마코프체인이라고 한다.</p>
@@ -490,37 +491,70 @@ P(X_{t}=1)
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>X0 <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co"># X0 = np.random.rand() &gt; 0.52941176</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="221">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>arr <span class="op">=</span> np.array([doctor_strange(np.random.rand() <span class="op">&lt;</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4305</span>)])</span>
 <span id="cb20-2"><a href="#cb20-2"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="221">
+<pre><code>array([[False, False,  True, ...,  True,  True,  True],
+       [ True,  True,  True, ...,  True, False, False],
+       [ True,  True,  True, ...,  True,  True,  True],
+       ...,
+       [ True,  True,  True, ...,  True,  True,  True],
+       [ True,  True,  True, ..., False, False, False],
+       [False,  True, False, ..., False, False, False]])</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>plt.plot(arr[<span class="dv">0</span>][<span class="op">-</span><span class="dv">100</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>arr[:,<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="222">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>plt.plot(arr[<span class="dv">0</span>][<span class="op">-</span><span class="dv">100</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-04-13-7wk-2_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>arr[:,<span class="op">-</span><span class="dv">1</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>arr[:,<span class="dv">0</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>arr[:,<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="223">
+<pre><code>array([0, 1, 1, ..., 1, 1, 0])</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>ax[<span class="dv">0</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">1000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>ax[<span class="dv">1</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">1500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>ax[<span class="dv">1</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">2000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a>ax[<span class="dv">1</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">2500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a>ax[<span class="dv">2</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">3000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a>ax[<span class="dv">2</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">3500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-10"><a href="#cb25-10"></a>ax[<span class="dv">2</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">4000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb25-11"><a href="#cb25-11"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>plt.hist(arr[<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="224">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>arr[:,<span class="op">-</span><span class="dv">1</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="224">
+<pre><code>2850</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>arr[:,<span class="dv">0</span>].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="225">
+<pre><code>2840</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="226">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>ax[<span class="dv">0</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>ax[<span class="dv">0</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>ax[<span class="dv">0</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">1000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>ax[<span class="dv">1</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">1500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>ax[<span class="dv">1</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">2000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>ax[<span class="dv">1</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">2500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>ax[<span class="dv">2</span>][<span class="dv">0</span>].hist(arr[:,<span class="dv">3000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>ax[<span class="dv">2</span>][<span class="dv">1</span>].hist(arr[:,<span class="dv">3500</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a>ax[<span class="dv">2</span>][<span class="dv">2</span>].hist(arr[:,<span class="dv">4000</span>]<span class="op">*</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-04-13-7wk-2_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="227">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>plt.hist(arr[<span class="dv">0</span>]<span class="op">*</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="227">
+<pre><code>(array([3512.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+        6489.]),
+ array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ]),
+ &lt;BarContainer object of 10 artists&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-04-13-7wk-2_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+</div>
 </div>
 <p><strong>특징4의 변형</strong>: 초기분포가 <span class="math inline">\({\boldsymbol \pi}\)</span>가 아니더라도 적당한 시점 <span class="math inline">\(T_0\)</span> 이후에는 <span class="math inline">\(\{X_t\}_{t\geq T_0}\)</span>는 동일한분포를 가진다고 볼 수 있다.</p>
 <blockquote class="blockquote">
@@ -536,53 +570,16 @@ P(X_{t}=1)
 <p>가 성립한다. 특징2에서 살펴본것 처럼 임의의 <span class="math inline">\({\boldsymbol \mu}\)</span>에 대하여 <span class="math inline">\({\boldsymbol \mu}^\top {\bf P}^{\star} = {\boldsymbol \pi}^\top\)</span> 가 항상 성립함을 확인할 수 있다. 이 수식을 살짝 변형하면</p>
 <ul>
 <li><span class="math inline">\({\boldsymbol \mu}^\top {\bf P}^{\star} = {\boldsymbol \pi}^\top\)</span></li>
-<li><span class="math inline">\(\Leftrightarrow ({\boldsymbol \mu}^\top{\bf P}^{\star}){\bf P} = {\boldsymbol \pi}^\top\)</span></li>
-<li><span class="math inline">\(\Leftrightarrow {\boldsymbol \pi}^\top{\bf P} = {\boldsymbol \pi}^\top\)</span></li>
+<li><span class="math inline">\(\Rightarrow ({\boldsymbol \mu}^\top{\bf P}^{\star}){\bf P} = {\boldsymbol \pi}^\top\)</span></li>
+<li><span class="math inline">\(\Rightarrow {\boldsymbol \pi}^\top{\bf P} = {\boldsymbol \pi}^\top\)</span></li>
 </ul>
 <p>이다. 따라서 특징3이 유도된다.</p>
-</section>
-</section>
-<section id="마코프체인" class="level1">
-<h1>마코프체인</h1>
-<section id="정의" class="level2">
-<h2 class="anchored" data-anchor-id="정의">정의</h2>
-<p><code>-</code> <strong>정의:</strong> 카운터블한 상태공간 <span class="math inline">\(E\)</span>을 가지는 이산시간 확률과정 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>을 고려하자. 아래가 성립한다면 확률과정 <span class="math inline">\(\{X_t\}\)</span>을 마코프체인(Markov chain, MC)라고 한다.</p>
-<ul>
-<li><span class="math inline">\(\forall t\geq 0, \forall i_0,i_1,\dots,i_{n-1},i,j \in S:~ P(X_{t+1}=j | X_t=i, X_{t-1}=i_{t-1}, \dots, X_0=i_0) = P(X_{t+1}=j|X_t=i)\)</span></li>
-</ul>
-<p>만약에 <span class="math inline">\(P(X_{t+1} =j | X_t=i)\)</span>가 모든 <span class="math inline">\(t\)</span>에 대하여 일정하다면 <span class="math inline">\(\{X_t\}\)</span>를 균질마코프체인<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>(homogeneous Markov chain, HMC) 라고 한다.</p>
-<p><code>-</code> 정의: 아래의 수식을 마코프성질 (Markov property) 이라고 한다.</p>
-<ul>
-<li><span class="math inline">\(\forall t\geq 0, \forall i_0,i_1,\dots,i_{n-1},i,j \in S:~ P(X_{t+1}=j | X_t=i, X_{t-1}=i_{t-1}, \dots, X_0=i_0) = P(X_{t+1}=j|X_t=i)\)</span></li>
-</ul>
-<p><code>-</code> 정의: 카운터블한 상태공간 <span class="math inline">\(E\)</span>를 가지는 HMC <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>를 고려하자. 상태 <span class="math inline">\(i\)</span>에서 상태 <span class="math inline">\(j\)</span>로 바뀌는 조건부 확률</p>
-<ul>
-<li><span class="math inline">\(p_{ij}=P(X_{t+1}=j | X_t=0)\)</span></li>
-</ul>
-<p>를 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>의 전이확률(transition probability)라고 한다.</p>
-<p><code>-</code> 전이확률의 특징: 이때 전이확률은 아래의 특징을 가진다.</p>
-<ul>
-<li><span class="math inline">\(p_{ij} \geq 0\)</span><br>
-</li>
-<li><span class="math inline">\(\sum_{j\in E}p_{ij}=1\)</span></li>
-</ul>
-<p>첫번째 식은 확률이 양수이어야 한다는 내용이고<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 두번째 식은 상태 <span class="math inline">\(i\)</span>에 존재할 경우 상태집합 <span class="math inline">\(E\)</span> 중 어딘가로는 이동해야한다는 의미이다.</p>
-<p><code>-</code> 정의: 카운터블한 상태공간 <span class="math inline">\(E\)</span>를 가지는 HMC <span class="math inline">\(\{X_t\}_{t \geq 0}\)</span>를 고려하자. <span class="math inline">\(p_{ij}\)</span>를 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>의 전이확률이라고 할때 행렬 <span class="math inline">\(P=\{p_{ij}\}_{i,j \in E}\)</span>를 전이확률행렬 (transition probability matrix) 혹은 줄여서 전이행렬 (transition matrix) 이라고 한다.</p>
-<p><code>-</code> 참고(<span class="math inline">\(\star\)</span>): 상태공간 <span class="math inline">\(E\)</span>의 원소수가 무한일 수도 있으므로, 원래 <span class="math inline">\(P\)</span>를 행렬이라고 하기에는 무리가 있다. 하지만 행렬의 덧셈, 행렬의 곱셈과 같은 연산들은 일반적으로 잘 정의되므로 <span class="math inline">\(P\)</span>를 행렬로 생각할 수 있다. 이러한 행렬 <span class="math inline">\(P\)</span>는 row와 col이 무한대로 있다고 생각하면 된다. 이러한 행렬 <span class="math inline">\(P\)</span>는 행렬 <span class="math inline">\({\bf P}\)</span>와 구분하기 위해서 볼드체로 표현하지 않겠다.</p>
-<p><code>-</code> 전이행렬의 특징: 모든 row의 합이 1이다.</p>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>진짜 억지로 변형한것, 마땅한 한글용어가 없음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>쓸모없는 내용<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
