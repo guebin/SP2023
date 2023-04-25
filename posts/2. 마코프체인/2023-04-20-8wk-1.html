@@ -308,6 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../posts/2. 마코프체인/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link active">8wk-1: 마코프체인 (4)</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">8wk-2: 마코프체인 (5)</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -336,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="imports" class="level1">
 <h1>imports</h1>
-<div class="cell" data-execution_count="54">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -344,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Markovchain, Transition Matrix</h1>
 <p><code>-</code> <strong>정의:</strong> 카운터블한 상태공간 <span class="math inline">\(E\)</span>을 가지는 이산시간 확률과정 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>을 고려하자. 아래가 성립한다면 확률과정 <span class="math inline">\(\{X_t\}\)</span>을 마코프체인(Markov chain, MC)라고 한다.</p>
 <ul>
-<li><span class="math inline">\(\forall t\geq 0, \forall i_0,i_1,\dots,i_{n-1},i,j \in V\)</span>:</li>
+<li><span class="math inline">\(\forall t\geq 0, \forall i_0,i_1,\dots,i_{n-1},i,j \in E\)</span>:</li>
 </ul>
 <p><span class="math display">\[\mathbb{P}(X_{t+1}=j | X_t=i, X_{t-1}=i_{t-1}, \dots, X_0=i_0) = \mathbb{P}(X_{t+1}=j|X_t=i)\]</span></p>
 <p>만약에 <span class="math inline">\(P(X_{t+1} =j | X_t=i)\)</span>가 모든 <span class="math inline">\(t\)</span>에 대하여 일정하다면 <span class="math inline">\(\{X_t\}\)</span>를 균질마코프체인<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>(homogeneous Markov chain, HMC) 라고 한다.</p>
@@ -400,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
 <li><span class="math inline">\(\mu(\{0\}) = \frac{1}{2}\)</span></li>
 <li><span class="math inline">\(\mu(\{1\}) = \frac{1}{2}\)</span></li>
-<li><span class="math inline">\(\mu(\{0,1\}) = \frac{1}{2}\)</span></li>
+<li><span class="math inline">\(\mu(\{0,1\}) = 1\)</span></li>
 </ul>
 <p>표현1과 4만 모아서 살펴보면 아래와 같다.</p>
 <ul>
-<li><span class="math inline">\(\mu(\emptyset) = 0\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\mathbb{P}(X \notin \{0,1\})\)</span></li>
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\mathbb{P}(X \notin \{0,1\})=0\)</span></li>
 <li><span class="math inline">\(\mu(\{0\}) = \frac{1}{2}\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\mathbb{P}(X=0)\)</span><br>
 </li>
 <li><span class="math inline">\(\mu(\{1\}) = \frac{1}{2}\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\mathbb{P}(X=1\})\)</span></li>
@@ -470,33 +475,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>따라서 적당한 메져가 존재하여 <span class="math inline">\(2^\mathbb{R}\)</span>의 모든 집합을 잴 수 있음. (모든 원소를 0으로 측정하는 메져라든가..)</li>
 <li>하지만 르벡메져는 <span class="math inline">\(2^{\mathbb{R}}\)</span>의 모든 원소를 잴 수 없음. 따라서 <span class="math inline">\(2^{\mathbb{R}}\)</span>의 모든 원소에서 확률을 정의하는 것이 불가능함.</li>
 <li>그러나 <span class="math inline">\(\Omega=\mathbb{R}\)</span>일때 <span class="math inline">\({\cal R}\)</span>이라는 시그마필드는 모든 원소에서 확률을 정의할 수 있음.</li>
-<li><span class="math inline">\({\cal R}\)</span>을 보렐셋이라고 부름.</li>
+<li><span class="math inline">\({\cal R}\)</span>을 Borel sets 이라고 부름.</li>
 </ul>
-<p><code>-</code> <span class="math inline">\(\mathbb{R}\)</span>을 포함하는 보렐셋은 <span class="math inline">\({\cal B}(\mathbb{R})\)</span>로 표현하기도 함. 즉 <span class="math inline">\({\cal R} = {\cal B}(\mathbb{R})\)</span> 이다.</p>
+<p><code>-</code> <span class="math inline">\(\mathbb{R}\)</span>을 포함하는 Borel sets 은 <span class="math inline">\({\cal B}(\mathbb{R})\)</span>로 표현하기도 함. 즉 <span class="math inline">\({\cal R} = {\cal B}(\mathbb{R})\)</span> 이다.</p>
 </section>
 <section id="the-stationary-distribution-of-an-hmc" class="level1">
 <h1>The Stationary Distribution of an HMC</h1>
 <p><code>-</code> 정의: stationary distribution (정확한 버전)</p>
-<p>아래식을 만족하는 distribution <span class="math inline">\(\mu\)</span> 를 stationary distribution 이라고 한다.</p>
-<p><span class="math display">\[\mu p(\{x\}) = \mu(\{x\}) , ~\forall x \in E\]</span></p>
+<p><span class="math inline">\((E,{\cal B}(E))\)</span>를 잴 수 있는 공간이라고 하고 <span class="math inline">\(\mu\)</span>를 <span class="math inline">\((E,{\cal B}(E))\)</span>에서의 distribution 이라고 하자. 만약에 아래식을 만족하면 <span class="math inline">\(\mu\)</span> 를 stationary distribution 이라고 한다.</p>
+<p><span class="math display">\[\mu p = \mu\]</span></p>
 <p>여기에서 <span class="math inline">\(\mu p(\{x\}):= \sum_{y \in E} \mu(\{y\})p_{yx}\)</span> 를 의미한다.</p>
 <p><code>-</code> 정의: stationary distribution (쉬운버전)</p>
 <p>아래식을 만족하는 distribution <span class="math inline">\({\boldsymbol \mu}\)</span> 를 stationary distribution 이라고 한다.</p>
 <p><span class="math display">\[{\boldsymbol \mu}^\top{\bf P} = {\boldsymbol \mu}^\top\]</span></p>
 <p><code>-</code> 예시1: 아래와 같은 transition matrix를 고려하자.</p>
-<div class="cell" data-execution_count="47">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.2</span>,<span class="fl">0.8</span>],</span>
 <span id="cb2-2"><a href="#cb2-2"></a>              [<span class="fl">0.3</span>,<span class="fl">0.7</span>]])</span>
 <span id="cb2-3"><a href="#cb2-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>array([[0.2, 0.8],
        [0.3, 0.7]])</code></pre>
 </div>
 </div>
 <p>수렴할까?</p>
-<div class="cell" data-execution_count="49">
+<div class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.linalg.matrix_power(P,<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>array([[0.27272727, 0.72727273],
        [0.27272727, 0.72727273]])</code></pre>
 </div>
@@ -509,19 +514,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>특징4: 초기분포에 <span class="math inline">\({\boldsymbol \pi}^\top\)</span>을 대입하면 <span class="math inline">\(\{X_t\}\)</span>는 동일한 분포를 가진다.</li>
 </ol>
 <p><code>-</code> 예시2: 아래와 같은 transition matrix를 고려하자.</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.4</span>,<span class="fl">0.6</span>],</span>
 <span id="cb6-2"><a href="#cb6-2"></a>              [<span class="fl">0.9</span>,<span class="fl">0.1</span>]])</span>
 <span id="cb6-3"><a href="#cb6-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>array([[0.4, 0.6],
        [0.9, 0.1]])</code></pre>
 </div>
 </div>
 <p>수렴할까?</p>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>np.linalg.matrix_power(P,<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>array([[0.6, 0.4],
        [0.6, 0.4]])</code></pre>
 </div>
@@ -534,33 +539,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>특징4: 초기분포에 <span class="math inline">\({\boldsymbol \pi}^\top\)</span>을 대입하면 <span class="math inline">\(\{X_t\}\)</span>는 동일한 분포를 가진다.</li>
 </ol>
 <p><code>-</code> 예시3: 어지간하면 다 수렴할 것 같으니까 아래와 같이 특이한 transition matrix를 고려하자.</p>
-<div class="cell" data-execution_count="46">
+<div class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>P <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">0.0</span>],</span>
 <span id="cb10-2"><a href="#cb10-2"></a>              [<span class="fl">0.05</span>,<span class="fl">0.95</span>]])</span>
 <span id="cb10-3"><a href="#cb10-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>array([[1.  , 0.  ],
        [0.05, 0.95]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>np.linalg.matrix_power(P,<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>array([[1.        , 0.        ],
        [0.92305502, 0.07694498]])</code></pre>
 </div>
 </div>
 <p>수렴안하나?</p>
-<div class="cell" data-execution_count="42">
+<div class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>np.linalg.matrix_power(P,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>array([[1.        , 0.        ],
        [0.99407947, 0.00592053]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>np.linalg.matrix_power(P,<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>array([[1.00000000e+00, 0.00000000e+00],
        [1.00000000e+00, 7.27449156e-12]])</code></pre>
 </div>
@@ -628,25 +633,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>특징4</strong>: 정상확률과정</p>
 <p><span class="math inline">\({\bf P}= {\bf I}\)</span> 이므로 당연히 <span class="math inline">\(\{X_t\}\)</span>는 모든 <span class="math inline">\(t\geq 0\)</span>에 대하여 동일한 분포를 가진다.</p>
 <p><code>-</code> 예시5 (<span class="math inline">\(\star\star\star\)</span>)</p>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.0</span>, <span class="fl">1.0</span>],</span>
 <span id="cb26-2"><a href="#cb26-2"></a>              [<span class="fl">1.0</span>, <span class="fl">0.0</span>]])</span>
 <span id="cb26-3"><a href="#cb26-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>array([[0., 1.],
        [1., 0.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>array([[1., 0.],
        [0., 1.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>P<span class="op">@</span>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>array([[0., 1.],
        [1., 0.]])</code></pre>
 </div>
@@ -714,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>특징3에서 정상분포가 존재하면 특징4는 그냥 성립한다. 지금까지 살펴본 예제에서는 모두 정상분포가 존재했다. 혹시 정상분포가 존재하지 않을 수도 있을까?</p>
-<p><code>-</code> 이론: finite state를 가지는 HMC는 정상분포가 최소한 1개는 존재한다.</p>
+<p><code>-</code> <strong>Thm</strong>: finite state를 가지는 HMC는 정상분포가 최소한 1개는 존재한다.</p>
 
 
 </section>
