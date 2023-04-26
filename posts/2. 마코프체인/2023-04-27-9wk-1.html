@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2023-03-29">
+<meta name="dcterms.date" content="2023-04-27">
 
-<title>SP2023 - 5wk-2: HW1</title>
+<title>SP2023 - 9wk-1: 마코프체인 (6)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -60,6 +123,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -103,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">5wk-2: HW1</h1>
+      <h1 class="quarto-secondary-nav-title">9wk-1: 마코프체인 (6)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -114,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">5wk-2: HW1</h1>
+      <h1 class="title d-none d-lg-block">9wk-1: 마코프체인 (6)</h1>
                       </div>
   </div>
     
@@ -131,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 29, 2023</p>
+        <p class="date">April 27, 2023</p>
       </div>
     </div>
     
@@ -174,12 +240,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">1. 측도론</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">1. 측도론</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">2wk-1: 측도론 intro (1)</a>
@@ -212,19 +278,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link active">5wk-2: HW1</a>
+  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">5wk-2: HW1</a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">2. 마코프체인</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">2. 마코프체인</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">5wk-1: 마코프체인 (1)</a>
@@ -252,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">9wk-1: 마코프체인 (6)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link active">9wk-1: 마코프체인 (6)</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -274,10 +340,25 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#배점" id="toc-배점" class="nav-link" data-scroll-target="#배점">배점</a></li>
-  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality"><code>1</code>. Cardinality</a></li>
-  <li><a href="#sigma-field" id="toc-sigma-field" class="nav-link" data-scroll-target="#sigma-field"><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</a></li>
-  <li><a href="#확률과-확률변수" id="toc-확률과-확률변수" class="nav-link" data-scroll-target="#확률과-확률변수"><code>3</code>. 확률과 확률변수</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#aperiodic" id="toc-aperiodic" class="nav-link" data-scroll-target="#aperiodic">aperiodic</a>
+  <ul class="collapse">
+  <li><a href="#motivating-examples-cont" id="toc-motivating-examples-cont" class="nav-link" data-scroll-target="#motivating-examples-cont">Motivating Examples (cont)</a>
+  <ul class="collapse">
+  <li><a href="#예제3" id="toc-예제3" class="nav-link" data-scroll-target="#예제3">예제3</a></li>
+  </ul></li>
+  <li><a href="#정의-및-이론" id="toc-정의-및-이론" class="nav-link" data-scroll-target="#정의-및-이론">정의 및 이론</a></li>
+  </ul></li>
+  <li><a href="#에르고딕-마코프체인" id="toc-에르고딕-마코프체인" class="nav-link" data-scroll-target="#에르고딕-마코프체인">에르고딕 마코프체인</a>
+  <ul class="collapse">
+  <li><a href="#정의-및-이론-1" id="toc-정의-및-이론-1" class="nav-link" data-scroll-target="#정의-및-이론-1">정의 및 이론</a></li>
+  </ul></li>
+  <li><a href="#구글의-페이지랭크" id="toc-구글의-페이지랭크" class="nav-link" data-scroll-target="#구글의-페이지랭크">구글의 페이지랭크</a>
+  <ul class="collapse">
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">intro</a></li>
+  <li><a href="#settings" id="toc-settings" class="nav-link" data-scroll-target="#settings">settings</a></li>
+  <li><a href="#toy-example" id="toc-toy-example" class="nav-link" data-scroll-target="#toy-example">toy example</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -289,197 +370,163 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
+</section>
+<section id="imports" class="level1">
+<h1>imports</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="aperiodic" class="level1">
+<h1>aperiodic</h1>
+<section id="motivating-examples-cont" class="level2">
+<h2 class="anchored" data-anchor-id="motivating-examples-cont">Motivating Examples (cont)</h2>
+<section id="예제3" class="level3">
+<h3 class="anchored" data-anchor-id="예제3">예제3</h3>
+<p><code>-</code> 아래의 전이확률을 고려하자.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span>np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, </span>
+<span id="cb2-2"><a href="#cb2-2"></a>             <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>             <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>             <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[0. , 1. , 0. , 0. ],
+       [0.5, 0. , 0.5, 0. ],
+       [0. , 0. , 0. , 1. ],
+       [0. , 1. , 0. , 0. ]])</code></pre>
+</div>
+</div>
+<p><code>-</code> 다이어그램</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  0 --&gt;|1| 1
+  1 --&gt;|1/2| 0
+  1 --&gt;|1/2| 2
+  2 --&gt;|1| 3
+  3 --&gt;|1| 1
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p><code>-</code> 특징1,2:</p>
+<p><code>-</code> 특징3: 정상분포를 가짐</p>
+<p><code>-</code> 특징4: 초기분포가 정상분포라면 정상확률과정</p>
+<p><code>-</code> 특징5: irr</p>
+<p><code>-</code> 특징6: 주기가 없음</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
+  0 --&gt;|1| 1
+  1 --&gt;|1/2| 0
+  1 --&gt;|1/2| 2
+  2 --&gt;|1| 3
+  3 --&gt;|1| 1
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p><strong>1에서 시작한다면?</strong></p>
+<ul>
+<li><span class="math inline">\(1 \to 0 \to 1\)</span>, 2번만에 리턴</li>
+<li><span class="math inline">\(1 \to 2 \to 3 \to 1\)</span>, 3번만에 리턴</li>
+</ul>
+<p>이 경우 2와 3의 최대공약수는 1이므로 주기는 1이다. 그리고 finite state space를 가지는 HMC는 모든 state가 항상 같은 주기를 가지므로 이 마코프체인의 모든 주기는 1이다.</p>
 <blockquote class="blockquote">
-<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC</a></p>
+<p>주기가 1인 경우는 aperiodic 하다고 표현한다. (언제 올지 몰라)</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>꿀팁: 자기자신으로 되돌아올 확률이 있다면 항상 aperiodic 하다.</p>
 </blockquote>
 </section>
-<section id="배점" class="level1">
-<h1>배점</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">문항</th>
-<th style="text-align: center;">점수</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1-(1)</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1-(2)</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(1)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(2)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(3)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(4)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3-(1)</td>
-<td style="text-align: center;">20</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3-(2)</td>
-<td style="text-align: center;">20</td>
-</tr>
-</tbody>
-</table>
 </section>
-<section id="cardinality" class="level1">
-<h1><code>1</code>. Cardinality</h1>
-<p><code>(1)</code> <span class="math inline">\(\mathbb{Q}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>임을 증명하라.</p>
-<p><code>(풀이)</code> 생략</p>
-<p><code>(2)</code> <span class="math inline">\(\mathbb{R}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>이 아님을 보여라.</p>
-<p><code>(풀이)</code> 생략</p>
+<section id="정의-및-이론" class="level2">
+<h2 class="anchored" data-anchor-id="정의-및-이론">정의 및 이론</h2>
+<p><code>-</code> 정의:</p>
+<p><code>-</code> 느낌: 상태 <span class="math inline">\(i\)</span>에서 <span class="math inline">\(i\)</span>로 되돌아오는 횟수들의 최대공약수</p>
+<p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 finte state HMC 이면, 모든 상태가 항상 같은 주기를 가진다.</p>
 </section>
-<section id="sigma-field" class="level1">
-<h1><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</h1>
-<p><code>(1)</code> <span class="math inline">\(\Omega=\{H,T\}\)</span>일 때, 다음 중 시그마필드의 정의를 만족하는 집합을 모두 골라라.</p>
-<ol type="1">
-<li><span class="math inline">\({\cal F}=\{\emptyset\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\{H\}\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\{H\}, \{T\}\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{T\}, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \{T\}, \Omega\}\)</span></li>
-</ol>
-<p><code>(풀이)</code> 3,8 이 시그마필드이다. // 시그마필드가 아닌이유를 서술할 필요없음. 답만 쓰면 인정함.</p>
-<p><code>(2)</code> <span class="math inline">\(\Omega=\{1,2,3,4\}\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}\}\]</span></p>
-<p>이라고 하자. <span class="math inline">\(\sigma({\cal A})\)</span>를 구하여라.</p>
-<p><code>(풀이)</code> // 이 문제역시 답만 써도 인정</p>
-<p><span class="math inline">\(\sigma({\cal A}) = \{\emptyset, \{1\},\{2\},\{3,4\}, \{1,2\},\{1,3,4\}, \{2,3,4\}, \Omega\}\)</span></p>
-<blockquote class="blockquote">
-<p>요령: <span class="math inline">\(\{3,4\}\)</span>를 한세트로 보면 편리하다. 즉 전체사건을 <span class="math inline">\(\{1\},\{2\},\{3,4\}\)</span>로 쪼갠뒤에 3개의 원소만 있다고 생각하고 모든 부분집합을 쓰면 된다.</p>
-</blockquote>
-<p><code>(3)</code> <span class="math inline">\(\Omega=\{1,2,3,4,\dots,100\}\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}, \{1,2,3\},\{1,2,3,4\}\}\]</span></p>
-<p>이라고 하자. 아래의 물음에 답하여라.</p>
-<ol type="1">
-<li><span class="math inline">\(\{2\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{2,3,4\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{3,4,5\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\Omega - \{1,2,3\} \in \sigma({\cal A})\)</span> 인가?</li>
-</ol>
-<p><code>(풀이)</code> // 답만쓰면 인정하지 않음.</p>
-<p>시그마필드의 정의는 아래와 같다.</p>
-<blockquote class="blockquote">
-<p>시그마필드 <span class="math inline">\({\cal F} \subset 2^\Omega\)</span> 는 1. 전체집합을 포함하고, 2. 여집합에 닫혀있고 3. 가산합집합에 닫혀있는 collection 이다.</p>
-</blockquote>
-<p>먼저 강의노트를 참고하여 아래의 사실을 보이자.</p>
-<ol type="a">
-<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cap B \in {\cal F}\)</span></p></li>
-<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A - B \in {\cal F}\)</span></p></li>
-</ol>
-<p>이제 풀어보자.</p>
-<p>1번</p>
-<ul>
-<li><span class="math inline">\(\{1,2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{1,2\} - \{1\} = \{2\} \in \sigma({\cal A})\)</span> (<span class="math inline">\(\because\)</span> (b))</li>
-</ul>
-<p>2번</p>
-<ul>
-<li><span class="math inline">\(\{1,2\}-\{1\} = \{2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3\} - \{1,2\} = \{3\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3,4\} - \{1,2,3\} = \{4\} \in \sigma({\cal A})\)</span>.</li>
-<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{2\}\cup \{3\} \cup \{4\} = \{2,3,4\} \in \sigma({\cal A})\)</span></li>
-</ul>
-<p>3번</p>
-<ul>
-<li><span class="math inline">\(\{3,4,5\} \not \in \sigma({\cal A})\)</span></li>
-</ul>
-<p>4번</p>
-<ul>
-<li><span class="math inline">\(\{1,2,3\}\in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\Rightarrow \{1,2,3\}^c \in \sigma({\cal A})\)</span></li>
-</ul>
-<p><code>(4)</code> <span class="math inline">\(\Omega=[0,2\pi)\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ [a,b): 0\leq a&lt; b\leq 2\pi\}\]</span></p>
-<p>이라고 하자. 아래의 물음에 답하여라.</p>
-<ol type="1">
-<li><span class="math inline">\([\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{\pi\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{0,\frac{\pi}{2},\pi,\frac{3\pi}{2}\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\((\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
-</ol>
-<blockquote class="blockquote">
-<p>수업시간에 2번문제 잘못해설했어요. (문제도 잘못냈어요, 너무 어렵게 냈어요. )</p>
-</blockquote>
-<p>(풀이)</p>
-<ol type="1">
-<li><span class="math inline">\(a=\frac{\pi}{2}\)</span>, <span class="math inline">\(b=\pi\)</span></li>
-<li><span class="math inline">\([0,\pi)~ \bigcup ~\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi) = [0,\pi) \cup (\pi,2\pi)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Omega - \big([0,\pi) \cup (\pi,2\pi) \big) = \{\pi\} \in \sigma({\cal A})\)</span></li>
-</ol>
-<ul>
-<li><span class="math inline">\([\pi+\frac{1}{n}, 2\pi)\)</span>는 각각 잴 수 있는 집합이므로 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
-<li>여기에서 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)=(\pi,2\pi)\)</span> 로 볼 수 있는데, 그 이유는 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span>는 <span class="math inline">\(\pi\)</span>보다 큰 모든수를 포함하지만 <span class="math inline">\(\pi\)</span>는 포함할 수 없기 때문이다.</li>
-<li><span class="math inline">\([0, \pi)\)</span>도 당연히 잴 수 있는 집합이다.</li>
-<li>잴 수 있는 집합의 교집합은 잴 수 있으므로 <span class="math inline">\([0,\pi)~ \cup ~(\pi,2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
-<li>따라서 <span class="math inline">\([0,2\pi) - \big([0,\pi) \cup (\pi,2\pi) \big)\)</span> 역시 잴 수 있다.</li>
-</ul>
-<ol start="3" type="1">
-<li><span class="math inline">\(\{\pi\}\)</span>를 잴수 있다는 것과 동일한 논리전개로 <span class="math inline">\(\{0\},\{\frac{\pi}{2}\}, \{\frac{3\pi}{2}\}\)</span> 모두 잴 수 있는 집합이고, 따라서 이들의 합집합도 잴 수 있다.</li>
-<li><span class="math inline">\([\frac{\pi}{2}, \pi)\)</span>를 잴 수 있고 <span class="math inline">\(\{\frac{\pi}{2}\}\)</span>를 잴 수 있으므로 <span class="math inline">\([\frac{\pi}{2}, \pi) - \{\frac{\pi}{2}\}\)</span> 역시 잴 수 있다.</li>
-</ol>
 </section>
-<section id="확률과-확률변수" class="level1">
-<h1><code>3</code>. 확률과 확률변수</h1>
-<p><code>(1)</code> 아래와 같은 measurable space <span class="math inline">\((\Omega, {\cal F})\)</span>를 고려하자.</p>
+<section id="에르고딕-마코프체인" class="level1">
+<h1>에르고딕 마코프체인</h1>
+<section id="정의-및-이론-1" class="level2">
+<h2 class="anchored" data-anchor-id="정의-및-이론-1">정의 및 이론</h2>
+<p><code>-</code> <strong>Thm</strong>: HMC <span class="math inline">\(\{X_t\}\)</span>가 (1) finite state space를 가지고 (2) irreduciable 하고 (3) aperiodic 이라면, <span class="math inline">\({\bf P}\)</span>가 수렴하고 수렴한 matrix의 모든 row는 같다. 따라서 임의의 초기분포 <span class="math inline">\({\boldsymbol \mu}\)</span> 에 대하여</p>
+<p><span class="math display">\[\lim_{t\to \infty}{\boldsymbol \mu}^\top{\bf P}^t = {\boldsymbol \pi}^\top \]</span></p>
+<p>이 성립한다. 여기에서 <span class="math inline">\({\boldsymbol \pi}\)</span>는 <span class="math inline">\(\{X_t\}\)</span>의 정상분포이다.</p>
+<p><code>-</code> 정의: 아래의 식을 만족하는 HMC <span class="math inline">\(\{X_t\}\)</span>을 에르고딕하다고 말한다.</p>
+<p><span class="math display">\[\lim_{t\to \infty}{\boldsymbol \mu}^\top{\bf P}^t = {\boldsymbol \pi}^\top \]</span></p>
+</section>
+</section>
+<section id="구글의-페이지랭크" class="level1">
+<h1>구글의 페이지랭크</h1>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">intro</h2>
+<p><code>-</code> Google</p>
 <ul>
-<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
-<li><span class="math inline">\({\cal F}=2^\Omega\)</span></li>
+<li>Google은 사용자의 검색어와 일치하는 검색 결과를 제공</li>
+<li>Google은 웹사이트들 사이에서 “더 나은” 또는 “더 중요한” 웹사이트가 검색 결과 상위에 나타나도록 순위를 유지</li>
+<li>이 순위는 전체 문제를 한 번에 해결하는 것이 아니라 먼저 전체적으로 수립되고(검색어와는 독립적으로), 그 후에 검색어와 일치하는 웹사이트들만 해당 순위에 따라 정렬된다고 함</li>
 </ul>
-<p>아래와 같은 확률변수 <span class="math inline">\(X: \Omega \to \{1,2,3,4\}\)</span> 를 고려하자. 다음중 올바른 표현은?</p>
-<ol type="1">
-<li><span class="math inline">\(X(a)\)</span></li>
-<li><span class="math inline">\(X(\{a\})\)</span></li>
-<li><span class="math inline">\(P(a)\)</span></li>
-<li><span class="math inline">\(P(\{a\})\)</span></li>
-<li><span class="math inline">\(P(X=1)\)</span></li>
-<li><span class="math inline">\(X = \begin{cases} 1 &amp; w.p.~\frac{1}{2} \\ 2 &amp; w.p. ~\frac{1}{6} \\ 3 &amp; w.p. ~\frac{1}{6} \\ 4 &amp; w.p. ~\frac{1}{6} \end{cases}\)</span></li>
-</ol>
-<p>(풀이) 생략 (이 문제는 그대로 낼거라서요, 풀이 생략합니다. 스스로 해보세요. 시험에서는 답만쓰면 정답으로 인정합니다)</p>
-<p><code>(2)</code> 아래와 같은 measurable space를 고려하자.</p>
+<p><code>-</code> 이 강의에서는 순위 매기기에 초점을 맞추어 생각해보자. (이는 마코프체인과 관련이 있음)</p>
+<p>-ref:</p>
+<p><code>-</code> 페이지랭크</p>
 <ul>
-<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
-<li><span class="math inline">\({\cal F} =\sigma({\cal A})\)</span> where <span class="math inline">\({\cal A} = \{\{a\}\}\)</span>.</li>
+<li>페이지랭크(PageRank)는 구글 검색에서 웹 페이지의 순위를 결정하는 알고리즘으로 이는 “웹 페이지”와 구글 공동 창업자인 라리 페이지(Larry Page)의 이름을 따서 지어졌음</li>
+<li>페이지랭크는 웹사이트 페이지의 중요성을 측정하는 방법이며 기본적으로 더 중요한 웹사이일수록 다른 웹사이트에서 더 많은 링크를 받을 가능성이 높다는 점에 착안함</li>
+<li>페이지랭크는 페이지랭크는 구글이 검색 결과를 정렬하는 데 사용하는 유일한 알고리즘이 아니지만, 구글에서 사용한 최초의 알고리즘이며, 가장 잘 알려진 알고리즘임</li>
 </ul>
-<p>아래와 같은 function <span class="math inline">\(X:\Omega \to A:=\{1,2,3,4\}\)</span>, <span class="math inline">\(Y:\Omega \to B:=\{1,2\}\)</span>을 고려하자.</p>
+</section>
+<section id="settings" class="level2">
+<h2 class="anchored" data-anchor-id="settings">settings</h2>
+<p>아래와 같이 상황을 요약하자.</p>
+<p><code>-</code> 페이지의 숫자는 <span class="math inline">\(N&lt;\infty\)</span> 이라고 하자.</p>
+<p><code>-</code> 페이지의 집합을 <span class="math inline">\(\Omega\)</span>라고하고, <span class="math inline">\(E\)</span>는 <span class="math inline">\(\Omega\)</span>에 대응하는 상태공간이라고 가정한다. 확률변수 <span class="math inline">\(X\)</span>는</p>
 <ul>
-<li><span class="math inline">\(X(a)=1, X(b)=2, X(c)=3, X(d)=4\)</span></li>
-<li><span class="math inline">\(Y(a)=1, Y(b)=2, Y(c)=2, Y(c)=2\)</span></li>
+<li><span class="math inline">\(\Omega = \{{\tt "http://guebin.github.io/SP2023/"},{\tt "http://guebin.github.io/AP2023/"} \dots \}\)</span></li>
+<li><span class="math inline">\(E = \{0,1,\dots\}\)</span></li>
+<li><span class="math inline">\(X(\omega) = 0,1,2,\dots\)</span></li>
 </ul>
-<p>아래의 물음에 답하라.</p>
-<ul>
-<li><span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (A,2^{A})\)</span> 인가? 즉 <span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
-<li><span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (B,2^{B})\)</span> 인가? 즉 <span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
-</ul>
-<p>(풀이)</p>
-<p><strong><span class="math inline">\(X\)</span>는 확률변수가 아님</strong></p>
-<p>집합 <span class="math inline">\(\{2\} \subset 2^A\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in \{2\}\}=\{b\} \not \in \sigma({\cal A})\)</span> 이므로 <span class="math inline">\(X\)</span>는 확률변수가 아님</p>
-<p><strong><span class="math inline">\(Y\)</span>는 확률변수임</strong></p>
-<p><span class="math inline">\(2^B = \{\emptyset,\{1\},\{2\},B\}\)</span> 의 모든 부분집합 <span class="math inline">\(B^\ast\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in B^\ast\} \in \sigma({\cal A})\)</span> 이 성립함.</p>
-<ul>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \emptyset\} = \emptyset \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \{1\}\} = \{a\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \{2\}\} = \{b,c,d\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in B\} = \{a,b,c,d\} \in \sigma({\cal A})\)</span></li>
-</ul>
+<p><code>-</code></p>
+</section>
+<section id="toy-example" class="level2">
+<h2 class="anchored" data-anchor-id="toy-example">toy example</h2>
+<p><code>-</code> 아래와 같은 예제를 고려하자.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart LR
+  0 --&gt;|1/2| 1
+  1 --&gt;|1/2| 0
+  0 --&gt;|1/2| 2
+  1 --&gt;|1/2| 2
+  2 --&gt;|1| 3 
+  4 --&gt;|1| 3
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
