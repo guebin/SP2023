@@ -53,14 +53,14 @@
     "href": "posts/2. 마코프체인/2023-04-27-9wk-1.html#settings",
     "title": "9wk-1: 마코프체인 (6)",
     "section": "settings",
-    "text": "settings\n아래와 같이 상황을 요약하자.\n- 페이지의 숫자는 \\(N<\\infty\\) 이라고 하자.\n- 페이지의 집합을 \\(\\Omega\\)라고하고, \\(E\\)는 \\(\\Omega\\)에 대응하는 상태공간이라고 가정한다. 확률변수 \\(X\\)는\n\n\\(\\Omega = \\{{\\tt \"http://guebin.github.io/SP2023/\"},{\\tt \"http://guebin.github.io/AP2023/\"} \\dots \\}\\)\n\\(E = \\{0,1,\\dots\\}\\)\n\\(X(\\omega) = 0,1,2,\\dots\\)\n\n-"
+    "text": "settings\n아래와 같이 상황을 요약하자.\n- 페이지의 숫자는 \\(N<\\infty\\) 이라고 하자.\n- 페이지의 집합을 \\(\\Omega\\)라고하고, \\(E\\)는 \\(\\Omega\\)에 대응하는 상태공간이라고 가정한다. 확률변수 \\(X\\)는\n\n\\(\\Omega = \\{\\) http://guebin.github.io/SP2023,http://guebin.github.io/AP2023/\\(\\dots \\}\\)\n\\(E = \\{0,1,\\dots\\}\\)\n\\(X(\\omega) = 0,1,2,\\dots\\)\n\n-"
   },
   {
     "objectID": "posts/2. 마코프체인/2023-04-27-9wk-1.html#toy-example",
     "href": "posts/2. 마코프체인/2023-04-27-9wk-1.html#toy-example",
     "title": "9wk-1: 마코프체인 (6)",
     "section": "toy example",
-    "text": "toy example\n- 아래와 같은 예제를 고려하자.\n\n\n\n\nflowchart LR\n  0 -->|1/2| 1\n  1 -->|1/2| 0\n  0 -->|1/2| 2\n  1 -->|1/2| 2\n  2 -->|1| 3 \n  4 -->|1| 3"
+    "text": "toy example\n- 아래는 5개의 website에 대한 web graph이다.\n\n\n\n\nflowchart LR\n  0 -->|1/2| 1\n  1 -->|1/2| 0\n  0 -->|1/2| 2\n  1 -->|1/2| 2\n  2 -->|1| 3 \n  4 -->|1| 3\n\n\n\n\n\n\n\n\n- 여기에서 가장 중요한 웹사이트는 무엇일까?\n\n구글의 아이디어는 기본적으로 **"
   },
   {
     "objectID": "posts/2. 마코프체인/2023-04-13-7wk-2.html",
