@@ -126,6 +126,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -373,6 +376,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xbWjXgaQNqqqZDzuV1QsgL" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xbWjXgaQNqqqZDzuV1QsgL</a></p>
+</blockquote>
 </section>
 <section id="imports" class="level1">
 <h1>imports</h1>
@@ -387,13 +393,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="예제3" class="level3">
 <h3 class="anchored" data-anchor-id="예제3">예제3</h3>
 <p><code>-</code> 아래의 전이확률을 고려하자.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="316">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span>np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, </span>
 <span id="cb2-2"><a href="#cb2-2"></a>             <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>,</span>
 <span id="cb2-3"><a href="#cb2-3"></a>             <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
 <span id="cb2-4"><a href="#cb2-4"></a>             <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
 <span id="cb2-5"><a href="#cb2-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="316">
 <pre><code>array([[0. , 1. , 0. , 0. ],
        [0.5, 0. , 0.5, 0. ],
        [0. , 0. , 0. , 1. ],
@@ -420,6 +426,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><code>-</code> 특징1,2:</p>
+<div class="cell" data-execution_count="323">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.matrix(P)<span class="op">**</span><span class="dv">500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="323">
+<pre><code>matrix([[0.2, 0.4, 0.2, 0.2],
+        [0.2, 0.4, 0.2, 0.2],
+        [0.2, 0.4, 0.2, 0.2],
+        [0.2, 0.4, 0.2, 0.2]])</code></pre>
+</div>
+</div>
 <p><code>-</code> 특징3: 정상분포를 가짐</p>
 <p><code>-</code> 특징4: 초기분포가 정상분포라면 정상확률과정</p>
 <p><code>-</code> 특징5: irr</p>
@@ -452,14 +467,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>주기가 1인 경우는 aperiodic 하다고 표현한다. (언제 올지 몰라)</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>꿀팁: 자기자신으로 되돌아올 확률이 있다면 항상 aperiodic 하다.</p>
+<p>꿀팁: 자기자신으로 1턴만에 되돌아올 확률이 있다면 항상 aperiodic 하다.</p>
 </blockquote>
 </section>
 </section>
 <section id="정의-및-이론" class="level2">
 <h2 class="anchored" data-anchor-id="정의-및-이론">정의 및 이론</h2>
 <p><code>-</code> 정의:</p>
-<p><code>-</code> 느낌: 상태 <span class="math inline">\(i\)</span>에서 <span class="math inline">\(i\)</span>로 되돌아오는 횟수들의 최대공약수</p>
+<p><code>-</code> 느낌: 상태 <span class="math inline">\(i\)</span>에서 <span class="math inline">\(i\)</span>로 되돌아오는 횟수들의 최대공약수를 HMC <span class="math inline">\(\{X_t\}\)</span>의 period라고 하고, period=1인 경우를 aperiodic 이라고 한다.</p>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 finte state HMC 이면, 모든 상태가 항상 같은 주기를 가진다.</p>
 </section>
 </section>
@@ -485,12 +500,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>이 순위는 전체 문제를 한 번에 해결하는 것이 아니라 먼저 전체적으로 수립되고(검색어와는 독립적으로), 그 후에 검색어와 일치하는 웹사이트들만 해당 순위에 따라 정렬된다고 함</li>
 </ul>
 <p><code>-</code> 이 강의에서는 순위 매기기에 초점을 맞추어 생각해보자. (이는 마코프체인과 관련이 있음)</p>
-<p>-ref:</p>
+<ul>
+<li>ref: <a href="https://en.wikipedia.org/wiki/PageRank" class="uri">https://en.wikipedia.org/wiki/PageRank</a></li>
+</ul>
 <p><code>-</code> 페이지랭크</p>
 <ul>
 <li>페이지랭크(PageRank)는 구글 검색에서 웹 페이지의 순위를 결정하는 알고리즘으로 이는 “웹 페이지”와 구글 공동 창업자인 라리 페이지(Larry Page)의 이름을 따서 지어졌음</li>
 <li>페이지랭크는 웹사이트 페이지의 중요성을 측정하는 방법이며 기본적으로 더 중요한 웹사이일수록 다른 웹사이트에서 더 많은 링크를 받을 가능성이 높다는 점에 착안함</li>
-<li>페이지랭크는 페이지랭크는 구글이 검색 결과를 정렬하는 데 사용하는 유일한 알고리즘이 아니지만, 구글에서 사용한 최초의 알고리즘이며, 가장 잘 알려진 알고리즘임</li>
+<li>페이지랭크는 구글이 검색 결과를 정렬하는 데 사용하는 유일한 알고리즘이 아니지만, 구글에서 사용한 최초의 알고리즘이며, 가장 잘 알려진 알고리즘임</li>
 </ul>
 </section>
 <section id="toy-example" class="level2">
@@ -535,14 +552,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>를 계산하겠다는 의미이다.</p>
 <p><code>-</code> 문제점1: 이 상황은 transition matrix를 만들 수 없는걸?</p>
 <div class="cell" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb4-2"><a href="#cb4-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb4-5"><a href="#cb4-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="co">### 이 부분은 다 0이다. </span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb6-2"><a href="#cb6-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb6-6"><a href="#cb6-6"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="co">### 이 부분은 다 0이다. </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="232">
 <pre><code>array([[0. , 0.5, 0.5, 0. , 0. , 0. , 0. ],
        [0.5, 0. , 0.5, 0. , 0. , 0. , 0. ],
@@ -555,14 +572,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><code>-</code> 문제점1의 해결: 이러한 경우 상태5에서 다른상태로 갈 확률은 랜덤으로 다시 뿌린다.</p>
 <div class="cell" data-execution_count="236">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb6-4"><a href="#cb6-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="co">### 이렇게 고쳐버리자~</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
-<span id="cb6-8"><a href="#cb6-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb8-4"><a href="#cb8-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="co">### 이렇게 고쳐버리자~</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="236">
 <pre><code>array([[0.        , 0.5       , 0.5       , 0.        , 0.        ,
         0.        , 0.        ],
@@ -584,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="수렴의-트릭" class="level2">
 <h2 class="anchored" data-anchor-id="수렴의-트릭">수렴의 트릭</h2>
-<p><code>-</code> 생각: HMC <span class="math inline">\(\{X_t\}\)</span>가 에르고딕이려면 (1) finite state space를 가지고 (2) 이리듀시블하고 (3) 에이피리오딕 해야한다.</p>
+<p><code>-</code> 생각: HMC <span class="math inline">\(\{X_t\}\)</span>가 에르고딕이려면 (1) finite state space를 가지고 (2) irreducible (3) aperiodic 해야한다.</p>
 <p><code>-</code> 그런데 (N,N) 차원을 가지는 임의의 transition matrix <span class="math inline">\({\bf P}\)</span>를 아래와 같이 <span class="math inline">\(\tilde{\bf P}\)</span>로 변형한다면 이 transition matrix는 aperiodic하고 irreducible하게 된다.</p>
 <p><span class="math display">\[\tilde{\bf P} = 0.99 \cdot {\bf P} + 0.01 \cdot \frac{1}{N}{\bf J}\]</span></p>
 <p>여기에서 <span class="math inline">\({\bf J}\)</span>는 <span class="math inline">\({\bf P}\)</span>와 차원이 같고 모든 원소가 1인 매트릭스이다. 즉</p>
@@ -602,16 +619,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="구현" class="level2">
 <h2 class="anchored" data-anchor-id="구현">구현</h2>
-<div class="cell" data-execution_count="239">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb8-2"><a href="#cb8-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
-<span id="cb8-8"><a href="#cb8-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="239">
+<div class="cell" data-execution_count="326">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb10-2"><a href="#cb10-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="326">
 <pre><code>array([[0.        , 0.5       , 0.5       , 0.        , 0.        ,
         0.        , 0.        ],
        [0.5       , 0.        , 0.5       , 0.        , 0.        ,
@@ -628,9 +645,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         1.        , 0.        ]])</code></pre>
 </div>
 </div>
+<div class="cell" data-execution_count="338">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>alpha<span class="op">=</span> <span class="fl">0.85</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>J <span class="op">=</span> np.ones(<span class="dv">49</span>).reshape(<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>GoogleMatrix <span class="op">=</span> alpha<span class="op">*</span>P <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">/</span><span class="dv">7</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="344">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>np.linalg.matrix_power(GoogleMatrix,<span class="dv">100</span>)[<span class="dv">0</span>].<span class="bu">round</span>(<span class="dv">3</span>).tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="344">
+<pre><code>[0.102, 0.102, 0.145, 0.231, 0.058, 0.304, 0.058]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="348">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb15-2"><a href="#cb15-2"></a>pd.DataFrame({<span class="st">'website'</span>:[<span class="st">'state'</span><span class="op">+</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="st">'0123456'</span>], </span>
+<span id="cb15-3"><a href="#cb15-3"></a>             <span class="st">'pagerank'</span>: np.linalg.matrix_power(GoogleMatrix,<span class="dv">100</span>)[<span class="dv">0</span>].<span class="bu">round</span>(<span class="dv">3</span>).tolist()})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="348">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>website</th>
+      <th>pagerank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>state0</td>
+      <td>0.102</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>state1</td>
+      <td>0.102</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>state2</td>
+      <td>0.145</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>state3</td>
+      <td>0.231</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>state4</td>
+      <td>0.058</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>state5</td>
+      <td>0.304</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>state6</td>
+      <td>0.058</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 <section id="다른풀이" class="level2">
 <h2 class="anchored" data-anchor-id="다른풀이">다른풀이</h2>
+<div class="cell" data-execution_count="352">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>_, eigen_vector_matrix <span class="op">=</span> np.linalg.eig(GoogleMatrix.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="358">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">abs</span>(eigen_vector_matrix[:,<span class="dv">0</span>])<span class="op">/</span> <span class="bu">abs</span>(eigen_vector_matrix[:,<span class="dv">0</span>]).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="358">
+<pre><code>array([0.10154862, 0.10154862, 0.14470678, 0.2310231 , 0.05839045,
+       0.30439198, 0.05839045])</code></pre>
+</div>
+</div>
 </section>
 <section id="페이지랭크의-약점" class="level2">
 <h2 class="anchored" data-anchor-id="페이지랭크의-약점">페이지랭크의 약점</h2>
@@ -654,19 +749,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="314">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
-<span id="cb10-5"><a href="#cb10-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">5</span>,<span class="dv">5</span>)</span>
-<span id="cb10-6"><a href="#cb10-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="314">
+<div class="cell" data-execution_count="360">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>P <span class="op">=</span> np.arrfffq<span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
+<span id="cb19-2"><a href="#cb19-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="360">
 <pre><code>array([[0. , 0.5, 0.5, 0. , 0. ],
        [0.5, 0. , 0.5, 0. , 0. ],
        [0. , 0. , 0. , 1. , 0. ],
        [0.2, 0.2, 0.2, 0.2, 0.2],
        [0. , 0. , 0. , 1. , 0. ]])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="362">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>GoogleMatrix <span class="op">=</span> P<span class="op">*</span><span class="fl">0.85</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">/</span><span class="dv">5</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="364">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>np.linalg.matrix_power(GoogleMatrix,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="364">
+<pre><code>array([[0.15936255, 0.15936255, 0.22709163, 0.3625498 , 0.09163347],
+       [0.15936255, 0.15936255, 0.22709163, 0.3625498 , 0.09163347],
+       [0.15936255, 0.15936255, 0.22709163, 0.3625498 , 0.09163347],
+       [0.15936255, 0.15936255, 0.22709163, 0.3625498 , 0.09163347],
+       [0.15936255, 0.15936255, 0.22709163, 0.3625498 , 0.09163347]])</code></pre>
 </div>
 </div>
 <p><code>-</code> 우리는 여기에서 1번네트워크의 page rank를 올리고 싶다고 가정하자. (현재는 5개중 0.15936255)</p>
@@ -707,12 +812,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="313">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb12-2"><a href="#cb12-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
-<span id="cb12-3"><a href="#cb12-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb12-4"><a href="#cb12-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
-<span id="cb12-5"><a href="#cb12-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">5</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="365">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb24-2"><a href="#cb24-2"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">5</span>,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">5</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="367">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>GoogleMatrix <span class="op">=</span> P<span class="op">*</span><span class="fl">0.85</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">/</span><span class="dv">5</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>np.linalg.matrix_power(GoogleMatrix,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="367">
+<pre><code>array([[0.12640228, 0.18012324, 0.18012324, 0.38694897, 0.12640228],
+       [0.12640228, 0.18012324, 0.18012324, 0.38694897, 0.12640228],
+       [0.12640228, 0.18012324, 0.18012324, 0.38694897, 0.12640228],
+       [0.12640228, 0.18012324, 0.18012324, 0.38694897, 0.12640228],
+       [0.12640228, 0.18012324, 0.18012324, 0.38694897, 0.12640228]])</code></pre>
+</div>
 </div>
 <p><strong>Step2:</strong> 3개의 더미사이트 5,6,7을 만들어서 1번네트워크와 서로 연결시킨다.</p>
 <div class="cell">
@@ -738,15 +854,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="312">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb13-2"><a href="#cb13-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,</span>
-<span id="cb13-3"><a href="#cb13-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb13-4"><a href="#cb13-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>,</span>
-<span id="cb13-5"><a href="#cb13-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb13-6"><a href="#cb13-6"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb13-7"><a href="#cb13-7"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb13-8"><a href="#cb13-8"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">8</span>,<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="368">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-2"><a href="#cb27-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>,</span>
+<span id="cb27-3"><a href="#cb27-3"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-4"><a href="#cb27-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">8</span>,</span>
+<span id="cb27-5"><a href="#cb27-5"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-6"><a href="#cb27-6"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-7"><a href="#cb27-7"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-8"><a href="#cb27-8"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">8</span>,<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="374">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>GoogleMatrix <span class="op">=</span> P<span class="op">*</span><span class="fl">0.85</span> <span class="op">+</span> <span class="fl">0.15</span><span class="op">/</span><span class="dv">8</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>pagerank <span class="op">=</span>np.linalg.matrix_power(GoogleMatrix,<span class="dv">100</span>)[<span class="dv">0</span>]</span>
+<span id="cb28-3"><a href="#cb28-3"></a>pagerank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="374">
+<pre><code>array([0.02778839, 0.39804992, 0.03959846, 0.08506721, 0.02778839,
+       0.14056921, 0.14056921, 0.14056921])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="373">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>website <span class="op">=</span> [<span class="st">'state'</span><span class="op">+</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="st">'01234567'</span>]</span>
+<span id="cb30-2"><a href="#cb30-2"></a>website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="373">
+<pre><code>['state0',
+ 'state1',
+ 'state2',
+ 'state3',
+ 'state4',
+ 'state5',
+ 'state6',
+ 'state7']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="375">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>pd.DataFrame({<span class="st">'pagerank'</span>:pagerank,<span class="st">'website'</span>:website})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="375">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>pagerank</th>
+      <th>website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.027788</td>
+      <td>state0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.398050</td>
+      <td>state1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.039598</td>
+      <td>state2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.085067</td>
+      <td>state3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.027788</td>
+      <td>state4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.140569</td>
+      <td>state5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.140569</td>
+      <td>state6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.140569</td>
+      <td>state7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 </div>
 <p><code>-</code> 약점을 극복한 구글의 아이디어: 저도 몰라용..</p>
 
