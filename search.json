@@ -179,35 +179,28 @@
     "href": "posts/2. 마코프체인/2023-05-09-10wk-2.html",
     "title": "10wk-2: 마코프체인 (7)",
     "section": "",
-    "text": "import numpy as np"
+    "text": "youtube: https://youtube.com/playlist?list=PLQqh36zP38-yMXZ2TSGxoh-rIjn8vp6cV"
   },
   {
     "objectID": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제1-단위행렬",
     "href": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제1-단위행렬",
     "title": "10wk-2: 마코프체인 (7)",
     "section": "예제1: 단위행렬",
-    "text": "예제1: 단위행렬\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[1,0],[0,1]])\nP\n\narray([[1, 0],\n       [0, 1]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 근사하라.\n(풀이)"
+    "text": "예제1: 단위행렬\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[1,0],\n              [0,1]])\nP\n\narray([[1, 0],\n       [0, 1]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 근사하라.\n(풀이)\n이 경우는 IRR 조건이 만족되지 않으므로 유일한 정상분포가 존재하지 않음. 그래서 에르고딕정리를 이용할 수 없다."
   },
   {
     "objectID": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제2-순환이동",
     "href": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제2-순환이동",
     "title": "10wk-2: 마코프체인 (7)",
     "section": "예제2: 순환이동",
-    "text": "예제2: 순환이동\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[0,1],[1,0]])\nP\n\narray([[0, 1],\n       [1, 0]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.\n(풀이)\n\\(\\{X_t\\}\\)는 finite and irreducible HMC 이므로 유일한 정상분포를 가진다. 따라서\n\n\\(\\big(\\frac{1}{T}\\sum_{t=0}^{T-1}I(X_t=0),\\frac{1}{T}\\sum_{t=0}^{T-1}I(X_t=1)\\big)=(\\hat{\\pi}_0,\\hat{\\pi}_1)\\approx (1/2,1/2)\\)\n\n와 같이 구할 수 있음"
+    "text": "예제2: 순환이동\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[0,1],\n              [1,0]])\nP\n\narray([[0, 1],\n       [1, 0]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.\n(풀이)\n\\(\\{X_t\\}\\)는 finite and irreducible HMC 이므로 유일한 정상분포를 가진다. 시뮬레이션을 한다면\n\n\\(0,1,0,1,0,1,0, \\dots\\)\n\\(1,0,1,0,1,0,1, \\dots\\)\n\n중 하나의 열(array)이 관찰 될 것이고 두 경우 모두\n\n\\(\\big(\\frac{1}{T}\\sum_{t=0}^{T-1}I(X_t=0),\\frac{1}{T}\\sum_{t=0}^{T-1}I(X_t=1)\\big)=(\\hat{\\pi}_0,\\hat{\\pi}_1)\\approx (1/2,1/2)\\)\n\n와 같이 구할 수 있음"
   },
   {
     "objectID": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제3-비가-온다-안온다",
     "href": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제3-비가-온다-안온다",
     "title": "10wk-2: 마코프체인 (7)",
     "section": "예제3: 비가 온다, 안온다",
-    "text": "예제3: 비가 온다, 안온다\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[0.4,0.6],\n              [0.7,0.3]])\nP\n\narray([[0.4, 0.6],\n       [0.7, 0.3]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.\n(풀이) 이 강의노트의 풀이4"
-  },
-  {
-    "objectID": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제-오른쪽으로만-갈래",
-    "href": "posts/2. 마코프체인/2023-05-09-10wk-2.html#예제-오른쪽으로만-갈래",
-    "title": "10wk-2: 마코프체인 (7)",
-    "section": "예제: 오른쪽으로만 갈래",
-    "text": "예제: 오른쪽으로만 갈래\n아래와 같은 transition matrix \\({\\bf P}\\)를 고려하자.\n\\[{\\bf P} = \\begin{bmatrix}\n0 & 1 & 0 & 0 & 0 & \\dots \\\\\n0 & 0 & 1 & 0 & 0 & \\dots \\\\\n0 & 0 & 0 & 1 & 0 & \\dots \\\\\n0 & 0 & 0 & 0 & 1 & \\dots \\\\\n\\dots & \\dots & \\dots & \\dots & \\dots & \\dots\n\\end{bmatrix}\\]\n정상분포 \\({\\boldsymbol \\pi}^\\top=[\\pi_0,\\pi_1,\\pi_2,\\dots]\\) 가 존재하기 위해서는 아래가 성립해야 한다.\n\n\\(\\pi_0=\\pi_1\\)\n\\(\\pi_1=\\pi_2\\)\n\\(\\pi_1=\\pi_2\\)\n\\(\\dots\\)\n\n즉 모든 \\(n \\in \\mathbb{N}_0\\)에 대하여 \\(\\pi_0=\\pi_n\\)이 성립해아한다. 그런데 그럴 수 없다."
+    "text": "예제3: 비가 온다, 안온다\nHMC \\(\\{X_t\\}\\)의 전이행렬이 아래와 같다고 하자.\n\nP = np.array([[0.4,0.6],\n              [0.7,0.3]])\nP\n\narray([[0.4, 0.6],\n       [0.7, 0.3]])\n\n\n\\(\\{X_t\\}\\)는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.\n(풀이) 이 강의노트의 풀이4\n\ndef rain(before):\n    if before == True: # 비가 왔음 \n        after = np.random.rand() < 0.3\n    else: # 비가 안왔음 \n        after = np.random.rand() < 0.6 \n    return after \n\n\ndef doctor_strange(today):\n    lst = [today]\n    for i in range(10000): \n        lst.append(rain(lst[i]))\n    return lst \n\n\nnp.mean(doctor_strange(True)[1:])\n\n0.4616"
   },
   {
     "objectID": "posts/2. 마코프체인/2023-04-25-8wk-2.html",

@@ -336,16 +336,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
   <li><a href="#lln의-확장-정상분포-관련내용" id="toc-lln의-확장-정상분포-관련내용" class="nav-link" data-scroll-target="#lln의-확장-정상분포-관련내용">LLN의 확장 – 정상분포 관련내용</a>
   <ul class="collapse">
   <li><a href="#예제1-단위행렬" id="toc-예제1-단위행렬" class="nav-link" data-scroll-target="#예제1-단위행렬">예제1: 단위행렬</a></li>
   <li><a href="#예제2-순환이동" id="toc-예제2-순환이동" class="nav-link" data-scroll-target="#예제2-순환이동">예제2: 순환이동</a></li>
   <li><a href="#예제3-비가-온다-안온다" id="toc-예제3-비가-온다-안온다" class="nav-link" data-scroll-target="#예제3-비가-온다-안온다">예제3: 비가 온다, 안온다</a></li>
-  </ul></li>
-  <li><a href="#정상분포가-존재하지-않는-경우" id="toc-정상분포가-존재하지-않는-경우" class="nav-link" data-scroll-target="#정상분포가-존재하지-않는-경우">정상분포가 존재하지 않는 경우</a>
-  <ul class="collapse">
-  <li><a href="#예제-오른쪽으로만-갈래" id="toc-예제-오른쪽으로만-갈래" class="nav-link" data-scroll-target="#예제-오른쪽으로만-갈래">예제: 오른쪽으로만 갈래</a></li>
   </ul></li>
   <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a></li>
   </ul>
@@ -357,6 +354,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yMXZ2TSGxoh-rIjn8vp6cV" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yMXZ2TSGxoh-rIjn8vp6cV</a></p>
+</blockquote>
+</section>
 <section id="imports" class="level1">
 <h1>imports</h1>
 <div class="cell" data-execution_count="6">
@@ -366,45 +369,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="lln의-확장-정상분포-관련내용" class="level1">
 <h1>LLN의 확장 – 정상분포 관련내용</h1>
 <p><code>-</code> 유일한 정상분포를 가진다는 것을 알고 있다고 하자. 이를 쉽고 편하게 구하는 방법?</p>
+<ul>
+<li>배운것1: 문제를 잘 이해하고 <span class="math inline">\({\boldsymbol \pi}^\top = {\boldsymbol \pi}^\top {\bf P}\)</span> 에 맞는 분포를 때려맞춤.</li>
+<li>배운것2: 고유값, 고유벡터의 개념을 이용하여 찾아냄</li>
+</ul>
 <p><code>-</code> <strong>정리(큰 수의 법칙)</strong>: 확률변수열 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}_0}\)</span> 이 서로 독립이고 동일한 분포를 가진다고 하자. 또한 <span class="math inline">\(\mathbb{E}[|X_0|]&lt;\infty\)</span> 이라고 가정하자. 그러면 아래가 성립한다.</p>
 <p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}X_t = \mathbb{E}_{\pi}[X_0]\]</span></p>
 <p>단, 여기에서 <span class="math inline">\(\pi\)</span>는 <span class="math inline">\(X_0\)</span>의 분포이다.</p>
 <p><code>-</code> <strong>Thm</strong> (에르고딕정리): 확률변수열 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}_0}\)</span>이 finite and irreducible HMC 라고 하자. 그러면 임의의 함수 <span class="math inline">\(f:S \to \mathbb{R}\)</span>에 대하여 아래가 성립한다.</p>
 <p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}f(X_t) = \mathbb{E}_{\boldsymbol \pi}[f(X_0)]\]</span></p>
 <p>여기에서 <span class="math inline">\(\boldsymbol \pi\)</span>는 <span class="math inline">\({\boldsymbol \pi}^\top = {\boldsymbol \pi}^\top{\bf P}\)</span>를 만족하는 <strong>유일한</strong> 정상분포이고 <span class="math inline">\({\bf P}\)</span>는 <span class="math inline">\(\{X_t\}\)</span>의 transition matrix 이다.</p>
-<p><code>-</code> 만약에 <span class="math display">\[f(i)= \begin{cases} 1 &amp; i = 0 \\ 0 &amp; i=1\end{cases}\]</span> 이라고 하자. 그러면 위의 이론은 아래와 같이 변경된다.</p>
+<p><code>-</code> (<span class="math inline">\(f\)</span>의 해석) 만약에 <span class="math display">\[f(i)= I(i=0)=\begin{cases} 1 &amp; i = 0 \\ 0 &amp; o.w\end{cases}\]</span> 이라고 하자. 그러면 위의 이론은 아래와 같이 변경된다.</p>
 <p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}I(X_t=0) =\mathbb{E}_{\pi}[I(X_0=0)] = \mathbb{P}_{\pi}[X_0=0]=\pi_0\]</span></p>
 <blockquote class="blockquote">
-<p>이 이론의 의미:</p>
+<p>이 이론의 의미: 우리가 만약에 어떠한 마코프체인이 유일한 정상분포를 가진다는 사실을 알고 있다고 가정하자. 그럴때 에르고딕 정리를 이용하면 정상분포의 값을 시간평균으로 근사할 수 있다는 의미이다.</p>
 </blockquote>
 <section id="예제1-단위행렬" class="level2">
 <h2 class="anchored" data-anchor-id="예제1-단위행렬">예제1: 단위행렬</h2>
 <p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb2-2"><a href="#cb2-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
+<span id="cb2-3"><a href="#cb2-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([[1, 0],
        [0, 1]])</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 근사하라.</p>
 <p>(풀이)</p>
+<p>이 경우는 IRR 조건이 만족되지 않으므로 유일한 정상분포가 존재하지 않음. 그래서 에르고딕정리를 이용할 수 없다.</p>
 </section>
 <section id="예제2-순환이동" class="level2">
 <h2 class="anchored" data-anchor-id="예제2-순환이동">예제2: 순환이동</h2>
 <p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">0</span>]])</span>
-<span id="cb4-2"><a href="#cb4-2"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb4-2"><a href="#cb4-2"></a>              [<span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb4-3"><a href="#cb4-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([[0, 1],
        [1, 0]])</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.</p>
 <p>(풀이)</p>
-<p><span class="math inline">\(\{X_t\}\)</span>는 finite and irreducible HMC 이므로 유일한 정상분포를 가진다. 따라서</p>
+<p><span class="math inline">\(\{X_t\}\)</span>는 finite and irreducible HMC 이므로 유일한 정상분포를 가진다. 시뮬레이션을 한다면</p>
+<ul>
+<li><span class="math inline">\(0,1,0,1,0,1,0, \dots\)</span></li>
+<li><span class="math inline">\(1,0,1,0,1,0,1, \dots\)</span></li>
+</ul>
+<p>중 하나의 열(array)이 관찰 될 것이고 두 경우 모두</p>
 <ul>
 <li><span class="math inline">\(\big(\frac{1}{T}\sum_{t=0}^{T-1}I(X_t=0),\frac{1}{T}\sum_{t=0}^{T-1}I(X_t=1)\big)=(\hat{\pi}_0,\hat{\pi}_1)\approx (1/2,1/2)\)</span></li>
 </ul>
@@ -413,39 +428,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="예제3-비가-온다-안온다" class="level2">
 <h2 class="anchored" data-anchor-id="예제3-비가-온다-안온다">예제3: 비가 온다, 안온다</h2>
 <p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.4</span>,<span class="fl">0.6</span>],</span>
 <span id="cb6-2"><a href="#cb6-2"></a>              [<span class="fl">0.7</span>,<span class="fl">0.3</span>]])</span>
 <span id="cb6-3"><a href="#cb6-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([[0.4, 0.6],
        [0.7, 0.3]])</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.</p>
 <p>(풀이) 이 강의노트의 <a href="https://guebin.github.io/SP2023/posts/2.%20마코프체인/2023-04-13-7wk-1.html">풀이4</a></p>
-</section>
-</section>
-<section id="정상분포가-존재하지-않는-경우" class="level1">
-<h1>정상분포가 존재하지 않는 경우</h1>
-<section id="예제-오른쪽으로만-갈래" class="level2">
-<h2 class="anchored" data-anchor-id="예제-오른쪽으로만-갈래">예제: 오른쪽으로만 갈래</h2>
-<p>아래와 같은 transition matrix <span class="math inline">\({\bf P}\)</span>를 고려하자.</p>
-<p><span class="math display">\[{\bf P} = \begin{bmatrix}
-0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots \\
-0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; \dots \\
-0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; \dots \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; \dots \\
-\dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots
-\end{bmatrix}\]</span></p>
-<p>정상분포 <span class="math inline">\({\boldsymbol \pi}^\top=[\pi_0,\pi_1,\pi_2,\dots]\)</span> 가 존재하기 위해서는 아래가 성립해야 한다.</p>
-<ul>
-<li><span class="math inline">\(\pi_0=\pi_1\)</span></li>
-<li><span class="math inline">\(\pi_1=\pi_2\)</span></li>
-<li><span class="math inline">\(\pi_1=\pi_2\)</span></li>
-<li><span class="math inline">\(\dots\)</span></li>
-</ul>
-<p>즉 모든 <span class="math inline">\(n \in \mathbb{N}_0\)</span>에 대하여 <span class="math inline">\(\pi_0=\pi_n\)</span>이 성립해아한다. 그런데 그럴 수 없다.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> rain(before):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="cf">if</span> before <span class="op">==</span> <span class="va">True</span>: <span class="co"># 비가 왔음 </span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.3</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="cf">else</span>: <span class="co"># 비가 안왔음 </span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.6</span> </span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="cf">return</span> after </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> doctor_strange(today):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    lst <span class="op">=</span> [today]</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>): </span>
+<span id="cb9-4"><a href="#cb9-4"></a>        lst.append(rain(lst[i]))</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="cf">return</span> lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>np.mean(doctor_strange(<span class="va">True</span>)[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>0.4616</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="정리" class="level1">
