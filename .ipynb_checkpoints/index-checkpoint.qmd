@@ -11,6 +11,10 @@ page-layout: full
 title-block-banner: true
 ---
 
+**보충**
+
+- 1wk-1, 6wk-1, 9wk-2, 10wk-1 
+
 **중간고사** 
 
 - 4월11일 수업시간: 범위 4wk-2까지. 
