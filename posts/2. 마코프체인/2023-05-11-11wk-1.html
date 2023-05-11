@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2023-05-09">
+<meta name="dcterms.date" content="2023-05-11">
 
-<title>SP2023 - 10wk-2: 마코프체인 (7)</title>
+<title>SP2023 - 11wk-1: 마코프체인 (8) – dr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">10wk-2: 마코프체인 (7)</h1>
+      <h1 class="quarto-secondary-nav-title">11wk-1: 마코프체인 (8) – dr</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -177,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">10wk-2: 마코프체인 (7)</h1>
+      <h1 class="title d-none d-lg-block">11wk-1: 마코프체인 (8) – dr</h1>
                       </div>
   </div>
     
@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 9, 2023</p>
+        <p class="date">May 11, 2023</p>
       </div>
     </div>
     
@@ -320,12 +320,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link active">10wk-2: 마코프체인 (7)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">10wk-2: 마코프체인 (7)</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">11wk-1: 마코프체인 (8) – dr</a>
+  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link active">11wk-1: 마코프체인 (8) – dr</a>
   </div>
 </li>
       </ul>
@@ -341,15 +341,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
-  <li><a href="#lln의-확장-정상분포-관련내용" id="toc-lln의-확장-정상분포-관련내용" class="nav-link" data-scroll-target="#lln의-확장-정상분포-관련내용">LLN의 확장 – 정상분포 관련내용</a>
+  <li><a href="#예비학습" id="toc-예비학습" class="nav-link active" data-scroll-target="#예비학습">예비학습</a>
   <ul class="collapse">
-  <li><a href="#예제1-단위행렬" id="toc-예제1-단위행렬" class="nav-link" data-scroll-target="#예제1-단위행렬">예제1: 단위행렬</a></li>
-  <li><a href="#예제2-순환이동" id="toc-예제2-순환이동" class="nav-link" data-scroll-target="#예제2-순환이동">예제2: 순환이동</a></li>
-  <li><a href="#예제3-비가-온다-안온다" id="toc-예제3-비가-온다-안온다" class="nav-link" data-scroll-target="#예제3-비가-온다-안온다">예제3: 비가 온다, 안온다</a></li>
+  <li><a href="#약한조건-약한정리-강한조건-강한정리" id="toc-약한조건-약한정리-강한조건-강한정리" class="nav-link" data-scroll-target="#약한조건-약한정리-강한조건-강한정리">약한조건, 약한정리, 강한조건, 강한정리</a></li>
+  <li><a href="#헷갈리는-표현-infty의-포함" id="toc-헷갈리는-표현-infty의-포함" class="nav-link" data-scroll-target="#헷갈리는-표현-infty의-포함">헷갈리는 표현: <span class="math inline">\(\infty\)</span>의 포함</a></li>
   </ul></li>
-  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a></li>
+  <li><a href="#transition-matrix의-수렴-극한분포-관련내용" id="toc-transition-matrix의-수렴-극한분포-관련내용" class="nav-link" data-scroll-target="#transition-matrix의-수렴-극한분포-관련내용">Transition matrix의 수렴 – 극한분포 관련내용</a></li>
+  <li><a href="#finite-hmc에-대한-정리" id="toc-finite-hmc에-대한-정리" class="nav-link" data-scroll-target="#finite-hmc에-대한-정리">FINITE HMC에 대한 정리</a>
+  <ul class="collapse">
+  <li><a href="#이론의-정리" id="toc-이론의-정리" class="nav-link" data-scroll-target="#이론의-정리">이론의 정리</a></li>
+  <li><a href="#emprical-분포-정상분포-극한분포" id="toc-emprical-분포-정상분포-극한분포" class="nav-link" data-scroll-target="#emprical-분포-정상분포-극한분포">Emprical 분포, 정상분포, 극한분포</a></li>
+  <li><a href="#이론들의-의미를-다시-고찰" id="toc-이론들의-의미를-다시-고찰" class="nav-link" data-scroll-target="#이론들의-의미를-다시-고찰">이론들의 의미를 다시 고찰</a></li>
+  <li><a href="#스토리정리" id="toc-스토리정리" class="nav-link" data-scroll-target="#스토리정리">스토리정리</a></li>
+  </ul></li>
+  <li><a href="#예제-한쪽-방향으로만-갈래" id="toc-예제-한쪽-방향으로만-갈래" class="nav-link" data-scroll-target="#예제-한쪽-방향으로만-갈래">예제: 한쪽 방향으로만 갈래</a></li>
   </ul>
 </nav>
     </div>
@@ -359,117 +364,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="강의영상" class="level1">
-<h1>강의영상</h1>
+<section id="예비학습" class="level1">
+<h1>예비학습</h1>
+<section id="약한조건-약한정리-강한조건-강한정리" class="level2">
+<h2 class="anchored" data-anchor-id="약한조건-약한정리-강한조건-강한정리">약한조건, 약한정리, 강한조건, 강한정리</h2>
+<p><code>-</code> 정리: 어떠한 조건을 만족하면, 어떠한 결론이 나온다.</p>
+<ul>
+<li>결론: 우리가 원하는 것.</li>
+<li>조건: 우리가 원하는 것을 얻기 위한 고난과정.</li>
+</ul>
+<p><code>-</code> 결론이 동일하다면 조건이 약할 수록 유리하다.</p>
+<ul>
+<li>정리1: 수업에 온라인으로 참석하거나 오프라인으로 참석한다면 모두 출석으로 인정한다.</li>
+<li>정리2: 수업에 오프라인으로 참석할때만 출석으로 인정한다.</li>
+</ul>
 <blockquote class="blockquote">
-<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yMXZ2TSGxoh-rIjn8vp6cV" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yMXZ2TSGxoh-rIjn8vp6cV</a></p>
+<p>정리2의 조건이 만족되면 정리1의 조건은 자동으로 만족된다. 따라서 정리2의 조건이 더 강한 조건이다. 조건이 강할수록 불리하므로 정리2가 더 불리하다.</p>
+</blockquote>
+<p><code>-</code> 조건이 동일하다면 결론이 강한 쪽이 유리하다.</p>
+<ul>
+<li>정리1: 중간고사와 기말고사를 모두 응시한다면, B학점 이상이다.</li>
+<li>정리2: 중간고사와 기말고사를 모두 응시한다면, A학점 이상이다.</li>
+</ul>
+<blockquote class="blockquote">
+<p>정리2의 결론이 만족되면 정리1의 결론은 자동으로 만족되므로 정리2의 결론이 더 강하다. 결론은 강할수록 유리하므로 정리2가 더 유리하다.</p>
 </blockquote>
 </section>
-<section id="imports" class="level1">
-<h1>imports</h1>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lln의-확장-정상분포-관련내용" class="level1">
-<h1>LLN의 확장 – 정상분포 관련내용</h1>
-<p><code>-</code> 유일한 정상분포를 가진다는 것을 알고 있다고 하자. 이를 쉽고 편하게 구하는 방법?</p>
+<section id="헷갈리는-표현-infty의-포함" class="level2">
+<h2 class="anchored" data-anchor-id="헷갈리는-표현-infty의-포함">헷갈리는 표현: <span class="math inline">\(\infty\)</span>의 포함</h2>
+<p><code>-</code> 자연수집합 <span class="math inline">\(\mathbb{N}\)</span>은 <span class="math inline">\(\{\infty\}\)</span>를 포함하지 않는다. 마찬가지로 실수집합 <span class="math inline">\(\mathbb{R}\)</span> 역시 <span class="math inline">\(\{-\infty\}, \{\infty\}\)</span>를 포함하지 않는다. 만약에 이를 포함하고 싶을 경우는 아래와 같이 표현한다.</p>
 <ul>
-<li>배운것1: 문제를 잘 이해하고 <span class="math inline">\({\boldsymbol \pi}^\top = {\boldsymbol \pi}^\top {\bf P}\)</span> 에 맞는 분포를 때려맞춤.</li>
-<li>배운것2: 고유값, 고유벡터의 개념을 이용하여 찾아냄</li>
+<li><span class="math inline">\(\mathbb{R} \cup \{-\infty\} \cup \{\infty\} = \bar{\mathbb{R}}\)</span></li>
+<li><span class="math inline">\(\mathbb{N} \cup \{-\infty\}\)</span></li>
 </ul>
-<p><code>-</code> <strong>정리(큰 수의 법칙)</strong>: 확률변수열 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}_0}\)</span> 이 서로 독립이고 동일한 분포를 가진다고 하자. 또한 <span class="math inline">\(\mathbb{E}[|X_0|]&lt;\infty\)</span> 이라고 가정하자. 그러면 아래가 성립한다.</p>
-<p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}X_t = \mathbb{E}_{\pi}[X_0]\]</span></p>
-<p>단, 여기에서 <span class="math inline">\(\pi\)</span>는 <span class="math inline">\(X_0\)</span>의 분포이다.</p>
-<p><code>-</code> <strong>Thm</strong> (에르고딕정리): 확률변수열 <span class="math inline">\(\{X_t\}_{t \in \mathbb{N}_0}\)</span>이 finite and irreducible HMC 라고 하자. 그러면 임의의 함수 <span class="math inline">\(f:S \to \mathbb{R}\)</span>에 대하여 아래가 성립한다.</p>
-<p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}f(X_t) = \mathbb{E}_{\boldsymbol \pi}[f(X_0)]\]</span></p>
-<p>여기에서 <span class="math inline">\(\boldsymbol \pi\)</span>는 <span class="math inline">\({\boldsymbol \pi}^\top = {\boldsymbol \pi}^\top{\bf P}\)</span>를 만족하는 <strong>유일한</strong> 정상분포이고 <span class="math inline">\({\bf P}\)</span>는 <span class="math inline">\(\{X_t\}\)</span>의 transition matrix 이다.</p>
-<p><code>-</code> (<span class="math inline">\(f\)</span>의 해석) 만약에 <span class="math display">\[f(i)= I(i=0)=\begin{cases} 1 &amp; i = 0 \\ 0 &amp; o.w\end{cases}\]</span> 이라고 하자. 그러면 위의 이론은 아래와 같이 변경된다.</p>
-<p><span class="math display">\[\lim_{T\to\infty} \frac{1}{T}\sum_{t=0}^{T-1}I(X_t=0) =\mathbb{E}_{\pi}[I(X_0=0)] = \mathbb{P}_{\pi}[X_0=0]=\pi_0\]</span></p>
-<blockquote class="blockquote">
-<p>이 이론의 의미: 우리가 만약에 어떠한 마코프체인이 유일한 정상분포를 가진다는 사실을 알고 있다고 가정하자. 그럴때 에르고딕 정리를 이용하면 정상분포의 값을 시간평균으로 근사할 수 있다는 의미이다.</p>
-</blockquote>
-<section id="예제1-단위행렬" class="level2">
-<h2 class="anchored" data-anchor-id="예제1-단위행렬">예제1: 단위행렬</h2>
-<p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
-<span id="cb2-2"><a href="#cb2-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
-<span id="cb2-3"><a href="#cb2-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>array([[1, 0],
-       [0, 1]])</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 근사하라.</p>
-<p>(풀이)</p>
-<p>이 경우는 IRR 조건이 만족되지 않으므로 유일한 정상분포가 존재하지 않음. 그래서 에르고딕정리를 이용할 수 없다.</p>
-</section>
-<section id="예제2-순환이동" class="level2">
-<h2 class="anchored" data-anchor-id="예제2-순환이동">예제2: 순환이동</h2>
-<p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>],</span>
-<span id="cb4-2"><a href="#cb4-2"></a>              [<span class="dv">1</span>,<span class="dv">0</span>]])</span>
-<span id="cb4-3"><a href="#cb4-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>array([[0, 1],
-       [1, 0]])</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.</p>
-<p>(풀이)</p>
-<p><span class="math inline">\(\{X_t\}\)</span>는 finite and irreducible HMC 이므로 유일한 정상분포를 가진다. 시뮬레이션을 한다면</p>
+<p>여기에서 <span class="math inline">\(\bar{\mathbb{R}}\)</span>은 확장된 실수라고 부르는데 교재에따라 사용하기도 하고 사용하지 않기도 한다.</p>
+<p><code>-</code> 만약에 <span class="math inline">\(\mathbb{N}\)</span>이 <span class="math inline">\(\{\infty\}\)</span>를 포함한다면</p>
 <ul>
-<li><span class="math inline">\(0,1,0,1,0,1,0, \dots\)</span></li>
-<li><span class="math inline">\(1,0,1,0,1,0,1, \dots\)</span></li>
+<li><span class="math inline">\(\forall n \in \mathbb{N}:~ 0&lt;\frac{1}{n} \leq 1\)</span></li>
 </ul>
-<p>중 하나의 열(array)이 관찰 될 것이고 두 경우 모두</p>
+<p>와 같은 표현은 불가능할 것이다.</p>
+<p><code>-</code> 구간에 대한 표현들: 구간에 대한 몇가지 표현을 정리하면 아래와 같다.</p>
 <ul>
-<li><span class="math inline">\(\big(\frac{1}{T}\sum_{t=0}^{T-1}I(X_t=0),\frac{1}{T}\sum_{t=0}^{T-1}I(X_t=1)\big)=(\hat{\pi}_0,\hat{\pi}_1)\approx (1/2,1/2)\)</span></li>
+<li><span class="math inline">\((-\infty, b] = \{x: x\leq b, ~x,b \in \mathbb{R}\}\)</span></li>
+<li><span class="math inline">\((-\infty, b) = \{x: x &lt; b,~ x,b \in \mathbb{R}\}\)</span></li>
 </ul>
-<p>와 같이 구할 수 있음</p>
-</section>
-<section id="예제3-비가-온다-안온다" class="level2">
-<h2 class="anchored" data-anchor-id="예제3-비가-온다-안온다">예제3: 비가 온다, 안온다</h2>
-<p>HMC <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이 아래와 같다고 하자.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>P <span class="op">=</span> np.array([[<span class="fl">0.4</span>,<span class="fl">0.6</span>],</span>
-<span id="cb6-2"><a href="#cb6-2"></a>              [<span class="fl">0.7</span>,<span class="fl">0.3</span>]])</span>
-<span id="cb6-3"><a href="#cb6-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>array([[0.4, 0.6],
-       [0.7, 0.3]])</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(\{X_t\}\)</span>는 유일한 정상분포를 가지는가? 가진다면 시간평균을 이용하여 정상분포를 구하여라.</p>
-<p>(풀이) 이 강의노트의 <a href="https://guebin.github.io/SP2023/posts/2.%20마코프체인/2023-04-13-7wk-1.html">풀이4</a></p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> rain(before):</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="cf">if</span> before <span class="op">==</span> <span class="va">True</span>: <span class="co"># 비가 왔음 </span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.3</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="cf">else</span>: <span class="co"># 비가 안왔음 </span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>        after <span class="op">=</span> np.random.rand() <span class="op">&lt;</span> <span class="fl">0.6</span> </span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="cf">return</span> after </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> doctor_strange(today):</span>
-<span id="cb9-2"><a href="#cb9-2"></a>    lst <span class="op">=</span> [today]</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>): </span>
-<span id="cb9-4"><a href="#cb9-4"></a>        lst.append(rain(lst[i]))</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="cf">return</span> lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>np.mean(doctor_strange(<span class="va">True</span>)[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>0.4616</code></pre>
-</div>
-</div>
 </section>
 </section>
-<section id="정리" class="level1">
-<h1>정리</h1>
-<p><span class="math inline">\(\{X_t\}\)</span>는 HMC 라고 하자.</p>
+<section id="transition-matrix의-수렴-극한분포-관련내용" class="level1">
+<h1>Transition matrix의 수렴 – 극한분포 관련내용</h1>
+<p><code>-</code> <strong>정의:</strong> Finite HMC <span class="math inline">\(\{X_t\}\)</span>를 고려하자. <span class="math inline">\({\bf P}\)</span>를 <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이라고 하자. 만약</p>
+<p><span class="math display">\[\lim_{t\to \infty}{\bf P}^{t} = {\bf P}^\star\]</span></p>
+<p>가 존재하고 <span class="math inline">\({\bf P}^\star\)</span>의 모든 row가 동일한 벡터를 가진다면<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\({\bf P}^\star\)</span>의 임의의 row-vector <span class="math inline">\({\bf p_{\star}^\top}\)</span> 를 <span class="math inline">\(\{X_t\}\)</span>의 극한분포 (limiting distribution) 라고 한다.</p>
+<p><code>-</code> 이론: 극한분포가 존재한다면, 유일하다. (그래서 극한분포는 기껏해야 (at most) 1개 존재한다.)</p>
+<p><code>-</code> <strong>Thm</strong>: Finite HMC <span class="math inline">\(\{X_t\}\)</span>를 고려하자. 운이 좋아서 <span class="math inline">\(\{X_t\}\)</span>의 극한분포 <span class="math inline">\({\bf p}_\star^\top\)</span>가 존재한다고 하자. 그렇다면 극한분포 <span class="math inline">\({\bf p}_\star^\top\)</span>는 아래식을 만족한다.</p>
+<p><span class="math display">\[{\bf p}_\star^\top {\bf P} = {\bf p}_\star^\top\]</span></p>
+<p>즉 <span class="math inline">\({\bf p}_\star^\top\)</span>는 정상분포의 정의를 만족한다.</p>
+<ul>
+<li>의미1: 따라서 <span class="math inline">\({\bf p}_\star^\top\)</span>가 존재한다면, <span class="math inline">\({\bf p}_\star^\top={\boldsymbol \pi}^\top\)</span>라고 놓을 수 있다.</li>
+<li>의미2: <span class="math inline">\({\bf P}\)</span>가 동일한 row를 가지는 어떠한 매트릭스로 수렴한다면, 아무 row나 가져와서 <span class="math inline">\({\boldsymbol \pi}^\top\)</span>라고 주장해도 무방하다.</li>
+<li><strong>주의: 이 이론에서 finite의 조건이 빠진다면 분포의 정의를 만족하지 않을 수 있다.</strong> (좀 이따가 설명)</li>
+</ul>
+<p><code>-</code> 예제1: 극한분포가 존재하지 않는 경우1</p>
+<p><code>-</code> 예제2: 극한분포가 존재하지 않는 경우2</p>
+<p><code>-</code> <strong>Thm</strong>: 확률변수열 <span class="math inline">\(\{X_t\}\)</span>가 finite, irreducible, aperiodic HMC 라고 하자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 그렇다면 극한분포 <span class="math inline">\({\bf p}_{\star}^\top\)</span>이 항상 존재한다.</p>
+</section>
+<section id="finite-hmc에-대한-정리" class="level1">
+<h1>FINITE HMC에 대한 정리</h1>
+<section id="이론의-정리" class="level2">
+<h2 class="anchored" data-anchor-id="이론의-정리">이론의 정리</h2>
+<p><code>-</code> <span class="math inline">\(\{X_t\}\)</span>는 HMC 라고 하자.</p>
 <table class="table">
 <colgroup>
 <col style="width: 9%">
@@ -492,7 +455,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <th style="text-align: center;">IRR(연결)</th>
 <th style="text-align: center;">AP(비주기)</th>
 <th style="text-align: center;"><span class="math inline">\({\bf P}\)</span>의 수렴</th>
-<th style="text-align: center;">동일한 row</th>
+<th style="text-align: center;">극한분포유일존재</th>
 <th style="text-align: center;">정상분포존재</th>
 <th style="text-align: center;">정상분포유일</th>
 <th style="text-align: center;">에르고딕정리를 만족</th>
@@ -554,11 +517,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
+<p><code>-</code> CaseNO==1 의 예제</p>
+</section>
+<section id="emprical-분포-정상분포-극한분포" class="level2">
+<h2 class="anchored" data-anchor-id="emprical-분포-정상분포-극한분포">Emprical 분포, 정상분포, 극한분포</h2>
+<p><code>-</code> Emprical distribution, 정상분포, 극한분포</p>
+<ul>
+<li><span class="math inline">\(\bar{\boldsymbol \pi}^\top\)</span>: 하나의 <span class="math inline">\(\omega\)</span>에 대한 확률변수열 <span class="math inline">\(\{X_t\}\)</span>의 emprical distribution (time average로 분포를 추정)</li>
+<li><span class="math inline">\({\boldsymbol \pi}^\top\)</span>: 모든 <span class="math inline">\(\omega\)</span>를 고려하였을 경우 확률변수열 <span class="math inline">\(\{X_t\}\)</span>의 정상분포.</li>
+<li><span class="math inline">\({\bf p}_{\star}^\top\)</span>: <span class="math inline">\(\omega\)</span>와 무관하게 <span class="math inline">\({\bf P}\)</span>의 극한으로 얻어지는 <span class="math inline">\(\{X_t\}\)</span>의 극한분포. // 마코프체인에 특화</li>
+</ul>
+<p><code>-</code> 표로 정리하면 아래와 같다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Empirical 분포</th>
+<th style="text-align: center;">정상분포</th>
+<th style="text-align: center;">극한분포</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">용어가 통용되는 범위</td>
+<td style="text-align: center;">모든 확률과정</td>
+<td style="text-align: center;">모든 확률과정</td>
+<td style="text-align: center;">마코프체인</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">기호</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{\boldsymbol \pi} = \frac{1}{T}\begin{bmatrix}{\tt sum}(X_t==0) \\ {\tt sum}(X_t==1)\end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\({\boldsymbol \pi}=\begin{bmatrix}\mathbb{E}(I(X=0))\\ \mathbb{E}(I(X=1)) \end{bmatrix}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\({\bf p}_{\star}= \lim_{t\to \infty}\begin{bmatrix}p_{?0}^{(t)} \\ p_{?1}^{(t)} \end{bmatrix}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\omega\)</span>의 고려</td>
+<td style="text-align: center;">하나의 <span class="math inline">\(\omega\)</span>만 고려해 계산</td>
+<td style="text-align: center;">모든 <span class="math inline">\(\omega\)</span> 고려해 계산</td>
+<td style="text-align: center;"><span class="math inline">\(\omega\)</span>를 고려하지 않고 계산</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">통계느낌(분포느낌?)</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">이론적인값?</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">데이터와 관련</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">극한과 관련</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">O</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">LLN과 관련</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">느낌</td>
+<td style="text-align: center;">데이터로 계산한 평균값</td>
+<td style="text-align: center;">이론적인 기대값</td>
+<td style="text-align: center;">이론적인 수렴값</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="이론들의-의미를-다시-고찰" class="level2">
+<h2 class="anchored" data-anchor-id="이론들의-의미를-다시-고찰">이론들의 의미를 다시 고찰</h2>
+<p><code>-</code> 에르고딕정리: 임피리컬분포와 정상분포에 관련한 정리 (LLN보다 더 약한 조건을 가짐)</p>
+<ul>
+<li>의미1: 에르고딕 정리를 만족하지 못하는 경우 하나의 확률변수열을 이용한 추론이 불가능</li>
+</ul>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## 예시</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>P <span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb1-3"><a href="#cb1-3"></a>             [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb1-4"><a href="#cb1-4"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb1-5"><a href="#cb1-5"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]])<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>array([[0.5, 0.5, 0. , 0. ],
+       [0.5, 0.5, 0. , 0. ],
+       [0. , 0. , 0.5, 0.5],
+       [0. , 0. , 0.5, 0.5]])</code></pre>
+</div>
+</div>
+<ul>
+<li>의미2: 에르고딕 정리를 만족하는 경우 <span class="math inline">\(X_1,X_2,\dots\)</span>이 동일한 분포를 가지지 않지만 무시하고 <span class="math inline">\(\pi\)</span>를 추정할 수있다.</li>
+</ul>
+<p><code>-</code> 극한분포와 관련된 이론: 극한분포의 느낌은 초기값에 대한 삭제임</p>
+<ul>
+<li>극한분포는 어차피 <span class="math inline">\(\omega\)</span>를 신경안씀</li>
+<li><span class="math inline">\({\boldsymbol \mu}_0\)</span>는 아무상관이 없음</li>
+<li>결국 극한분포가 존재한다면 시간의존성이 삭제된다는 의미임</li>
+</ul>
+</section>
+<section id="스토리정리" class="level2">
+<h2 class="anchored" data-anchor-id="스토리정리">스토리정리</h2>
+</section>
+</section>
+<section id="예제-한쪽-방향으로만-갈래" class="level1">
+<h1>예제: 한쪽 방향으로만 갈래</h1>
+<p>확률변수열 <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하고, 그 transition matrix <span class="math inline">\({\bf P}\)</span> (혹은 그 비슷한 것) 가 아래와 같다고 하자.</p>
+<p><span class="math display">\[{\bf P} = \begin{bmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \dots \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; \dots \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; \dots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; \dots \\
+\dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots
+\end{bmatrix}\]</span></p>
+<p><code>-</code> 의미: <span class="math inline">\(i \to i+1\)</span>와 같은 평행이동만 한다는 뜻이다.</p>
+<p><code>-</code> 특징1: 정상분포가 존재하지 않음.</p>
+<p>정상분포 <span class="math inline">\({\boldsymbol \pi}^\top=[\pi_0,\pi_1,\pi_2,\dots]\)</span> 가 존재하기 위해서는 아래가 성립해야 한다.</p>
+<ul>
+<li><span class="math inline">\(\pi_0=\pi_1\)</span></li>
+<li><span class="math inline">\(\pi_1=\pi_2\)</span></li>
+<li><span class="math inline">\(\pi_1=\pi_2\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ul>
+<p>즉 모든 <span class="math inline">\(n \in \mathbb{N}_0\)</span>에 대하여 <span class="math inline">\(\pi_0=\pi_n\)</span>이 성립해아한다. 그런데 그럴 수 없다.</p>
+<p><code>-</code> 특징2: <span class="math inline">\({\bf P}\)</span>의 거듭제곱이 동일한 row vector를 가지는 매트릭스로 수렴하지만, <span class="math inline">\({\bf p}_\star^\top\)</span>가 극한분포가 되지 않음.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb3-2"><a href="#cb3-2"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb3-3"><a href="#cb3-3"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb3-4"><a href="#cb3-4"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb3-5"><a href="#cb3-5"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]])</span>
+<span id="cb3-6"><a href="#cb3-6"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([[0, 0, 1, 0, 0],
+       [0, 0, 0, 1, 0],
+       [0, 0, 0, 0, 1],
+       [0, 0, 0, 0, 0],
+       [0, 0, 0, 0, 0]])</code></pre>
+</div>
+</div>
+<p><span class="math inline">\({\bf p}_{\star}^\top\)</span>는 그냥 0으로 수렴한다. (왜냐하면 모든 <span class="math inline">\(i \in S = \mathbb{N}_0\)</span>에 대하여 <span class="math inline">\({\bf p}_{\star}^\top\)</span>의 <span class="math inline">\(i\)</span>-th element는 0 이므로) 따라서 <span class="math inline">\({\tt sum}({\bf p}_{\star}^\top)=0\)</span> 이다. 그래서 <span class="math inline">\({\bf p}_{\star}^\top\)</span>은 pmf의 정의를 만족하지 않음.</p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>세로로 읽을때 값이 같다면<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>에르고딕 마코프체인이라는 의미<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
