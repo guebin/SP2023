@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2023-05-11">
 
-<title>SP2023 - 11wk-1: 마코프체인 (8) – dr</title>
+<title>SP2023 - 11wk-1: 마코프체인 (8)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">11wk-1: 마코프체인 (8) – dr</h1>
+      <h1 class="quarto-secondary-nav-title">11wk-1: 마코프체인 (8)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -177,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">11wk-1: 마코프체인 (8) – dr</h1>
+      <h1 class="title d-none d-lg-block">11wk-1: 마코프체인 (8)</h1>
                       </div>
   </div>
     
@@ -325,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link active">11wk-1: 마코프체인 (8) – dr</a>
+  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link active">11wk-1: 마코프체인 (8)</a>
   </div>
 </li>
       </ul>
@@ -341,7 +341,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#예비학습" id="toc-예비학습" class="nav-link active" data-scroll-target="#예비학습">예비학습</a>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#예비학습" id="toc-예비학습" class="nav-link" data-scroll-target="#예비학습">예비학습</a>
   <ul class="collapse">
   <li><a href="#약한조건-약한정리-강한조건-강한정리" id="toc-약한조건-약한정리-강한조건-강한정리" class="nav-link" data-scroll-target="#약한조건-약한정리-강한조건-강한정리">약한조건, 약한정리, 강한조건, 강한정리</a></li>
   <li><a href="#헷갈리는-표현-infty의-포함" id="toc-헷갈리는-표현-infty의-포함" class="nav-link" data-scroll-target="#헷갈리는-표현-infty의-포함">헷갈리는 표현: <span class="math inline">\(\infty\)</span>의 포함</a></li>
@@ -364,6 +365,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+</section>
 <section id="예비학습" class="level1">
 <h1>예비학습</h1>
 <section id="약한조건-약한정리-강한조건-강한정리" class="level2">
@@ -424,8 +428,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>의미2: <span class="math inline">\({\bf P}\)</span>가 동일한 row를 가지는 어떠한 매트릭스로 수렴한다면, 아무 row나 가져와서 <span class="math inline">\({\boldsymbol \pi}^\top\)</span>라고 주장해도 무방하다.</li>
 <li><strong>주의: 이 이론에서 finite의 조건이 빠진다면 분포의 정의를 만족하지 않을 수 있다.</strong> (좀 이따가 설명)</li>
 </ul>
-<p><code>-</code> 예제1: 극한분포가 존재하지 않는 경우1</p>
-<p><code>-</code> 예제2: 극한분포가 존재하지 않는 경우2</p>
+<p><code>-</code> 예제1: 극한분포가 존재하지 않는 경우1 (<strong>AP조건을 만족하지 않는 경우</strong>)</p>
+<p>예시1</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>P<span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb1-2"><a href="#cb1-2"></a>             [<span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb1-3"><a href="#cb1-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>array([[0, 1],
+       [1, 0]])</code></pre>
+</div>
+</div>
+<p>예시2</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>P<span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb3-2"><a href="#cb3-2"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb3-3"><a href="#cb3-3"></a>             [<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>]])</span>
+<span id="cb3-4"><a href="#cb3-4"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>array([[0, 1, 0],
+       [0, 0, 1],
+       [1, 0, 0]])</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2: 극한분포가 존재하지 않는 경우2 (<strong>IRR조건을 만족하지 않는 경우</strong>)</p>
+<p>예시1</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb5-2"><a href="#cb5-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
+<span id="cb5-3"><a href="#cb5-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([[1, 0],
+       [0, 1]])</code></pre>
+</div>
+</div>
+<p>예시2</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb7-2"><a href="#cb7-2"></a>              [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb7-3"><a href="#cb7-3"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb7-4"><a href="#cb7-4"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]])<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>array([[0.25, 0.25, 0.  , 0.  ],
+       [0.25, 0.25, 0.  , 0.  ],
+       [0.  , 0.  , 0.25, 0.25],
+       [0.  , 0.  , 0.25, 0.25]])</code></pre>
+</div>
+</div>
 <p><code>-</code> <strong>Thm</strong>: 확률변수열 <span class="math inline">\(\{X_t\}\)</span>가 finite, irreducible, aperiodic HMC 라고 하자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 그렇다면 극한분포 <span class="math inline">\({\bf p}_{\star}^\top\)</span>이 항상 존재한다.</p>
 </section>
 <section id="finite-hmc에-대한-정리" class="level1">
@@ -608,12 +658,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>의미1: 에르고딕 정리를 만족하지 못하는 경우 하나의 확률변수열을 이용한 추론이 불가능</li>
 </ul>
 <div class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## 예시</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>P <span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
-<span id="cb1-3"><a href="#cb1-3"></a>             [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
-<span id="cb1-4"><a href="#cb1-4"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
-<span id="cb1-5"><a href="#cb1-5"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## 예시</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>P <span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb9-3"><a href="#cb9-3"></a>             [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb9-4"><a href="#cb9-4"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
+<span id="cb9-5"><a href="#cb9-5"></a>             [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]])<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>array([[0.5, 0.5, 0. , 0. ],
        [0.5, 0.5, 0. , 0. ],
@@ -633,6 +683,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="스토리정리" class="level2">
 <h2 class="anchored" data-anchor-id="스토리정리">스토리정리</h2>
+<p><code>-</code> FINITE HMC는 일단 정상분포라는게 존재함. 그런데 유일하지 않을 수 있음.</p>
+<p><code>-</code> FINITE HMC는 크게보면 IRR인 케이스와 IRR 아닌 케이스로 나누어짐</p>
+<ul>
+<li>그런데 IRR이 아닌 케이스는 IRR인 케이스들의 조합으로 나누어 생각할 수 있음</li>
+<li>그래서 어차피 신경쓸 필요 없음.</li>
+<li>따라서 모든 마코프체인은 IRR이라고 가정해버려도 무방</li>
+</ul>
+<p><code>-</code> 만약에 HMC가 (1) FINITE (2) IRR 이면 유일한 정상분포가 존재.</p>
+<ul>
+<li>심지어 이 조건에서는 에르고딕정리를 이용해서 임피리컬 분포로 정상분포를 estimate 할 수 있음.</li>
+</ul>
+<p><code>-</code> 그러면 HMC가 (1) FINITE (2) IRR 이면 다 끝?</p>
+<ul>
+<li>언뜻 생각하면 그런거 같음.</li>
+<li>그런데 에르고딕 정리를 만족한다고 해서 초기분포에 대한 기억이 사라지는건 아님</li>
+<li>몇 가지 응용예제에서는 초기분포에 대한 의존성을 삭제시키는 것이 매우 중요함.</li>
+<li>이걸 위해서는 AP조건이 추가되어야 함.</li>
+</ul>
+<p><code>-</code> HMC가 (1) FINITE (2) IRR (3) AP 라면 아주 좋음.</p>
 </section>
 </section>
 <section id="예제-한쪽-방향으로만-갈래" class="level1">
@@ -657,12 +726,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>즉 모든 <span class="math inline">\(n \in \mathbb{N}_0\)</span>에 대하여 <span class="math inline">\(\pi_0=\pi_n\)</span>이 성립해아한다. 그런데 그럴 수 없다.</p>
 <p><code>-</code> 특징2: <span class="math inline">\({\bf P}\)</span>의 거듭제곱이 동일한 row vector를 가지는 매트릭스로 수렴하지만, <span class="math inline">\({\bf p}_\star^\top\)</span>가 극한분포가 되지 않음.</p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
-<span id="cb3-2"><a href="#cb3-2"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
-<span id="cb3-3"><a href="#cb3-3"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
-<span id="cb3-4"><a href="#cb3-4"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
-<span id="cb3-5"><a href="#cb3-5"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]])</span>
-<span id="cb3-6"><a href="#cb3-6"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb11-2"><a href="#cb11-2"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb11-3"><a href="#cb11-3"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb11-4"><a href="#cb11-4"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb11-5"><a href="#cb11-5"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]])</span>
+<span id="cb11-6"><a href="#cb11-6"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>array([[0, 0, 1, 0, 0],
        [0, 0, 0, 1, 0],
