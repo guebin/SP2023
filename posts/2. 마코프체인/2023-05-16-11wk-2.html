@@ -352,38 +352,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>git add .</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>git commit <span class="op">-</span>m . </span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="op">!</span>git push </span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="op">!</span>quarto publish <span class="op">--</span>no<span class="op">-</span>browser <span class="op">--</span>no<span class="op">-</span>prompt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[main dfe4dcc] .
- 2 files changed, 100 insertions(+)
-Enumerating objects: 11, done.
-Counting objects: 100% (11/11), done.
-Delta compression using up to 16 threads
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (6/6), 1.30 KiB | 1.30 MiB/s, done.
-Total 6 (delta 5), reused 0 (delta 0)
-remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
-To https://github.com/guebin/SP2023.git
-   4f19358..dfe4dcc  main -&gt; main
-From https://github.com/guebin/SP2023
- * branch            gh-pages   -&gt; FETCH_HEAD
-Rendering for publish:
-
-[ 1/21] about.qmd
-[ 2/21] posts/2023-04-10-6wk-2-mid.ipynb
-[ 3/21] posts/2023-03-07-1wk-2.ipynb
-[ 4/21] posts/2. 마코프체인/2023-04-27-9wk-1.ipynb</code></pre>
-</div>
-</div>
+<p><code>-</code> 수업시간 중 잘못 설명한 부분이 있어서 재촬영합니다.</p>
 </section>
 <section id="imports" class="level1">
 <h1>imports</h1>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="예비학습-동치류" class="level1">
@@ -393,13 +367,13 @@ Rendering for publish:
 <p><code>-</code> 같다(=) 라는 개념의 추상화</p>
 <p><code>-</code> 예시1: 아래의 리스트에서 같은 원소끼리 묶어라.</p>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>[1, 1, 2, 2, 3, 3, 3]</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>[[<span class="dv">1</span>,<span class="dv">1</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>[[<span class="dv">1</span>,<span class="dv">1</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>[[1, 1], [2, 2], [3, 3, 3]]</code></pre>
 </div>
@@ -409,8 +383,8 @@ Rendering for publish:
 </blockquote>
 <p><code>-</code> 예시2: 아래의 리스트에서 같은 원소끼리 묶어라.</p>
 <div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]</span>
-<span id="cb8-2"><a href="#cb8-2"></a>lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]</span>
+<span id="cb6-2"><a href="#cb6-2"></a>lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>[1, 1.0, 2, 2, 3, 3, 3]</code></pre>
 </div>
@@ -428,8 +402,8 @@ Rendering for publish:
 </ul>
 <p><code>-</code> 아래의 예시를 다시 관찰하자.</p>
 <div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]</span>
-<span id="cb10-2"><a href="#cb10-2"></a>lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a>lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>[1, 1.0, 2, 2, 3, 3, 3]</code></pre>
 </div>
@@ -437,14 +411,14 @@ Rendering for publish:
 <p>(경우1)</p>
 <p>판단기준을 “수학적인 값이 같음”으로 설정한다면 <code>lst[0]</code>과 <code>lst[1]</code>은 같다.</p>
 <div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>lst[<span class="dv">0</span>] <span class="op">==</span> lst[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>lst[<span class="dv">0</span>] <span class="op">==</span> lst[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>따라서 아래와 같은 분류가 합리적이다.</p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>[[<span class="dv">1</span>, <span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>[[<span class="dv">1</span>, <span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>[[1, 1.0], [2, 2], [3, 3, 3]]</code></pre>
 </div>
@@ -452,14 +426,14 @@ Rendering for publish:
 <p>(경우2)</p>
 <p>판단기준을 “수학적인 값이 같음 &amp; 파이썬에서의 자료형이 일치” 로 설정한다면 <code>lst[0]</code>과 <code>lst[1]</code>은 다르다.</p>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">type</span>(lst[<span class="dv">0</span>]) <span class="op">==</span> <span class="bu">type</span>(lst[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="bu">type</span>(lst[<span class="dv">0</span>]) <span class="op">==</span> <span class="bu">type</span>(lst[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>따라서 아래와 같은 분류가 합리적이다.</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>[[<span class="dv">1</span>], [<span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>[[<span class="dv">1</span>], [<span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>[[1], [1.0], [2, 2], [3, 3, 3]]</code></pre>
 </div>
@@ -467,7 +441,7 @@ Rendering for publish:
 <p>(경우3)</p>
 <p>판단기준을 “파이썬에서의 자료형이 일치” 로 설정한다면? 아래와 같은 분류도 합리적이다.</p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>], [<span class="fl">1.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>], [<span class="fl">1.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>[[1, 2, 2, 3, 3, 3], [1.0]]</code></pre>
 </div>
@@ -482,7 +456,7 @@ Rendering for publish:
 </ul>
 <p>로 해석한다면, 아래와 같이 원소를 묶을 수 있다.</p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>[[<span class="dv">1</span>, <span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>[[<span class="dv">1</span>, <span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>[[1, 1.0], [2, 2], [3, 3, 3]]</code></pre>
 </div>
@@ -493,7 +467,7 @@ Rendering for publish:
 </ul>
 <p>로 해석한다면, 아래와 같이 원소를 묶을 수 있다.</p>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>[[<span class="dv">1</span>], [<span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>[[<span class="dv">1</span>], [<span class="fl">1.0</span>], [<span class="dv">2</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>[[1], [1.0], [2, 2], [3, 3, 3]]</code></pre>
 </div>
@@ -504,7 +478,7 @@ Rendering for publish:
 </ul>
 <p>로 해석한다면, 아래와 같이 원소를 묶을 수 있다.</p>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>], [<span class="fl">1.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>], [<span class="fl">1.0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>[[1, 2, 2, 3, 3, 3], [1.0]]</code></pre>
 </div>
@@ -588,14 +562,14 @@ Rendering for publish:
 <p><span class="math display">\[0 \to 3\]</span></p>
 <p>이라고 쓸 수 있다. 이 예제의 경우</p>
 <ul>
-<li><span class="math inline">\(0 \to 0\)</span>, <span class="math inline">\(0 \to 1\)</span>, <span class="math inline">\(0 \to 2\)</span>, <span class="math inline">\(0 \to 3\)</span>, <span class="math inline">\(0 \to 4\)</span></li>
+<li><span class="math inline">\(0 \to 1\)</span>, <span class="math inline">\(0 \to 2\)</span>, <span class="math inline">\(0 \to 3\)</span>, <span class="math inline">\(0 \to 4\)</span>, <span class="math inline">\(0\to 0\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 <li><span class="math inline">\(1 \to 1\)</span>, <span class="math inline">\(1 \to 2\)</span>, <span class="math inline">\(1 \to 3\)</span></li>
 <li><span class="math inline">\(2 \to 1\)</span>, <span class="math inline">\(2 \to 2\)</span>, <span class="math inline">\(2 \to 3\)</span></li>
 <li><span class="math inline">\(3 \to 1\)</span>, <span class="math inline">\(3 \to 2\)</span>, <span class="math inline">\(3 \to 3\)</span></li>
 </ul>
 <p>와 같다.</p>
 <blockquote class="blockquote">
-<p>여기서 제가 설명잘못했는데요, <span class="math inline">\(0 \to 0\)</span> 입니다.</p>
+<p>여기서 제가 설명잘못했는데요, 0회도 포함시킨다고 하면 <span class="math inline">\(0 \to 0\)</span> 입니다.</p>
 </blockquote>
 <p><code>-</code> 다시 가짜정의의 보충설명 (2) – (1)을 이어서</p>
 <ul>
@@ -635,10 +609,10 @@ Rendering for publish:
 <li><span class="math inline">\(p_{22}^{(2)}=0.5\)</span></li>
 </ul>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
-<span id="cb28-2"><a href="#cb28-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>],</span>
-<span id="cb28-3"><a href="#cb28-3"></a>              [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>]])</span>
-<span id="cb28-4"><a href="#cb28-4"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>P <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb26-2"><a href="#cb26-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>],</span>
+<span id="cb26-3"><a href="#cb26-3"></a>              [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb26-4"><a href="#cb26-4"></a>P<span class="op">@</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>array([[0.  , 0.5 , 0.5 ],
        [0.  , 0.75, 0.25],
@@ -675,7 +649,7 @@ Rendering for publish:
 <li><span class="math inline">\(i \to j\)</span> and <span class="math inline">\(j \to i\)</span></li>
 </ul>
 <p>임을 의미한다. <span class="math inline">\(i,j\)</span>가 상호도달할 경우 기호로는 <span class="math inline">\(i \leftrightarrow j\)</span> 와 같이 표현한다.</p>
-<p><code>-</code> 이론: 아래가 성립한다.</p>
+<p><code>-</code> 이론: 아래가 성립한다. (굳이 증명할 필요없음. 결과만 기억해도 OK)</p>
 <ul>
 <li><span class="math inline">\(i \leftrightarrow i\)</span></li>
 <li><span class="math inline">\(i \leftrightarrow j\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(j \leftrightarrow i\)</span></li>
@@ -705,9 +679,9 @@ Rendering for publish:
 </div>
 <p><code>-</code> 예시2: 아래와 같은 transition matrix를 가지는 마코프체인의 경우</p>
 <div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
-<span id="cb30-2"><a href="#cb30-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
-<span id="cb30-3"><a href="#cb30-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb28-2"><a href="#cb28-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
+<span id="cb28-3"><a href="#cb28-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>array([[1, 0],
        [0, 1]])</code></pre>
@@ -724,7 +698,13 @@ Rendering for publish:
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>0회도 포함시키면 <span class="math inline">\(0\to 0\)</span> 라고 볼 수 있음.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
