@@ -390,17 +390,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>앞으로 마코프체인에 대한 성질을 연구할때 IRR 은 그냥 가정해도 무방하다.</li>
 </ol>
 <p><code>-</code> 예시1: 아래와 같은 전이행렬을 고려하자.</p>
-<div class="cell" data-execution_count="188">
+<div class="cell" data-execution_count="193">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>],</span>
 <span id="cb2-2"><a href="#cb2-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>]])</span>
 <span id="cb2-3"><a href="#cb2-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="188">
+<div class="cell-output cell-output-display" data-execution_count="193">
 <pre><code>array([[1, 0],
        [0, 1]])</code></pre>
 </div>
 </div>
 <p><strong>해석1</strong>: 모든 분포가 정상분포라고 해석</p>
-<p><strong>해석2</strong> 전체마코프체인을 쪼개서 (1) 상태0에만 머무는 마코프체인, (2) 상태1에만 머무는 마코프체인으로 나누어 생각하고 각각에 대한 정상분포가 1이라고 해석.</p>
+<p><strong>해석2:</strong> 전체마코프체인을 쪼개서 (1) 상태0에만 머무는 마코프체인, (2) 상태1에만 머무는 마코프체인으로 나누어 생각하고 각각에 대한 정상분포가 1이라고 해석.</p>
+<p><code>-</code> 예시1: 아래와 같은 전이행렬을 고려하자.</p>
+<div class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>P <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb4-2"><a href="#cb4-2"></a>              [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb4-3"><a href="#cb4-3"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],</span>
+<span id="cb4-4"><a href="#cb4-4"></a>              [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb4-5"><a href="#cb4-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="196">
+<pre><code>array([[1, 0, 0, 0],
+       [0, 1, 0, 0],
+       [0, 0, 0, 1],
+       [0, 0, 1, 0]])</code></pre>
+</div>
+</div>
+<p><strong>해석:</strong> 전체마코프체인을 쪼개서 (1) 상태0에만 머무는 마코프체인, (2) 상태1에만 머무는 마코프체인 (3) 상태 2,3을 셔플하는 마코프체인으로 생각하자. 즉 상태공간을 아래와 같이 분리하자.</p>
+<p><span class="math display">\[E = E_1 \uplus E_2 \uplus E_3 = \{0\} \uplus \{1\} \uplus \{2,3\}\]</span></p>
+<p>각 상태공간에 대응하는 마코프체인의 정상분포를 <span class="math inline">\({\boldsymbol \pi}_1^\top,{\boldsymbol \pi}_2^\top,{\boldsymbol \pi}_3^\top\)</span> 이라고 하자. 전체 정상분포 <span class="math inline">\({\boldsymbol \pi}\)</span>는 아래를 만족하는 어떠한 분포라도 무관하다.</p>
+<p><span class="math display">\[{\boldsymbol \pi} = a{\boldsymbol \pi}_1+b{\boldsymbol \pi}_2+c{\boldsymbol \pi}_3.\]</span></p>
+<p>단, 여기에서 <span class="math inline">\(a+b+c=1\)</span> 이다.</p>
 </section>
 <section id="예비학습" class="level1">
 <h1>예비학습</h1>
@@ -438,14 +457,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> <span class="math inline">\(a_n \to 0\)</span> 이라고 해서 <span class="math inline">\(\lim_{n\to\infty} S_n &lt;\infty\)</span> 인건 아니다.</p>
 <p><code>-</code> 예시1: <span class="math inline">\(a_n=\frac{1}{2^n}\)</span>, 수렴하는 경우</p>
 <div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">sum</span>([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10000</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">sum</span>([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10000</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="98">
 <pre><code>1.0</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2: <span class="math inline">\(a_n = \frac{1}{n}\)</span>, 수렴안하는 경우</p>
 <div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">sum</span>([<span class="dv">1</span><span class="op">/</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10000</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">sum</span>([<span class="dv">1</span><span class="op">/</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10000</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
 <pre><code>9.787506036044348</code></pre>
 </div>
@@ -510,12 +529,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> 체크: 이 마코프체인은 IRR하다.</p>
 <p><code>-</code> case1: <span class="math inline">\(p=0.99\)</span> 라고 하자.</p>
 <div class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>p<span class="op">=</span><span class="fl">0.99</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
-<span id="cb9-3"><a href="#cb9-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
-<span id="cb9-5"><a href="#cb9-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
-<span id="cb9-6"><a href="#cb9-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>p<span class="op">=</span><span class="fl">0.99</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
+<span id="cb11-3"><a href="#cb11-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
+<span id="cb11-5"><a href="#cb11-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
+<span id="cb11-6"><a href="#cb11-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="171">
 <pre><code>array([[0.01, 0.99, 0.  , ..., 0.  , 0.  , 0.  ],
        [0.01, 0.  , 0.99, ..., 0.  , 0.  , 0.  ],
@@ -527,7 +546,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="172">
 <pre><code>array([[0., 0., 0., ..., 0., 0., 0.],
        [0., 0., 0., ..., 0., 0., 0.],
@@ -541,12 +560,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모든 상태가 일시적인듯</p>
 <p><code>-</code> case2: <span class="math inline">\(p=0.1\)</span> 이라고 하자.</p>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>p<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
-<span id="cb13-3"><a href="#cb13-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
-<span id="cb13-5"><a href="#cb13-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
-<span id="cb13-6"><a href="#cb13-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>p<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
+<span id="cb15-3"><a href="#cb15-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
+<span id="cb15-5"><a href="#cb15-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
+<span id="cb15-6"><a href="#cb15-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <pre><code>array([[0.9, 0.1, 0. , ..., 0. , 0. , 0. ],
        [0.9, 0. , 0.1, ..., 0. , 0. , 0. ],
@@ -558,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>array([[0.88889, 0.09877, 0.01097, ..., 0.     , 0.     , 0.     ],
        [0.88889, 0.09877, 0.01097, ..., 0.     , 0.     , 0.     ],
@@ -572,12 +591,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모든 상태가 reccurent 인듯</p>
 <p><code>-</code> case3: <span class="math inline">\(p=0.5\)</span> 이라고 하자.</p>
 <div class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>p<span class="op">=</span><span class="fl">0.5</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
-<span id="cb17-3"><a href="#cb17-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
-<span id="cb17-5"><a href="#cb17-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
-<span id="cb17-6"><a href="#cb17-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>p<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>_P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
+<span id="cb19-3"><a href="#cb19-3"></a>_P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
+<span id="cb19-5"><a href="#cb19-5"></a>P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
+<span id="cb19-6"><a href="#cb19-6"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="175">
 <pre><code>array([[0.5, 0.5, 0. , ..., 0. , 0. , 0. ],
        [0.5, 0. , 0.5, ..., 0. , 0. , 0. ],
@@ -589,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="176">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">1000</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>(np.matrix(P)<span class="op">**</span><span class="dv">1000</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="176">
 <pre><code>array([[0.025, 0.025, 0.025, ..., 0.   , 0.   , 0.   ],
        [0.025, 0.025, 0.025, ..., 0.   , 0.   , 0.   ],
@@ -603,13 +622,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모르겠는데 ??</p>
 <p><strong>대충 맞춰보자.</strong></p>
 <div class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>Pstar <span class="op">=</span> P.copy()</span>
-<span id="cb21-2"><a href="#cb21-2"></a>pT <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb21-3"><a href="#cb21-3"></a>pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])</span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
-<span id="cb21-5"><a href="#cb21-5"></a>    Pstar <span class="op">=</span> Pstar<span class="op">@</span>P</span>
-<span id="cb21-6"><a href="#cb21-6"></a>    pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])    </span>
-<span id="cb21-7"><a href="#cb21-7"></a>np.array(pT).cumsum()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>Pstar <span class="op">=</span> P.copy()</span>
+<span id="cb23-2"><a href="#cb23-2"></a>pT <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb23-3"><a href="#cb23-3"></a>pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    Pstar <span class="op">=</span> Pstar<span class="op">@</span>P</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])    </span>
+<span id="cb23-7"><a href="#cb23-7"></a>np.array(pT).cumsum()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="181">
 <pre><code>array([  0.5       ,   1.        ,   1.375     , ..., 157.58090143,
        157.58888008, 157.59685793])</code></pre>
@@ -623,35 +642,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>-</code> 시각화</p>
 <div class="cell" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> calculate_pT(p): </span>
-<span id="cb23-2"><a href="#cb23-2"></a>    _P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
-<span id="cb23-3"><a href="#cb23-3"></a>    _P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
-<span id="cb23-4"><a href="#cb23-4"></a>    P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
-<span id="cb23-5"><a href="#cb23-5"></a>    P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
-<span id="cb23-6"><a href="#cb23-6"></a>    </span>
-<span id="cb23-7"><a href="#cb23-7"></a>    Pstar <span class="op">=</span> P.copy()</span>
-<span id="cb23-8"><a href="#cb23-8"></a>    pT <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb23-9"><a href="#cb23-9"></a>    pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])</span>
-<span id="cb23-10"><a href="#cb23-10"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb23-11"><a href="#cb23-11"></a>        Pstar <span class="op">=</span> Pstar<span class="op">@</span>P</span>
-<span id="cb23-12"><a href="#cb23-12"></a>        pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])    </span>
-<span id="cb23-13"><a href="#cb23-13"></a>    <span class="cf">return</span> np.array(pT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">def</span> calculate_pT(p): </span>
+<span id="cb25-2"><a href="#cb25-2"></a>    _P1 <span class="op">=</span> np.array([[i<span class="op">-</span>j <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>p</span>
+<span id="cb25-3"><a href="#cb25-3"></a>    _P2 <span class="op">=</span> np.array([[j<span class="op">-</span>i <span class="op">==</span> <span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>    P <span class="op">=</span> _P1<span class="op">+</span>_P2</span>
+<span id="cb25-5"><a href="#cb25-5"></a>    P[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> <span class="dv">1</span><span class="op">-</span>p </span>
+<span id="cb25-6"><a href="#cb25-6"></a>    </span>
+<span id="cb25-7"><a href="#cb25-7"></a>    Pstar <span class="op">=</span> P.copy()</span>
+<span id="cb25-8"><a href="#cb25-8"></a>    pT <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb25-10"><a href="#cb25-10"></a>    <span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb25-11"><a href="#cb25-11"></a>        Pstar <span class="op">=</span> Pstar<span class="op">@</span>P</span>
+<span id="cb25-12"><a href="#cb25-12"></a>        pT.append(Pstar[<span class="dv">0</span>,<span class="dv">0</span>])    </span>
+<span id="cb25-13"><a href="#cb25-13"></a>    <span class="cf">return</span> np.array(pT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>case1 <span class="op">=</span> calculate_pT(<span class="fl">0.6</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a>case2 <span class="op">=</span> calculate_pT(<span class="fl">0.4</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>case3 <span class="op">=</span> calculate_pT(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>case1 <span class="op">=</span> calculate_pT(<span class="fl">0.6</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a>case2 <span class="op">=</span> calculate_pT(<span class="fl">0.4</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>case3 <span class="op">=</span> calculate_pT(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plt.plot(case1.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.6$, transient'</span>, color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>plt.plot(case2.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.4$, positive recurrent'</span>, color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb25-3"><a href="#cb25-3"></a>plt.plot(case3.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.5$, null recurrent'</span>, color<span class="op">=</span><span class="st">'C2'</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plt.plot(case1.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.6$, transient'</span>, color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>plt.plot(case2.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.4$, positive recurrent'</span>, color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3"></a>plt.plot(case3.cumsum(),label<span class="op">=</span><span class="vs">r'$p=0.5$, null recurrent'</span>, color<span class="op">=</span><span class="st">'C2'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="182">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f5e2e7bfd00&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-18-12wk-1_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+<p><img src="2023-05-18-12wk-1_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -689,9 +708,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="예제3-8wk-1-예시3">예제3: 8wk-1, 예시3</h2>
 <p>EX: <span class="math inline">\(\{X_t\}\)</span>를 아래와 같은 transition matrix를 가지는 HMC라고 하자.</p>
 <div class="cell" data-execution_count="185">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>P <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">0.0</span>],</span>
-<span id="cb27-2"><a href="#cb27-2"></a>              [<span class="fl">0.05</span>,<span class="fl">0.95</span>]])</span>
-<span id="cb27-3"><a href="#cb27-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>P <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">0.0</span>],</span>
+<span id="cb29-2"><a href="#cb29-2"></a>              [<span class="fl">0.05</span>,<span class="fl">0.95</span>]])</span>
+<span id="cb29-3"><a href="#cb29-3"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="185">
 <pre><code>array([[1.  , 0.  ],
        [0.05, 0.95]])</code></pre>
@@ -718,10 +737,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 상태공간 <span class="math inline">\(E\)</span>에서 정의된 HMC 라고 하자. <span class="math inline">\(\{X_t\}\)</span>가 IRR &amp; recurrent 라고 가정하자. 그러면 모든 상태는 같은 주기를 가진다.</p>
 <p><code>-</code> 예시1: 아래와 같은 전이확률을 고려하자.</p>
 <div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb29-2"><a href="#cb29-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
-<span id="cb29-3"><a href="#cb29-3"></a>              <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb31-2"><a href="#cb31-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
+<span id="cb31-3"><a href="#cb31-3"></a>              <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="187">
 <pre><code>array([[0., 1., 0.],
        [0., 0., 1.],
@@ -750,11 +769,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="예제2">예제2</h3>
 <p><code>-</code> 아래와 같은 전이확률을 고려하자.</p>
 <div class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb31-2"><a href="#cb31-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
-<span id="cb31-3"><a href="#cb31-3"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb31-4"><a href="#cb31-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="fl">0.0</span>, <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb31-5"><a href="#cb31-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>P <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb33-2"><a href="#cb33-2"></a>              <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>,</span>
+<span id="cb33-3"><a href="#cb33-3"></a>              <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb33-4"><a href="#cb33-4"></a>              <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="fl">0.0</span>, <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="fl">0.0</span>]).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>array([[0.        , 1.        , 0.        , 0.        ],
        [0.        , 0.        , 0.        , 1.        ],
