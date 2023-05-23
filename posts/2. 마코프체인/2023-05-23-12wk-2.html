@@ -501,6 +501,14 @@ div.csl-indent {
 </section>
 <section id="nature와-정상분포" class="level1">
 <h1>nature와 정상분포</h1>
+<p><code>-</code> <strong>정의</strong> <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하자. 아래의 식을 만족하는</p>
+<p><span class="math display">\[\tilde{\boldsymbol \pi}^\top {\bf P} = \tilde{\boldsymbol \pi}^\top\]</span></p>
+<p><span class="math inline">\(\tilde{\boldsymbol \pi}^\top\)</span> 를 <strong><em>invariant measure</em></strong> 라고 한다. 만약에 <span class="math inline">\(\tilde{\boldsymbol \pi}^\top\)</span> 이 분포의 정의를 만족하면 <strong><em>stationary measure</em></strong> 혹은 <strong><em>stationary distribution</em></strong> 이라고 부른다.</p>
+<p><code>-</code> 예시: “오른쪽으로만 갈래” 예제에서는</p>
+<p><span class="math display">\[\tilde{\boldsymbol \pi}^\top = [1,1,1,\dots]\]</span></p>
+<p>이 수식</p>
+<p><span class="math display">\[\tilde{\boldsymbol \pi}^\top {\bf P} = \tilde{\boldsymbol \pi}^\top\]</span></p>
+<p>을 만족한다. 따라서 이 예제에서 <span class="math inline">\(\tilde{\boldsymbol \pi}^\top = [1,1,1,\dots]\)</span> 은 <strong><em>invariant measure</em></strong> 이다.</p>
 <p><code>-</code> <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하자. 각각에 대하여 아래가 성립한다.</p>
 <table class="table">
 <colgroup>
@@ -514,7 +522,7 @@ div.csl-indent {
 <tr class="header">
 <th style="text-align: center;">IRR</th>
 <th style="text-align: center;">nature</th>
-<th style="text-align: center;"><span class="math inline">\(\exists! \tilde{\boldsymbol \pi}\)</span> up to <span class="math inline">\(\times\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\exists! \tilde{\boldsymbol \pi}\)</span> up to multiplier</th>
 <th style="text-align: center;"><span class="math inline">\(\exists! {\boldsymbol \pi}\)</span></th>
 <th style="text-align: center;">에르고딕정리(<span class="math inline">\(\approx\)</span>LLN)</th>
 </tr>
