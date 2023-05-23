@@ -311,6 +311,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">12wk-2: 마코프체인 (10)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/2. 마코프체인/rest.html" class="sidebar-item-text sidebar-link">PR, NR, TR</a>
   </div>
 </li>
@@ -720,9 +725,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>그래프를 보니 발산할 것 같음</p>
 <p><code>-</code> 결론: 계산해보면 (이론적으로든, 시뮬레이션을 이용하든) 이 예제의 경우 아래와 같이 됨을 알 수 있다.</p>
 <ul>
-<li>경우1: <span class="math inline">\(p&gt;1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty} p_{00}^{(t)}&lt;\infty\)</span> <span class="math inline">\(\overset{def}{\Leftrightarrow}\)</span> state 0 is transient</li>
-<li>경우2: <span class="math inline">\(p&lt;1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty}p_{00}^{(t)}=\infty\)</span> with <span class="math inline">\(p_{00}^{(t)} \rightarrow c\)</span>, <span class="math inline">\(c&gt;0\)</span> <span class="math inline">\(\overset{def}{\Leftrightarrow}\)</span> state 0 is positive recurrent</li>
-<li>경우3: <span class="math inline">\(p=1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty} p_{00}^{(t)}=\infty\)</span> with <span class="math inline">\(p_{00}^{(t)} \rightarrow 0\)</span> <span class="math inline">\(\overset{def}{\Leftrightarrow}\)</span> state 0 is null recurrent</li>
+<li>경우1: <span class="math inline">\(p&gt;1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty} p_{00}^{(t)}&lt;\infty\)</span> <span class="math inline">\(\Leftrightarrow\)</span> state 0 is transient</li>
+<li>경우2: <span class="math inline">\(p&lt;1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty}p_{00}^{(t)}=\infty\)</span> with <span class="math inline">\(p_{00}^{(t)} \rightarrow c\)</span>, <span class="math inline">\(c&gt;0\)</span> <span class="math inline">\(\Leftrightarrow\)</span> state 0 is positive recurrent</li>
+<li>경우3: <span class="math inline">\(p=1/2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sum_{t=0}^{\infty} p_{00}^{(t)}=\infty\)</span> with <span class="math inline">\(p_{00}^{(t)} \rightarrow 0\)</span> <span class="math inline">\(\Leftrightarrow\)</span> state 0 is null recurrent</li>
 </ul>
 <p><code>-</code> <span class="math inline">\(p=0.45, p=0.5, p=0.55\)</span> 일 경우 <span class="math inline">\(\sum_{t=0}^{\infty}p_{00}^{(t)}\)</span>의 값을 시각화</p>
 <div class="cell" data-execution_count="45">
