@@ -336,15 +336,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#imports" id="toc-imports" class="nav-link active" data-scroll-target="#imports">imports</a></li>
-  <li><a href="#예비학습" id="toc-예비학습" class="nav-link" data-scroll-target="#예비학습">예비학습</a></li>
   <li><a href="#nature와-정상분포-cont" id="toc-nature와-정상분포-cont" class="nav-link" data-scroll-target="#nature와-정상분포-cont">nature와 정상분포 (cont)</a>
   <ul class="collapse">
   <li><a href="#지난시간" id="toc-지난시간" class="nav-link" data-scroll-target="#지난시간">지난시간</a></li>
   <li><a href="#이번시간" id="toc-이번시간" class="nav-link" data-scroll-target="#이번시간">이번시간</a></li>
   </ul></li>
   <li><a href="#periodicity" id="toc-periodicity" class="nav-link" data-scroll-target="#periodicity">periodicity</a></li>
-  <li><a href="#정리-markov-chain" id="toc-정리-markov-chain" class="nav-link" data-scroll-target="#정리-markov-chain">정리 (Markov Chain)</a></li>
-  <li><a href="#정리" id="toc-정리" class="nav-link" data-scroll-target="#정리">정리</a></li>
+  <li><a href="#정리-high-resolution" id="toc-정리-high-resolution" class="nav-link" data-scroll-target="#정리-high-resolution">정리 (high-resolution)</a></li>
+  <li><a href="#정리-low-resolution" id="toc-정리-low-resolution" class="nav-link" data-scroll-target="#정리-low-resolution">정리 (low-resolution)</a></li>
   </ul>
 </nav>
     </div>
@@ -360,12 +359,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="imports" class="level1">
 <h1>imports</h1>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="예비학습" class="level1">
-<h1>예비학습</h1>
 </section>
 <section id="nature와-정상분포-cont" class="level1">
 <h1>nature와 정상분포 (cont)</h1>
@@ -571,11 +567,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>모든 상태 <span class="math inline">\(i\)</span>에 대하여 주기를 구하라.</p>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-TR-HMC<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>는 극한분포가 존재하지 않는다.</p>
 <ul>
-<li>왜냐하면 <span class="math inline">\({\bf P}^{\star}\)</span>의 모든 row가 <span class="math inline">\({\bf 0}\)</span> 이므로.</li>
+<li>왜냐하면 <span class="math inline">\({\bf P}^{\star}={\bf 0}\)</span> 이므로</li>
 </ul>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-NR-HMC 역시 극한분포가 존재하지 않는다.</p>
 <ul>
-<li>왜냐하면 <span class="math inline">\({\bf P}^{\star}\)</span>의 모든 row가 <span class="math inline">\({\bf 0}\)</span> 이므로.</li>
+<li>왜냐하면 <span class="math inline">\({\bf P}^{\star}={\bf 0}\)</span> 이므로</li>
 </ul>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-PR-HMC 의 경우 AP 조건을 만족하면 극한분포 <span class="math inline">\({\bf p}_{\star}^\top\)</span>가 존재한다.</p>
 <table class="table">
@@ -620,8 +616,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </section>
-<section id="정리-markov-chain" class="level1">
-<h1>정리 (Markov Chain)</h1>
+<section id="정리-high-resolution" class="level1">
+<h1>정리 (high-resolution)</h1>
 <p><code>-</code> 우리가 결국에 보이고 싶은 정리는 아래의 형태이다.</p>
 <p><span class="math display">\[\bar{\boldsymbol \pi} \to {\boldsymbol \pi} ={\bf p}^\star\]</span></p>
 <p><code>-</code> 이게 가능한 형태의 마코프체인을 에르고딕이라고 하며 그 조건은 IRR, PR, AP 이다.</p>
@@ -674,8 +670,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </section>
-<section id="정리" class="level1">
-<h1>정리</h1>
+<section id="정리-low-resolution" class="level1">
+<h1>정리 (low-resolution)</h1>
 <p><code>-</code> 우리가 하고 싶었던 것: 어떠한 현상에 대하여, 확률공간 <span class="math inline">\((\Omega,{\cal F}, \mathbb{P})\)</span> 에 대한 완전한 기술</p>
 <p><code>-</code> 이것을 수행하는 방법.</p>
 <ul>
