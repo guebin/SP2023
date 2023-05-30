@@ -398,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -437,14 +437,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="베르누이-이항분포-포아송-지수분포" class="level2">
 <h2 class="anchored" data-anchor-id="베르누이-이항분포-포아송-지수분포">베르누이, 이항분포, 포아송, 지수분포</h2>
 <p><code>-</code> 베르누이</p>
-<div class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">1000</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>plt.hist(x)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>ax[<span class="dv">0</span>].hist((x <span class="op">&gt;</span> <span class="fl">0.5</span>)<span class="op">*</span><span class="fl">1.0</span>,color<span class="op">=</span><span class="st">'C0'</span>)<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>ax[<span class="dv">1</span>].hist(np.random.binomial(<span class="dv">1</span>,<span class="fl">0.5</span>,size<span class="op">=</span><span class="dv">1000</span>),color<span class="op">=</span><span class="st">'C1'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -456,7 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(X \sim Ber(p)\)</span>, <span class="math inline">\(p=0.5\)</span></li>
 </ul>
 <p><code>-</code> 이항분포: 베르누이의 합으로!</p>
-<div class="cell" data-execution_count="72">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> np.random.rand(<span class="dv">10</span><span class="op">*</span><span class="dv">100000</span>).reshape(<span class="dv">10</span>,<span class="dv">100000</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a>ax[<span class="dv">0</span>].hist((x<span class="op">&gt;</span><span class="fl">0.5</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>),bins<span class="op">=</span><span class="dv">9</span>)<span class="op">;</span></span>
@@ -500,32 +500,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\({\cal G}(6,1) \overset{d}{=} {\cal E}(1) + {\cal E}(1) +{\cal E}(1)+{\cal E}(1)+{\cal E}(1)+{\cal E}(1)\)</span></li>
 </ol>
 <p><code>-</code> inverse cdf를 이용하여 지수분포를 뽑을 수 있다고 가정하자.</p>
-<div class="cell" data-execution_count="85">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>gamma2 <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span>(<span class="dv">100000</span>,<span class="dv">2</span>)).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>plt.hist(gamma2,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="54">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>plt.hist(np.random.gamma(shape<span class="op">=</span><span class="dv">2</span>,scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="74">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>gamma6 <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span>(<span class="dv">100000</span>,<span class="dv">6</span>)).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="76">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>beta26 <span class="op">=</span> gamma2<span class="op">/</span>(gamma2<span class="op">+</span>gamma6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="80">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plt.hist(beta26,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="84">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
@@ -538,22 +538,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="pdf-정의">pdf 정의</h2>
 <p><code>-</code> 모티브: 그냥 pdf를 입력하면 알아서 샘플링되도록 할 수 없나?</p>
 <p><code>-</code> 예비학습: 감마함수</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>scipy.special.gamma(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>24.0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="87">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>g <span class="op">=</span> scipy.special.gamma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 베타분포의 pdf</p>
 <p><span class="math display">\[f_X(x) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]</span></p>
-<div class="cell" data-execution_count="91">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">def</span> f(x): </span>
 <span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">return</span> g(<span class="dv">2</span><span class="op">+</span><span class="dv">6</span>)<span class="op">/</span>(g(<span class="dv">2</span>)<span class="op">*</span>g(<span class="dv">6</span>)) <span class="op">*</span> x<span class="op">**</span>(<span class="dv">2</span><span class="op">-</span><span class="dv">1</span>) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>x)<span class="op">**</span>(<span class="dv">6</span><span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="94">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>_x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">10000</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>plt.plot(_x,f(_x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -567,40 +567,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="step1-초기화"><strong><em>step1: 초기화</em></strong></h3>
 <p><code>-</code> 베타분포에서 10만개의 샘플을 뽑아보자.</p>
 <p><code>-</code> 일단 <span class="math inline">\({\bf xx}=(x_0,x_1,\dots,x_{T-1})\)</span>를 초기화를 하자.</p>
-<div class="cell" data-execution_count="140">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>xx<span class="op">=</span>[<span class="fl">0.99</span>]</span>
 <span id="cb16-2"><a href="#cb16-2"></a>xx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="140">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>[0.99]</code></pre>
 </div>
 </div>
 <ul>
-<li>현재의 <span class="math inline">\(x_i\)</span>값은 모두 0.99이지만 궁극적으로는 <span class="math inline">\({\cal B}(2,6)\)</span>에서 생성된 샘플로 채우고 싶다.</li>
+<li>현재의 <span class="math inline">\(x_i\)</span>값은 <span class="math inline">\(x_0=0.99\)</span> 만 있지만 궁극적으로는 <span class="math inline">\({\cal B}(2,6)\)</span>에서 생성된 샘플로 채우고 싶다.</li>
 </ul>
 </section>
 <section id="step2-후보-샘플링" class="level3">
 <h3 class="anchored" data-anchor-id="step2-후보-샘플링"><strong><em>step2: 후보 샘플링</em></strong></h3>
 <p><code>-</code> 하나의 <span class="math inline">\(y\)</span> 을 균등분포에서 샘플링한다.</p>
-<div class="cell" data-execution_count="141">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>y <span class="op">=</span> np.random.rand()</span>
 <span id="cb18-3"><a href="#cb18-3"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="141">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>0.417022004702574</code></pre>
 </div>
 </div>
 </section>
 <section id="step3-비교" class="level3">
 <h3 class="anchored" data-anchor-id="step3-비교"><strong><em>step3: 비교</em></strong></h3>
-<p><code>-</code> xx[0] vs y 비교</p>
-<div class="cell" data-execution_count="142">
+<p><code>-</code> <span class="math inline">\(xx[0]\)</span> vs <span class="math inline">\(y\)</span></p>
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plt.plot(_x,f(_x))</span>
 <span id="cb20-2"><a href="#cb20-2"></a>plt.scatter(xx[<span class="dv">0</span>],<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
 <span id="cb20-4"><a href="#cb20-4"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
 <span id="cb20-5"><a href="#cb20-5"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
-<pre><code>&lt;matplotlib.collections.PathCollection at 0x7ff85f438df0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x7ff3eca2eb50&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-05-30-13wk-2_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
@@ -617,7 +617,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="step-14-반복-망했음" class="level3">
 <h3 class="anchored" data-anchor-id="step-14-반복-망했음"><strong><em>step 1~4 반복: 망했음</em></strong></h3>
-<div class="cell" data-execution_count="144">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
@@ -626,6 +626,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-6"><a href="#cb22-6"></a>        xx.append(y) </span>
 <span id="cb22-7"><a href="#cb22-7"></a>    <span class="cf">else</span>:</span>
 <span id="cb22-8"><a href="#cb22-8"></a>        xx.append(xx[t])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
 </section>
@@ -636,23 +642,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> 베타분포에서 10만개의 샘플을 뽑아보자.</p>
 <p><code>-</code> 일단 <span class="math inline">\({\bf xx}=(x_0,x_1,\dots,x_{T-1})\)</span>를 초기화를 하자.</p>
 <div class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>xx<span class="op">=</span>[<span class="fl">0.99</span>]</span>
-<span id="cb23-2"><a href="#cb23-2"></a>xx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>xx<span class="op">=</span>[<span class="fl">0.99</span>]</span>
+<span id="cb24-2"><a href="#cb24-2"></a>xx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="149">
 <pre><code>[0.99]</code></pre>
 </div>
 </div>
 <ul>
-<li>현재의 <span class="math inline">\(x_i\)</span>값은 모두 0.99이지만 궁극적으로는 <span class="math inline">\({\cal B}(2,6)\)</span>에서 생성된 샘플로 채우고 싶다.</li>
+<li>현재의 <span class="math inline">\(x_i\)</span>값은 <span class="math inline">\(x_0=0.99\)</span> 만 있지만 궁극적으로는 <span class="math inline">\({\cal B}(2,6)\)</span>에서 생성된 샘플로 채우고 싶다.</li>
 </ul>
 </section>
 <section id="step2-후보-샘플링-1" class="level3">
 <h3 class="anchored" data-anchor-id="step2-후보-샘플링-1"><strong><em>step2: 후보 샘플링</em></strong></h3>
 <p><code>-</code> 하나의 <span class="math inline">\(y\)</span> 을 균등분포에서 샘플링한다.</p>
 <div class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>y <span class="op">=</span> np.random.rand()</span>
-<span id="cb25-3"><a href="#cb25-3"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a>y <span class="op">=</span> np.random.rand()</span>
+<span id="cb26-3"><a href="#cb26-3"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="150">
 <pre><code>0.417022004702574</code></pre>
 </div>
@@ -660,18 +666,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="step3-비교-1" class="level3">
 <h3 class="anchored" data-anchor-id="step3-비교-1"><strong><em>step3: 비교</em></strong></h3>
-<p><code>-</code> xx[0] vs y 비교</p>
+<p><code>-</code> <span class="math inline">\(xx[0]\)</span> vs <span class="math inline">\(y\)</span></p>
 <div class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plt.plot(_x,f(_x))</span>
-<span id="cb27-2"><a href="#cb27-2"></a>plt.scatter(xx[<span class="dv">0</span>],<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
-<span id="cb27-4"><a href="#cb27-4"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
-<span id="cb27-5"><a href="#cb27-5"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>plt.plot(_x,f(_x))</span>
+<span id="cb28-2"><a href="#cb28-2"></a>plt.scatter(xx[<span class="dv">0</span>],<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>plt.scatter(xx[<span class="dv">0</span>],f(xx[<span class="dv">0</span>]),color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>plt.scatter(y,<span class="dv">0</span>,color<span class="op">=</span><span class="st">'C1'</span>)</span>
+<span id="cb28-5"><a href="#cb28-5"></a>plt.scatter(y,f(y),color<span class="op">=</span><span class="st">'C1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="151">
 <pre><code>&lt;matplotlib.collections.PathCollection at 0x7ff85ef61b20&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -680,34 +686,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> 비교결과: <span class="math inline">\(xx[0]\)</span> 보다 <span class="math inline">\(y\)</span>가 나은것 같다</p>
 <p><code>-</code> 선택: 그렇지만 무조건 <span class="math inline">\(xx[1]=y\)</span> 로 선택하면 큰일나겠음.. 아래의 확률로 선택하자!</p>
 <ul>
-<li>확률 <span class="math inline">\(\frac{f(xx[0]))}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(xx[1]=xx[0]\)</span>을 선택!</li>
-<li>확률 <span class="math inline">\(\frac{f(y))}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(y\)</span>를 선택!</li>
+<li>확률 <span class="math inline">\(\frac{f(xx[0])}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(xx[1]=xx[0]\)</span>을 선택!</li>
+<li>확률 <span class="math inline">\(\frac{f(y)}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(y\)</span>를 선택!</li>
 </ul>
 </section>
 <section id="step-14-반복-이게-된다고" class="level3">
 <h3 class="anchored" data-anchor-id="step-14-반복-이게-된다고"><strong><em>step 1~4 반복: 이게 된다고?</em></strong></h3>
 <div class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
-<span id="cb29-4"><a href="#cb29-4"></a>    y <span class="op">=</span> np.random.rand()</span>
-<span id="cb29-5"><a href="#cb29-5"></a>    thresh_prob <span class="op">=</span> f(y)<span class="op">/</span>(f(xx[t])<span class="op">+</span>f(y)) <span class="co">## thresh_prob 가 클수록 y가 선택</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a>    _u <span class="op">=</span> np.random.rand()</span>
-<span id="cb29-7"><a href="#cb29-7"></a>    <span class="cf">if</span> _u <span class="op">&lt;</span> thresh_prob:</span>
-<span id="cb29-8"><a href="#cb29-8"></a>        xx.append(y) </span>
-<span id="cb29-9"><a href="#cb29-9"></a>    <span class="cf">else</span>:</span>
-<span id="cb29-10"><a href="#cb29-10"></a>        xx.append(xx[t])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>T <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>xx <span class="op">=</span> [<span class="fl">0.99</span>]</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(T):</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    y <span class="op">=</span> np.random.rand()</span>
+<span id="cb30-5"><a href="#cb30-5"></a>    thresh_prob <span class="op">=</span> f(y)<span class="op">/</span>(f(xx[t])<span class="op">+</span>f(y)) <span class="co">## thresh_prob 가 클수록 y가 선택</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>    _u <span class="op">=</span> np.random.rand()</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    <span class="cf">if</span> _u <span class="op">&lt;</span> thresh_prob:</span>
+<span id="cb30-8"><a href="#cb30-8"></a>        xx.append(y) </span>
+<span id="cb30-9"><a href="#cb30-9"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-10"><a href="#cb30-10"></a>        xx.append(xx[t])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.hist(xx,bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>plt.hist(np.random.beta(<span class="dv">2</span>,<span class="dv">6</span>,size<span class="op">=</span><span class="dv">100000</span>),bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-05-30-13wk-2_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<p><img src="2023-05-30-13wk-2_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
