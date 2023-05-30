@@ -8,7 +8,7 @@
 
 <meta name="author" content="최규빈">
 
-<title>SP2023 - 05wk-2: HW1</title>
+<title>SP2023 - 13wk-2: MCMC (1) – lecture</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -102,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">05wk-2: HW1</h1>
+      <h1 class="quarto-secondary-nav-title">13wk-2: MCMC (1) – lecture</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -145,12 +208,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">1. 측도론</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">1. 측도론</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">02wk-1: 측도론 intro (1)</a>
@@ -183,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link active">05wk-2: HW1</a>
+  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">05wk-2: HW1</a>
   </div>
 </li>
       </ul>
@@ -260,12 +323,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">3. MCMC</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">3. MCMC</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1)</a>
@@ -273,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/3. MCMC/lecture.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1) – lecture</a>
+  <a href="../../posts/3. MCMC/lecture.html" class="sidebar-item-text sidebar-link active">13wk-2: MCMC (1) – lecture</a>
   </div>
 </li>
       </ul>
@@ -289,11 +352,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#배점" id="toc-배점" class="nav-link" data-scroll-target="#배점">배점</a></li>
-  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality"><code>1</code>. Cardinality</a></li>
-  <li><a href="#sigma-field" id="toc-sigma-field" class="nav-link" data-scroll-target="#sigma-field"><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</a></li>
-  <li><a href="#확률과-확률변수" id="toc-확률과-확률변수" class="nav-link" data-scroll-target="#확률과-확률변수"><code>3</code>. 확률과 확률변수</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
+  <li><a href="#정리-low-resolution" id="toc-정리-low-resolution" class="nav-link" data-scroll-target="#정리-low-resolution">정리 (low-resolution)</a></li>
+  <li><a href="#전통적인-난수생성-방법" id="toc-전통적인-난수생성-방법" class="nav-link" data-scroll-target="#전통적인-난수생성-방법">전통적인 난수생성 방법</a>
+  <ul class="collapse">
+  <li><a href="#균등분포" id="toc-균등분포" class="nav-link" data-scroll-target="#균등분포">균등분포</a></li>
+  <li><a href="#베르누이-이항분포-포아송-지수분포" id="toc-베르누이-이항분포-포아송-지수분포" class="nav-link" data-scroll-target="#베르누이-이항분포-포아송-지수분포">베르누이, 이항분포, 포아송, 지수분포</a></li>
+  <li><a href="#inverse-cdf-박스뮬러변환" id="toc-inverse-cdf-박스뮬러변환" class="nav-link" data-scroll-target="#inverse-cdf-박스뮬러변환">inverse cdf, 박스뮬러변환</a></li>
+  </ul></li>
+  <li><a href="#베타분포를-샘플링-전통적-방법" id="toc-베타분포를-샘플링-전통적-방법" class="nav-link" data-scroll-target="#베타분포를-샘플링-전통적-방법">베타분포를 샘플링 (전통적 방법)</a></li>
+  <li><a href="#베타분포를-샘플링-이상한-방식" id="toc-베타분포를-샘플링-이상한-방식" class="nav-link" data-scroll-target="#베타분포를-샘플링-이상한-방식">베타분포를 샘플링 (이상한 방식)</a>
+  <ul class="collapse">
+  <li><a href="#pdf-정의" id="toc-pdf-정의" class="nav-link" data-scroll-target="#pdf-정의">pdf 정의</a></li>
+  <li><a href="#시도1-망했음" id="toc-시도1-망했음" class="nav-link" data-scroll-target="#시도1-망했음">시도1: 망했음</a>
+  <ul class="collapse">
+  <li><a href="#step1-초기화" id="toc-step1-초기화" class="nav-link" data-scroll-target="#step1-초기화"><strong><em>step1: 초기화</em></strong></a></li>
+  <li><a href="#step2-후보-샘플링" id="toc-step2-후보-샘플링" class="nav-link" data-scroll-target="#step2-후보-샘플링"><strong><em>step2: 후보 샘플링</em></strong></a></li>
+  <li><a href="#step3-비교" id="toc-step3-비교" class="nav-link" data-scroll-target="#step3-비교"><strong><em>step3: 비교</em></strong></a></li>
+  <li><a href="#step4-선택" id="toc-step4-선택" class="nav-link" data-scroll-target="#step4-선택"><strong><em>step4: 선택</em></strong></a></li>
+  <li><a href="#step-14-반복-망했음" id="toc-step-14-반복-망했음" class="nav-link" data-scroll-target="#step-14-반복-망했음"><strong><em>step 1~4 반복: 망했음</em></strong></a></li>
+  </ul></li>
+  <li><a href="#시도2-성공" id="toc-시도2-성공" class="nav-link" data-scroll-target="#시도2-성공">시도2: 성공</a>
+  <ul class="collapse">
+  <li><a href="#step1-초기화-1" id="toc-step1-초기화-1" class="nav-link" data-scroll-target="#step1-초기화-1"><strong><em>step1: 초기화</em></strong></a></li>
+  <li><a href="#step2-후보-샘플링-1" id="toc-step2-후보-샘플링-1" class="nav-link" data-scroll-target="#step2-후보-샘플링-1"><strong><em>step2: 후보 샘플링</em></strong></a></li>
+  <li><a href="#step3-비교-1" id="toc-step3-비교-1" class="nav-link" data-scroll-target="#step3-비교-1"><strong><em>step3: 비교</em></strong></a></li>
+  <li><a href="#step4-선택-1" id="toc-step4-선택-1" class="nav-link" data-scroll-target="#step4-선택-1"><strong><em>step4: 선택</em></strong></a></li>
+  <li><a href="#step-14-반복-이게-된다고" id="toc-step-14-반복-이게-된다고" class="nav-link" data-scroll-target="#step-14-반복-이게-된다고"><strong><em>step 1~4 반복: 이게 된다고?</em></strong></a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -301,205 +388,146 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">05wk-2: HW1</h1>
+<h1 class="title d-none d-lg-block display-7">13wk-2: MCMC (1) – lecture</h1>
 <p class="author">최규빈</p>
 
-<p class="date">3/29/23</p>
+<p class="date">5/30/23</p>
 </header>
 
-<section id="강의영상" class="level1">
-<h1>강의영상</h1>
-<blockquote class="blockquote">
-<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-xsTHLqiyPTgay2jwnssbnC</a></p>
-</blockquote>
+<section id="import" class="level1">
+<h1>import</h1>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="배점" class="level1">
-<h1>배점</h1>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">문항</th>
-<th style="text-align: center;">점수</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1-(1)</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1-(2)</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(1)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(2)</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2-(3)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2-(4)</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3-(1)</td>
-<td style="text-align: center;">20</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3-(2)</td>
-<td style="text-align: center;">20</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="cardinality" class="level1">
-<h1><code>1</code>. Cardinality</h1>
-<p><code>(1)</code> <span class="math inline">\(\mathbb{Q}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>임을 증명하라.</p>
-<p><code>(풀이)</code> 생략</p>
-<p><code>(2)</code> <span class="math inline">\(\mathbb{R}\)</span>의 cardinality가 <span class="math inline">\(\aleph_0\)</span>이 아님을 보여라.</p>
-<p><code>(풀이)</code> 생략</p>
-</section>
-<section id="sigma-field" class="level1">
-<h1><code>2</code>. <span class="math inline">\(\sigma\)</span>-field</h1>
-<p><code>(1)</code> <span class="math inline">\(\Omega=\{H,T\}\)</span>일 때, 다음 중 시그마필드의 정의를 만족하는 집합을 모두 골라라.</p>
+<section id="정리-low-resolution" class="level1">
+<h1>정리 (low-resolution)</h1>
+<p><code>-</code> 우리가 하고 싶었던 것: 어떠한 현상에 대하여, 확률공간 <span class="math inline">\((\Omega,{\cal F}, \mathbb{P})\)</span> 에 대한 완전한 기술</p>
+<p><code>-</code> 이것을 수행하는 방법.</p>
+<ul>
+<li>방법1: <span class="math inline">\((\Omega,{\cal F}, \mathbb{P})\)</span>를 state 하고 “관심있는 어떤 것”을 이론적으로 구한다.</li>
+<li>방법2: <span class="math inline">\(\omega \to {\boldsymbol X}(\omega)={\boldsymbol x}\)</span> 를 무한번 반복 관찰하고 (=시뮬레이션하고!) “관심있는 어떤 것”을 시뮬레이션으로 근사</li>
+<li>방법3: 독립적으로 <span class="math inline">\(n\)</span>회 관찰된 <span class="math inline">\(({\boldsymbol x}_1,{\boldsymbol x}_2,\dots,{\boldsymbol x}_n)\)</span> 를 이용하여 “관심있는 어떤 것”을 추정, 추정 결과를 합리적으로 설득.</li>
+</ul>
+<p><code>-</code> 시뮬레이션 가능하면 최고인것 같은데?</p>
+<p><code>-</code> 통계학과 최고의 발명품</p>
 <ol type="1">
-<li><span class="math inline">\({\cal F}=\{\emptyset\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\{H\}\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\{H\}, \{T\}\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{T\}, \Omega\}\)</span></li>
-<li><span class="math inline">\({\cal F}=\{\emptyset, \{H\}, \{T\}, \Omega\}\)</span></li>
-</ol>
-<p><code>(풀이)</code> 3,8 이 시그마필드이다. // 시그마필드가 아닌이유를 서술할 필요없음. 답만 쓰면 인정함.</p>
-<p><code>(2)</code> <span class="math inline">\(\Omega=\{1,2,3,4\}\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}\}\]</span></p>
-<p>이라고 하자. <span class="math inline">\(\sigma({\cal A})\)</span>를 구하여라.</p>
-<p><code>(풀이)</code> // 이 문제역시 답만 써도 인정</p>
-<p><span class="math inline">\(\sigma({\cal A}) = \{\emptyset, \{1\},\{2\},\{3,4\}, \{1,2\},\{1,3,4\}, \{2,3,4\}, \Omega\}\)</span></p>
-<blockquote class="blockquote">
-<p>요령: <span class="math inline">\(\{3,4\}\)</span>를 한세트로 보면 편리하다. 즉 전체사건을 <span class="math inline">\(\{1\},\{2\},\{3,4\}\)</span>로 쪼갠뒤에 3개의 원소만 있다고 생각하고 모든 부분집합을 쓰면 된다.</p>
-</blockquote>
-<p><code>(3)</code> <span class="math inline">\(\Omega=\{1,2,3,4,\dots,100\}\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ \{1\}, \{1,2\}, \{1,2,3\},\{1,2,3,4\}\}\]</span></p>
-<p>이라고 하자. 아래의 물음에 답하여라.</p>
-<ol type="1">
-<li><span class="math inline">\(\{2\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{2,3,4\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{3,4,5\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\Omega - \{1,2,3\} \in \sigma({\cal A})\)</span> 인가?</li>
-</ol>
-<p><code>(풀이)</code> // 답만쓰면 인정하지 않음.</p>
-<p>시그마필드의 정의는 아래와 같다.</p>
-<blockquote class="blockquote">
-<p>시그마필드 <span class="math inline">\({\cal F} \subset 2^\Omega\)</span> 는 1. 전체집합을 포함하고, 2. 여집합에 닫혀있고 3. 가산합집합에 닫혀있는 collection 이다.</p>
-</blockquote>
-<p>먼저 강의노트를 참고하여 아래의 사실을 보이자.</p>
-<ol type="a">
-<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cap B \in {\cal F}\)</span></p></li>
-<li><p><span class="math inline">\(A,B \in {\cal F} \Rightarrow A - B \in {\cal F}\)</span></p></li>
-</ol>
-<p>이제 풀어보자.</p>
-<p>1번</p>
-<ul>
-<li><span class="math inline">\(\{1,2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{1,2\} - \{1\} = \{2\} \in \sigma({\cal A})\)</span> (<span class="math inline">\(\because\)</span> (b))</li>
-</ul>
-<p>2번</p>
-<ul>
-<li><span class="math inline">\(\{1,2\}-\{1\} = \{2\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3\} - \{1,2\} = \{3\} \in \sigma({\cal A})\)</span>, <span class="math inline">\(\{1,2,3,4\} - \{1,2,3\} = \{4\} \in \sigma({\cal A})\)</span>.</li>
-<li><span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\{2\}\cup \{3\} \cup \{4\} = \{2,3,4\} \in \sigma({\cal A})\)</span></li>
-</ul>
-<p>3번</p>
-<ul>
-<li><span class="math inline">\(\{3,4,5\} \not \in \sigma({\cal A})\)</span></li>
-</ul>
-<p>4번</p>
-<ul>
-<li><span class="math inline">\(\{1,2,3\}\in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\Rightarrow \{1,2,3\}^c \in \sigma({\cal A})\)</span></li>
-</ul>
-<p><code>(4)</code> <span class="math inline">\(\Omega=[0,2\pi)\)</span> 일 때,</p>
-<p><span class="math display">\[{\cal A}=\{ [a,b): 0\leq a&lt; b\leq 2\pi\}\]</span></p>
-<p>이라고 하자. 아래의 물음에 답하여라.</p>
-<ol type="1">
-<li><span class="math inline">\([\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{\pi\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\(\{0,\frac{\pi}{2},\pi,\frac{3\pi}{2}\} \in \sigma({\cal A})\)</span> 인가?</li>
-<li><span class="math inline">\((\frac{\pi}{2},\pi) \in \sigma({\cal A})\)</span> 인가?</li>
-</ol>
-<blockquote class="blockquote">
-<p>수업시간에 2번문제 잘못해설했어요. (문제도 잘못냈어요, 너무 어렵게 냈어요. )</p>
-</blockquote>
-<p>(풀이)</p>
-<ol type="1">
-<li><span class="math inline">\(a=\frac{\pi}{2}\)</span>, <span class="math inline">\(b=\pi\)</span></li>
-<li><span class="math inline">\([0,\pi)~ \bigcup ~\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi) = [0,\pi) \cup (\pi,2\pi)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\Omega - \big([0,\pi) \cup (\pi,2\pi) \big) = \{\pi\} \in \sigma({\cal A})\)</span></li>
-</ol>
-<ul>
-<li><span class="math inline">\([\pi+\frac{1}{n}, 2\pi)\)</span>는 각각 잴 수 있는 집합이므로 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
-<li>여기에서 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)=(\pi,2\pi)\)</span> 로 볼 수 있는데, 그 이유는 <span class="math inline">\(\cup_{i=1}^{\infty}[\pi+\frac{1}{n}, 2\pi)\)</span>는 <span class="math inline">\(\pi\)</span>보다 큰 모든수를 포함하지만 <span class="math inline">\(\pi\)</span>는 포함할 수 없기 때문이다.</li>
-<li><span class="math inline">\([0, \pi)\)</span>도 당연히 잴 수 있는 집합이다.</li>
-<li>잴 수 있는 집합의 교집합은 잴 수 있으므로 <span class="math inline">\([0,\pi)~ \cup ~(\pi,2\pi)\)</span> 역시 잴 수 있는 집합이다.</li>
-<li>따라서 <span class="math inline">\([0,2\pi) - \big([0,\pi) \cup (\pi,2\pi) \big)\)</span> 역시 잴 수 있다.</li>
-</ul>
-<ol start="3" type="1">
-<li><span class="math inline">\(\{\pi\}\)</span>를 잴수 있다는 것과 동일한 논리전개로 <span class="math inline">\(\{0\},\{\frac{\pi}{2}\}, \{\frac{3\pi}{2}\}\)</span> 모두 잴 수 있는 집합이고, 따라서 이들의 합집합도 잴 수 있다.</li>
-<li><span class="math inline">\([\frac{\pi}{2}, \pi)\)</span>를 잴 수 있고 <span class="math inline">\(\{\frac{\pi}{2}\}\)</span>를 잴 수 있으므로 <span class="math inline">\([\frac{\pi}{2}, \pi) - \{\frac{\pi}{2}\}\)</span> 역시 잴 수 있다.</li>
+<li>EM 알고리즘</li>
+<li>FDR</li>
+<li>부스트랩</li>
 </ol>
 </section>
-<section id="확률과-확률변수" class="level1">
-<h1><code>3</code>. 확률과 확률변수</h1>
-<p><code>(1)</code> 아래와 같은 measurable space <span class="math inline">\((\Omega, {\cal F})\)</span>를 고려하자.</p>
+<section id="전통적인-난수생성-방법" class="level1">
+<h1>전통적인 난수생성 방법</h1>
+<section id="균등분포" class="level2">
+<h2 class="anchored" data-anchor-id="균등분포">균등분포</h2>
+<p><code>-</code> 가정: 균등분포에서는 뽑을 수 있다고 가정한다. (제가 사실 여기는 잘 몰라요)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecture_files/figure-html/b1f0dea7-0361-4672-8d24-170664e22af0-1-513fecb4-0e25-490f-98a9-2ffde408f7bb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림1: 균등분포를 생성하는 원리에 대하여 chatGPT에게 물어봄</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 균등분포 이외의 난수는 어떻게?… (어려워요)</p>
+</section>
+<section id="베르누이-이항분포-포아송-지수분포" class="level2">
+<h2 class="anchored" data-anchor-id="베르누이-이항분포-포아송-지수분포">베르누이, 이항분포, 포아송, 지수분포</h2>
+<p><code>-</code> 베르누이</p>
+<p><code>-</code> 이항분포: 베르누이의 합으로!</p>
+<p><code>-</code> 포아송: 이항분포의 근사로</p>
 <ul>
-<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
-<li><span class="math inline">\({\cal F}=2^\Omega\)</span></li>
+<li>ref: <a href="https://guebin.github.io/SC2022/0324.html" class="uri">https://guebin.github.io/SC2022/0324.html</a></li>
 </ul>
-<p>아래와 같은 확률변수 <span class="math inline">\(X: \Omega \to \{1,2,3,4\}\)</span> 를 고려하자. 다음중 올바른 표현은?</p>
+<p><code>-</code> 지수분포: 포아송 프로세스를 이용하여!</p>
+<ul>
+<li>ref: <a href="https://guebin.github.io/SC2022/0324.html" class="uri">https://guebin.github.io/SC2022/0324.html</a></li>
+</ul>
+</section>
+<section id="inverse-cdf-박스뮬러변환" class="level2">
+<h2 class="anchored" data-anchor-id="inverse-cdf-박스뮬러변환">inverse cdf, 박스뮬러변환</h2>
+<p><code>-</code> inverse cdf: 지수분포를 뽑는 또 다른 테크닉 (지수분포가 아니더라도 CDF를 알면 뽑을 수 있음)</p>
+<ul>
+<li>ref: <a href="https://guebin.github.io/SC2022/0329.html" class="uri">https://guebin.github.io/SC2022/0329.html</a></li>
+</ul>
+<p><code>-</code> 박스뮬러변환: 지수분포 + uniform으로 정규분포를 뽑는 테크닉</p>
+<ul>
+<li>ref: <a href="https://guebin.github.io/SC2022/0329.html" class="uri">https://guebin.github.io/SC2022/0329.html</a></li>
+</ul>
+<p><code>-</code> 카이제곱분포, 감마분포: 지수분포를 이용하면 샘플링가능</p>
+<ul>
+<li>ref: <a href="https://guebin.github.io/SC2022/0419.html" class="uri">https://guebin.github.io/SC2022/0419.html</a></li>
+</ul>
+</section>
+</section>
+<section id="베타분포를-샘플링-전통적-방법" class="level1">
+<h1>베타분포를 샘플링 (전통적 방법)</h1>
+<p><code>-</code> 목표: <span class="math inline">\(X_1,X_2,X_3,\dots,X_{100000} \overset{i.i.d.}{\sim} {\cal B}(2,6)\)</span></p>
+<p><code>-</code> 전략: 아래를 이용한다.</p>
 <ol type="1">
-<li><span class="math inline">\(X(a)\)</span></li>
-<li><span class="math inline">\(X(\{a\})\)</span></li>
-<li><span class="math inline">\(P(a)\)</span></li>
-<li><span class="math inline">\(P(\{a\})\)</span></li>
-<li><span class="math inline">\(P(X=1)\)</span></li>
-<li><span class="math inline">\(X = \begin{cases} 1 &amp; w.p.~\frac{1}{2} \\ 2 &amp; w.p. ~\frac{1}{6} \\ 3 &amp; w.p. ~\frac{1}{6} \\ 4 &amp; w.p. ~\frac{1}{6} \end{cases}\)</span></li>
+<li><span class="math inline">\({\cal B}(2,6) \overset{d}{=} \frac{{\cal G}(2,1)}{{\cal G}(2,1)+{\cal G}(6,1)}\)</span></li>
+<li><span class="math inline">\({\cal G}(2,1) \overset{d}{=} {\cal E}(1) + {\cal E}(1)\)</span></li>
+<li><span class="math inline">\({\cal G}(6,1) \overset{d}{=} {\cal E}(1) + {\cal E}(1) +{\cal E}(1)+{\cal E}(1)+{\cal E}(1)+{\cal E}(1)\)</span></li>
 </ol>
-<p>(풀이) 생략 (이 문제는 그대로 낼거라서요, 풀이 생략합니다. 스스로 해보세요. 시험에서는 답만쓰면 정답으로 인정합니다)</p>
-<p><code>(2)</code> 아래와 같은 measurable space를 고려하자.</p>
+</section>
+<section id="베타분포를-샘플링-이상한-방식" class="level1">
+<h1>베타분포를 샘플링 (이상한 방식)</h1>
+<section id="pdf-정의" class="level2">
+<h2 class="anchored" data-anchor-id="pdf-정의">pdf 정의</h2>
+<p><code>-</code> 모티브: 그냥 pdf를 입력하면 알아서 샘플링되도록 할 수 없나?</p>
+<p><code>-</code> 예비학습: 감마함수</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>scipy.special.gamma(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>24.0</code></pre>
+</div>
+</div>
+<p><code>-</code> 베타분포의 pdf</p>
+<p><span class="math display">\[f_X(x) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\]</span></p>
+</section>
+<section id="시도1-망했음" class="level2">
+<h2 class="anchored" data-anchor-id="시도1-망했음">시도1: 망했음</h2>
+<section id="step1-초기화" class="level3">
+<h3 class="anchored" data-anchor-id="step1-초기화"><strong><em>step1: 초기화</em></strong></h3>
+</section>
+<section id="step2-후보-샘플링" class="level3">
+<h3 class="anchored" data-anchor-id="step2-후보-샘플링"><strong><em>step2: 후보 샘플링</em></strong></h3>
+</section>
+<section id="step3-비교" class="level3">
+<h3 class="anchored" data-anchor-id="step3-비교"><strong><em>step3: 비교</em></strong></h3>
+</section>
+<section id="step4-선택" class="level3">
+<h3 class="anchored" data-anchor-id="step4-선택"><strong><em>step4: 선택</em></strong></h3>
+</section>
+<section id="step-14-반복-망했음" class="level3">
+<h3 class="anchored" data-anchor-id="step-14-반복-망했음"><strong><em>step 1~4 반복: 망했음</em></strong></h3>
+</section>
+</section>
+<section id="시도2-성공" class="level2">
+<h2 class="anchored" data-anchor-id="시도2-성공">시도2: 성공</h2>
+<section id="step1-초기화-1" class="level3">
+<h3 class="anchored" data-anchor-id="step1-초기화-1"><strong><em>step1: 초기화</em></strong></h3>
+</section>
+<section id="step2-후보-샘플링-1" class="level3">
+<h3 class="anchored" data-anchor-id="step2-후보-샘플링-1"><strong><em>step2: 후보 샘플링</em></strong></h3>
+</section>
+<section id="step3-비교-1" class="level3">
+<h3 class="anchored" data-anchor-id="step3-비교-1"><strong><em>step3: 비교</em></strong></h3>
+</section>
+<section id="step4-선택-1" class="level3">
+<h3 class="anchored" data-anchor-id="step4-선택-1"><strong><em>step4: 선택</em></strong></h3>
 <ul>
-<li><span class="math inline">\(\Omega=\{a,b,c,d\}\)</span></li>
-<li><span class="math inline">\({\cal F} =\sigma({\cal A})\)</span> where <span class="math inline">\({\cal A} = \{\{a\}\}\)</span>.</li>
+<li>확률 <span class="math inline">\(\frac{f(xx[0]))}{f(xx[0])+f(y)}\)</span></li>
+<li>확률 <span class="math inline">\(\frac{f(y))}{f(xx[0])+f(y)}\)</span></li>
 </ul>
-<p>아래와 같은 function <span class="math inline">\(X:\Omega \to A:=\{1,2,3,4\}\)</span>, <span class="math inline">\(Y:\Omega \to B:=\{1,2\}\)</span>을 고려하자.</p>
-<ul>
-<li><span class="math inline">\(X(a)=1, X(b)=2, X(c)=3, X(d)=4\)</span></li>
-<li><span class="math inline">\(Y(a)=1, Y(b)=2, Y(c)=2, Y(c)=2\)</span></li>
-</ul>
-<p>아래의 물음에 답하라.</p>
-<ul>
-<li><span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (A,2^{A})\)</span> 인가? 즉 <span class="math inline">\(X\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
-<li><span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F}) \to (B,2^{B})\)</span> 인가? 즉 <span class="math inline">\(Y\)</span>는 <span class="math inline">\((\Omega,{\cal F})\)</span> 에서의 확률변수인가?</li>
-</ul>
-<p>(풀이)</p>
-<p><strong><span class="math inline">\(X\)</span>는 확률변수가 아님</strong></p>
-<p>집합 <span class="math inline">\(\{2\} \subset 2^A\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in \{2\}\}=\{b\} \not \in \sigma({\cal A})\)</span> 이므로 <span class="math inline">\(X\)</span>는 확률변수가 아님</p>
-<p><strong><span class="math inline">\(Y\)</span>는 확률변수임</strong></p>
-<p><span class="math inline">\(2^B = \{\emptyset,\{1\},\{2\},B\}\)</span> 의 모든 부분집합 <span class="math inline">\(B^\ast\)</span>에 대하여 <span class="math inline">\(\{\omega: X(\omega) \in B^\ast\} \in \sigma({\cal A})\)</span> 이 성립함.</p>
-<ul>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \emptyset\} = \emptyset \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \{1\}\} = \{a\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in \{2\}\} = \{b,c,d\} \in \sigma({\cal A})\)</span></li>
-<li><span class="math inline">\(\{\omega: X(\omega) \in B\} = \{a,b,c,d\} \in \sigma({\cal A})\)</span></li>
-</ul>
+</section>
+<section id="step-14-반복-이게-된다고" class="level3">
+<h3 class="anchored" data-anchor-id="step-14-반복-이게-된다고"><strong><em>step 1~4 반복: 이게 된다고?</em></strong></h3>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

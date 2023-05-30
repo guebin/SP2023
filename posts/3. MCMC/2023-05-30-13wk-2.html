@@ -334,6 +334,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link active">13wk-2: MCMC (1)</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/3. MCMC/lecture.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1) – lecture</a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -386,7 +391,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title d-none d-lg-block display-7">13wk-2: MCMC (1)</h1>
 <p class="author">최규빈</p>
 
-<p class="date">5/25/23</p>
+<p class="date">5/30/23</p>
 </header>
 
 <section id="import" class="level1">
@@ -602,8 +607,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="step4-선택" class="level3">
 <h3 class="anchored" data-anchor-id="step4-선택"><strong><em>step4: 선택</em></strong></h3>
-<p><code>-</code> 비교결과: <span class="math inline">\(xx[0]\)</span> 보다 <span class="math inline">\(y\)</span>가 나은것 같다 야..</p>
-<p><code>-</code> 선택: <span class="math inline">\(xx[1]=y\)</span> 로 합시당!</p>
+<p><code>-</code> 비교결과: <span class="math inline">\(xx[0]\)</span> 보다 <span class="math inline">\(y\)</span>가 나은것 같다</p>
+<p><code>-</code> 선택: <span class="math inline">\(xx[1]=y\)</span> 로 하자</p>
 <blockquote class="blockquote">
 <p>만약에 <span class="math inline">\(xx[0]\)</span>이 <span class="math inline">\(y\)</span>보다 나은것 같다면? 그냥 <span class="math inline">\(xx[1]=xx[0]\)</span>으로 선택</p>
 </blockquote>
@@ -670,8 +675,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="step4-선택-1" class="level3">
 <h3 class="anchored" data-anchor-id="step4-선택-1"><strong><em>step4: 선택</em></strong></h3>
-<p><code>-</code> 비교결과: <span class="math inline">\(xx[0]\)</span> 보다 <span class="math inline">\(y\)</span>가 나은것 같다 야..</p>
-<p><code>-</code> 선택: 그렇지만 무조건 <span class="math inline">\(xx[1]=y\)</span> 로 선택하면 큰일나겠어.. 아래의 확률로 선택하자!</p>
+<p><code>-</code> 비교결과: <span class="math inline">\(xx[0]\)</span> 보다 <span class="math inline">\(y\)</span>가 나은것 같다</p>
+<p><code>-</code> 선택: 그렇지만 무조건 <span class="math inline">\(xx[1]=y\)</span> 로 선택하면 큰일나겠음.. 아래의 확률로 선택하자!</p>
 <ul>
 <li>확률 <span class="math inline">\(\frac{f(xx[0]))}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(xx[1]=xx[0]\)</span>을 선택!</li>
 <li>확률 <span class="math inline">\(\frac{f(y))}{f(xx[0])+f(y)}\)</span> 로 <span class="math inline">\(y\)</span>를 선택!</li>
