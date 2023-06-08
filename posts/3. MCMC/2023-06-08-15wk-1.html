@@ -8,7 +8,7 @@
 
 <meta name="author" content="최규빈">
 
-<title>SP2023 - 02wk-2: 측도론 intro (2)</title>
+<title>SP2023 - 15wk-1: MCMC (3)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -102,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">02wk-2: 측도론 intro (2)</h1>
+      <h1 class="quarto-secondary-nav-title">15wk-1: MCMC (3)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -145,12 +144,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">1. 측도론</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">1. 측도론</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">02wk-1: 측도론 intro (1)</a>
@@ -158,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link active">02wk-2: 측도론 intro (2)</a>
+  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">02wk-2: 측도론 intro (2)</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -260,12 +259,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">3. MCMC</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">3. MCMC</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1)</a>
@@ -278,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/3. MCMC/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">15wk-1: MCMC (3)</a>
+  <a href="../../posts/3. MCMC/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link active">15wk-1: MCMC (3)</a>
   </div>
 </li>
       </ul>
@@ -295,10 +294,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
-  <li><a href="#예비개념1-귀류법" id="toc-예비개념1-귀류법" class="nav-link" data-scroll-target="#예비개념1-귀류법">예비개념1: 귀류법</a></li>
-  <li><a href="#예비개념2-일반화" id="toc-예비개념2-일반화" class="nav-link" data-scroll-target="#예비개념2-일반화">예비개념2: 일반화</a></li>
-  <li><a href="#cardinality" id="toc-cardinality" class="nav-link" data-scroll-target="#cardinality">cardinality</a></li>
-  <li><a href="#유리수집합의-카디널리티" id="toc-유리수집합의-카디널리티" class="nav-link" data-scroll-target="#유리수집합의-카디널리티">유리수집합의 카디널리티</a></li>
+  <li><a href="#모티브" id="toc-모티브" class="nav-link" data-scroll-target="#모티브">모티브</a></li>
   </ul>
 </nav>
     </div>
@@ -306,179 +302,34 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">02wk-2: 측도론 intro (2)</h1>
+<h1 class="title d-none d-lg-block display-7">15wk-1: MCMC (3)</h1>
 <p class="author">최규빈</p>
 
-<p class="date">3/14/23</p>
+<p class="date">6/1/23</p>
 </header>
 
 <section id="강의영상" class="level1">
 <h1>강의영상</h1>
-<blockquote class="blockquote">
-<p><a href="https://youtube.com/playlist?list=PLQqh36zP38-zQoiFje77DtmGx03QS339J" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-zQoiFje77DtmGx03QS339J</a></p>
-</blockquote>
 </section>
-<section id="예비개념1-귀류법" class="level1">
-<h1>예비개념1: 귀류법</h1>
-<p><code>-</code> 귀류법: <strong>니 논리 대로면…</strong> &lt;- 인터넷 댓글에 많음..</p>
-<pre><code>님 논리대로면..
-- XXX가 문제 없으면 서울 전체가 문제가 없고 (애초에 서울은 문제도 아니라는데 왜 이소리는 하고 계신지 모르겠지만)
-- 수도권 모 대학이 문제가 없으면 전체가 문제가 없겠네요?
-- 지방도 1개 대학이 문제가 없으니 전체가 문제 없겠네요?
-와우! 모든 문제가 해결되었습니다! 출산율 감소로 인한 한국대학의 위기가 해결되었.. 아니 애초에 위기가 없었군요!.
-어휴.. ㅠㅠ</code></pre>
-<blockquote class="blockquote">
-<p>ref: <a href="https://m.hibrain.net/braincafe/cafes/38/posts/205/articles/466461?pagekey=466461&amp;listType=TOTAL&amp;pagesize=5&amp;sortType=RDT&amp;limit=30&amp;displayType=TIT&amp;siteid=1&amp;page=1">하이브레인넷</a></p>
-</blockquote>
-</section>
-<section id="예비개념2-일반화" class="level1">
-<h1>예비개념2: 일반화</h1>
-<p><code>-</code> 연필의 정의: 필기도구의 하나. 흑연과 점토의 혼합물을 구워 만든 가느다란 심을 속에 넣고, 겉은 나무로 둘러싸서 만든다. 1565년에 영국에서 처음으로 만들었다.</p>
-<p><code>-</code> 질문: 아래는 연필인가?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-03-14-2wk-2_files/figure-html/4da5aaa8-0e84-4c7f-a1ae-eae6a2e34076-1-7f6cdfaf-faf5-464e-9ec6-4668e9b1aab1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">애플펜슬!</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="cardinality" class="level1">
-<h1>cardinality</h1>
-<blockquote class="blockquote">
-<p>ref: <a href="https://en.wikipedia.org/wiki/Cardinality" class="uri">https://en.wikipedia.org/wiki/Cardinality</a></p>
-</blockquote>
-<p><code>-</code> <span class="math inline">\(A=\{2,4,6\}\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|A|=3\)</span>, <span class="math inline">\(A\)</span> has a cardinality of 3.</p>
-<p><code>-</code> <span class="math inline">\(A=\{1,2,3,4,\dots\}=\mathbb{N}\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|A|=?\)</span></p>
+<section id="모티브" class="level1">
+<h1>모티브</h1>
+<p><code>-</code> 축구기사</p>
 <ul>
-<li>Cardinal number: 유한집합에서의 “갯수”라는 개념을 좀 더 일반화 하여 무한집합으로 적용하고 싶다.</li>
-<li>유한집합: 우리가 친숙한 size 와 그 뜻이 같음</li>
-<li>무한집합: 무한집합의 경우는 그 동작원리가 조금 더 복잡함</li>
+<li>손흥민: <a href="https://www.hani.co.kr/arti/sports/soccer/1093315.html" class="uri">https://www.hani.co.kr/arti/sports/soccer/1093315.html</a></li>
 </ul>
-<p><code>-</code> 질문: <span class="math inline">\(|\mathbb{Q}| &lt; |\mathbb{Q}^c|\)</span> ??</p>
-<p><strong><em>Bijection, injection and surjection (예비학습)</em></strong></p>
-<blockquote class="blockquote">
-<p>ref: <a href="https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection" class="uri">https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection</a></p>
-</blockquote>
-<p><img src="2023-03-14-2wk-2_files/figure-html/db8d65e9-6245-48bf-ba03-60cb2be9a3b1-1-1ef07e05-c45c-44c2-8d5a-03992cc26016.png" class="img-fluid"></p>
-<p><code>-</code> 용어 정리</p>
+<p><code>-</code> 16강진출 경우의 수</p>
 <ul>
-<li>surjective = onto = 전사 = 위로의 함수</li>
-<li>injective = one-to-one = 단사 = 일대일 함수</li>
-<li>bijective = one-to-one and onto, one-to-one correspondence = 전단사 = 일대일 대응</li>
+<li>16강 가능할까? : <a href="https://www.fifa.com/fifaplus/ko/articles/number-of-cases-korea-goes-to-round-of-16" class="uri">https://www.fifa.com/fifaplus/ko/articles/number-of-cases-korea-goes-to-round-of-16</a></li>
 </ul>
-<p><code>-</code> 따지는 방법:</p>
+<p><code>-</code> 통계, 데이터과학</p>
 <ul>
-<li>단사: 함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 단사함수이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall x_1,x_2 \in X\)</span>: <span class="math inline">\(x_1\neq x_2 \Rightarrow f(x_1)\neq f(x_2)\)</span></li>
-<li>전사: 함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 전사함수이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\forall y \in Y ~\exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>.</li>
-</ul>
-<p><code>-</code> 성질1: 어떤함수가 전사함수 &amp; 단사함수 <span class="math inline">\(\Rightarrow\)</span> 전단사함수</p>
-<p><code>-</code> 성질2:</p>
-<ul>
-<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 단사함수 <span class="math inline">\(f\)</span>가 존재한다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X| \leq |Y|\)</span></li>
-<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전사함수 <span class="math inline">\(f\)</span>가 존재한다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X| \geq |Y|\)</span></li>
-</ul>
-<p>(예비학습 끝)</p>
-<p><code>-</code> 성질1~2로 유추하면 아래와 같은 사실을 주장 할 수 있지 않을까?</p>
-<ul>
-<li>집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 향하는 전단사함수가 존재한다 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X|=|Y|\)</span></li>
-</ul>
-<p><code>-</code> 그렇다면 우리가 주장하고 싶은 것은 아래와 같이 된다.</p>
-<ul>
-<li>유리수집합의 무리수집합의 cardinality는 다르다.</li>
-<li>유리수집합과 무리수집합사이의 전단사함수는 존재할 수 없다.</li>
-</ul>
-</section>
-<section id="유리수집합의-카디널리티" class="level1">
-<h1>유리수집합의 카디널리티</h1>
-<p><code>-</code> 우리가 궁극적으로 궁금한 것</p>
-<ul>
-<li>유리수집합과 무리수집합의 카디널리티는 다를까?</li>
-</ul>
-<p><code>-</code> 그냥 궁금한 것</p>
-<ul>
-<li>자연수의 집합, 비음인 정수의 집합, 음의 정수의 집합, 정수의 집합, 짝수의 집합, 홀수의 집합의 카디널리티는 어떠할까?</li>
-</ul>
-<p><code>-</code> (예제1)</p>
-<p>집합 <span class="math inline">\(X=\{1,2,3\}\)</span>, <span class="math inline">\(Y=\{2,4,6\}\)</span>을 생각하자. 적당한 함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
-<ul>
-<li><span class="math inline">\(f(1)=2\)</span></li>
-<li><span class="math inline">\(f(2)=4\)</span></li>
-<li><span class="math inline">\(f(3)=6\)</span></li>
-</ul>
-<p>아래의 질문에 대답해보자.</p>
-<ol type="1">
-<li>(단사) <span class="math inline">\(\forall x_1,x_2 \in X\)</span>, <span class="math inline">\(x_1\neq x_2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f(x_1)\neq f(x_2)\)</span>?</li>
-<li>(전사) <span class="math inline">\(\forall y \in Y~ \exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>?</li>
-</ol>
-<p>1의 질문과 2의 질문이 모두 맞으므로 함수 <span class="math inline">\(f\)</span>는 전단사 함수이다. 집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전단사 함수가 존재하므로 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>의 카디널리티는 동일하다.</p>
-<p><code>-</code> (예제2)</p>
-<p>집합 <span class="math inline">\(X=\{1,2,3,\dots \}\)</span>, <span class="math inline">\(Y=\{2,4,6,\dots \}\)</span>을 생각하자. 적당한 함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
-<ul>
-<li><span class="math inline">\(f(1)=2\)</span></li>
-<li><span class="math inline">\(f(2)=4\)</span></li>
-<li><span class="math inline">\(f(3)=6\)</span></li>
-<li><span class="math inline">\(\dots\)</span></li>
-</ul>
-<p>아래의 질문에 대답해보자.</p>
-<ol type="1">
-<li>(단사) <span class="math inline">\(\forall x_1,x_2 \in X\)</span>, <span class="math inline">\(x_1\neq x_2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(f(x_1)\neq f(x_2)\)</span>?</li>
-<li>(전사) <span class="math inline">\(\forall y \in Y~ \exists x \in X\)</span> such that <span class="math inline">\(f(x)=y\)</span>?</li>
-</ol>
-<p>1의 질문과 2의 질문이 모두 맞으므로 함수 <span class="math inline">\(f\)</span>는 전단사함수이다. 집합 <span class="math inline">\(X\)</span>에서 집합 <span class="math inline">\(Y\)</span>로 가는 전단사 함수가 존재하므로 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>의 카디널리티는 동일하다.</p>
-<p><code>-</code> <span class="math inline">\(\aleph_0\)</span> (알레프 널, 혹은 알레프 제로라고 읽음)</p>
-<ul>
-<li>자연수집합 <span class="math inline">\(\mathbb{N}\)</span>의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{N}|=\aleph_0\)</span>.</li>
-<li>짝수인 자연수 집합의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이고, 홀수인 자연수 집합의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다.</li>
-<li>정수집합 <span class="math inline">\(\mathbb{Z}\)</span>의 카디널리티는 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{Z}|=\aleph_0\)</span>.</li>
-</ul>
-<p><code>-</code> 느낌: <span class="math inline">\(\aleph_0\)</span>를 2배,3배,4배 하여도 <span class="math inline">\(\aleph_0\)</span>이다.</p>
-<ul>
-<li>즉 무한집합의 경우, 본인과 카디널넘버가 같은 진 부분집합이 존재할 수 있다. (유한집합에서는 불가능하겠지)</li>
-<li>무한집합의 정의: 집합 <span class="math inline">\(A\)</span>가 무한집합이다. <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(A\)</span>와 동일한 카디널리티를 가지는 <span class="math inline">\(A\)</span>의 진 부분집합이 존재한다.</li>
-</ul>
-<p><code>-</code> (예제3)</p>
-<p>원소의 수가 <span class="math inline">\(n\)</span>인 임의의 유한집합 <span class="math inline">\(A\)</span>에 대하여 <span class="math inline">\(|A|=n\)</span> 이다.</p>
-<p><code>-</code> (예제4)</p>
-<p>유리수집합의 카디널리티는 얼마인가? (ref: <a href="https://en.wikipedia.org/wiki/Rational_number" class="uri">https://en.wikipedia.org/wiki/Rational_number</a>)</p>
-<p>집합 <span class="math inline">\(X\)</span>를 자연수의 집합이라고 하자. 집합 <span class="math inline">\(Y\)</span>를 아래그림에 있는 숫자들의 집합이라고 하자.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Diagonal_argument.svg/1024px-Diagonal_argument.svg.png" class="img-fluid"></p>
-<p>예를들어 집합 <span class="math inline">\(X\)</span>와 집합 <span class="math inline">\(Y\)</span>를 앞의 몇개만 써보면</p>
-<ul>
-<li><span class="math inline">\(X=\{1,2,3,4,5,6,\dots\}\)</span></li>
-<li><span class="math inline">\(Y=\{1,\frac{2}{1},\frac{1}{2},\frac{3}{1},\frac{2}{2},\frac{1}{3},\dots \}\)</span></li>
-</ul>
-<p>함수 <span class="math inline">\(f\)</span>를 아래와 같이 정의하자.</p>
-<ul>
-<li><span class="math inline">\(f(1)=1\)</span></li>
-<li><span class="math inline">\(f(2)=2/1\)</span></li>
-<li><span class="math inline">\(f(3)=1/2\)</span></li>
-<li><span class="math inline">\(f(4)=3/1\)</span></li>
-<li><span class="math inline">\(f(5)=2/2\)</span></li>
-<li><span class="math inline">\(f(6)=1/3\)</span></li>
-<li><span class="math inline">\(\dots\)</span></li>
-</ul>
-<p>함수 <span class="math inline">\(f\)</span>는 <span class="math inline">\(X\)</span>에서 <span class="math inline">\(Y\)</span>로 향하는 전단사함수이다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|X|=\aleph_0=|Y|\)</span></p>
-<p><strong>(관찰)</strong> 임의의 양의 유리수의 집합 <span class="math inline">\(\mathbb{Q}^+\)</span>는 모두 <span class="math inline">\(Y\)</span>에 포함되어 있다. <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(X \subset \mathbb{Q}^+ \subset Y\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(|\mathbb{Q}^+|=\aleph_0\)</span></p>
-<p><strong>(생각)</strong> 그럼 음의 유리수의 집합 <span class="math inline">\(\mathbb{Q}^-\)</span>의 카디널넘버 역시 <span class="math inline">\(\aleph_0\)</span>이다. 즉 <span class="math inline">\(|\mathbb{Q}^-|=\aleph_0\)</span>.</p>
-<p><strong>(결론)</strong> 그럼 유리수의 카디널넘버는 <span class="math inline">\(\aleph_0\)</span>이다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 좀 더 자극적으로 말하면 “자연수의 갯수와 유리수의 갯수는 같다” 라고 말할 수 있다.</p>
-<p><code>-</code> 조금 무식하게 쓰면 아래와 같이 쓸 수 있다.</p>
-<ul>
-<li><span class="math inline">\(\aleph_0 + 1 = \aleph_0\)</span></li>
-<li><span class="math inline">\(\aleph_0 \times 2 = \aleph_0\)</span></li>
-<li><span class="math inline">\(\aleph_0 \times \aleph_0 = \aleph_0^2 = \aleph_0\)</span></li>
+<li>생략</li>
 </ul>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>그래서 일단 집합 <span class="math inline">\(Y\)</span>는 양의 유리수의 집합을 포함한다<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(\mathbb{Q} = \mathbb{Q}^+ \cup \{0\} \cup \mathbb{Q}^-\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
