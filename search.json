@@ -518,11 +518,11 @@
     "text": "예제 (infinite cases)\n\n예시1\n- 아래를 판단해보자.\n\n\\(f:\\mathbb{R} \\to \\mathbb{R}\\) defined by \\(f(x)=2x+1\\). // 답2\n\\(f:\\mathbb{R} \\to \\mathbb{R}\\) defined by \\(f(x)=x^2\\). // 답3\n\\(f:\\mathbb{R} \\to \\mathbb{R}_{\\geq 0}\\) defined by \\(f(x)=x^2\\). // 답4\n\\(f:\\mathbb{Z} \\to \\{0,1\\}\\) defined by \\(f(x)= x ~\\text{mod}~ 2\\). // 답5\n\\(f:\\mathbb{N} \\to \\mathbb{N} \\cup \\{0\\}\\) defined by \\(f(x)= x-1\\). // 답6\n\\(f:\\mathbb{N} \\to \\mathbb{N}^-\\) defined by \\(f(k)= -k\\). // 답7\n\n여기에서 \\(\\mathbb{N}^-\\{-1,-2,\\dots,\\}\\) 으로 정의\n\n\n\n\n예시2\n- 집합 \\(X\\)가 집합 \\(Y\\)의 부분집합이라면 항상 \\(X\\)에서 \\(Y\\)로 향하는 단사함수가 존재함을 보여라.\n\n따라서 \\(X \\subset Y\\) \\(\\Rightarrow\\) \\(|X|\\leq |Y|\\)"
   },
   {
-    "objectID": "posts/3. MCMC/2023-06-08-15wk-1.html",
-    "href": "posts/3. MCMC/2023-06-08-15wk-1.html",
+    "objectID": "posts/3. MCMC/2023-06-08-15wk-1.html#가능한-해결책",
+    "href": "posts/3. MCMC/2023-06-08-15wk-1.html#가능한-해결책",
     "title": "15wk-1: MCMC (3)",
-    "section": "",
-    "text": "강의영상\n\n\n모티브\n- 축구기사\n\n손흥민: https://www.hani.co.kr/arti/sports/soccer/1093315.html\n\n- 16강진출 경우의 수\n\n16강 가능할까? : https://www.fifa.com/fifaplus/ko/articles/number-of-cases-korea-goes-to-round-of-16\n\n- 통계, 데이터과학\n\n생략"
+    "section": "가능한 해결책",
+    "text": "가능한 해결책\n- 이론적인 근거는 지금 설명할 수 없으나 엄청 그럴듯한 해결책이 있음.\n- 문제의 단순화\n\n길이가 6인 랜덤벡터 \\({\\boldsymbol \\theta} =(\\theta[0],\\dots,\\theta[5])\\) 를 뽑는 것.\n\n\n단계1: 아무값이나 넣자\n\nθ = {'doc1': [2, 1], 'doc2': [1, 2], 'doc3': [2, 1]}\nθ\n\n{'doc1': [2, 1], 'doc2': [1, 2], 'doc3': [2, 1]}\n\n\n\n\\({\\boldsymbol \\theta}_0=[2,1,1,2,2,1]\\)\n\n\nD\n\n{'doc1': ['손흥민', '골'], 'doc2': ['골', '확률'], 'doc3': ['확률', '데이터과학']}\n\n\n1. 문서당 토픽비율을 조사\n\ndoc1 = [‘손흥민’, ‘골’] = [2, 1]\ndoc2 = [‘골’, ‘확률’] = [1, 2]\ndoc3 = [‘확률’, ‘데이터과학’] = [2, 1]\n\n2. 토픽별로 등장하는 단어\n\n토픽1 = [‘골’, ‘골’, ‘데이터과학’] –> 축구인가?? (데이터과학이 살짝 애매하긴함)\n토픽2 = [‘손흥민’, ‘확률’, ‘확률’] –> 통계인가?? (손흥민이 살짝 애매하긴함)\n\n\\({\\boldsymbol \\theta}_0[0]\\)의 고민: 나는 토픽1인가 토픽2인가?\n\nθ\n\n{'doc1': [2, 1], 'doc2': [1, 2], 'doc3': [2, 1]}\n\n\n\nD\n\n{'doc1': ['손흥민', '골'], 'doc2': ['골', '확률'], 'doc3': ['확률', '데이터과학']}\n\n\n\nD['doc1'][0],θ['doc1'][0]\n\n('손흥민', 2)\n\n\n문서눈치: 나는 \\((={\\boldsymbol \\theta}_0[0])\\) doc1에 있음. 그런데 doc1에는 지금 아래의 단어들이 있음.\n\nD['doc1']\n\n['손흥민', '골']\n\n\n단어눈치: 나는 \\((={\\boldsymbol \\theta}_0[0])\\) 토픽1에 있음. 그리고 토픽1에는 지금 아래의 단어들이 있음"
   },
   {
     "objectID": "posts/3. MCMC/2023-06-01-14wk-1.html",
