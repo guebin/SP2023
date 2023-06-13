@@ -585,7 +585,7 @@
     "href": "posts/3. MCMC/2023-06-08-15wk-1.html#시각화",
     "title": "15wk-1: MCMC (3)",
     "section": "시각화",
-    "text": "시각화\n\nplt.matshow(list(θ.values()))\n\n<matplotlib.image.AxesImage at 0x7fbe30f627f0>\n\n\n\n\n\n\nnp.array(list(θ.values())).shape\n\n(15, 15)"
+    "text": "시각화\n\nplt.matshow(list(θ.values()))\n\n<matplotlib.image.AxesImage at 0x7fbe30f627f0>"
   },
   {
     "objectID": "posts/3. MCMC/2023-06-01-14wk-1.html",
