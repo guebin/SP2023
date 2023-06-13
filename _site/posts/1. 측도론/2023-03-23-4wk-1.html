@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+
+<title>SP2023 - 04wk-1: 측도론 intro (5)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">SP2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/SP2023"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"><i class="bi bi-youtube" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">04wk-1: 측도론 intro (5)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">06wk-2: 중간고사</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">15wk-2: 기말고사</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">1. 측도론</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">02wk-1: 측도론 intro (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">02wk-2: 측도론 intro (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">03wk-1: 측도론 intro (3)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">03wk-2: 측도론 intro (4)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link active">04wk-1: 측도론 intro (5)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">04wk-2: 측도론 intro (6)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">05wk-2: HW1</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">2. 마코프체인</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">05wk-1: 마코프체인 (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">07wk-1: 마코프체인 (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-2.html" class="sidebar-item-text sidebar-link">07wk-2: 마코프체인 (3)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">08wk-1: 마코프체인 (4)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">08wk-2: 마코프체인 (5)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">09wk-1: 마코프체인 (6)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">10wk-2: 마코프체인 (7)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">11wk-1: 마코프체인 (8)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">11wk-2: 마코프체인 (9)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">12wk-1: 마코프체인 (10)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">12wk-2: 마코프체인 (11)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/2. 마코프체인/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">13wk-1: 마코프체인 (12)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">3. MCMC</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/3. MCMC/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">14wk-1,2: MCMC (2)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/3. MCMC/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link">15wk-1: MCMC (3)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#시그마필드-motivation-2" id="toc-시그마필드-motivation-2" class="nav-link" data-scroll-target="#시그마필드-motivation-2">시그마필드 motivation (2)</a></li>
+  <li><a href="#시그마필드의-정의" id="toc-시그마필드의-정의" class="nav-link" data-scroll-target="#시그마필드의-정의">시그마필드의 정의</a></li>
+  <li><a href="#확률의-정의" id="toc-확률의-정의" class="nav-link" data-scroll-target="#확률의-정의">확률의 정의</a></li>
+  <li><a href="#확률변수의-정의-1" id="toc-확률변수의-정의-1" class="nav-link" data-scroll-target="#확률변수의-정의-1">확률변수의 정의 (1)</a>
+  <ul class="collapse">
+  <li><a href="#불완전한-정의" id="toc-불완전한-정의" class="nav-link" data-scroll-target="#불완전한-정의">불완전한 정의</a></li>
+  <li><a href="#헷갈려-1-starstarstar" id="toc-헷갈려-1-starstarstar" class="nav-link" data-scroll-target="#헷갈려-1-starstarstar">헷갈려 (1) (<span class="math inline">\(\star\star\star\)</span>)</a></li>
+  <li><a href="#확률변수에-대한-통찰-1" id="toc-확률변수에-대한-통찰-1" class="nav-link" data-scroll-target="#확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">04wk-1: 측도론 intro (5)</h1>
+<p class="author">최규빈</p>
+
+<p class="date">3/23/23</p>
+</header>
+
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<blockquote class="blockquote">
+<p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yTpksFFUby_Twan5kFTFdm" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yTpksFFUby_Twan5kFTFdm</a></p>
+</blockquote>
+</section>
+<section id="시그마필드-motivation-2" class="level1">
+<h1>시그마필드 motivation (2)</h1>
+<p><strong><em>생각의 시간1</em></strong></p>
+<p>우리가 잴 수 있는 집합의 모임들 <span class="math inline">\({\cal F}\)</span>라는 것은 답을 구체적으로 쓸 수는 없으나 현재까지 파악한 직관에 한정하여 아래와 같은 조건<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>들을 만족하는 collection이라고 “일단은” 생각할 수 있다.</p>
+<ol type="1">
+<li><span class="math inline">\(\Omega, \emptyset \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A \subset \Omega: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A\cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></li>
+</ol>
+<p>이것은 우리가 “확률”이라는 개념을 올바르게 정의하기 위해서 필요한 최소한의 합의<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>이다.</p>
+<p>여기에서 우리가 따져볼 것은 (1) 시그마필드의 조건으로 1~4이면 충분한지 (더 많은 조건들이 필요한건 아닌지) 그리고 (2) 우리가 있었으면 하는 조건들이 꼭 필요한 조건은 맞는지 (예를들면 한두개의 조건이 다른조건을 암시하는건 아닌지) 이다.</p>
+<p><code>(충분할까?)</code> 조건 1,2,3,4 정도를 만족하는 집합으로 시그마필드를 정의해도 충분할까? 좀 더 많은 조건들이 필요한건 아닐까? 예를들면 아래와 같은 조건들이 필요한건 아닌가?</p>
+<ol start="5" type="1">
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cap B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cup B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall B_1,B_2,\dots \subset \Omega\)</span> such that <span class="math inline">\(B_1, B_2,\dots\)</span> are disjoint: <span class="math inline">\(B_1,B_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}B_i \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A_1,A_2,\dots \subset \Omega\)</span>: <span class="math inline">\(A_1,A_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
+</ol>
+<p>여기에서 잠시 5,6,7,8의 의미를 살펴보자.</p>
+<ol start="7" type="1">
+<li>3의 확장버전이라고 볼 수 있다. 3은 “각 집합을 잴 수 있다면 서로소인 집합을 유한번 더한 집합도 잴 수 있어야 한다” 라는 의미가 된다. 7은 “각 집합을 잴 수 있다면 서로소인 집합을 <code>셀 수 있는 무한번</code> 더한 집합도 잴 수 있어야 한다” 라는 의미가 된다.</li>
+</ol>
+<hr>
+<p><strong>(예제11)</strong> – 람다시스템</p>
+<p><span class="math inline">\(\Omega=(0,2\pi]\)</span> 라고 하자. <span class="math inline">\({\cal A} = \{\{x\}: x\in \mathbb{Q} \cap \Omega \}\)</span> 이라고 할 때 아래가 성립할까?</p>
+<p><span class="math display">\[\mathbb{Q} \cap \Omega \in \sigma({\cal A})\]</span></p>
+<p>즉 각각의 유리수 한점씩을 잴 수 있을 때<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 유리수 전체의 집합 역시 잴 수 있을까?</p>
+<p>(해설1)</p>
+<p>유리수는 셀 수 있는 무한이므로 집합 <span class="math inline">\(\mathbb{Q} \cap \Omega\)</span>의 길이나 확률 따위는 잴 수 있다.</p>
+<p>(해설2)</p>
+<p><a href="https://en.wikipedia.org/wiki/Probability_axioms">확률의 공리</a>중 3을 살펴보면 이미 서로소인 집합의 countable union은 잴 수 있는 대상이라고 생각하고 있다. 이건 마치 “확률은 양수”이어야 한다든가, “전체확률은 1이어야” 한다는 사실처럼 당연한 사실이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-4wk-1_files/figure-html/278c4061-b34a-4d47-84e9-81c3adf3f554-1-image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림1: 위키에서 캡쳐했어요~ 3번째 공리를 살펴보세요</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>사실 납득이 되는건 아님. 그렇지만 일단은 “수학자들이 합의해서 이런건 잴 수 있다고 했어. 그러니까 잴 수 있어” 라고 이해하고 넘어가자.</p>
+</blockquote>
+<hr>
+<p><strong><em>생각의 시간2</em></strong></p>
+<p>이제 5,6의 성질을 살펴보자.</p>
+<ol start="5" type="1">
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cap B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cup B \in {\cal F}\)</span></li>
+</ol>
+<p>6의 경우는 <span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>가 서로소가 아니더라고 <span class="math inline">\(A \cup B\)</span>를 잴 수 있느냐? 라는 것이다. (결국 이는 교집합을 잴 수 있느냐? 라는 물음과 같아서 5와 6은 같은 질문이다.)</p>
+<hr>
+<p><strong>(예제12)</strong> – 교집합을 넣을까 말까</p>
+<p><span class="math inline">\(\Omega=\{1,2,3,4\}\)</span>라고 하자. 아래와 같은 <span class="math inline">\({\cal F}\)</span>는 합리적일까?</p>
+<p><span class="math display">\[{\cal F}= \big\{ \emptyset, \{1,2\}, \{1,3\}, \{1,4\},\{2,3\},\{2,4\},\{3,4\}, \Omega\big\}\]</span></p>
+<p>(해설1) – 틀린해설</p>
+<p>이러한 집합은 원칙 1-4,7 에 위배되지 않는다.</p>
+<p><code>1</code>. <span class="math inline">\(\Omega, \emptyset \in {\cal F}\)</span></p>
+<p><code>2</code>. <span class="math inline">\(\forall A \subset \Omega: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></p>
+<p><code>3</code>. <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A\cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></p>
+<p><code>4</code>. <span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></p>
+<p><code>7</code>. <span class="math inline">\(\forall B_1,B_2,\dots \subset \Omega\)</span> such that <span class="math inline">\(B_1, B_2,\dots\)</span> are disjoint: <span class="math inline">\(B_1,B_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}B_i \in {\cal F}\)</span></p>
+<p>그런데 이 집합은</p>
+<p><span class="math display">\[\{1,2\} \cap \{1,3\} = \{1\}\]</span></p>
+<p>와 같은 집합이라든가,</p>
+<p><span class="math display">\[\{1,2\} \cup \{1,3\} = \{1,3,4\}\]</span></p>
+<p>와 같은 집합의 길이를 잴 수 없다. 따라서 아래와 같이 우리가 고등학교때 부터 써왔던 공식을 쓸 수 없다. (<a href="https://en.wikipedia.org/wiki/Probability_axioms">ref</a>, Further consequences)</p>
+<p><span class="math display">\[P(A\cup B) = P(A) + P(B) - P(A\cap B)\]</span></p>
+<p>이것은 불편하니까 <span class="math inline">\(A,B\)</span>가 잴 수 있다면, <span class="math inline">\(A,B\)</span>의 교집합이나 합집합따위도 잴 수 있다고 정하자.</p>
+<p>(해설1의 반론)</p>
+<p>약속하지 않으면 “불편”하니까 약속하자라는 논리는 말이 되지 않음. 그 논리대로라면 <span class="math inline">\(\Omega\)</span>의 모든 집합에 대하여 확률을 정의할 수 없다고 하면 “불편”하니까 약속하자라는 논리가 됨. 잴 수 있는 집합의 합집합이나 교집합을 잴 수 있다라는 근거는 없음.</p>
+<p>(해설1의 반론의 반론) – 참고용으로만..</p>
+<p>사실 근거가 있긴함. 즉 <span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>를 각각 잴 수 있다면 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>의 교집합도 잴 수 있음. (그렇다면 자동으로 합집합도 잴 수 있게 됨.) 이것을 지금 수준에서 엄밀하게 따지기 위해서는 “잴 수 있는 집합”의 정의를 해야하는데 지금 수준에서는 까다로움.</p>
+<p><strong>(해설2)</strong> – 엄밀한 해설 X</p>
+<p>잴 수 있는 집합을 우리는 지금 까지 당연하게</p>
+<ul>
+<li>확률을 잴 수 있는 집합들</li>
+</ul>
+<p>로 생각했음, 그런데 원래 잴 수 있는 집합이라는 개념은 “선분의 길이” 따위를 모순없이 정의할 수 있는가? 즉 수직선 <span class="math inline">\(\mathbb{R}\)</span>의 모든 부분집합의 길이라는 개념을 정의할 수 있는가? 에서 출발하였음. 즉 원래 잴 수 있는 집합이라는 의미는</p>
+<ul>
+<li>수직선에서 길이를 잴 수 있는 집합들</li>
+</ul>
+<p>이라고 생각해야함. 그렇다면 “길이”라는 개념을 다시 추상화 해야하는데 “길이”라는 개념은 아래의 원칙에 위배되면 안될 것 같음.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-4wk-1_files/figure-html/66c3c6a1-6772-4605-8302-b8eaf36810f5-1-image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림2: 위키에서 긁어온 그림. 길이는 1-4의 성질이 있어야 할 것으로 판단됨</figcaption><p></p>
+</figure>
+</div>
+<p>교집합을 잴 수 없다는 논리라면, 구간 <span class="math inline">\([a_1,b_1]\)</span>의 길이는 잴 수 있고 구간 <span class="math inline">\([a_2,b_2]\)</span>의 길이는 잴 수 있지만 구간 <span class="math inline">\([a_1,b_1] \cap [a_2,b_2]\)</span>의 길이는 잴 수 없다는 말인데 이는 말이되지 않음.</p>
+<blockquote class="blockquote">
+<p>결론 (엄밀한 해설은 아님): “잴 수 있다” 라는 개념은 확률, 길이에 모두 적용할 수 있어야 한다. 잴 수 있는 대상을 확률로 상상하면 <span class="math inline">\(A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span> 인것이 당연하듯이 잴 수 있는 대상을 길이로 상상하면 <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cap B \in {\cal F}\)</span> 임은 당연하다.</p>
+</blockquote>
+<hr>
+<p><strong><em>생각의 시간3</em></strong></p>
+<p>따라서 아래의 성질들은 모두 시그마필드가 가져아할 규칙들로 인정할 수 있다.</p>
+<ol type="1">
+<li><span class="math inline">\(\Omega, \emptyset \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A \subset \Omega: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A\cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cap B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cup B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall B_1,B_2,\dots \subset \Omega\)</span> such that <span class="math inline">\(B_1, B_2,\dots\)</span> are disjoint: <span class="math inline">\(B_1,B_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}B_i \in {\cal F}\)</span></li>
+</ol>
+<p>남은건 8번의 규칙이다.</p>
+<ol start="8" type="1">
+<li><span class="math inline">\(\forall A_1,A_2,\dots \subset \Omega\)</span>: <span class="math inline">\(A_1,A_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
+</ol>
+<p>이 8<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>번 규칙은 사실 5<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, 7<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>번 잘 조합하면 자동으로 이끌어진다. 즉 <span class="math inline">\((5), (7) \Rightarrow (8)\)</span>. 그 외에도 “있었으면 싶은” 규칙은 모두 1-7중 적당한 것을 섞으면 만들 수 있다. 예를들어 아래와 같은 규칙을 고려하자.</p>
+<ol start="9" type="1">
+<li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} \Rightarrow A-B \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A,B,C \subset \Omega: A,B,C \in {\cal F} \Rightarrow A\cup B \cup C \in {\cal F}\)</span></li>
+<li><span class="math inline">\(\forall A_1,A_2,\dots \subset \Omega\)</span>: <span class="math inline">\(A_1,A_2,\dots \in {\cal F} \Rightarrow \cap_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
+</ol>
+<p>규칙9는 규칙2<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>와 5<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>로 임플라이 할 수 있고, 규칙10은 규칙6<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>의 확장으로 임플라이 할 수 있고, 규칙11은 규칙 2<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>와 7<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>로 임플라이 할 수 있다.</p>
+<blockquote class="blockquote">
+<p>결론: 규칙 1-8으로 시그마필드를 표현하기에 충분하다.</p>
+</blockquote>
+<p><strong>생각의 시간4</strong></p>
+<p>규칙 1-8중 필요없는 규칙을 제거하자.</p>
+<p><code>1</code>. 규칙2<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>가 있다면, 규칙1에서 공집합은 빼도 될 것 같다.</p>
+<p><code>2</code>. 규칙8<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>이 있다면, 규칙3<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, 규칙6<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, 규칙7<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>은 필요 없다. 즉 규칙8은 규칙3,6,7의 효과를 모두 가진다.</p>
+<p><code>3</code>. 규칙2<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>와 규칙6<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>이 있다면, 규칙5<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>는 필요없다. 따라서 규칙2<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>와 규칙8<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>이 있어도 규칙5는 필요없다.</p>
+<p><code>4</code>. 규칙2<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>와 규칙5<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>가 있다면 규칙4<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>는 필요없다. 그런데 규칙5는 규칙2와 규칙8<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>이 임플라이 하므로 결국 규칙2와 규칙8이 있다면 규칙4가 필요없다.</p>
+<p><code>5</code>. 결론: 규칙1에서 공집합을 제외한 버전, 그리고 규칙2, 규칙8만 있으면 된다.</p>
+</section>
+<section id="시그마필드의-정의" class="level1">
+<h1>시그마필드의 정의</h1>
+<p><code>-</code> 시그마필드, 즉 <span class="math inline">\(\Omega\)</span>의 부분집합 중 “잴 수 있는 집합의 모임”은 Durret 교재에 의하여 아래와 같이 정의된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-4wk-1_files/figure-html/0fc30545-4697-4e3e-a19c-9b759dbb92ea-1-cf2e33ce-3af7-4926-859a-98e92811920c.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림3: Durret교재에서 긁어온 시그마필드의 정의, 드래그한 부분이 정의임</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 교재에는 <span class="math inline">\(\Omega \in {\cal F}\)</span>이라는 조건이 빠져있는데, <span class="math inline">\(\Omega \in {\cal F}\)</span>이라는 조건을 포함하여 기억하는 것이 편리하다. (<a href="https://en.wikipedia.org/wiki/Σ-algebra">위키</a>등에서 일반적으로 정의할때는 <span class="math inline">\(\Omega \in {\cal F}\)</span> 조건을 포함한다) 즉 위키와 Durret을 적당히 혼합하여 아래와 같이 정의하고 기억하는게 좋다.</p>
+<p><strong>(Def)</strong> Let <span class="math inline">\(\Omega\)</span> be some set, and let <span class="math inline">\(2^{\Omega}\)</span> represent its power set. Then a subset <span class="math inline">\({\cal F} \subset 2^\Omega\)</span> is called a <span class="math inline">\(\sigma\)</span>-field if it satisfies the following three properties:</p>
+<ol type="1">
+<li><span class="math inline">\(\Omega \in {\cal F}\)</span></li>
+<li><span class="math inline">\(A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></li>
+<li><span class="math inline">\(A_1,A_2,A_3\dots \in {\cal F}\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\cup_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
+</ol>
+<p><code>-</code> 좀 더 편리하게 아래와 같이 기억하면 좋다.</p>
+<blockquote class="blockquote">
+<p>시그마필드는 잴 수 있는 집합의 모임인데 아래와 같은 규칙을 만족해야 한다. (1) 전체집합을 포함한다. (2) 여집합에 닫혀있다. (3) 가산합집합에 닫혀있다.</p>
+</blockquote>
+<p><code>-</code> 참고1: 시그마필드라는 것은 유일하게 정의되지 않는다. 즉 동일한 <span class="math inline">\(\Omega\)</span>에 대하여 정의할 수 있는 잴수있는 집합의 모임 <span class="math inline">\({\cal F}\)</span>는 유일하지 않다.</p>
+<p><code>-</code> 참고2: 시그마필드는 <span class="math inline">\(\Omega\)</span>없이 단독으로 정의되지 않는다. 즉</p>
+<p><span class="math display">\[{\cal F}=\{\emptyset, \{H\}, \{T\}, \{H,T\}\}\]</span></p>
+<p>는 단지 그냥 시그마필드라고 주장하기 보다 <span class="math inline">\(\Omega=\{H,T\}\)</span>에 대한 시그마필드라고 해야 정확한 표현이다.</p>
+<p><code>-</code> 참고3: 참고2에 따라서 <span class="math inline">\({\cal F}\)</span> 단독으로 표기하는 것 보다 <span class="math inline">\(\Omega\)</span>를 붙여서 <span class="math inline">\((\Omega,{\cal F})\)</span>와 같이 쌍으로 표기하는게 더 합리적이다. 앞으로는 이러한 쌍을 <strong><em>measurable space</em></strong> 라고 부른다.</p>
+</section>
+<section id="확률의-정의" class="level1">
+<h1>확률의 정의</h1>
+<p><code>-</code> 지금까지의 이야기.</p>
+<ul>
+<li><strong><span class="math inline">\(\Omega\)</span>의 모든 부분집합에 대해서 확률을 “무모순”으로 정의</strong>하는게 엄청 쉬운일 인줄 알았는데,<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></li>
+<li>사실은 그렇지가 않았다.<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a> 확률을 정의하는건 매우 까다로운 일이었다.</li>
+<li>이러한 까다로움을 해결하기 위해서 “르벡메져”라는 새로운 도구를 사용했다. 이 도구는 몇 가지 까다로운 집합에 대하여 확률을 무모순으로 정의할 수 있었다.</li>
+<li>르벡메져는 구간 <span class="math inline">\([0,2\pi)\)</span>의 모든 유리수 집합의 길이와 구간 <span class="math inline">\([0,2\pi)\)</span>의 모든 무리수 집합의 길이를 다르게 정의하는 신기한 방식을 사용하는데, 이러한 방식을 납득하기 위한 최소한의 노력으로 “셀 수 있는 무한”과 “셀 수 없는 무한”의 개념을 공부했다.</li>
+<li>하지만 르벡메져를 통해서도 <span class="math inline">\(\Omega\)</span>의 모든 부분집합에 대하여 길이를 잴 수 없는 집합<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>이 존재함이 밝혀졌다.</li>
+<li>따라서 <strong><span class="math inline">\(\Omega\)</span>의 모든 부분집합에 대해서 확률을 “무모순”으로 정의</strong>하는 일은 포기하였다.</li>
+<li>대신에 <strong><span class="math inline">\(\Omega\)</span>의 부분집합 중, 잴 수 있는 집합들에 대해서만 확률을 “무모순”으로 정의</strong>하는 일을 시도했다.</li>
+<li>이 잴 수 있는 집합들의 모임을 시그마필드라 칭하고 기호로는 <span class="math inline">\({\cal F}\)</span>라고 정의하였다.</li>
+</ul>
+<p><code>-</code> 이제 하고 싶은 것</p>
+<blockquote class="blockquote">
+<p>시그마필드에서 확률을 정의하자! <span class="math inline">\(\Leftrightarrow\)</span> 시그마필드를 정의역으로 하는 “확률”이라는 이름의 함수를 정의하자.</p>
+</blockquote>
+<p><code>-</code> 확률의 정의: 메져(measure)는 길이따위를 일반화한 개념이다. 확률은 메져의 특수한 형태이다.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a>메져와 확률은 아래와 같이 정의한다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-4wk-1_files/figure-html/55f5f1af-731b-41a3-a53a-0835fa8f41dc-1-2e3b6cdd-8339-4938-9606-9ceb390e6459.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림4: Durret책에서 정의한 measure와 probability measure의 정의, 드래그한 부분이 정의임.</figcaption><p></p>
+</figure>
+</div>
+<p>사실 잘 따져보면 이것은 우리가 아까 위키에서 찾아본 확률의 공리와 일치한다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-03-23-4wk-1_files/figure-html/4ac7a9a0-6ab5-4587-b7f4-5446bb59d5d9-1-image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">그림1: 확률의 공리, 아까 위키에서 캡쳐한 것 재사용</figcaption><p></p>
+</figure>
+</div>
+<p><code>-</code> 중요한 것: 확률은 “함수”이고 정의역이 “시그마필드”라는 것만 기억하면 된다. 즉 아래의 사실만 잘 이해하고 기억하면 된다.</p>
+<blockquote class="blockquote">
+<p>적당한 가측공간 <span class="math inline">\((\Omega, {\cal F})\)</span>이 있다고 하자. 확률 <span class="math inline">\(P\)</span>는 정의역이 <span class="math inline">\({\cal F}\)</span>이며 치역이 <span class="math inline">\([0,1]\)</span>인 함수이다.</p>
+</blockquote>
+<p><code>-</code> 암기!! <span class="math inline">\(P: {\cal F} \to [0,1]\)</span></p>
+</section>
+<section id="확률변수의-정의-1" class="level1">
+<h1>확률변수의 정의 (1)</h1>
+<section id="불완전한-정의" class="level2">
+<h2 class="anchored" data-anchor-id="불완전한-정의">불완전한 정의</h2>
+<p><code>-</code> 확률변수: <span class="math inline">\(X:\Omega \to \mathbb{R}\)</span>인 <strong>조금 특별한 성질을 가진</strong> 함수</p>
+<ul>
+<li>정의역: <span class="math inline">\(\Omega\)</span></li>
+<li>치역: <span class="math inline">\(\mathbb{R}\)</span></li>
+</ul>
+<p><strong>(예제1)</strong> 동전예제</p>
+<p><code>1</code>. outcomes<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>: <span class="math inline">\(H\)</span>,<span class="math inline">\(T\)</span>.</p>
+<p><code>2</code>. sample space: <span class="math inline">\(\Omega = \{H,T\}\)</span></p>
+<p><code>3</code>. event<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>: <span class="math inline">\(\emptyset\)</span>, <span class="math inline">\(\{H\}\)</span>, <span class="math inline">\(\{T\}\)</span>, <span class="math inline">\(\{H,T\}\)</span>.</p>
+<p><code>4</code>. <span class="math inline">\(\sigma\)</span>-field: <span class="math inline">\({\cal F}=\)</span> <span class="math inline">\(\Omega\)</span>의 모든 부분집합의 모임</p>
+<p><code>5</code>. probability measure function: <span class="math inline">\(P: {\cal F} \to [0,1]\)</span> such that</p>
+<ul>
+<li><span class="math inline">\(P(\emptyset) = 0\)</span></li>
+<li><span class="math inline">\(P(\{H\}) = \frac{1}{2}\)</span></li>
+<li><span class="math inline">\(P(\{T\}) = \frac{1}{2}\)</span></li>
+<li><span class="math inline">\(P(\Omega) = 1\)</span></li>
+</ul>
+<p><code>6</code>. random variable: <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> such that</p>
+<ul>
+<li><span class="math inline">\(X(H)=1\)</span></li>
+<li><span class="math inline">\(X(T)=0\)</span></li>
+</ul>
+<p>만약에 편의상 <span class="math inline">\(\Omega=\{H,T\}=\{\omega_1,\omega_2\}\)</span>와 같이 사용한다면</p>
+<ul>
+<li><span class="math inline">\(X(\omega_1)=1\)</span></li>
+<li><span class="math inline">\(X(\omega_2)=0\)</span></li>
+</ul>
+</section>
+<section id="헷갈려-1-starstarstar" class="level2">
+<h2 class="anchored" data-anchor-id="헷갈려-1-starstarstar">헷갈려 (1) (<span class="math inline">\(\star\star\star\)</span>)</h2>
+<p><code>-</code> 질문1: 아래의 표현 중 옳은 것은?</p>
+<ol type="1">
+<li><span class="math inline">\(X(H)=0\)</span><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></li>
+<li><span class="math inline">\(P(\{H\})=\frac{1}{2}\)</span><a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></li>
+<li><span class="math inline">\(P(\{\omega_1\})=\frac{1}{2}\)</span><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a></li>
+<li><span class="math inline">\(P(H)=\frac{1}{2}\)</span><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></li>
+<li><span class="math inline">\(P(\{H,T\})=1\)</span><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></li>
+<li><span class="math inline">\(P(\omega_1)=\frac{1}{2}\)</span><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></li>
+</ol>
+<p><code>-</code> 질문2: 질문1의 <code>4</code>번의 표현을 많이 본적 있다. 예를들어서 고등학교에서 두 사건의 독립에 대해 배울때 아래와 같은 방식으로 표현했었다. // 출처: <a href="https://blog.naver.com/hawarjung2/222897509059">네이버 블로그</a></p>
+<blockquote class="blockquote">
+<p>두 사건 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대하여 <span class="math inline">\(P(B|A) =P(B|A^c) =P(B)\)</span> 이면 두 사건이 독립이라고 한다~~</p>
+</blockquote>
+<p>그렇다면 이 표현은 틀린걸까?</p>
+<p>(해설)</p>
+<p>여기에서 사건 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>는 event을 의미하며 outcome을 의미하는게 아님. 즉 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>는 집합임.</p>
+<p><strong>암기</strong>: 확률은 항상 집합을 입력으로 받아야 함!!</p>
+<p><code>-</code> 질문3(<span class="math inline">\(\star\star\star\)</span>): 수리통계 시간에서 아래와 같은 표현 본 적 있다.</p>
+<p><span class="math display">\[P(X=1)=\frac{1}{2}\]</span></p>
+<p>그런데 <span class="math inline">\(P\)</span>의 입력으로는 집합이 들어가야하는데, <span class="math inline">\(X=1\)</span>은 그냥 수식임. 그렇다면 이 표현은 틀린 표현일까??</p>
+<p>(해설)</p>
+<p>사실 <span class="math inline">\(P(X=1)\)</span>의 의미는 아래와 같은 표현의 축약형이다.</p>
+<p><span class="math display">\[P\big(\{\omega: X(\omega)=1 \} \big)\]</span></p>
+<p><span class="math inline">\(\{\omega: X(\omega)=1\} = \{\omega_1\} = \{H\}\)</span> 를 의미하므로 결국</p>
+<p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
+<p>이 된다. 따라서 옳은 표현이다.</p>
+</section>
+<section id="확률변수에-대한-통찰-1" class="level2">
+<h2 class="anchored" data-anchor-id="확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</h2>
+<p><code>-</code> 아래와 같은 표현을 다시 관찰하자.</p>
+<p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
+<p><code>통찰1</code>. 확률변수가 “함수”라는 사실을 떠올리고 <span class="math inline">\(1\)</span>이라는 값이 확률변수의 “상(image)” 라는 사실을 떠올리면, <span class="math inline">\(\{\omega: X(\omega)=1\}\)</span>은 1에 대한 “역상(inverse image)”이라고 해석할 수 있다.<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></p>
+<p><code>통찰2</code>. 확률변수의 상은 <span class="math inline">\(\mathbb{R}\)</span>에 맺히게 되고, 확률변수의 역상은 <span class="math inline">\(\Omega\)</span>의 부분집합 중 하나에 맺히게 된다.</p>
+<p><code>통찰3</code>. 문제는 확률변수의 역상이 항상 잴 수 있는 집합에 맺힌다는 보장이 있냐라는 것이다… 즉 이 예제로 한정하면</p>
+<p><span class="math display">\[\{\omega: X(\omega)=1\} \in {\cal F}\]</span></p>
+<p>임을 보장해야 한다는 것이다.</p>
+<p><code>통찰4</code>. 당연히 이러한 보장을 할 수는 없어보인다. 따라서 <span class="math inline">\(X\)</span>를 단지 그냥</p>
+<ul>
+<li><span class="math inline">\(X: \mathbb{\Omega} \to \mathbb{R}\)</span>로 가는 함수</li>
+</ul>
+<p>가 아니라</p>
+<ul>
+<li><span class="math inline">\(X: \mathbb{\Omega} \to \mathbb{R}\)</span>로 가는 함수 &amp; 역상이 항상 잴 수 있는 집합이어야 함.</li>
+</ul>
+<p>이라는 조건이 필요하다.</p>
+<p><code>-</code> 역상이 잴 수 있는 집합인 함수를 간단히 잴 수 있는 함수 (measurable function) 라고 한다.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>이 조건들은 수정 및 보완 될 예정임<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>모든 사람들이 인정할 수 밖에 없는 합의<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(P(\{0\})\)</span>, <span class="math inline">\(P(\{0.21\})\)</span>, <span class="math inline">\(\dots\)</span>를 각각 정의가능할 때<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>사실 일반인에게 당연하지 않을 수도 있지만 최소한 수학자들은 당연하게 생각한다. 그래서 우리도 그냥 당연하게 생각하자.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>countable union<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>교집합<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>서로소의 countable union<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>여집합<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>교집합<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>2개 집합의 합집합<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>여집합<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>서로소의 countable union<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>여집합<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>countable union<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>disjoint union of two sets<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>2개의 합집합<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>countable union of disjoint sets<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>여집합<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>합집합<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>교집합<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>여집합<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>countable union<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>여집합<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>교집합<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>포함관계의 차집합<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p>countable union<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>동전예제<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p>바늘이 하나 있는 시계예제<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p>비탈리집합<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p>메져의 조건에서 전체집합의 길이가 1이라는 제약만 있음<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p>outcome 자체는 집합을 의미하는게 아님<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p>event는 집합을 의미<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p>O<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p>O<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p>O<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p>X<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p>O<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p>X<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p>참고로 image는 수학책에서 3가지 뜻으로 혼용해서 쓰이는데, 이 문맥에서는 “Image of an element”를 의미함. <a href="https://en.wikipedia.org/wiki/Image_(mathematics)">ref</a><a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
