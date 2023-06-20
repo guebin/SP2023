@@ -13,9 +13,16 @@ import copy
 
 # `1`. 다음을 읽고 참 거짓을 판단하여라. (30점)
 
-`(1)` 전이확률행렬 ${\bf P}={\bf I}$를 가지는 마코프체인은 irreducible 마코프체인이다. 
+`(1)` 전이확률행렬 ${\bf P}={\bf I}$를 가지는 HMC는 irreducible 하다. 
 
-`(2)` $\{X_t\}$가 유한한 상태공간을 가진다면 irreducible 조건은 positive recurrent 를 암시한다.
+`(2)` HMC $\{X_t\}$가 유한한 상태공간을 가진다면 irreducible 조건은 positive recurrent 를 암시한다.
+
+`(3)` HMC $\{X_t\}$가 irreducible 하다면 항상 전이확률행렬 ${\bf P}$가 수렴한다. 
+
+`(4)` HMC $\{X_t\}$가 irreducible 하다면 positive recurrent 조건과 유일한 정상분포를 가질 조건이 동치이다. 
+
+`(5)` HMC $\{X_t\}$가 정상분포를 가진다면 DBC (detailed balance condition) 을 만족한다. 
+
 
 # `2`. 페이지랭크 알고리즘 (20점)
 
