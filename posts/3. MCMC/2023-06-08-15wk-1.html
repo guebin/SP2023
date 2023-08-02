@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.193">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2023-06-01">
 
 <title>SP2023 - 15wk-1: MCMC (3)</title>
 <style>
@@ -18,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,6 +82,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,13 +96,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -137,40 +116,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SP2023</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../about.html" aria-current="page">
+    <a class="nav-link active" href="../../about.html" rel="" target="" aria-current="page">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/guebin/SP2023"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/guebin/SP2023" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"><i class="bi bi-youtube" role="img">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2" rel="" target=""><i class="bi bi-youtube" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">15wk-1: MCMC (3)</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/2023-03-07-1wk-2.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/3. MCMC/2023-05-30-13wk-2.html">3. MCMC</a></li><li class="breadcrumb-item"><a href="../../posts/3. MCMC/2023-06-08-15wk-1.html">15wk-1: MCMC (3)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -178,178 +164,225 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../about.html" class="sidebar-item-text sidebar-link">About</a>
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Posts</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
+  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01wk-2: 강의소개</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">06wk-2: 중간고사</a>
+  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">15wk-2: 기말고사</a>
+  <a href="../../posts/2023-06-20-15wk-2-fin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15wk-2: 기말고사</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">1. 측도론</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">1. 측도론</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">02wk-1: 측도론 intro (1)</a>
+  <a href="../../posts/1. 측도론/2023-03-09-2wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-1: 측도론 intro (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">02wk-2: 측도론 intro (2)</a>
+  <a href="../../posts/1. 측도론/2023-03-14-2wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02wk-2: 측도론 intro (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">03wk-1: 측도론 intro (3)</a>
+  <a href="../../posts/1. 측도론/2023-03-16-3wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-1: 측도론 intro (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">03wk-2: 측도론 intro (4)</a>
+  <a href="../../posts/1. 측도론/2023-03-21-3wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03wk-2: 측도론 intro (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">04wk-1: 측도론 intro (5)</a>
+  <a href="../../posts/1. 측도론/2023-03-23-4wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-1: 측도론 intro (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">04wk-2: 측도론 intro (6)</a>
+  <a href="../../posts/1. 측도론/2023-03-28-4wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04wk-2: 측도론 intro (6)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">05wk-2: HW1</a>
+  <a href="../../posts/1. 측도론/2023-03-29-5wk-2-hw1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-2: HW1</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">2. 마코프체인</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">2. 마코프체인</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">05wk-1: 마코프체인 (1)</a>
+  <a href="../../posts/2. 마코프체인/2023-03-30-5wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05wk-1: 마코프체인 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">07wk-1: 마코프체인 (2)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-1: 마코프체인 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-2.html" class="sidebar-item-text sidebar-link">07wk-2: 마코프체인 (3)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-13-7wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07wk-2: 마코프체인 (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">08wk-1: 마코프체인 (4)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-20-8wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-1: 마코프체인 (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">08wk-2: 마코프체인 (5)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-25-8wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08wk-2: 마코프체인 (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">09wk-1: 마코프체인 (6)</a>
+  <a href="../../posts/2. 마코프체인/2023-04-27-9wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09wk-1: 마코프체인 (6)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">10wk-2: 마코프체인 (7)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-09-10wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10wk-2: 마코프체인 (7)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">11wk-1: 마코프체인 (8)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-11-11wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-1: 마코프체인 (8)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">11wk-2: 마코프체인 (9)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-16-11wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11wk-2: 마코프체인 (9)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">12wk-1: 마코프체인 (10)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-18-12wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-1: 마코프체인 (10)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">12wk-2: 마코프체인 (11)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-23-12wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12wk-2: 마코프체인 (11)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/2. 마코프체인/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">13wk-1: 마코프체인 (12)</a>
+  <a href="../../posts/2. 마코프체인/2023-05-25-13wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-1: 마코프체인 (12)</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">3. MCMC</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">3. MCMC</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">13wk-2: MCMC (1)</a>
+  <a href="../../posts/3. MCMC/2023-05-30-13wk-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13wk-2: MCMC (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/3. MCMC/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">14wk-1,2: MCMC (2)</a>
+  <a href="../../posts/3. MCMC/2023-06-01-14wk-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14wk-1,2: MCMC (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/3. MCMC/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link active">15wk-1: MCMC (3)</a>
+  <a href="../../posts/3. MCMC/2023-06-08-15wk-1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">15wk-1: MCMC (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">4. 강화학습</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/4. 강화학습/A1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix: 강화학습 (1)</span></a>
   </div>
 </li>
       </ul>
@@ -359,6 +392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -413,13 +447,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">15wk-1: MCMC (3)</h1>
+<h1 class="title display-7">15wk-1: MCMC (3)</h1>
 <p class="author">최규빈</p>
 
-<p class="date">6/1/23</p>
+<p class="date">2023-06-01</p>
 </header>
 
-<div class="cell" data-execution_count="7">
+<div id="b591b151-322d-4bef-8c59-b70c311720c2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pylab <span class="im">as</span> plt</span>
@@ -452,7 +486,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="문제소개" class="level1">
 <h1>문제소개</h1>
 <p><code>-</code> 3개의 문서가 있으며 각 문서에는 아래와 같이 2개의 단어가 있는 데이터를 고려하자.</p>
-<div class="cell" data-execution_count="8">
+<div id="f3ff1e89-fad5-4424-8378-93cca3109512" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>D <span class="op">=</span> {</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>,<span class="st">'골'</span>],</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">'doc2'</span>:[<span class="st">'골'</span>,<span class="st">'확률'</span>],</span>
@@ -482,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>즉 <span class="math inline">\(D\)</span>를 입력으로 넣으면 아래와 같은 <span class="math inline">\(\theta\)</span> 가 나오면 좋겠음</li>
 </ul>
-<div class="cell" data-execution_count="9">
+<div id="aff70504-a752-4713-9963-21512348b873" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>θ <span class="op">=</span> {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">'doc1'</span>:[<span class="dv">1</span>,<span class="dv">1</span>],</span>
 <span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">'doc2'</span>:[<span class="dv">1</span>,<span class="dv">2</span>],</span>
@@ -653,7 +687,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="단계1-아무값이나-넣어서-boldsymbol-theta_0를-초기화한다." class="level2">
 <h2 class="anchored" data-anchor-id="단계1-아무값이나-넣어서-boldsymbol-theta_0를-초기화한다."><strong><em>단계1: 아무값이나 넣어서 <span class="math inline">\({\boldsymbol \theta}_0\)</span>를 초기화한다.</em></strong></h2>
 <p><code>-</code> <span class="math inline">\({\boldsymbol \theta}_0=(\theta_0[0],\dots,\theta_0[5])\)</span>를 아무값이나 셋팅</p>
-<div class="cell" data-execution_count="10">
+<div id="f054c929-780a-4161-9d4b-6fa347ae6fef" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>θ <span class="op">=</span> {</span>
 <span id="cb6-2"><a href="#cb6-2"></a>    <span class="st">'doc1'</span>:[<span class="dv">2</span>,<span class="dv">1</span>],</span>
 <span id="cb6-3"><a href="#cb6-3"></a>    <span class="st">'doc2'</span>:[<span class="dv">1</span>,<span class="dv">2</span>],</span>
@@ -900,13 +934,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\theta_0[0]\)</span>의 생각: 나는 토픽1인듯해</p>
 </blockquote>
 <p><code>-</code> 업데이트</p>
-<div class="cell" data-execution_count="11">
+<div id="0e8a1d00-0d0e-4df9-ab02-63667ff5905b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>θ[<span class="st">'doc1'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="44abb322-a98c-4cc0-b073-1151fe719c8d" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>θ[<span class="st">'doc1'</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1186,13 +1220,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\theta_0[2]\)</span>의 생각: 나는 토픽2인듯함 (그런데 아닐 수도 있음)</p>
 </blockquote>
 <p><code>-</code> 업데이트</p>
-<div class="cell" data-execution_count="13">
+<div id="54dbf90d-cd38-43de-af50-8438aec80cfb" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>θ[<span class="st">'doc2'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="eb2bd827-9c23-4a1d-aea4-800cbde02b76" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>θ[<span class="st">'doc2'</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1612,20 +1646,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\theta_0[5]\)</span>의 생각: 나는 토픽1인듯함 (그런데 아닐수도 있음)</p>
 </blockquote>
 <p><code>-</code> 업데이트: 난 토픽2가 확실한듯</p>
-<div class="cell" data-execution_count="15">
+<div id="8c0f4251-c139-48a2-a59b-735f3a2067ff" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>θ[<span class="st">'doc3'</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="e96e52b8-82c5-4db4-b4b3-481525f0ebdd" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>θ[<span class="st">'doc3'</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="단계3-t1234dots-에-대하여-단계2를-반복" class="level2">
 <h2 class="anchored" data-anchor-id="단계3-t1234dots-에-대하여-단계2를-반복">단계3: <span class="math inline">\(t=1,2,3,4,\dots\)</span> 에 대하여 단계2를 반복</h2>
-<div class="cell" data-execution_count="17">
+<div id="e29e4dfe-7a4b-473b-8711-cd148f6bdd26" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>θ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>{'doc1': [1, 1], 'doc2': [2, 2], 'doc3': [2, 2]}</code></pre>
@@ -1729,7 +1763,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="구현에-필요한-예비학습">구현에 필요한 예비학습</h2>
 <section id="enumerate" class="level3">
 <h3 class="anchored" data-anchor-id="enumerate"><strong><em>enumerate</em></strong></h3>
-<div class="cell" data-execution_count="1">
+<div id="51712fc9-4813-491b-86b4-c5e9ba0e3ef1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="st">'abc'</span>:</span>
 <span id="cb18-2"><a href="#cb18-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1738,7 +1772,7 @@ b
 c</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="4a219e7f-f8e8-48e5-8471-9ca991a515a5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="st">'abc'</span>):</span>
 <span id="cb20-2"><a href="#cb20-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1747,7 +1781,7 @@ c</code></pre>
 (2, 'c')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="f4bf42c0-23b5-4188-a1c1-1c1415dc2da7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">for</span> i,s <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="st">'abc'</span>):</span>
 <span id="cb22-2"><a href="#cb22-2"></a>    <span class="bu">print</span>(i,s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1756,7 +1790,7 @@ c</code></pre>
 2 c</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="7ea6fb08-0a6b-4750-ae54-9b8e45a2999b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="cf">for</span> i,s <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="st">'abc'</span>):</span>
 <span id="cb24-2"><a href="#cb24-2"></a>    <span class="bu">print</span>(s<span class="op">*</span>(i<span class="op">+</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1768,7 +1802,7 @@ ccc</code></pre>
 </section>
 <section id="np.random.choice" class="level3">
 <h3 class="anchored" data-anchor-id="np.random.choice"><strong><em>np.random.choice</em></strong></h3>
-<div class="cell" data-execution_count="28">
+<div id="3e645138-5fcd-4e7d-b431-761e2210e472" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>np.random.choice([<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>],size<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>array([1000, 1000,   10,  100,  100, 1000,  100,  100,   10, 1000,   10,
@@ -1778,7 +1812,7 @@ ccc</code></pre>
         100,  100, 1000,   10,  100,  100])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div id="36ff8598-8d7f-41de-bd49-719f310ee1ee" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>np.random.choice([<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>],size<span class="op">=</span><span class="dv">50</span>,p<span class="op">=</span>[<span class="fl">0.8</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>array([  10,   10,   10,   10,   10,   10,   10,   10,  100,   10, 1000,
@@ -1792,7 +1826,7 @@ ccc</code></pre>
 <section id="딕셔너리의-해체" class="level3">
 <h3 class="anchored" data-anchor-id="딕셔너리의-해체"><strong><em>딕셔너리의 해체</em></strong></h3>
 <p><code>-</code> 아래와 같은 딕셔너리를 고려하자.</p>
-<div class="cell" data-execution_count="30">
+<div id="63f11cd0-b631-4436-8a70-b73a1879d2a2" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>D <span class="op">=</span> {<span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>,<span class="st">'골'</span>],</span>
 <span id="cb30-2"><a href="#cb30-2"></a>     <span class="st">'doc2'</span>:[<span class="st">'골'</span>,<span class="st">'확률'</span>],</span>
 <span id="cb30-3"><a href="#cb30-3"></a>     <span class="st">'doc3'</span>:[<span class="st">'확률'</span>,<span class="st">'데이터과학'</span>]}</span>
@@ -1801,13 +1835,13 @@ ccc</code></pre>
 <span id="cb30-6"><a href="#cb30-6"></a>     <span class="st">'doc3'</span>:[<span class="dv">2</span>,<span class="dv">1</span>]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 이러한 딕셔너리에를 해체하고 싶다면?</p>
-<div class="cell" data-execution_count="41">
+<div id="63a58133-ea79-4dbe-a7f2-584a380152af" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>[wrd <span class="cf">for</span> doc <span class="kw">in</span> D <span class="cf">for</span> wrd <span class="kw">in</span> D[doc]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>['손흥민', '골', '골', '확률', '확률', '데이터과학']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="762fbc20-05c8-498c-8e39-db1dae9667c0" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>[tpc <span class="cf">for</span> doc <span class="kw">in</span> θ <span class="cf">for</span> tpc <span class="kw">in</span> θ[doc]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>[2, 1, 1, 2, 2, 1]</code></pre>
@@ -1816,20 +1850,20 @@ ccc</code></pre>
 </section>
 <section id="리스트의-count-메소드" class="level3">
 <h3 class="anchored" data-anchor-id="리스트의-count-메소드"><strong><em>리스트의 count 메소드</em></strong></h3>
-<div class="cell" data-execution_count="46">
+<div id="b94ec29a-bd8e-49ba-b4c8-60971f0d269d" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>lst <span class="op">=</span> <span class="bu">list</span>(<span class="st">'asdfsdasdfasdfasdfasdfas'</span>)</span>
 <span id="cb35-2"><a href="#cb35-2"></a>lst.count(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
+<div id="03aad2ad-8589-4fbe-ba1d-c215ef6636e8" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>[wrd <span class="cf">for</span> doc <span class="kw">in</span> D <span class="cf">for</span> wrd <span class="kw">in</span> D[doc]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>['손흥민', '골', '골', '확률', '확률', '데이터과학']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
+<div id="a5265ebe-5c72-4471-9727-271a619f4c0c" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>[wrd <span class="cf">for</span> doc <span class="kw">in</span> D <span class="cf">for</span> wrd <span class="kw">in</span> D[doc]].count(<span class="st">'골'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>2</code></pre>
@@ -1838,7 +1872,7 @@ ccc</code></pre>
 </section>
 <section id="조건부-컴프리헨션" class="level3">
 <h3 class="anchored" data-anchor-id="조건부-컴프리헨션"><strong><em>조건부 컴프리헨션</em></strong></h3>
-<div class="cell" data-execution_count="54">
+<div id="47f77fac-7711-4f58-b09a-31a95073201a" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>lst <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]</span>
 <span id="cb41-2"><a href="#cb41-2"></a>[l <span class="cf">for</span> l <span class="kw">in</span> lst <span class="cf">if</span> l<span class="op">&lt;=</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
@@ -1848,7 +1882,7 @@ ccc</code></pre>
 </section>
 <section id="딕셔너리의-원소삭제" class="level3">
 <h3 class="anchored" data-anchor-id="딕셔너리의-원소삭제"><strong><em>딕셔너리의 원소삭제</em></strong></h3>
-<div class="cell" data-execution_count="55">
+<div id="20e62652-15e7-4cf0-bf89-0c90d0c2ee90" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>dct <span class="op">=</span> {<span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>]<span class="op">*</span><span class="dv">5</span>, <span class="st">'doc2'</span>:[<span class="st">'골'</span>]<span class="op">*</span><span class="dv">5</span>}</span>
 <span id="cb43-2"><a href="#cb43-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
@@ -1856,10 +1890,10 @@ ccc</code></pre>
  'doc2': ['골', '골', '골', '골', '골']}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="59">
+<div id="694ddcd1-10fd-4e50-9ba2-58b68fe8e9cf" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">del</span> dct[<span class="st">'doc1'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="60">
+<div id="c4806c25-1d22-4e36-b195-a27e5213ff5d" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>{'doc1': ['손흥민', '손흥민', '손흥민', '손흥민'], 'doc2': ['골', '골', '골', '골', '골']}</code></pre>
@@ -1869,43 +1903,43 @@ ccc</code></pre>
 <section id="깊은복사" class="level3">
 <h3 class="anchored" data-anchor-id="깊은복사"><strong><em>깊은복사</em></strong></h3>
 <p><code>-</code> 특정원소가 삭제된 dct와 삭제되지 않은 dct를 동시에 가지고 있으려면?</p>
-<div class="cell" data-execution_count="61">
+<div id="68cc939a-06cc-4f5a-9fd0-50fa45bbb0f9" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>dct <span class="op">=</span> {<span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>]<span class="op">*</span><span class="dv">5</span>, <span class="st">'doc2'</span>:[<span class="st">'골'</span>]<span class="op">*</span><span class="dv">5</span>}</span>
 <span id="cb48-2"><a href="#cb48-2"></a>dct2 <span class="op">=</span> dct </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="62">
+<div id="fff75412-9e42-471f-8766-688a0e1e8ffe" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">del</span> dct[<span class="st">'doc1'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="63">
+<div id="3ba38e52-1698-47d8-bd05-986097323ab7" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>{'doc1': ['손흥민', '손흥민', '손흥민', '손흥민'], 'doc2': ['골', '골', '골', '골', '골']}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="65">
+<div id="35f272b3-da23-4ab3-b34d-f84d42fc10a8" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>dct2 <span class="co"># 잉 왜 같이 삭제되는거야?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>{'doc1': ['손흥민', '손흥민', '손흥민', '손흥민'], 'doc2': ['골', '골', '골', '골', '골']}</code></pre>
 </div>
 </div>
 <p><code>-</code> 해결책</p>
-<div class="cell" data-execution_count="66">
+<div id="5cc19fec-d663-4bc3-b5d5-7dddc8e35953" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="im">import</span> copy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="67">
+<div id="589b67f9-82c3-4b7b-bc1d-c7ebe5c269b6" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>dct <span class="op">=</span> {<span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>]<span class="op">*</span><span class="dv">5</span>, <span class="st">'doc2'</span>:[<span class="st">'골'</span>]<span class="op">*</span><span class="dv">5</span>}</span>
 <span id="cb55-2"><a href="#cb55-2"></a>dct2 <span class="op">=</span> copy.deepcopy(dct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="68">
+<div id="78f47683-f32d-4ad2-aa6d-b83790c0a133" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="kw">del</span> dct[<span class="st">'doc1'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="69">
+<div id="8e3aecd3-6626-4784-a881-71630388665e" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>{'doc1': ['손흥민', '손흥민', '손흥민', '손흥민'], 'doc2': ['골', '골', '골', '골', '골']}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
+<div id="a3a231ed-3343-4ee0-9801-c651657a021a" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>dct2 <span class="co"># 이제야 제대로 돌아가네</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>{'doc1': ['손흥민', '손흥민', '손흥민', '손흥민', '손흥민'],
@@ -1916,7 +1950,7 @@ ccc</code></pre>
 <section id="연습문제" class="level3">
 <h3 class="anchored" data-anchor-id="연습문제"><strong><em>연습문제</em></strong></h3>
 <p>아래와 같은 자료가 있다고 하자.</p>
-<div class="cell" data-execution_count="72">
+<div id="2bbd7b95-97ff-4727-82f4-117e3fd5dc7a" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>D <span class="op">=</span> {<span class="st">'doc1'</span>:[<span class="st">'손흥민'</span>,<span class="st">'골'</span>],</span>
 <span id="cb61-2"><a href="#cb61-2"></a>     <span class="st">'doc2'</span>:[<span class="st">'골'</span>,<span class="st">'확률'</span>],</span>
 <span id="cb61-3"><a href="#cb61-3"></a>     <span class="st">'doc3'</span>:[<span class="st">'확률'</span>,<span class="st">'데이터과학'</span>]}</span>
@@ -1925,48 +1959,48 @@ ccc</code></pre>
 <span id="cb61-6"><a href="#cb61-6"></a>     <span class="st">'doc3'</span>:[<span class="dv">2</span>,<span class="dv">1</span>]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>(1)</code> <span class="math inline">\(D\)</span>에는 총 몇개의 단어가 있는가?</p>
-<div class="cell" data-execution_count="77">
+<div id="c3a15213-0a7a-4984-b23b-dee67e9f79d7" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="bu">len</span>(<span class="bu">set</span>([wrd <span class="cf">for</span> doc <span class="kw">in</span> D <span class="cf">for</span> wrd <span class="kw">in</span> D[doc]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>4</code></pre>
 </div>
 </div>
 <p><code>(2)</code> 문서2에 토픽1은 몇개나 있는가?</p>
-<div class="cell" data-execution_count="81">
+<div id="1c328892-6122-414e-80dd-9044546f127f" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>θ[<span class="st">'doc2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>[1, 2]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="82">
+<div id="106a3b85-2f04-4d73-9e2d-f037c0290bb8" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>θ[<span class="st">'doc2'</span>].count(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>1</code></pre>
 </div>
 </div>
 <p><code>(3)</code> 토픽1에 들어있는 단어들의 목록을 구하라.</p>
-<div class="cell" data-execution_count="85">
+<div id="a0f542a3-a0bc-43c5-bdd2-3e1cba2bb4ef" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>wrdlst <span class="op">=</span> [wrd <span class="cf">for</span> doc <span class="kw">in</span> D <span class="cf">for</span> wrd <span class="kw">in</span> D[doc]]</span>
 <span id="cb68-2"><a href="#cb68-2"></a>wrdlst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>['손흥민', '골', '골', '확률', '확률', '데이터과학']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="87">
+<div id="a4ebbbc9-f48a-4352-b2da-b5b0ac109dc7" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>tpclst <span class="op">=</span> [tpc <span class="cf">for</span> doc <span class="kw">in</span> θ <span class="cf">for</span> tpc <span class="kw">in</span> θ[doc]]</span>
 <span id="cb70-2"><a href="#cb70-2"></a>tpclst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="87">
 <pre><code>[2, 1, 1, 2, 2, 1]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="91">
+<div id="38a9a729-d6bc-4434-aab1-302b8f63020b" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>[wrd <span class="cf">for</span> i,wrd <span class="kw">in</span> <span class="bu">enumerate</span>(wrdlst) <span class="cf">if</span> tpclst[i]<span class="op">==</span><span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>['골', '골', '데이터과학']</code></pre>
 </div>
 </div>
 <p><code>(4)</code> 토픽1에서 ’골’이라는 단어는 몇번 등장하는가?</p>
-<div class="cell" data-execution_count="92">
+<div id="0e00bb36-a3d3-4f70-88b3-f4a850f24a86" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>[wrd <span class="cf">for</span> i,wrd <span class="kw">in</span> <span class="bu">enumerate</span>(wrdlst) <span class="cf">if</span> tpclst[i]<span class="op">==</span><span class="dv">1</span> ].count(<span class="st">'골'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
 <pre><code>2</code></pre>
@@ -1976,307 +2010,308 @@ ccc</code></pre>
 </section>
 <section id="데이터-d와-theta의-설정" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-d와-theta의-설정">데이터: <span class="math inline">\(D\)</span>와 <span class="math inline">\(\theta\)</span>의 설정</h2>
-<div class="cell" data-execution_count="303">
+<div id="34a86bfb-546b-43c7-a6d1-f6ae42421a76" class="cell" data-execution_count="303">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>D <span class="op">=</span> {<span class="st">'doc1'</span>: [<span class="st">'심판'</span>, <span class="st">'헤딩'</span>, <span class="st">'선수'</span>, <span class="st">'골'</span>, <span class="st">'리그'</span>, <span class="st">'골'</span>, <span class="st">'선수'</span>, <span class="st">'공격'</span>, <span class="st">'헤딩'</span>, <span class="st">'슈팅'</span>, <span class="st">'공'</span>, <span class="st">'패스'</span>, <span class="st">'공격수'</span>, <span class="st">'페널티킥'</span>, <span class="st">'공'</span>], <span class="st">'doc2'</span>: [<span class="st">'수비'</span>, <span class="st">'골'</span>, <span class="st">'챔피언스리그'</span>, <span class="st">'헤딩'</span>, <span class="st">'경기장'</span>, <span class="st">'골키퍼'</span>, <span class="st">'챔피언스리그'</span>, <span class="st">'헤딩'</span>, <span class="st">'경기장'</span>, <span class="st">'수비수'</span>, <span class="st">'수비수'</span>, <span class="st">'패스'</span>, <span class="st">'드리블'</span>, <span class="st">'선수'</span>, <span class="st">'월드컵'</span>], <span class="st">'doc3'</span>: [<span class="st">'헤딩'</span>, <span class="st">'리그'</span>, <span class="st">'드리블'</span>, <span class="st">'골키퍼'</span>, <span class="st">'공격수'</span>, <span class="st">'공격수'</span>, <span class="st">'월드컵'</span>, <span class="st">'선수'</span>, <span class="st">'공'</span>, <span class="st">'헤딩'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'공격'</span>, <span class="st">'선수'</span>, <span class="st">'수비수'</span>, <span class="st">'드리블'</span>], <span class="st">'doc4'</span>: [<span class="st">'클럽'</span>, <span class="st">'선수'</span>, <span class="st">'챔피언스리그'</span>, <span class="st">'슈팅'</span>, <span class="st">'리그'</span>, <span class="st">'수비'</span>, <span class="st">'리그'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'공격'</span>, <span class="st">'공'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'골'</span>, <span class="st">'패스'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'클럽'</span>], <span class="st">'doc5'</span>: [<span class="st">'선수'</span>, <span class="st">'경기장'</span>, <span class="st">'수비'</span>, <span class="st">'골키퍼'</span>, <span class="st">'월드컵'</span>, <span class="st">'리그'</span>, <span class="st">'드리블'</span>, <span class="st">'공격수'</span>, <span class="st">'슈팅'</span>, <span class="st">'선수'</span>, <span class="st">'선수'</span>, <span class="st">'월드컵'</span>, <span class="st">'드리블'</span>, <span class="st">'월드컵'</span>, <span class="st">'골키퍼'</span>], <span class="st">'doc6'</span>: [<span class="st">'수비수'</span>, <span class="st">'심판'</span>, <span class="st">'공'</span>, <span class="st">'공격'</span>, <span class="st">'표준편차'</span>, <span class="st">'표본'</span>, <span class="st">'상관관계'</span>, <span class="st">'모집단'</span>, <span class="st">'딥러닝'</span>, <span class="st">'클러스터링'</span>, <span class="st">'인공지능'</span>, <span class="st">'챔피언스리그'</span>, <span class="st">'공'</span>, <span class="st">'심판'</span>, <span class="st">'챔피언스리그'</span>], <span class="st">'doc7'</span>: [<span class="st">'페널티킥'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'챔피언스리그'</span>, <span class="st">'선수'</span>, <span class="st">'표본'</span>, <span class="st">'평균'</span>, <span class="st">'분류'</span>, <span class="st">'로지스틱 회귀'</span>, <span class="st">'머신러닝'</span>, <span class="st">'클러스터링'</span>, <span class="st">'평균'</span>, <span class="st">'수비수'</span>, <span class="st">'중앙미드필더'</span>, <span class="st">'페널티킥'</span>, <span class="st">'심판'</span>], <span class="st">'doc8'</span>: [<span class="st">'공격'</span>, <span class="st">'경기장'</span>, <span class="st">'패스'</span>, <span class="st">'수비수'</span>, <span class="st">'신뢰구간'</span>, <span class="st">'데이터과학'</span>, <span class="st">'확률'</span>, <span class="st">'통계'</span>, <span class="st">'분류'</span>, <span class="st">'인공지능'</span>, <span class="st">'머신러닝'</span>, <span class="st">'수비수'</span>, <span class="st">'수비수'</span>, <span class="st">'페널티킥'</span>, <span class="st">'수비수'</span>], <span class="st">'doc9'</span>: [<span class="st">'페널티킥'</span>, <span class="st">'패스'</span>, <span class="st">'골키퍼'</span>, <span class="st">'공'</span>, <span class="st">'신뢰구간'</span>, <span class="st">'딥러닝'</span>, <span class="st">'평균'</span>, <span class="st">'인공지능'</span>, <span class="st">'딥러닝'</span>, <span class="st">'분산'</span>, <span class="st">'딥러닝'</span>, <span class="st">'월드컵'</span>, <span class="st">'월드컵'</span>, <span class="st">'슈팅'</span>, <span class="st">'골키퍼'</span>], <span class="st">'doc10'</span>: [<span class="st">'리그'</span>, <span class="st">'슈팅'</span>, <span class="st">'드리블'</span>, <span class="st">'선수'</span>, <span class="st">'평균'</span>, <span class="st">'데이터분석'</span>, <span class="st">'데이터과학'</span>, <span class="st">'신뢰구간'</span>, <span class="st">'평균'</span>, <span class="st">'분류'</span>, <span class="st">'딥러닝'</span>, <span class="st">'심판'</span>, <span class="st">'슈팅'</span>, <span class="st">'패스'</span>, <span class="st">'선수'</span>], <span class="st">'doc11'</span>: [<span class="st">'평균'</span>, <span class="st">'데이터분석'</span>, <span class="st">'클러스터링'</span>, <span class="st">'데이터과학'</span>, <span class="st">'신경망'</span>, <span class="st">'데이터분석'</span>, <span class="st">'상관관계'</span>, <span class="st">'인공지능'</span>, <span class="st">'상관관계'</span>, <span class="st">'확률'</span>, <span class="st">'회귀분석'</span>, <span class="st">'로지스틱 회귀'</span>, <span class="st">'평균'</span>, <span class="st">'표준편차'</span>, <span class="st">'딥러닝'</span>], <span class="st">'doc12'</span>: [<span class="st">'신뢰구간'</span>, <span class="st">'딥러닝'</span>, <span class="st">'확률'</span>, <span class="st">'평균'</span>, <span class="st">'데이터분석'</span>, <span class="st">'상관관계'</span>, <span class="st">'회귀분석'</span>, <span class="st">'통계'</span>, <span class="st">'신경망'</span>, <span class="st">'상관관계'</span>, <span class="st">'회귀분석'</span>, <span class="st">'확률'</span>, <span class="st">'로지스틱 회귀'</span>, <span class="st">'상관관계'</span>, <span class="st">'데이터과학'</span>], <span class="st">'doc13'</span>: [<span class="st">'확률'</span>, <span class="st">'로지스틱 회귀'</span>, <span class="st">'통계'</span>, <span class="st">'딥러닝'</span>, <span class="st">'모집단'</span>, <span class="st">'머신러닝'</span>, <span class="st">'인공지능'</span>, <span class="st">'표준편차'</span>, <span class="st">'상관관계'</span>, <span class="st">'확률'</span>, <span class="st">'확률'</span>, <span class="st">'클러스터링'</span>, <span class="st">'신경망'</span>, <span class="st">'분류'</span>, <span class="st">'데이터분석'</span>], <span class="st">'doc14'</span>: [<span class="st">'데이터분석'</span>, <span class="st">'데이터과학'</span>, <span class="st">'분류'</span>, <span class="st">'통계적 가설검정'</span>, <span class="st">'머신러닝'</span>, <span class="st">'로지스틱 회귀'</span>, <span class="st">'회귀분석'</span>, <span class="st">'분류'</span>, <span class="st">'표본'</span>, <span class="st">'모집단'</span>, <span class="st">'통계적 가설검정'</span>, <span class="st">'상관관계'</span>, <span class="st">'표본'</span>, <span class="st">'클러스터링'</span>, <span class="st">'표본'</span>], <span class="st">'doc15'</span>: [<span class="st">'딥러닝'</span>, <span class="st">'인공지능'</span>, <span class="st">'표본'</span>, <span class="st">'표준편차'</span>, <span class="st">'신경망'</span>, <span class="st">'분류'</span>, <span class="st">'모집단'</span>, <span class="st">'데이터분석'</span>, <span class="st">'통계'</span>, <span class="st">'통계적 가설검정'</span>, <span class="st">'통계적 가설검정'</span>, <span class="st">'머신러닝'</span>, <span class="st">'머신러닝'</span>, <span class="st">'상관관계'</span>, <span class="st">'딥러닝'</span>]}</span>
 <span id="cb76-2"><a href="#cb76-2"></a>pd.DataFrame(D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="303">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>doc1</th>
-      <th>doc2</th>
-      <th>doc3</th>
-      <th>doc4</th>
-      <th>doc5</th>
-      <th>doc6</th>
-      <th>doc7</th>
-      <th>doc8</th>
-      <th>doc9</th>
-      <th>doc10</th>
-      <th>doc11</th>
-      <th>doc12</th>
-      <th>doc13</th>
-      <th>doc14</th>
-      <th>doc15</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>심판</td>
-      <td>수비</td>
-      <td>헤딩</td>
-      <td>클럽</td>
-      <td>선수</td>
-      <td>수비수</td>
-      <td>페널티킥</td>
-      <td>공격</td>
-      <td>페널티킥</td>
-      <td>리그</td>
-      <td>평균</td>
-      <td>신뢰구간</td>
-      <td>확률</td>
-      <td>데이터분석</td>
-      <td>딥러닝</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>헤딩</td>
-      <td>골</td>
-      <td>리그</td>
-      <td>선수</td>
-      <td>경기장</td>
-      <td>심판</td>
-      <td>중앙미드필더</td>
-      <td>경기장</td>
-      <td>패스</td>
-      <td>슈팅</td>
-      <td>데이터분석</td>
-      <td>딥러닝</td>
-      <td>로지스틱 회귀</td>
-      <td>데이터과학</td>
-      <td>인공지능</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>선수</td>
-      <td>챔피언스리그</td>
-      <td>드리블</td>
-      <td>챔피언스리그</td>
-      <td>수비</td>
-      <td>공</td>
-      <td>챔피언스리그</td>
-      <td>패스</td>
-      <td>골키퍼</td>
-      <td>드리블</td>
-      <td>클러스터링</td>
-      <td>확률</td>
-      <td>통계</td>
-      <td>분류</td>
-      <td>표본</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>골</td>
-      <td>헤딩</td>
-      <td>골키퍼</td>
-      <td>슈팅</td>
-      <td>골키퍼</td>
-      <td>공격</td>
-      <td>선수</td>
-      <td>수비수</td>
-      <td>공</td>
-      <td>선수</td>
-      <td>데이터과학</td>
-      <td>평균</td>
-      <td>딥러닝</td>
-      <td>통계적 가설검정</td>
-      <td>표준편차</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>리그</td>
-      <td>경기장</td>
-      <td>공격수</td>
-      <td>리그</td>
-      <td>월드컵</td>
-      <td>표준편차</td>
-      <td>표본</td>
-      <td>신뢰구간</td>
-      <td>신뢰구간</td>
-      <td>평균</td>
-      <td>신경망</td>
-      <td>데이터분석</td>
-      <td>모집단</td>
-      <td>머신러닝</td>
-      <td>신경망</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>골</td>
-      <td>골키퍼</td>
-      <td>공격수</td>
-      <td>수비</td>
-      <td>리그</td>
-      <td>표본</td>
-      <td>평균</td>
-      <td>데이터과학</td>
-      <td>딥러닝</td>
-      <td>데이터분석</td>
-      <td>데이터분석</td>
-      <td>상관관계</td>
-      <td>머신러닝</td>
-      <td>로지스틱 회귀</td>
-      <td>분류</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>선수</td>
-      <td>챔피언스리그</td>
-      <td>월드컵</td>
-      <td>리그</td>
-      <td>드리블</td>
-      <td>상관관계</td>
-      <td>분류</td>
-      <td>확률</td>
-      <td>평균</td>
-      <td>데이터과학</td>
-      <td>상관관계</td>
-      <td>회귀분석</td>
-      <td>인공지능</td>
-      <td>회귀분석</td>
-      <td>모집단</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>공격</td>
-      <td>헤딩</td>
-      <td>선수</td>
-      <td>중앙미드필더</td>
-      <td>공격수</td>
-      <td>모집단</td>
-      <td>로지스틱 회귀</td>
-      <td>통계</td>
-      <td>인공지능</td>
-      <td>신뢰구간</td>
-      <td>인공지능</td>
-      <td>통계</td>
-      <td>표준편차</td>
-      <td>분류</td>
-      <td>데이터분석</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>헤딩</td>
-      <td>경기장</td>
-      <td>공</td>
-      <td>공격</td>
-      <td>슈팅</td>
-      <td>딥러닝</td>
-      <td>머신러닝</td>
-      <td>분류</td>
-      <td>딥러닝</td>
-      <td>평균</td>
-      <td>상관관계</td>
-      <td>신경망</td>
-      <td>상관관계</td>
-      <td>표본</td>
-      <td>통계</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>슈팅</td>
-      <td>수비수</td>
-      <td>헤딩</td>
-      <td>공</td>
-      <td>선수</td>
-      <td>클러스터링</td>
-      <td>클러스터링</td>
-      <td>인공지능</td>
-      <td>분산</td>
-      <td>분류</td>
-      <td>확률</td>
-      <td>상관관계</td>
-      <td>확률</td>
-      <td>모집단</td>
-      <td>통계적 가설검정</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>공</td>
-      <td>수비수</td>
-      <td>중앙미드필더</td>
-      <td>중앙미드필더</td>
-      <td>선수</td>
-      <td>인공지능</td>
-      <td>평균</td>
-      <td>머신러닝</td>
-      <td>딥러닝</td>
-      <td>딥러닝</td>
-      <td>회귀분석</td>
-      <td>회귀분석</td>
-      <td>확률</td>
-      <td>통계적 가설검정</td>
-      <td>통계적 가설검정</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>패스</td>
-      <td>패스</td>
-      <td>공격</td>
-      <td>골</td>
-      <td>월드컵</td>
-      <td>챔피언스리그</td>
-      <td>수비수</td>
-      <td>수비수</td>
-      <td>월드컵</td>
-      <td>심판</td>
-      <td>로지스틱 회귀</td>
-      <td>확률</td>
-      <td>클러스터링</td>
-      <td>상관관계</td>
-      <td>머신러닝</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>공격수</td>
-      <td>드리블</td>
-      <td>선수</td>
-      <td>패스</td>
-      <td>드리블</td>
-      <td>공</td>
-      <td>중앙미드필더</td>
-      <td>수비수</td>
-      <td>월드컵</td>
-      <td>슈팅</td>
-      <td>평균</td>
-      <td>로지스틱 회귀</td>
-      <td>신경망</td>
-      <td>표본</td>
-      <td>머신러닝</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>페널티킥</td>
-      <td>선수</td>
-      <td>수비수</td>
-      <td>중앙미드필더</td>
-      <td>월드컵</td>
-      <td>심판</td>
-      <td>페널티킥</td>
-      <td>페널티킥</td>
-      <td>슈팅</td>
-      <td>패스</td>
-      <td>표준편차</td>
-      <td>상관관계</td>
-      <td>분류</td>
-      <td>클러스터링</td>
-      <td>상관관계</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>공</td>
-      <td>월드컵</td>
-      <td>드리블</td>
-      <td>클럽</td>
-      <td>골키퍼</td>
-      <td>챔피언스리그</td>
-      <td>심판</td>
-      <td>수비수</td>
-      <td>골키퍼</td>
-      <td>선수</td>
-      <td>딥러닝</td>
-      <td>데이터과학</td>
-      <td>데이터분석</td>
-      <td>표본</td>
-      <td>딥러닝</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">doc1</th>
+<th data-quarto-table-cell-role="th">doc2</th>
+<th data-quarto-table-cell-role="th">doc3</th>
+<th data-quarto-table-cell-role="th">doc4</th>
+<th data-quarto-table-cell-role="th">doc5</th>
+<th data-quarto-table-cell-role="th">doc6</th>
+<th data-quarto-table-cell-role="th">doc7</th>
+<th data-quarto-table-cell-role="th">doc8</th>
+<th data-quarto-table-cell-role="th">doc9</th>
+<th data-quarto-table-cell-role="th">doc10</th>
+<th data-quarto-table-cell-role="th">doc11</th>
+<th data-quarto-table-cell-role="th">doc12</th>
+<th data-quarto-table-cell-role="th">doc13</th>
+<th data-quarto-table-cell-role="th">doc14</th>
+<th data-quarto-table-cell-role="th">doc15</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>심판</td>
+<td>수비</td>
+<td>헤딩</td>
+<td>클럽</td>
+<td>선수</td>
+<td>수비수</td>
+<td>페널티킥</td>
+<td>공격</td>
+<td>페널티킥</td>
+<td>리그</td>
+<td>평균</td>
+<td>신뢰구간</td>
+<td>확률</td>
+<td>데이터분석</td>
+<td>딥러닝</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>헤딩</td>
+<td>골</td>
+<td>리그</td>
+<td>선수</td>
+<td>경기장</td>
+<td>심판</td>
+<td>중앙미드필더</td>
+<td>경기장</td>
+<td>패스</td>
+<td>슈팅</td>
+<td>데이터분석</td>
+<td>딥러닝</td>
+<td>로지스틱 회귀</td>
+<td>데이터과학</td>
+<td>인공지능</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>선수</td>
+<td>챔피언스리그</td>
+<td>드리블</td>
+<td>챔피언스리그</td>
+<td>수비</td>
+<td>공</td>
+<td>챔피언스리그</td>
+<td>패스</td>
+<td>골키퍼</td>
+<td>드리블</td>
+<td>클러스터링</td>
+<td>확률</td>
+<td>통계</td>
+<td>분류</td>
+<td>표본</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>골</td>
+<td>헤딩</td>
+<td>골키퍼</td>
+<td>슈팅</td>
+<td>골키퍼</td>
+<td>공격</td>
+<td>선수</td>
+<td>수비수</td>
+<td>공</td>
+<td>선수</td>
+<td>데이터과학</td>
+<td>평균</td>
+<td>딥러닝</td>
+<td>통계적 가설검정</td>
+<td>표준편차</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>리그</td>
+<td>경기장</td>
+<td>공격수</td>
+<td>리그</td>
+<td>월드컵</td>
+<td>표준편차</td>
+<td>표본</td>
+<td>신뢰구간</td>
+<td>신뢰구간</td>
+<td>평균</td>
+<td>신경망</td>
+<td>데이터분석</td>
+<td>모집단</td>
+<td>머신러닝</td>
+<td>신경망</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>골</td>
+<td>골키퍼</td>
+<td>공격수</td>
+<td>수비</td>
+<td>리그</td>
+<td>표본</td>
+<td>평균</td>
+<td>데이터과학</td>
+<td>딥러닝</td>
+<td>데이터분석</td>
+<td>데이터분석</td>
+<td>상관관계</td>
+<td>머신러닝</td>
+<td>로지스틱 회귀</td>
+<td>분류</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>선수</td>
+<td>챔피언스리그</td>
+<td>월드컵</td>
+<td>리그</td>
+<td>드리블</td>
+<td>상관관계</td>
+<td>분류</td>
+<td>확률</td>
+<td>평균</td>
+<td>데이터과학</td>
+<td>상관관계</td>
+<td>회귀분석</td>
+<td>인공지능</td>
+<td>회귀분석</td>
+<td>모집단</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>공격</td>
+<td>헤딩</td>
+<td>선수</td>
+<td>중앙미드필더</td>
+<td>공격수</td>
+<td>모집단</td>
+<td>로지스틱 회귀</td>
+<td>통계</td>
+<td>인공지능</td>
+<td>신뢰구간</td>
+<td>인공지능</td>
+<td>통계</td>
+<td>표준편차</td>
+<td>분류</td>
+<td>데이터분석</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>헤딩</td>
+<td>경기장</td>
+<td>공</td>
+<td>공격</td>
+<td>슈팅</td>
+<td>딥러닝</td>
+<td>머신러닝</td>
+<td>분류</td>
+<td>딥러닝</td>
+<td>평균</td>
+<td>상관관계</td>
+<td>신경망</td>
+<td>상관관계</td>
+<td>표본</td>
+<td>통계</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>슈팅</td>
+<td>수비수</td>
+<td>헤딩</td>
+<td>공</td>
+<td>선수</td>
+<td>클러스터링</td>
+<td>클러스터링</td>
+<td>인공지능</td>
+<td>분산</td>
+<td>분류</td>
+<td>확률</td>
+<td>상관관계</td>
+<td>확률</td>
+<td>모집단</td>
+<td>통계적 가설검정</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>공</td>
+<td>수비수</td>
+<td>중앙미드필더</td>
+<td>중앙미드필더</td>
+<td>선수</td>
+<td>인공지능</td>
+<td>평균</td>
+<td>머신러닝</td>
+<td>딥러닝</td>
+<td>딥러닝</td>
+<td>회귀분석</td>
+<td>회귀분석</td>
+<td>확률</td>
+<td>통계적 가설검정</td>
+<td>통계적 가설검정</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>패스</td>
+<td>패스</td>
+<td>공격</td>
+<td>골</td>
+<td>월드컵</td>
+<td>챔피언스리그</td>
+<td>수비수</td>
+<td>수비수</td>
+<td>월드컵</td>
+<td>심판</td>
+<td>로지스틱 회귀</td>
+<td>확률</td>
+<td>클러스터링</td>
+<td>상관관계</td>
+<td>머신러닝</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>공격수</td>
+<td>드리블</td>
+<td>선수</td>
+<td>패스</td>
+<td>드리블</td>
+<td>공</td>
+<td>중앙미드필더</td>
+<td>수비수</td>
+<td>월드컵</td>
+<td>슈팅</td>
+<td>평균</td>
+<td>로지스틱 회귀</td>
+<td>신경망</td>
+<td>표본</td>
+<td>머신러닝</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>페널티킥</td>
+<td>선수</td>
+<td>수비수</td>
+<td>중앙미드필더</td>
+<td>월드컵</td>
+<td>심판</td>
+<td>페널티킥</td>
+<td>페널티킥</td>
+<td>슈팅</td>
+<td>패스</td>
+<td>표준편차</td>
+<td>상관관계</td>
+<td>분류</td>
+<td>클러스터링</td>
+<td>상관관계</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>공</td>
+<td>월드컵</td>
+<td>드리블</td>
+<td>클럽</td>
+<td>골키퍼</td>
+<td>챔피언스리그</td>
+<td>심판</td>
+<td>수비수</td>
+<td>골키퍼</td>
+<td>선수</td>
+<td>딥러닝</td>
+<td>데이터과학</td>
+<td>데이터분석</td>
+<td>표본</td>
+<td>딥러닝</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2286,7 +2321,7 @@ ccc</code></pre>
 <li>축구와 통계가 섞인 <code>doc6~doc11</code>은 축구관련4단어, 통계관련7단어, 축구관련4단어의 조합으로 이루어져 있다.</li>
 </ul>
 <p><code>-</code> 초기값</p>
-<div class="cell" data-execution_count="304">
+<div id="3e9bebfe-8b69-4006-bcfa-e91360358ea7" class="cell" data-execution_count="304">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>θ <span class="op">=</span> {doc:np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>],size<span class="op">=</span><span class="dv">15</span>).tolist() <span class="cf">for</span> doc <span class="kw">in</span> D}</span>
 <span id="cb77-2"><a href="#cb77-2"></a>θ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="304">
@@ -2308,13 +2343,13 @@ ccc</code></pre>
 </div>
 </div>
 <p><code>-</code> D와 <span class="math inline">\(\theta\)</span>를 묶어서 하나의 dict를 만들자.</p>
-<div class="cell" data-execution_count="305">
+<div id="37ca855e-87f3-4480-babc-b11550e2f675" class="cell" data-execution_count="305">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>data <span class="op">=</span> {<span class="st">'D'</span>:D, <span class="st">'θ'</span>:θ} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="하이퍼파라메터" class="level2">
 <h2 class="anchored" data-anchor-id="하이퍼파라메터">하이퍼파라메터</h2>
-<div class="cell" data-execution_count="306">
+<div id="8c4f6d80-da4f-4d78-b884-1bc362a5c004" class="cell" data-execution_count="306">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>K <span class="op">=</span> <span class="dv">2</span> <span class="co"># 토픽의수 &lt;-- 유저가 설정함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -2323,7 +2358,7 @@ ccc</code></pre>
 <p><code>-</code> <span class="math inline">\(p_1\)</span>: <span class="math inline">\(d\)</span>-th document에 포함된 토픽 <span class="math inline">\(k\)</span>의 비율을 리턴하는 함수, 즉 아래를 계산한다.</p>
 <p><span class="math display">\[p_1=:\frac{\#({\tt topic == k, document == d})+0.1}{\#({\tt document == d})+0.1\times K}\]</span></p>
 <p>여기에서 <span class="math inline">\(K\)</span>는 토픽의 수.</p>
-<div class="cell" data-execution_count="307">
+<div id="57ef5641-0d43-4fff-8881-341ac69d0844" class="cell" data-execution_count="307">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a><span class="kw">def</span> p1(topic,doc,data):</span>
 <span id="cb81-2"><a href="#cb81-2"></a>    θ <span class="op">=</span> data[<span class="st">'θ'</span>]</span>
 <span id="cb81-3"><a href="#cb81-3"></a>    a <span class="op">=</span> θ[doc].count(topic) <span class="op">+</span><span class="fl">0.1</span></span>
@@ -2333,7 +2368,7 @@ ccc</code></pre>
 <p><code>-</code> <span class="math inline">\(p_2\)</span>: <span class="math inline">\(k\)</span>-th topic에 포함된 단어 <span class="math inline">\(w\)</span>의 비율을 리턴하는 함수, 즉 아래를 계산한다.</p>
 <p><span class="math display">\[p_2=:\frac{\#({\tt word ==w, topic == k})+0.1}{\#({\tt topic == k})+0.1\times W}\]</span></p>
 <p>여기에서 <span class="math inline">\(W\)</span>는 전체단어의 수. (이 예제의 경우 40개의 단어로 이루어짐)</p>
-<div class="cell" data-execution_count="312">
+<div id="d08cffd6-a9a9-45ef-b1b0-8647cdf67311" class="cell" data-execution_count="312">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a><span class="kw">def</span> p2(word,topic,data):</span>
 <span id="cb82-2"><a href="#cb82-2"></a>    D<span class="op">=</span>data[<span class="st">'D'</span>]</span>
 <span id="cb82-3"><a href="#cb82-3"></a>    θ<span class="op">=</span>data[<span class="st">'θ'</span>]</span>
@@ -2348,7 +2383,7 @@ ccc</code></pre>
 <h2 class="anchored" data-anchor-id="알고리즘">알고리즘</h2>
 <section id="초기값-boldsymbol-theta_0" class="level3">
 <h3 class="anchored" data-anchor-id="초기값-boldsymbol-theta_0"><strong><em>1. 초기값: <span class="math inline">\({\boldsymbol \theta}_0\)</span></em></strong></h3>
-<div class="cell" data-execution_count="313">
+<div id="f7c43377-4143-4df7-80c6-27b6779149dd" class="cell" data-execution_count="313">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>θ <span class="op">=</span> {doc:np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>],size<span class="op">=</span><span class="dv">15</span>).tolist() <span class="cf">for</span> doc <span class="kw">in</span> D}</span>
 <span id="cb83-2"><a href="#cb83-2"></a>plt.matshow(<span class="bu">list</span>(θ.values()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="313">
@@ -2361,7 +2396,7 @@ ccc</code></pre>
 </section>
 <section id="반복-boldsymbol-theta_0-to-boldsymbol-theta_1-to-boldsymbol-theta_2-to-dots" class="level3">
 <h3 class="anchored" data-anchor-id="반복-boldsymbol-theta_0-to-boldsymbol-theta_1-to-boldsymbol-theta_2-to-dots"><strong><em>2. 반복: <span class="math inline">\({\boldsymbol \theta}_0 \to {\boldsymbol \theta}_1 \to {\boldsymbol \theta}_2 \to \dots\)</span></em></strong></h3>
-<div class="cell" data-execution_count="314">
+<div id="2013c36c-f98d-42fb-a637-8e292098a9f6" class="cell" data-execution_count="314">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb85-2"><a href="#cb85-2"></a>    <span class="cf">for</span> doc <span class="kw">in</span> D:</span>
 <span id="cb85-3"><a href="#cb85-3"></a>        <span class="cf">for</span> i, wrd <span class="kw">in</span> <span class="bu">enumerate</span>(D[doc]):</span>
@@ -2382,7 +2417,7 @@ ccc</code></pre>
 </section>
 <section id="시각화" class="level2">
 <h2 class="anchored" data-anchor-id="시각화">시각화</h2>
-<div class="cell" data-execution_count="315">
+<div id="1528c976-a7c5-4844-b24a-d2a703361ec4" class="cell" data-execution_count="315">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>plt.matshow(<span class="bu">list</span>(θ.values()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="315">
 <pre><code>&lt;matplotlib.image.AxesImage at 0x7fbe30f627f0&gt;</code></pre>
@@ -2397,7 +2432,7 @@ ccc</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>원래 2였는데 업데이트되었음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -2421,7 +2456,7 @@ ccc</code></pre>
 <li id="fn19"><p>1일수도 있었음<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20"><p>1일 수도 있었음<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section></div></main> <!-- /main -->
+</aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -2449,9 +2484,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2487,10 +2536,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2500,8 +2548,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2516,6 +2573,147 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2556,6 +2754,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
