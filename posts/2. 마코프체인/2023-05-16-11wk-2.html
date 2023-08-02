@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -191,12 +191,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -412,10 +406,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#정의-irreducible-irr" id="toc-정의-irreducible-irr" class="nav-link" data-scroll-target="#정의-irreducible-irr">정의: irreducible (IRR)</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-16-11wk-2.out.ipynb" download="2023-05-16-11wk-2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">11wk-2: 마코프체인 (9)</h1>
@@ -604,9 +598,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>이제 <span class="math inline">\(\sim\)</span>는 equivalence relation 이 아니다. 따라서 학생들을 <span class="math inline">\(\sim\)</span>를 기준으로 나눌 수 없다.</p>
 </section>
 </section>
-<section id="irreducible-irr" class="level1">
+<section id="irreducible-irr" class="level1 page-columns page-full">
 <h1>Irreducible (IRR)</h1>
-<section id="intro-1" class="level2">
+<section id="intro-1" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="intro-1">intro</h2>
 <p><code>-</code> 질문: “오른쪽으로만 갈래요” 예제는 IRR HMC 인가?</p>
 <p><code>-</code> <strong>가짜정의</strong>: 어떠한 HMC <span class="math inline">\(\{X_t\}\)</span>가 IRR이라는 것은 모든 상태공간이 “연결”되어있다는 의미이다.</p>
@@ -641,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\(2 \to 1\)</span>, <span class="math inline">\(2 \to 2\)</span>, <span class="math inline">\(2 \to 3\)</span></li>
 <li><span class="math inline">\(3 \to 1\)</span>, <span class="math inline">\(3 \to 2\)</span>, <span class="math inline">\(3 \to 3\)</span></li>
 </ul>
-<p>와 같다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;0회도 포함시키면 <span class="math inline">\(0\to 0\)</span> 라고 볼 수 있음.</p></li></div><p>와 같다.</p>
 <blockquote class="blockquote">
 <p>여기서 제가 설명잘못했는데요, 0회도 포함시킨다고 하면 <span class="math inline">\(0 \to 0\)</span> 입니다.</p>
 </blockquote>
@@ -767,12 +761,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>0회도 포함시키면 <span class="math inline">\(0\to 0\)</span> 라고 볼 수 있음.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

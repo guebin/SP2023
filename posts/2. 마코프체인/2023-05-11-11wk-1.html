@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -188,12 +188,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -412,10 +406,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#예제-오른쪽으로만-갈래" id="toc-예제-오른쪽으로만-갈래" class="nav-link" data-scroll-target="#예제-오른쪽으로만-갈래">예제: 오른쪽으로만 갈래</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-11-11wk-1.out.ipynb" download="2023-05-11-11wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">11wk-1: 마코프체인 (8)</h1>
@@ -476,12 +470,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="transition-matrix의-수렴-극한분포-관련내용" class="level1">
+<section id="transition-matrix의-수렴-극한분포-관련내용" class="level1 page-columns page-full">
 <h1>Transition matrix의 수렴 – 극한분포 관련내용</h1>
 <p><code>-</code> <strong>정의:</strong> Finite HMC <span class="math inline">\(\{X_t\}\)</span>를 고려하자. <span class="math inline">\({\bf P}\)</span>를 <span class="math inline">\(\{X_t\}\)</span>의 전이행렬이라고 하자. 만약</p>
 <p><span class="math display">\[\lim_{t\to \infty}{\bf P}^{t} = {\bf P}^\star\]</span></p>
 <p>가 존재하고 <span class="math inline">\({\bf P}^\star\)</span>의 모든 row가 동일한 벡터를 가진다면<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\({\bf P}^\star\)</span>의 임의의 row-vector <span class="math inline">\({\bf p_{\star}^\top}\)</span> 를 <span class="math inline">\(\{X_t\}\)</span>의 극한분포 (limiting distribution) 라고 한다.</p>
-<p><code>-</code> 이론: 극한분포가 존재한다면, 유일하다. (그래서 극한분포는 기껏해야 (at most) 1개 존재한다.)</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;세로로 읽을때 값이 같다면</p></li></div><p><code>-</code> 이론: 극한분포가 존재한다면, 유일하다. (그래서 극한분포는 기껏해야 (at most) 1개 존재한다.)</p>
 <p><code>-</code> <strong>Thm</strong>: Finite HMC <span class="math inline">\(\{X_t\}\)</span>를 고려하자. 운이 좋아서 <span class="math inline">\(\{X_t\}\)</span>의 극한분포 <span class="math inline">\({\bf p}_\star^\top\)</span>가 존재한다고 하자. 그렇다면 극한분포 <span class="math inline">\({\bf p}_\star^\top\)</span>는 아래식을 만족한다.</p>
 <p><span class="math display">\[{\bf p}_\star^\top {\bf P} = {\bf p}_\star^\top\]</span></p>
 <p>즉 <span class="math inline">\({\bf p}_\star^\top\)</span>는 정상분포의 정의를 만족한다.</p>
@@ -539,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> <strong>Thm</strong>: 확률변수열 <span class="math inline">\(\{X_t\}\)</span>가 finite, irreducible, aperiodic HMC 라고 하자.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 그렇다면 극한분포 <span class="math inline">\({\bf p}_{\star}^\top\)</span>이 항상 존재한다.</p>
-</section>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;에르고딕 마코프체인이라는 의미</p></li></div></section>
 <section id="finite-hmc에-대한-정리" class="level1">
 <h1>FINITE HMC에 대한 정리</h1>
 <section id="이론의-정리" class="level2">
@@ -808,13 +802,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>세로로 읽을때 값이 같다면<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>에르고딕 마코프체인이라는 의미<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

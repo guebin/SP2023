@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -188,12 +188,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -405,10 +399,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#풀이3" id="toc-풀이3" class="nav-link" data-scroll-target="#풀이3">풀이3</a></li>
   <li><a href="#풀이4" id="toc-풀이4" class="nav-link" data-scroll-target="#풀이4">풀이4</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-04-13-7wk-1.out.ipynb" download="2023-04-13-7wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">07wk-1: 마코프체인 (2)</h1>
@@ -429,15 +423,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="확률과정" class="level1">
+<section id="확률과정" class="level1 page-columns page-full">
 <h1>확률과정</h1>
 <p><code>-</code> 동전을 무한히 던지는 시행을 생각하자. 동전을 10번 던져서 결과를 관찰했다고 하자. 동전을 30번째 던져서 앞면이 나올지 뒷면이 나올지 알고 싶다면?</p>
 <p><code>-</code> 현재 삼성전자 주가는 66000이다. 20일뒤의 삼성전자 주가가 얼마일지 알고 싶다면?</p>
 <p><code>-</code> 원래 미래를 예측하기 위해서 해야하는 과정</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://i.redd.it/dkfg72px80y21.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림1: 1400만개의 미래를 탐색중인 Doctor Strange</figcaption>
+<figcaption class="figure-caption margin-caption">그림1: 1400만개의 미래를 탐색중인 Doctor Strange</figcaption>
 </figure>
 </div>
 <p><code>-</code> 하지만 현실적으로는 이게 너무 힘들지 않을까?</p>

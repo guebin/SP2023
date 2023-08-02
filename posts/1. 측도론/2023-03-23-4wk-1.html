@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,12 +154,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,10 +367,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#확률변수에-대한-통찰-1" id="toc-확률변수에-대한-통찰-1" class="nav-link" data-scroll-target="#확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-03-23-4wk-1.out.ipynb" download="2023-03-23-4wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">04wk-1: 측도론 intro (5)</h1>
@@ -391,18 +385,18 @@ ul.task-list li input[type="checkbox"] {
 <p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yTpksFFUby_Twan5kFTFdm" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yTpksFFUby_Twan5kFTFdm</a></p>
 </blockquote>
 </section>
-<section id="시그마필드-motivation-2" class="level1">
+<section id="시그마필드-motivation-2" class="level1 page-columns page-full">
 <h1>시그마필드 motivation (2)</h1>
 <p><strong><em>생각의 시간1</em></strong></p>
 <p>우리가 잴 수 있는 집합의 모임들 <span class="math inline">\({\cal F}\)</span>라는 것은 답을 구체적으로 쓸 수는 없으나 현재까지 파악한 직관에 한정하여 아래와 같은 조건<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>들을 만족하는 collection이라고 “일단은” 생각할 수 있다.</p>
-<ol type="1">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;이 조건들은 수정 및 보완 될 예정임</p></li></div><ol type="1">
 <li><span class="math inline">\(\Omega, \emptyset \in {\cal F}\)</span></li>
 <li><span class="math inline">\(\forall A \subset \Omega: ~ A \in {\cal F} \Rightarrow A^c \in {\cal F}\)</span></li>
 <li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A\cap B =\emptyset\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow A \cup B \in {\cal F}\)</span></li>
 <li><span class="math inline">\(\forall A,B \subset \Omega\)</span> such that <span class="math inline">\(A \subset B\)</span>: <span class="math inline">\(A,B \in {\cal F} \Rightarrow B-A \in {\cal F}\)</span></li>
 </ol>
 <p>이것은 우리가 “확률”이라는 개념을 올바르게 정의하기 위해서 필요한 최소한의 합의<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>이다.</p>
-<p>여기에서 우리가 따져볼 것은 (1) 시그마필드의 조건으로 1~4이면 충분한지 (더 많은 조건들이 필요한건 아닌지) 그리고 (2) 우리가 있었으면 하는 조건들이 꼭 필요한 조건은 맞는지 (예를들면 한두개의 조건이 다른조건을 암시하는건 아닌지) 이다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;모든 사람들이 인정할 수 밖에 없는 합의</p></li></div><p>여기에서 우리가 따져볼 것은 (1) 시그마필드의 조건으로 1~4이면 충분한지 (더 많은 조건들이 필요한건 아닌지) 그리고 (2) 우리가 있었으면 하는 조건들이 꼭 필요한 조건은 맞는지 (예를들면 한두개의 조건이 다른조건을 암시하는건 아닌지) 이다.</p>
 <p><code>(충분할까?)</code> 조건 1,2,3,4 정도를 만족하는 집합으로 시그마필드를 정의해도 충분할까? 좀 더 많은 조건들이 필요한건 아닐까? 예를들면 아래와 같은 조건들이 필요한건 아닌가?</p>
 <ol start="5" type="1">
 <li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} ~ \Rightarrow A\cap B \in {\cal F}\)</span></li>
@@ -419,14 +413,14 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math inline">\(\Omega=(0,2\pi]\)</span> 라고 하자. <span class="math inline">\({\cal A} = \{\{x\}: x\in \mathbb{Q} \cap \Omega \}\)</span> 이라고 할 때 아래가 성립할까?</p>
 <p><span class="math display">\[\mathbb{Q} \cap \Omega \in \sigma({\cal A})\]</span></p>
 <p>즉 각각의 유리수 한점씩을 잴 수 있을 때<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 유리수 전체의 집합 역시 잴 수 있을까?</p>
-<p>(해설1)</p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<span class="math inline">\(P(\{0\})\)</span>, <span class="math inline">\(P(\{0.21\})\)</span>, <span class="math inline">\(\dots\)</span>를 각각 정의가능할 때</p></li></div><p>(해설1)</p>
 <p>유리수는 셀 수 있는 무한이므로 집합 <span class="math inline">\(\mathbb{Q} \cap \Omega\)</span>의 길이나 확률 따위는 잴 수 있다.</p>
 <p>(해설2)</p>
 <p><a href="https://en.wikipedia.org/wiki/Probability_axioms">확률의 공리</a>중 3을 살펴보면 이미 서로소인 집합의 countable union은 잴 수 있는 대상이라고 생각하고 있다. 이건 마치 “확률은 양수”이어야 한다든가, “전체확률은 1이어야” 한다는 사실처럼 당연한 사실이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;사실 일반인에게 당연하지 않을 수도 있지만 최소한 수학자들은 당연하게 생각한다. 그래서 우리도 그냥 당연하게 생각하자.</p></li></div><div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-03-23-4wk-1_files/figure-html/278c4061-b34a-4d47-84e9-81c3adf3f554-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림1: 위키에서 캡쳐했어요~ 3번째 공리를 살펴보세요</figcaption>
+<figcaption class="figure-caption margin-caption">그림1: 위키에서 캡쳐했어요~ 3번째 공리를 살펴보세요</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -472,10 +466,10 @@ ul.task-list li input[type="checkbox"] {
 <li>수직선에서 길이를 잴 수 있는 집합들</li>
 </ul>
 <p>이라고 생각해야함. 그렇다면 “길이”라는 개념을 다시 추상화 해야하는데 “길이”라는 개념은 아래의 원칙에 위배되면 안될 것 같음.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-03-23-4wk-1_files/figure-html/66c3c6a1-6772-4605-8302-b8eaf36810f5-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림2: 위키에서 긁어온 그림. 길이는 1-4의 성질이 있어야 할 것으로 판단됨</figcaption>
+<figcaption class="figure-caption margin-caption">그림2: 위키에서 긁어온 그림. 길이는 1-4의 성질이 있어야 할 것으로 판단됨</figcaption>
 </figure>
 </div>
 <p>교집합을 잴 수 없다는 논리라면, 구간 <span class="math inline">\([a_1,b_1]\)</span>의 길이는 잴 수 있고 구간 <span class="math inline">\([a_2,b_2]\)</span>의 길이는 잴 수 있지만 구간 <span class="math inline">\([a_1,b_1] \cap [a_2,b_2]\)</span>의 길이는 잴 수 없다는 말인데 이는 말이되지 않음.</p>
@@ -499,30 +493,30 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(\forall A_1,A_2,\dots \subset \Omega\)</span>: <span class="math inline">\(A_1,A_2,\dots \in {\cal F} \Rightarrow \cup_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
 </ol>
 <p>이 8<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>번 규칙은 사실 5<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, 7<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>번 잘 조합하면 자동으로 이끌어진다. 즉 <span class="math inline">\((5), (7) \Rightarrow (8)\)</span>. 그 외에도 “있었으면 싶은” 규칙은 모두 1-7중 적당한 것을 섞으면 만들 수 있다. 예를들어 아래와 같은 규칙을 고려하자.</p>
-<ol start="9" type="1">
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;countable union</p></li><li id="fn6"><p><sup>6</sup>&nbsp;교집합</p></li><li id="fn7"><p><sup>7</sup>&nbsp;서로소의 countable union</p></li></div><ol start="9" type="1">
 <li><span class="math inline">\(\forall A,B \subset \Omega:~ A,B \in {\cal F} \Rightarrow A-B \in {\cal F}\)</span></li>
 <li><span class="math inline">\(\forall A,B,C \subset \Omega: A,B,C \in {\cal F} \Rightarrow A\cup B \cup C \in {\cal F}\)</span></li>
 <li><span class="math inline">\(\forall A_1,A_2,\dots \subset \Omega\)</span>: <span class="math inline">\(A_1,A_2,\dots \in {\cal F} \Rightarrow \cap_{i=1}^{\infty}A_i \in {\cal F}\)</span></li>
 </ol>
 <p>규칙9는 규칙2<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>와 5<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>로 임플라이 할 수 있고, 규칙10은 규칙6<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>의 확장으로 임플라이 할 수 있고, 규칙11은 규칙 2<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>와 7<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>로 임플라이 할 수 있다.</p>
-<blockquote class="blockquote">
+<div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;여집합</p></li><li id="fn9"><p><sup>9</sup>&nbsp;교집합</p></li><li id="fn10"><p><sup>10</sup>&nbsp;2개 집합의 합집합</p></li><li id="fn11"><p><sup>11</sup>&nbsp;여집합</p></li><li id="fn12"><p><sup>12</sup>&nbsp;서로소의 countable union</p></li></div><blockquote class="blockquote">
 <p>결론: 규칙 1-8으로 시그마필드를 표현하기에 충분하다.</p>
 </blockquote>
 <p><strong>생각의 시간4</strong></p>
 <p>규칙 1-8중 필요없는 규칙을 제거하자.</p>
 <p><code>1</code>. 규칙2<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>가 있다면, 규칙1에서 공집합은 빼도 될 것 같다.</p>
-<p><code>2</code>. 규칙8<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>이 있다면, 규칙3<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, 규칙6<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, 규칙7<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>은 필요 없다. 즉 규칙8은 규칙3,6,7의 효과를 모두 가진다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn13"><p><sup>13</sup>&nbsp;여집합</p></li><li id="fn14"><p><sup>14</sup>&nbsp;countable union</p></li><li id="fn15"><p><sup>15</sup>&nbsp;disjoint union of two sets</p></li><li id="fn16"><p><sup>16</sup>&nbsp;2개의 합집합</p></li><li id="fn17"><p><sup>17</sup>&nbsp;countable union of disjoint sets</p></li></div><p><code>2</code>. 규칙8<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>이 있다면, 규칙3<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, 규칙6<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, 규칙7<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>은 필요 없다. 즉 규칙8은 규칙3,6,7의 효과를 모두 가진다.</p>
 <p><code>3</code>. 규칙2<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>와 규칙6<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>이 있다면, 규칙5<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>는 필요없다. 따라서 규칙2<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>와 규칙8<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>이 있어도 규칙5는 필요없다.</p>
-<p><code>4</code>. 규칙2<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>와 규칙5<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>가 있다면 규칙4<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>는 필요없다. 그런데 규칙5는 규칙2와 규칙8<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>이 임플라이 하므로 결국 규칙2와 규칙8이 있다면 규칙4가 필요없다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn18"><p><sup>18</sup>&nbsp;여집합</p></li><li id="fn19"><p><sup>19</sup>&nbsp;합집합</p></li><li id="fn20"><p><sup>20</sup>&nbsp;교집합</p></li><li id="fn21"><p><sup>21</sup>&nbsp;여집합</p></li><li id="fn22"><p><sup>22</sup>&nbsp;countable union</p></li><li id="fn23"><p><sup>23</sup>&nbsp;여집합</p></li><li id="fn24"><p><sup>24</sup>&nbsp;교집합</p></li><li id="fn25"><p><sup>25</sup>&nbsp;포함관계의 차집합</p></li><li id="fn26"><p><sup>26</sup>&nbsp;countable union</p></li></div><p><code>4</code>. 규칙2<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>와 규칙5<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>가 있다면 규칙4<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>는 필요없다. 그런데 규칙5는 규칙2와 규칙8<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>이 임플라이 하므로 결국 규칙2와 규칙8이 있다면 규칙4가 필요없다.</p>
 <p><code>5</code>. 결론: 규칙1에서 공집합을 제외한 버전, 그리고 규칙2, 규칙8만 있으면 된다.</p>
 </section>
-<section id="시그마필드의-정의" class="level1">
+<section id="시그마필드의-정의" class="level1 page-columns page-full">
 <h1>시그마필드의 정의</h1>
 <p><code>-</code> 시그마필드, 즉 <span class="math inline">\(\Omega\)</span>의 부분집합 중 “잴 수 있는 집합의 모임”은 Durret 교재에 의하여 아래와 같이 정의된다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-03-23-4wk-1_files/figure-html/0fc30545-4697-4e3e-a19c-9b759dbb92ea-1-cf2e33ce-3af7-4926-859a-98e92811920c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림3: Durret교재에서 긁어온 시그마필드의 정의, 드래그한 부분이 정의임</figcaption>
+<figcaption class="figure-caption margin-caption">그림3: Durret교재에서 긁어온 시그마필드의 정의, 드래그한 부분이 정의임</figcaption>
 </figure>
 </div>
 <p><code>-</code> 교재에는 <span class="math inline">\(\Omega \in {\cal F}\)</span>이라는 조건이 빠져있는데, <span class="math inline">\(\Omega \in {\cal F}\)</span>이라는 조건을 포함하여 기억하는 것이 편리하다. (<a href="https://en.wikipedia.org/wiki/Σ-algebra">위키</a>등에서 일반적으로 정의할때는 <span class="math inline">\(\Omega \in {\cal F}\)</span> 조건을 포함한다) 즉 위키와 Durret을 적당히 혼합하여 아래와 같이 정의하고 기억하는게 좋다.</p>
@@ -542,7 +536,7 @@ ul.task-list li input[type="checkbox"] {
 <p>는 단지 그냥 시그마필드라고 주장하기 보다 <span class="math inline">\(\Omega=\{H,T\}\)</span>에 대한 시그마필드라고 해야 정확한 표현이다.</p>
 <p><code>-</code> 참고3: 참고2에 따라서 <span class="math inline">\({\cal F}\)</span> 단독으로 표기하는 것 보다 <span class="math inline">\(\Omega\)</span>를 붙여서 <span class="math inline">\((\Omega,{\cal F})\)</span>와 같이 쌍으로 표기하는게 더 합리적이다. 앞으로는 이러한 쌍을 <strong><em>measurable space</em></strong> 라고 부른다.</p>
 </section>
-<section id="확률의-정의" class="level1">
+<section id="확률의-정의" class="level1 page-columns page-full">
 <h1>확률의 정의</h1>
 <p><code>-</code> 지금까지의 이야기.</p>
 <ul>
@@ -555,22 +549,22 @@ ul.task-list li input[type="checkbox"] {
 <li>대신에 <strong><span class="math inline">\(\Omega\)</span>의 부분집합 중, 잴 수 있는 집합들에 대해서만 확률을 “무모순”으로 정의</strong>하는 일을 시도했다.</li>
 <li>이 잴 수 있는 집합들의 모임을 시그마필드라 칭하고 기호로는 <span class="math inline">\({\cal F}\)</span>라고 정의하였다.</li>
 </ul>
-<p><code>-</code> 이제 하고 싶은 것</p>
+<div class="no-row-height column-margin column-container"><li id="fn27"><p><sup>27</sup>&nbsp;동전예제</p></li><li id="fn28"><p><sup>28</sup>&nbsp;바늘이 하나 있는 시계예제</p></li><li id="fn29"><p><sup>29</sup>&nbsp;비탈리집합</p></li></div><p><code>-</code> 이제 하고 싶은 것</p>
 <blockquote class="blockquote">
 <p>시그마필드에서 확률을 정의하자! <span class="math inline">\(\Leftrightarrow\)</span> 시그마필드를 정의역으로 하는 “확률”이라는 이름의 함수를 정의하자.</p>
 </blockquote>
 <p><code>-</code> 확률의 정의: 메져(measure)는 길이따위를 일반화한 개념이다. 확률은 메져의 특수한 형태이다.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a>메져와 확률은 아래와 같이 정의한다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="no-row-height column-margin column-container"><li id="fn30"><p><sup>30</sup>&nbsp;메져의 조건에서 전체집합의 길이가 1이라는 제약만 있음</p></li></div><div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-03-23-4wk-1_files/figure-html/55f5f1af-731b-41a3-a53a-0835fa8f41dc-1-2e3b6cdd-8339-4938-9606-9ceb390e6459.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림4: Durret책에서 정의한 measure와 probability measure의 정의, 드래그한 부분이 정의임.</figcaption>
+<figcaption class="figure-caption margin-caption">그림4: Durret책에서 정의한 measure와 probability measure의 정의, 드래그한 부분이 정의임.</figcaption>
 </figure>
 </div>
 <p>사실 잘 따져보면 이것은 우리가 아까 위키에서 찾아본 확률의 공리와 일치한다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-03-23-4wk-1_files/figure-html/4ac7a9a0-6ab5-4587-b7f4-5446bb59d5d9-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림1: 확률의 공리, 아까 위키에서 캡쳐한 것 재사용</figcaption>
+<figcaption class="figure-caption margin-caption">그림1: 확률의 공리, 아까 위키에서 캡쳐한 것 재사용</figcaption>
 </figure>
 </div>
 <p><code>-</code> 중요한 것: 확률은 “함수”이고 정의역이 “시그마필드”라는 것만 기억하면 된다. 즉 아래의 사실만 잘 이해하고 기억하면 된다.</p>
@@ -579,9 +573,9 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p><code>-</code> 암기!! <span class="math inline">\(P: {\cal F} \to [0,1]\)</span></p>
 </section>
-<section id="확률변수의-정의-1" class="level1">
+<section id="확률변수의-정의-1" class="level1 page-columns page-full">
 <h1>확률변수의 정의 (1)</h1>
-<section id="불완전한-정의" class="level2">
+<section id="불완전한-정의" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="불완전한-정의">불완전한 정의</h2>
 <p><code>-</code> 확률변수: <span class="math inline">\(X:\Omega \to \mathbb{R}\)</span>인 <strong>조금 특별한 성질을 가진</strong> 함수</p>
 <ul>
@@ -590,9 +584,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>(예제1)</strong> 동전예제</p>
 <p><code>1</code>. outcomes<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>: <span class="math inline">\(H\)</span>,<span class="math inline">\(T\)</span>.</p>
-<p><code>2</code>. sample space: <span class="math inline">\(\Omega = \{H,T\}\)</span></p>
+<div class="no-row-height column-margin column-container"><li id="fn31"><p><sup>31</sup>&nbsp;outcome 자체는 집합을 의미하는게 아님</p></li></div><p><code>2</code>. sample space: <span class="math inline">\(\Omega = \{H,T\}\)</span></p>
 <p><code>3</code>. event<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>: <span class="math inline">\(\emptyset\)</span>, <span class="math inline">\(\{H\}\)</span>, <span class="math inline">\(\{T\}\)</span>, <span class="math inline">\(\{H,T\}\)</span>.</p>
-<p><code>4</code>. <span class="math inline">\(\sigma\)</span>-field: <span class="math inline">\({\cal F}=\)</span> <span class="math inline">\(\Omega\)</span>의 모든 부분집합의 모임</p>
+<div class="no-row-height column-margin column-container"><li id="fn32"><p><sup>32</sup>&nbsp;event는 집합을 의미</p></li></div><p><code>4</code>. <span class="math inline">\(\sigma\)</span>-field: <span class="math inline">\({\cal F}=\)</span> <span class="math inline">\(\Omega\)</span>의 모든 부분집합의 모임</p>
 <p><code>5</code>. probability measure function: <span class="math inline">\(P: {\cal F} \to [0,1]\)</span> such that</p>
 <ul>
 <li><span class="math inline">\(P(\emptyset) = 0\)</span></li>
@@ -611,7 +605,7 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(X(\omega_2)=0\)</span></li>
 </ul>
 </section>
-<section id="헷갈려-1-starstarstar" class="level2">
+<section id="헷갈려-1-starstarstar" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="헷갈려-1-starstarstar">헷갈려 (1) (<span class="math inline">\(\star\star\star\)</span>)</h2>
 <p><code>-</code> 질문1: 아래의 표현 중 옳은 것은?</p>
 <ol type="1">
@@ -622,7 +616,7 @@ ul.task-list li input[type="checkbox"] {
 <li><span class="math inline">\(P(\{H,T\})=1\)</span><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></li>
 <li><span class="math inline">\(P(\omega_1)=\frac{1}{2}\)</span><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></li>
 </ol>
-<p><code>-</code> 질문2: 질문1의 <code>4</code>번의 표현을 많이 본적 있다. 예를들어서 고등학교에서 두 사건의 독립에 대해 배울때 아래와 같은 방식으로 표현했었다. // 출처: <a href="https://blog.naver.com/hawarjung2/222897509059">네이버 블로그</a></p>
+<div class="no-row-height column-margin column-container"><li id="fn33"><p><sup>33</sup>&nbsp;O</p></li><li id="fn34"><p><sup>34</sup>&nbsp;O</p></li><li id="fn35"><p><sup>35</sup>&nbsp;O</p></li><li id="fn36"><p><sup>36</sup>&nbsp;X</p></li><li id="fn37"><p><sup>37</sup>&nbsp;O</p></li><li id="fn38"><p><sup>38</sup>&nbsp;X</p></li></div><p><code>-</code> 질문2: 질문1의 <code>4</code>번의 표현을 많이 본적 있다. 예를들어서 고등학교에서 두 사건의 독립에 대해 배울때 아래와 같은 방식으로 표현했었다. // 출처: <a href="https://blog.naver.com/hawarjung2/222897509059">네이버 블로그</a></p>
 <blockquote class="blockquote">
 <p>두 사건 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>에 대하여 <span class="math inline">\(P(B|A) =P(B|A^c) =P(B)\)</span> 이면 두 사건이 독립이라고 한다~~</p>
 </blockquote>
@@ -640,12 +634,12 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
 <p>이 된다. 따라서 옳은 표현이다.</p>
 </section>
-<section id="확률변수에-대한-통찰-1" class="level2">
+<section id="확률변수에-대한-통찰-1" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="확률변수에-대한-통찰-1">확률변수에 대한 통찰 (1)</h2>
 <p><code>-</code> 아래와 같은 표현을 다시 관찰하자.</p>
 <p><span class="math display">\[P(X=1)=P(\{\omega: X(\omega)=1\})=P(\{H\})\]</span></p>
 <p><code>통찰1</code>. 확률변수가 “함수”라는 사실을 떠올리고 <span class="math inline">\(1\)</span>이라는 값이 확률변수의 “상(image)” 라는 사실을 떠올리면, <span class="math inline">\(\{\omega: X(\omega)=1\}\)</span>은 1에 대한 “역상(inverse image)”이라고 해석할 수 있다.<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></p>
-<p><code>통찰2</code>. 확률변수의 상은 <span class="math inline">\(\mathbb{R}\)</span>에 맺히게 되고, 확률변수의 역상은 <span class="math inline">\(\Omega\)</span>의 부분집합 중 하나에 맺히게 된다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn39"><p><sup>39</sup>&nbsp;참고로 image는 수학책에서 3가지 뜻으로 혼용해서 쓰이는데, 이 문맥에서는 “Image of an element”를 의미함. <a href="https://en.wikipedia.org/wiki/Image_(mathematics)">ref</a></p></li></div><p><code>통찰2</code>. 확률변수의 상은 <span class="math inline">\(\mathbb{R}\)</span>에 맺히게 되고, 확률변수의 역상은 <span class="math inline">\(\Omega\)</span>의 부분집합 중 하나에 맺히게 된다.</p>
 <p><code>통찰3</code>. 문제는 확률변수의 역상이 항상 잴 수 있는 집합에 맺힌다는 보장이 있냐라는 것이다… 즉 이 예제로 한정하면</p>
 <p><span class="math display">\[\{\omega: X(\omega)=1\} \in {\cal F}\]</span></p>
 <p>임을 보장해야 한다는 것이다.</p>
@@ -665,50 +659,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>이 조건들은 수정 및 보완 될 예정임<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>모든 사람들이 인정할 수 밖에 없는 합의<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(P(\{0\})\)</span>, <span class="math inline">\(P(\{0.21\})\)</span>, <span class="math inline">\(\dots\)</span>를 각각 정의가능할 때<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>사실 일반인에게 당연하지 않을 수도 있지만 최소한 수학자들은 당연하게 생각한다. 그래서 우리도 그냥 당연하게 생각하자.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>countable union<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>교집합<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>서로소의 countable union<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>여집합<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>교집합<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>2개 집합의 합집합<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>여집합<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>서로소의 countable union<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>여집합<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>countable union<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>disjoint union of two sets<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>2개의 합집합<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p>countable union of disjoint sets<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>여집합<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19"><p>합집합<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20"><p>교집합<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21"><p>여집합<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22"><p>countable union<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23"><p>여집합<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn24"><p>교집합<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25"><p>포함관계의 차집합<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26"><p>countable union<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn27"><p>동전예제<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn28"><p>바늘이 하나 있는 시계예제<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn29"><p>비탈리집합<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn30"><p>메져의 조건에서 전체집합의 길이가 1이라는 제약만 있음<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn31"><p>outcome 자체는 집합을 의미하는게 아님<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn32"><p>event는 집합을 의미<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn33"><p>O<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn34"><p>O<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn35"><p>O<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn36"><p>X<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn37"><p>O<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn38"><p>X<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn39"><p>참고로 image는 수학책에서 3가지 뜻으로 혼용해서 쓰이는데, 이 문맥에서는 “Image of an element”를 의미함. <a href="https://en.wikipedia.org/wiki/Image_(mathematics)">ref</a><a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
