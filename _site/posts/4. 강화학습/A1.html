@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.193">
+<meta name="generator" content="quarto-1.4.322">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2023-08-01">
+<meta name="dcterms.date" content="2023-08-30">
 
-<title>SP2023 - Appendix: 강화학습 (1)</title>
+<title>SP2023 - Appendix: 강화학습 (1) – bandit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,15 +100,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -126,18 +125,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../about.html" rel="" target="" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link active" href="../../about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/guebin/SP2023" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/guebin/SP2023"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2" rel="" target=""><i class="bi bi-youtube" role="img">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"> <i class="bi bi-youtube" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -150,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/2023-03-07-1wk-2.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">4. 강화학습</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">Appendix: 강화학습 (1)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/2023-03-07-1wk-2.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">4. 강화학습</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">Appendix: 강화학습 (1) – bandit</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -374,7 +373,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/4. 강화학습/A1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Appendix: 강화학습 (1)</span></a>
+ <span class="menu-text">Appendix: 강화학습 (1) – bandit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/4. 강화학습/A2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix: 강화학습 (2) – 4x4 grid</span></a>
   </div>
 </li>
       </ul>
@@ -387,14 +392,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="A1.out.ipynb" download="A1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#강의영상" id="toc-강의영상" class="nav-link active" data-scroll-target="#강의영상">강의영상</a></li>
+  <li><a href="#환경셋팅" id="toc-환경셋팅" class="nav-link" data-scroll-target="#환경셋팅">환경셋팅</a></li>
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">intro</a></li>
+  <li><a href="#game1-bandit" id="toc-game1-bandit" class="nav-link" data-scroll-target="#game1-bandit">Game1: bandit</a></li>
+  <li><a href="#수정1-action_space의-수정" id="toc-수정1-action_space의-수정" class="nav-link" data-scroll-target="#수정1-action_space의-수정">수정1: <code>action_space</code>의 수정</a></li>
+  <li><a href="#수정2-env-클래스" id="toc-수정2-env-클래스" class="nav-link" data-scroll-target="#수정2-env-클래스">수정2: Env 클래스</a></li>
+  <li><a href="#수정3-agnet-클래스" id="toc-수정3-agnet-클래스" class="nav-link" data-scroll-target="#수정3-agnet-클래스">수정3: Agnet 클래스</a></li>
+  <li><a href="#수정4-학습과정을-포함" id="toc-수정4-학습과정을-포함" class="nav-link" data-scroll-target="#수정4-학습과정을-포함">수정4: 학습과정을 포함</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="A1.out.ipynb" download="A1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/2023-03-07-1wk-2.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">4. 강화학습</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">Appendix: 강화학습 (1)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/2023-03-07-1wk-2.html">Posts</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">4. 강화학습</a></li><li class="breadcrumb-item"><a href="../../posts/4. 강화학습/A1.html">Appendix: 강화학습 (1) – bandit</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix: 강화학습 (1)</h1>
+<h1 class="title">Appendix: 강화학습 (1) – bandit</h1>
 </div>
 
 
@@ -411,1381 +430,757 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 1, 2023</p>
+      <p class="date">August 30, 2023</p>
     </div>
   </div>
   
     
   </div>
   
+
 
 </header>
 
+<section id="강의영상" class="level1">
+<h1>강의영상</h1>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zoOHd7w3N5q9Jc5P34Ux8X&amp;si=MdJTHM3a27MCAssp" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="환경셋팅" class="level1">
+<h1>환경셋팅</h1>
+<p><code>-</code> 설치 (코랩)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install <span class="op">-</span>q swig</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>pip install gymnasium</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">!</span>pip install gymnasium[box2d]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="imports" class="level1">
+<h1>imports</h1>
 <div id="8a08935c-5215-44cb-8c5c-c0b0beb3afe0" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> gym </span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eee93ae3-1c26-4f2e-a08b-7c72a32f44bb" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>plt.rcParams[<span class="st">"animation.html"</span>]<span class="op">=</span><span class="st">"jshtml"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="7dbda58c-dd90-4c26-b979-2143821646a1" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>env <span class="op">=</span> gym.make(<span class="st">'LunarLander-v2'</span>,render_mode<span class="op">=</span><span class="st">'rgb_array'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="aa254670-f4a4-4036-85ba-1a3377dd9b70" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>env.reset()</span>
-<span id="cb4-2"><a href="#cb4-2"></a>_frame <span class="op">=</span> env.render()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="487b6a58-cdc7-4587-978d-f55be8ae2e72" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>plt.imshow(_frame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x7fd549a25990&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="A1_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<div id="10d8a8e6-3fa1-4dc1-8f34-b9ac2b40d4e5" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb7-2"><a href="#cb7-2"></a>env.reset()</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">300</span>):</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    frames.append(env.render())</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    env.step(env.action_space.sample())</span>
-<span id="cb7-6"><a href="#cb7-6"></a>env.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="347c3771-97da-4243-bad1-be4784f96330" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>ani <span class="op">=</span> FuncAnimation(fig,<span class="kw">lambda</span> i: ax.imshow(frames[::<span class="dv">100</span>][i]),frames<span class="op">=</span><span class="bu">len</span>(frames[::<span class="dv">100</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="A1_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<ul>
+<li>ref: <a href="https://gymnasium.farama.org/index.html" class="uri">https://gymnasium.farama.org/index.html</a></li>
+</ul>
+</section>
+<section id="intro" class="level1">
+<h1>intro</h1>
+<p><code>-</code> 강화학습(대충설명): 어떠한 “(게임)환경”이 있을때 거기서 “뭘 할지”를 학습하는 과업</p>
+<p><code>-</code> 딥마인드: breakout <span class="math inline">\(\to\)</span> 알파고</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=TmPfTpjtdgg" class="uri">https://www.youtube.com/watch?v=TmPfTpjtdgg</a></li>
+</ul>
+<p><code>-</code> 강화학습 미래? (이거 잘하면 먹고 살 수 있을까?)</p>
+<p><code>-</code> 선행 (강화학습)</p>
+<ul>
+<li>프로그래밍 지식: 파이썬, 클래스에 대한 이해가 있어야함.</li>
+<li>딥러닝 기본지식: 있으면 좋은데, 없어도 무방</li>
+<li>수학적인 지식: 마코프과정, 벨만방정식</li>
+</ul>
+</section>
+<section id="game1-bandit" class="level1 page-columns page-full">
+<h1>Game1: bandit</h1>
+<p><code>-</code> 문제설명: 두 개의 버튼이 있다. 버튼0을 누르면 1의 보상을, 버튼1을 누르면 100의 보상을 준다고 가정</p>
+<p><code>-</code> 처음에 어떤 행동을 해야 하는가? —&gt; ??? 처음에는 아는게 없음 —&gt; 일단 “아무거나” 눌러보자.</p>
+<p><code>-</code> 버튼을 아무거나 누르는 함수를 구현해보자.</p>
+<div id="a70d3d83-5d1f-4e95-aa37-b8c62ab0c123" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>action_space <span class="op">=</span> [<span class="st">'button0'</span>, <span class="st">'button1'</span>] </span>
+<span id="cb3-2"><a href="#cb3-2"></a>action <span class="op">=</span> np.random.choice(action_space)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'button0'</code></pre>
 </div>
 </div>
-<div id="76892edf-b787-41b6-9320-7944269287d6" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>FuncAnimation??</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">Init signature:</span>
-FuncAnimation<span class="ansi-blue-fg">(</span>
-    fig<span class="ansi-blue-fg">,</span>
-    func<span class="ansi-blue-fg">,</span>
-    frames<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-    init_func<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-    fargs<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-    save_count<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-    <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">,</span>
-    cache_frame_data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
-    <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">,</span>
-<span class="ansi-blue-fg">)</span>
-<span class="ansi-red-fg">Source:</span>        
-<span class="ansi-green-fg">class</span> FuncAnimation<span class="ansi-blue-fg">(</span>TimedAnimation<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-    <span class="ansi-blue-fg">"""</span>
-<span class="ansi-blue-fg">    `TimedAnimation` subclass that makes an animation by repeatedly calling</span>
-<span class="ansi-blue-fg">    a function *func*.</span>
-<span class="ansi-blue-fg">    .. note::</span>
-<span class="ansi-blue-fg">        You must store the created Animation in a variable that lives as long</span>
-<span class="ansi-blue-fg">        as the animation should run. Otherwise, the Animation object will be</span>
-<span class="ansi-blue-fg">        garbage-collected and the animation stops.</span>
-<span class="ansi-blue-fg">    Parameters</span>
-<span class="ansi-blue-fg">    ----------</span>
-<span class="ansi-blue-fg">    fig : `~matplotlib.figure.Figure`</span>
-<span class="ansi-blue-fg">        The figure object used to get needed events, such as draw or resize.</span>
-<span class="ansi-blue-fg">    func : callable</span>
-<span class="ansi-blue-fg">        The function to call at each frame.  The first argument will</span>
-<span class="ansi-blue-fg">        be the next value in *frames*.   Any additional positional</span>
-<span class="ansi-blue-fg">        arguments can be supplied using `functools.partial` or via the *fargs*</span>
-<span class="ansi-blue-fg">        parameter.</span>
-<span class="ansi-blue-fg">        The required signature is::</span>
-<span class="ansi-blue-fg">            def func(frame, *fargs) -&gt; iterable_of_artists</span>
-<span class="ansi-blue-fg">        It is often more convenient to provide the arguments using</span>
-<span class="ansi-blue-fg">        `functools.partial`. In this way it is also possible to pass keyword</span>
-<span class="ansi-blue-fg">        arguments. To pass a function with both positional and keyword</span>
-<span class="ansi-blue-fg">        arguments, set all arguments as keyword arguments, just leaving the</span>
-<span class="ansi-blue-fg">        *frame* argument unset::</span>
-<span class="ansi-blue-fg">            def func(frame, art, *, y=None):</span>
-<span class="ansi-blue-fg">                ...</span>
-<span class="ansi-blue-fg">            ani = FuncAnimation(fig, partial(func, art=ln, y='foo'))</span>
-<span class="ansi-blue-fg">        If ``blit == True``, *func* must return an iterable of all artists</span>
-<span class="ansi-blue-fg">        that were modified or created. This information is used by the blitting</span>
-<span class="ansi-blue-fg">        algorithm to determine which parts of the figure have to be updated.</span>
-<span class="ansi-blue-fg">        The return value is unused if ``blit == False`` and may be omitted in</span>
-<span class="ansi-blue-fg">        that case.</span>
-<span class="ansi-blue-fg">    frames : iterable, int, generator function, or None, optional</span>
-<span class="ansi-blue-fg">        Source of data to pass *func* and each frame of the animation</span>
-<span class="ansi-blue-fg">        - If an iterable, then simply use the values provided.  If the</span>
-<span class="ansi-blue-fg">          iterable has a length, it will override the *save_count* kwarg.</span>
-<span class="ansi-blue-fg">        - If an integer, then equivalent to passing ``range(frames)``</span>
-<span class="ansi-blue-fg">        - If a generator function, then must have the signature::</span>
-<span class="ansi-blue-fg">             def gen_function() -&gt; obj</span>
-<span class="ansi-blue-fg">        - If *None*, then equivalent to passing ``itertools.count``.</span>
-<span class="ansi-blue-fg">        In all of these cases, the values in *frames* is simply passed through</span>
-<span class="ansi-blue-fg">        to the user-supplied *func* and thus can be of any type.</span>
-<span class="ansi-blue-fg">    init_func : callable, optional</span>
-<span class="ansi-blue-fg">        A function used to draw a clear frame. If not given, the results of</span>
-<span class="ansi-blue-fg">        drawing from the first item in the frames sequence will be used. This</span>
-<span class="ansi-blue-fg">        function will be called once before the first frame.</span>
-<span class="ansi-blue-fg">        The required signature is::</span>
-<span class="ansi-blue-fg">            def init_func() -&gt; iterable_of_artists</span>
-<span class="ansi-blue-fg">        If ``blit == True``, *init_func* must return an iterable of artists</span>
-<span class="ansi-blue-fg">        to be re-drawn. This information is used by the blitting algorithm to</span>
-<span class="ansi-blue-fg">        determine which parts of the figure have to be updated.  The return</span>
-<span class="ansi-blue-fg">        value is unused if ``blit == False`` and may be omitted in that case.</span>
-<span class="ansi-blue-fg">    fargs : tuple or None, optional</span>
-<span class="ansi-blue-fg">        Additional arguments to pass to each call to *func*. Note: the use of</span>
-<span class="ansi-blue-fg">        `functools.partial` is preferred over *fargs*. See *func* for details.</span>
-<span class="ansi-blue-fg">    save_count : int, optional</span>
-<span class="ansi-blue-fg">        Fallback for the number of values from *frames* to cache. This is</span>
-<span class="ansi-blue-fg">        only used if the number of frames cannot be inferred from *frames*,</span>
-<span class="ansi-blue-fg">        i.e. when it's an iterator without length or a generator.</span>
-<span class="ansi-blue-fg">    interval : int, default: 200</span>
-<span class="ansi-blue-fg">        Delay between frames in milliseconds.</span>
-<span class="ansi-blue-fg">    repeat_delay : int, default: 0</span>
-<span class="ansi-blue-fg">        The delay in milliseconds between consecutive animation runs, if</span>
-<span class="ansi-blue-fg">        *repeat* is True.</span>
-<span class="ansi-blue-fg">    repeat : bool, default: True</span>
-<span class="ansi-blue-fg">        Whether the animation repeats when the sequence of frames is completed.</span>
-<span class="ansi-blue-fg">    blit : bool, default: False</span>
-<span class="ansi-blue-fg">        Whether blitting is used to optimize drawing.  Note: when using</span>
-<span class="ansi-blue-fg">        blitting, any animated artists will be drawn according to their zorder;</span>
-<span class="ansi-blue-fg">        however, they will be drawn on top of any previous artists, regardless</span>
-<span class="ansi-blue-fg">        of their zorder.</span>
-<span class="ansi-blue-fg">    cache_frame_data : bool, default: True</span>
-<span class="ansi-blue-fg">        Whether frame data is cached.  Disabling cache might be helpful when</span>
-<span class="ansi-blue-fg">        frames contain large objects.</span>
-<span class="ansi-blue-fg">    """</span>
-    <span class="ansi-green-fg">def</span> __init__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> fig<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> frames<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> init_func<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> fargs<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-                 save_count<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">,</span> cache_frame_data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-        <span class="ansi-green-fg">if</span> fargs<span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_args <span class="ansi-blue-fg">=</span> fargs
-        <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-        self<span class="ansi-blue-fg">.</span>_func <span class="ansi-blue-fg">=</span> func
-        self<span class="ansi-blue-fg">.</span>_init_func <span class="ansi-blue-fg">=</span> init_func
-        <span class="ansi-red-fg"># Amount of framedata to keep around for saving movies. This is only</span>
-        <span class="ansi-red-fg"># used if we don't know how many frames there will be: in the case</span>
-        <span class="ansi-red-fg"># of no generator or in the case of a callable.</span>
-        self<span class="ansi-blue-fg">.</span>_save_count <span class="ansi-blue-fg">=</span> save_count
-        <span class="ansi-red-fg"># Set up a function that creates a new iterable when needed. If nothing</span>
-        <span class="ansi-red-fg"># is passed in for frames, just use itertools.count, which will just</span>
-        <span class="ansi-red-fg"># keep counting from 0. A callable passed in for frames is assumed to</span>
-        <span class="ansi-red-fg"># be a generator. An iterable will be used as is, and anything else</span>
-        <span class="ansi-red-fg"># will be treated as a number of frames.</span>
-        <span class="ansi-green-fg">if</span> frames <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_iter_gen <span class="ansi-blue-fg">=</span> itertools<span class="ansi-blue-fg">.</span>count
-        <span class="ansi-green-fg">elif</span> callable<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_iter_gen <span class="ansi-blue-fg">=</span> frames
-        <span class="ansi-green-fg">elif</span> np<span class="ansi-blue-fg">.</span>iterable<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-            <span class="ansi-green-fg">if</span> kwargs<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'repeat'</span><span class="ansi-blue-fg">,</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-                self<span class="ansi-blue-fg">.</span>_tee_from <span class="ansi-blue-fg">=</span> frames
-                <span class="ansi-green-fg">def</span> iter_frames<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">=</span>frames<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-                    this<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_tee_from <span class="ansi-blue-fg">=</span> itertools<span class="ansi-blue-fg">.</span>tee<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_tee_from<span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span>
-                    <span class="ansi-green-fg">yield</span> <span class="ansi-green-fg">from</span> this
-                self<span class="ansi-blue-fg">.</span>_iter_gen <span class="ansi-blue-fg">=</span> iter_frames
-            <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-                self<span class="ansi-blue-fg">.</span>_iter_gen <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span><span class="ansi-blue-fg">:</span> iter<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">if</span> hasattr<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">'__len__'</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-                self<span class="ansi-blue-fg">.</span>_save_count <span class="ansi-blue-fg">=</span> len<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">)</span>
-                <span class="ansi-green-fg">if</span> save_count <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-                    _api<span class="ansi-blue-fg">.</span>warn_external<span class="ansi-blue-fg">(</span>
-                        <span class="ansi-blue-fg">f"You passed in an explicit {save_count=} "</span>
-                        <span class="ansi-blue-fg">"which is being ignored in favor of "</span>
-                        <span class="ansi-blue-fg">f"{len(frames)=}."</span>
-                    <span class="ansi-blue-fg">)</span>
-        <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_iter_gen <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span><span class="ansi-blue-fg">:</span> iter<span class="ansi-blue-fg">(</span>range<span class="ansi-blue-fg">(</span>frames<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-            self<span class="ansi-blue-fg">.</span>_save_count <span class="ansi-blue-fg">=</span> frames
-            <span class="ansi-green-fg">if</span> save_count <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-                _api<span class="ansi-blue-fg">.</span>warn_external<span class="ansi-blue-fg">(</span>
-                    <span class="ansi-blue-fg">f"You passed in an explicit {save_count=} which is being "</span>
-                    <span class="ansi-blue-fg">f"ignored in favor of {frames=}."</span>
-                <span class="ansi-blue-fg">)</span>
-        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_save_count <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span> <span class="ansi-green-fg">and</span> cache_frame_data<span class="ansi-blue-fg">:</span>
-            _api<span class="ansi-blue-fg">.</span>warn_external<span class="ansi-blue-fg">(</span>
-                <span class="ansi-blue-fg">f"{frames=!r} which we can infer the length of, "</span>
-                <span class="ansi-blue-fg">"did not pass an explicit *save_count* "</span>
-                <span class="ansi-blue-fg">f"and passed {cache_frame_data=}.  To avoid a possibly "</span>
-                <span class="ansi-blue-fg">"unbounded cache, frame data caching has been disabled. "</span>
-                <span class="ansi-blue-fg">"To suppress this warning either pass "</span>
-                <span class="ansi-blue-fg">"`cache_frame_data=False` or `save_count=MAX_FRAMES`."</span>
-            <span class="ansi-blue-fg">)</span>
-            cache_frame_data <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
-        self<span class="ansi-blue-fg">.</span>_cache_frame_data <span class="ansi-blue-fg">=</span> cache_frame_data
-        <span class="ansi-red-fg"># Needs to be initialized so the draw functions work without checking</span>
-        self<span class="ansi-blue-fg">.</span>_save_seq <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-        super<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>__init__<span class="ansi-blue-fg">(</span>fig<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-        <span class="ansi-red-fg"># Need to reset the saved seq, since right now it will contain data</span>
-        <span class="ansi-red-fg"># for a single frame from init, which is not what we want.</span>
-        self<span class="ansi-blue-fg">.</span>_save_seq <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-    <span class="ansi-green-fg">def</span> new_frame_seq<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-        <span class="ansi-red-fg"># Use the generating function to generate a new frame sequence</span>
-        <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_iter_gen<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-    <span class="ansi-green-fg">def</span> new_saved_frame_seq<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-        <span class="ansi-red-fg"># Generate an iterator for the sequence of saved data. If there are</span>
-        <span class="ansi-red-fg"># no saved frames, generate a new frame sequence and take the first</span>
-        <span class="ansi-red-fg"># save_count entries in it.</span>
-        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_save_seq<span class="ansi-blue-fg">:</span>
-            <span class="ansi-red-fg"># While iterating we are going to update _save_seq</span>
-            <span class="ansi-red-fg"># so make a copy to safely iterate over</span>
-            self<span class="ansi-blue-fg">.</span>_old_saved_seq <span class="ansi-blue-fg">=</span> list<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_save_seq<span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">return</span> iter<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_old_saved_seq<span class="ansi-blue-fg">)</span>
-        <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-            <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_save_count <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-                frame_seq <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>new_frame_seq<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-                <span class="ansi-green-fg">def</span> gen<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-                    <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-                        <span class="ansi-green-fg">while</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">:</span>
-                            <span class="ansi-green-fg">yield</span> next<span class="ansi-blue-fg">(</span>frame_seq<span class="ansi-blue-fg">)</span>
-                    <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
-                        <span class="ansi-green-fg">pass</span>
-                <span class="ansi-green-fg">return</span> gen<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-                <span class="ansi-green-fg">return</span> itertools<span class="ansi-blue-fg">.</span>islice<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>new_frame_seq<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_save_count<span class="ansi-blue-fg">)</span>
-    <span class="ansi-green-fg">def</span> _init_draw<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-        super<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>_init_draw<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-        <span class="ansi-red-fg"># Initialize the drawing either using the given init_func or by</span>
-        <span class="ansi-red-fg"># calling the draw function with the first item of the frame sequence.</span>
-        <span class="ansi-red-fg"># For blitting, the init_func should return a sequence of modified</span>
-        <span class="ansi-red-fg"># artists.</span>
-        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_init_func <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-            <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-                frame_data <span class="ansi-blue-fg">=</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>new_frame_seq<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
-                <span class="ansi-red-fg"># we can't start the iteration, it may have already been</span>
-                <span class="ansi-red-fg"># exhausted by a previous save or just be 0 length.</span>
-                <span class="ansi-red-fg"># warn and bail.</span>
-                warnings<span class="ansi-blue-fg">.</span>warn<span class="ansi-blue-fg">(</span>
-                    <span class="ansi-blue-fg">"Can not start iterating the frames for the initial draw. "</span>
-                    <span class="ansi-blue-fg">"This can be caused by passing in a 0 length sequence "</span>
-                    <span class="ansi-blue-fg">"for *frames*.\n\n"</span>
-                    <span class="ansi-blue-fg">"If you passed *frames* as a generator "</span>
-                    <span class="ansi-blue-fg">"it may be exhausted due to a previous display or save."</span>
-                <span class="ansi-blue-fg">)</span>
-                <span class="ansi-green-fg">return</span>
-            self<span class="ansi-blue-fg">.</span>_draw_frame<span class="ansi-blue-fg">(</span>frame_data<span class="ansi-blue-fg">)</span>
-        <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-            self<span class="ansi-blue-fg">.</span>_drawn_artists <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_init_func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_blit<span class="ansi-blue-fg">:</span>
-                <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_drawn_artists <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-                    <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'The init_func must return a '</span>
-                                       <span class="ansi-blue-fg">'sequence of Artist objects.'</span><span class="ansi-blue-fg">)</span>
-                <span class="ansi-green-fg">for</span> a <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>_drawn_artists<span class="ansi-blue-fg">:</span>
-                    a<span class="ansi-blue-fg">.</span>set_animated<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_blit<span class="ansi-blue-fg">)</span>
-        self<span class="ansi-blue-fg">.</span>_save_seq <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span>
-    <span class="ansi-green-fg">def</span> _draw_frame<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> framedata<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_cache_frame_data<span class="ansi-blue-fg">:</span>
-            <span class="ansi-red-fg"># Save the data for potential saving of movies.</span>
-            self<span class="ansi-blue-fg">.</span>_save_seq<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>framedata<span class="ansi-blue-fg">)</span>
-            self<span class="ansi-blue-fg">.</span>_save_seq <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_save_seq<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span>self<span class="ansi-blue-fg">.</span>_save_count<span class="ansi-blue-fg">:</span><span class="ansi-blue-fg">]</span>
-        <span class="ansi-red-fg"># Call the func with framedata and args. If blitting is desired,</span>
-        <span class="ansi-red-fg"># func needs to return a sequence of any artists that were modified.</span>
-        self<span class="ansi-blue-fg">.</span>_drawn_artists <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_func<span class="ansi-blue-fg">(</span>framedata<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">)</span>
-        <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_blit<span class="ansi-blue-fg">:</span>
-            err <span class="ansi-blue-fg">=</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'The animation function must return a sequence '</span>
-                               <span class="ansi-blue-fg">'of Artist objects.'</span><span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-                <span class="ansi-red-fg"># check if a sequence</span>
-                iter<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_drawn_artists<span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">except</span> TypeError<span class="ansi-blue-fg">:</span>
-                <span class="ansi-green-fg">raise</span> err <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
-            <span class="ansi-red-fg"># check each item if it's artist</span>
-            <span class="ansi-green-fg">for</span> i <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>_drawn_artists<span class="ansi-blue-fg">:</span>
-                <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> isinstance<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">,</span> mpl<span class="ansi-blue-fg">.</span>artist<span class="ansi-blue-fg">.</span>Artist<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-                    <span class="ansi-green-fg">raise</span> err
-            self<span class="ansi-blue-fg">.</span>_drawn_artists <span class="ansi-blue-fg">=</span> sorted<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_drawn_artists<span class="ansi-blue-fg">,</span>
-                                         key<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">lambda</span> x<span class="ansi-blue-fg">:</span> x<span class="ansi-blue-fg">.</span>get_zorder<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-            <span class="ansi-green-fg">for</span> a <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>_drawn_artists<span class="ansi-blue-fg">:</span>
-                a<span class="ansi-blue-fg">.</span>set_animated<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_blit<span class="ansi-blue-fg">)</span>
-    save_count <span class="ansi-blue-fg">=</span> _api<span class="ansi-blue-fg">.</span>deprecate_privatize_attribute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">"3.7"</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-red-fg">File:</span>           ~/anaconda3/envs/gym/lib/python3.11/site-packages/matplotlib/animation.py
-<span class="ansi-red-fg">Type:</span>           type
-<span class="ansi-red-fg">Subclasses:</span>     </pre>
+<p><code>-</code> 보상을 주는 함수를 구현해보자.</p>
+<div id="9904638b-4f7d-4297-afca-099343661519" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: <span class="co"># button0을 눌렀다면 </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>    reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="cf">else</span>: <span class="co"># button1을 눌렀다면 </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    reward <span class="op">=</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ff0fbba1-3a4b-4463-ad8a-8d7ab5923208" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>reward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>1</code></pre>
 </div>
 </div>
+<p><code>-</code> 아무버튼이나 10번정도 눌러보면서 데이터를 쌓아보자.</p>
+<div id="190e8df9-2421-45cf-a557-b81f096a7ed3" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    action <span class="op">=</span> np.random.choice(action_space)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb8-4"><a href="#cb8-4"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="cf">else</span>: </span>
+<span id="cb8-6"><a href="#cb8-6"></a>        reward <span class="op">=</span> <span class="dv">100</span>     </span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="bu">print</span>(action,reward) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button0 1
+button1 100
+button1 100
+button0 1</code></pre>
 </div>
-<div id="7347e563-441e-4697-b13e-3098f2ce6e09" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>ani</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script language="javascript">
-  function isInternetExplorer() {
-    ua = navigator.userAgent;
-    /* MSIE used to detect old browsers and Trident used to newer ones*/
-    return ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
-  }
-
-  /* Define the Animation class */
-  function Animation(frames, img_id, slider_id, interval, loop_select_id){
-    this.img_id = img_id;
-    this.slider_id = slider_id;
-    this.loop_select_id = loop_select_id;
-    this.interval = interval;
-    this.current_frame = 0;
-    this.direction = 0;
-    this.timer = null;
-    this.frames = new Array(frames.length);
-
-    for (var i=0; i<frames.length; i++)
-    {
-     this.frames[i] = new Image();
-     this.frames[i].src = frames[i];
-    }
-    var slider = document.getElementById(this.slider_id);
-    slider.max = this.frames.length - 1;
-    if (isInternetExplorer()) {
-        // switch from oninput to onchange because IE <= 11 does not conform
-        // with W3C specification. It ignores oninput and onchange behaves
-        // like oninput. In contrast, Microsoft Edge behaves correctly.
-        slider.setAttribute('onchange', slider.getAttribute('oninput'));
-        slider.setAttribute('oninput', null);
-    }
-    this.set_frame(this.current_frame);
-  }
-
-  Animation.prototype.get_loop_state = function(){
-    var button_group = document[this.loop_select_id].state;
-    for (var i = 0; i < button_group.length; i++) {
-        var button = button_group[i];
-        if (button.checked) {
-            return button.value;
-        }
-    }
-    return undefined;
-  }
-
-  Animation.prototype.set_frame = function(frame){
-    this.current_frame = frame;
-    document.getElementById(this.img_id).src =
-            this.frames[this.current_frame].src;
-    document.getElementById(this.slider_id).value = this.current_frame;
-  }
-
-  Animation.prototype.next_frame = function()
-  {
-    this.set_frame(Math.min(this.frames.length - 1, this.current_frame + 1));
-  }
-
-  Animation.prototype.previous_frame = function()
-  {
-    this.set_frame(Math.max(0, this.current_frame - 1));
-  }
-
-  Animation.prototype.first_frame = function()
-  {
-    this.set_frame(0);
-  }
-
-  Animation.prototype.last_frame = function()
-  {
-    this.set_frame(this.frames.length - 1);
-  }
-
-  Animation.prototype.slower = function()
-  {
-    this.interval /= 0.7;
-    if(this.direction > 0){this.play_animation();}
-    else if(this.direction < 0){this.reverse_animation();}
-  }
-
-  Animation.prototype.faster = function()
-  {
-    this.interval *= 0.7;
-    if(this.direction > 0){this.play_animation();}
-    else if(this.direction < 0){this.reverse_animation();}
-  }
-
-  Animation.prototype.anim_step_forward = function()
-  {
-    this.current_frame += 1;
-    if(this.current_frame < this.frames.length){
-      this.set_frame(this.current_frame);
-    }else{
-      var loop_state = this.get_loop_state();
-      if(loop_state == "loop"){
-        this.first_frame();
-      }else if(loop_state == "reflect"){
-        this.last_frame();
-        this.reverse_animation();
-      }else{
-        this.pause_animation();
-        this.last_frame();
-      }
-    }
-  }
-
-  Animation.prototype.anim_step_reverse = function()
-  {
-    this.current_frame -= 1;
-    if(this.current_frame >= 0){
-      this.set_frame(this.current_frame);
-    }else{
-      var loop_state = this.get_loop_state();
-      if(loop_state == "loop"){
-        this.last_frame();
-      }else if(loop_state == "reflect"){
-        this.first_frame();
-        this.play_animation();
-      }else{
-        this.pause_animation();
-        this.first_frame();
-      }
-    }
-  }
-
-  Animation.prototype.pause_animation = function()
-  {
-    this.direction = 0;
-    if (this.timer){
-      clearInterval(this.timer);
-      this.timer = null;
-    }
-  }
-
-  Animation.prototype.play_animation = function()
-  {
-    this.pause_animation();
-    this.direction = 1;
-    var t = this;
-    if (!this.timer) this.timer = setInterval(function() {
-        t.anim_step_forward();
-    }, this.interval);
-  }
-
-  Animation.prototype.reverse_animation = function()
-  {
-    this.pause_animation();
-    this.direction = -1;
-    var t = this;
-    if (!this.timer) this.timer = setInterval(function() {
-        t.anim_step_reverse();
-    }, this.interval);
-  }
-</script>
-
-<style>
-.animation {
-    display: inline-block;
-    text-align: center;
-}
-input[type=range].anim-slider {
-    width: 374px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.anim-buttons {
-    margin: 8px 0px;
-}
-.anim-buttons button {
-    padding: 0;
-    width: 36px;
-}
-.anim-state label {
-    margin-right: 8px;
-}
-.anim-state input {
-    margin: 0;
-    vertical-align: middle;
-}
-</style>
-
-<div class="animation">
-  <img id="_anim_imga2cc03338c464776bc78930135104583">
-  <div class="anim-controls">
-    <input id="_anim_slidera2cc03338c464776bc78930135104583" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anima2cc03338c464776bc78930135104583.set_frame(parseInt(this.value));">
-    <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anima2cc03338c464776bc78930135104583.slower()">
-          <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anima2cc03338c464776bc78930135104583.first_frame()">
-        <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anima2cc03338c464776bc78930135104583.previous_frame()">
-          <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anima2cc03338c464776bc78930135104583.reverse_animation()">
-          <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anima2cc03338c464776bc78930135104583.pause_animation()">
-          <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anima2cc03338c464776bc78930135104583.play_animation()">
-          <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anima2cc03338c464776bc78930135104583.next_frame()">
-          <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anima2cc03338c464776bc78930135104583.last_frame()">
-          <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anima2cc03338c464776bc78930135104583.faster()">
-          <i class="fa fa-plus"></i></button>
-    </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selecta2cc03338c464776bc78930135104583" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_a2cc03338c464776bc78930135104583">
-      <label for="_anim_radio1_a2cc03338c464776bc78930135104583">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_a2cc03338c464776bc78930135104583" checked="">
-      <label for="_anim_radio2_a2cc03338c464776bc78930135104583">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_a2cc03338c464776bc78930135104583">
-      <label for="_anim_radio3_a2cc03338c464776bc78930135104583">Reflect</label>
-    </form>
-  </div>
 </div>
-
-
-<script language="javascript">
-  /* Instantiate the Animation class. */
-  /* The IDs given should match those used in the template above. */
-  (function() {
-    var img_id = "_anim_imga2cc03338c464776bc78930135104583";
-    var slider_id = "_anim_slidera2cc03338c464776bc78930135104583";
-    var loop_select_id = "_anim_loop_selecta2cc03338c464776bc78930135104583";
-    var frames = new Array(3);
-    
-  frames[0] = "data:image/png;base64,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\
-ER2nULpcLv5H7CJOp5O57CLMZddgHrsOc9l1mMtvz/YdN1wEAgAAYBkCIAAAgGUIgN9CbGysHn74\
-YcXGxoa6lbDHXHYd5rJrMI9dh7nsOswluorD2HwNNAAAgIXYAwgAAGAZAiAAAIBlCIAAAACWIQB+\
-C08//bQGDBiguLg4FRQU6P333w91S+eUDRs26Prrr1d2drYcDodeffXVoPXGGD300EPKyspSfHy8\
-Jk2apN27dweNqaur0+zZs+V0OpWSkqI77rhDjY2NPbgV54bi4mKNGzdOycnJSk9P1/Tp07Vr166g\
-Mc3NzSoqKlKfPn2UlJSkGTNmqLq6OmhMRUWFpk6dqoSEBKWnp+v+++9Xa2trT25KSC1dulSjRo0K\
-3EPN7XbrjTfeCKxnDs/e448/LofDoQULFgSWMZ9n5he/+IUcDkdQDRs2LLCeeUR3IACepb/+9a9a\
-uHChHn74YW3evFmjR49WYWGhampqQt3aOaOpqUmjR4/W008/fdr1TzzxhH7zm9/omWee0caNG5WY\
-mKjCwkI1NzcHxsyePVvbt2/X6tWrtXLlSm3YsEF33XVXT23COaOkpERFRUV67733tHr1arW0tGjy\
-5MlqamoKjLn33nv12muvafny5SopKdHhw4d10003Bda3tbVp6tSpOnnypN599109//zzeu655/TQ\
-Qw+FYpNCol+/fnr88cdVVlamDz74QBMmTNC0adO0fft2Sczh2dq0aZP+8Ic/aNSoUUHLmc8zN3z4\
-cFVVVQXqnXfeCaxjHtEtDM7KJZdcYoqKigKP29raTHZ2tikuLg5hV+cuSWbFihWBx+3t7SYzM9M8\
-+eSTgWX19fUmNjbWvPjii8YYY3bs2GEkmU2bNgXGvPHGG8bhcJhDhw71WO/nopqaGiPJlJSUGGM6\
-5i46OtosX748MGbnzp1GkiktLTXGGPP666+biIgI4/F4AmOWLl1qnE6n8fv9PbsB55DzzjvP/PGP\
-f2QOz1JDQ4MZMmSIWb16tfne975nfvKTnxhj+Jn8Jh5++GEzevTo065jHtFd2AN4Fk6ePKmysjJN\
-mjQpsCwiIkKTJk1SaWlpCDsLH/v27ZPH4wmaQ5fLpYKCgsAclpaWKiUlRWPHjg2MmTRpkiIiIrRx\
-48Ye7/lc4vV6JX32edRlZWVqaWkJms9hw4YpNzc3aD5HjhypjIyMwJjCwkL5fL7AHjCbtLW1admy\
-ZWpqapLb7WYOz1JRUZGmTp0aNG8SP5Pf1O7du5Wdna0LLrhAs2fPVkVFhSTmEd2HzwI+C0eOHFFb\
-W1vQ/2ySlJGRoY8//jhEXYUXj8cjSaedw851Ho9H6enpQeujoqKUmpoaGGOj9vZ2LViwQJdddplG\
-jBghqWOuYmJilJKSEjT28/N5uvnuXGeLbdu2ye12q7m5WUlJSVqxYoXy8vJUXl7OHH5Dy5Yt0+bN\
-m7Vp06YvrONn8swVFBToueee09ChQ1VVVaUlS5boiiuu0EcffcQ8otsQAIEwU1RUpI8++ijoHCGc\
-uaFDh6q8vFxer1cvv/yy5syZo5KSklC3FXYqKyv1k5/8RKtXr1ZcXFyo2wlrU6ZMCXw9atQoFRQU\
-qH///nrppZcUHx8fws7Qm3EI+CykpaUpMjLyC1dhVVdXKzMzM0RdhZfOefqqOczMzPzCRTWtra2q\
-q6uzdp7nz5+vlStXat26derXr19geWZmpk6ePKn6+vqg8Z+fz9PNd+c6W8TExGjw4MHKz89XcXGx\
-Ro8eraeeeoo5/IbKyspUU1Oj73znO4qKilJUVJRKSkr0m9/8RlFRUcrIyGA+z1JKSoouvPBC7dmz\
-h59LdBsC4FmIiYlRfn6+1qxZE1jW3t6uNWvWyO12h7Cz8DFw4EBlZmYGzaHP59PGjRsDc+h2u1Vf\
-X6+ysrLAmLVr16q9vV0FBQU93nMoGWM0f/58rVixQmvXrtXAgQOD1ufn5ys6OjpoPnft2qWKioqg\
-+dy2bVtQqF69erWcTqfy8vJ6ZkPOQe3t7fL7/czhNzRx4kRt27ZN5eXlgRo7dqxmz54d+Jr5PDuN\
-jY3au3evsrKy+LlE9wn1VSjhatmyZSY2NtY899xzZseOHeauu+4yKSkpQVdh2a6hocFs2bLFbNmy\
-xUgy//mf/2m2bNliDhw4YIwx5vHHHzcpKSnmb3/7m9m6dauZNm2aGThwoDlx4kTgNa655hpz8cUX\
-m40bN5p33nnHDBkyxMyaNStUmxQy8+bNMy6Xy6xfv95UVVUF6vjx44Exd999t8nNzTVr1641H3zw\
-gXG73cbtdgfWt7a2mhEjRpjJkyeb8vJy8+abb5q+ffuaRYsWhWKTQuLBBx80JSUlZt++fWbr1q3m\
-wQcfNA6Hw7z11lvGGObw2zr1KmBjmM8zdd9995n169ebffv2mX/84x9m0qRJJi0tzdTU1BhjmEd0\
-DwLgt/Db3/7W5ObmmpiYGHPJJZeY9957L9QtnVPWrVtnJH2h5syZY4zpuBXMz3/+c5ORkWFiY2PN\
-xIkTza5du4Je4+jRo2bWrFkmKSnJOJ1OM3fuXNPQ0BCCrQmt082jJPPss88Gxpw4ccL8+Mc/Nued\
-d55JSEgwN954o6mqqgp6nf3795spU6aY+Ph4k5aWZu677z7T0tLSw1sTOj/60Y9M//79TUxMjOnb\
-t6+ZOHFiIPwZwxx+W58PgMznmZk5c6bJysoyMTEx5vzzzzczZ840e/bsCaxnHtEdHMYYE5p9jwAA\
-AAgFzgEEAACwDAEQAADAMgRAAAAAyxAAAQAALEMABAAAsAwBEAAAwDIEQAAAAMsQAAEAACxDAAQA\
-ALAMARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAAyxAAAQAALEMABAAAsAwBEAAA\
-wDIEQAAAAMsQAAEAACxDAAQAALAMARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAA\
-yxAAAQAALEMABAAAsAwBEAAAwDIEQAAAAMsQAAEAACxDAAQAALAMARAAAMAyBEAAAADLEAABAAAs\
-QwAEAACwDAEQAADAMgRAAAAAyxAAAQAALEMABAAAsAwBEAAAwDIEQAAAAMsQAAEAACxDAAQAALAM\
-ARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAAy/x/vfPnT2d3xRUAAAAASUVORK5C\
-YII=\
-"
-  frames[1] = "data:image/png;base64,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\
-TImsczqdmjJlikpLS2NYWe+xZ88eBQKBqDH0+XwqLCyMjGFpaanS0tI0YcKESJ8pU6bI6XRqw4YN\
-PV7z2SQYDEr6/POoy8rK1NraGjWeI0eOVF5eXtR4jhkzRllZWZE+RUVFCoVCkSNgNmlvb9fy5cvV\
-2Ngov9/PGJ6h+fPna/r06VHjJvEz+XXt3LlTAwcO1Lnnnqs5c+aooqJCEuOI7sNnAZ+Bw4cPq729\
-PeqXTZKysrL0ySefxKiq3iUQCEjSScewc1sgEFBmZmbUdrfbrfT09EgfG4XDYS1cuFCXXHKJRo8e\
-LaljrOLj45WWlhbV94vjebLx7txmiy1btsjv96upqUkpKSlasWKF8vPzVV5ezhh+TcuXL9fGjRv1\
-wQcffGkbP5Onr7CwUM8884xGjBihqqoqLV26VJdddpk+/vhjxhHdhgAI9DLz58/Xxx9/HHWNEE7f\
-iBEjVF5ermAwqJdeeklz585VSUlJrMvqdSorK/WjH/1Iq1atUkJCQqzL6dWmTZsWeTx27FgVFhZq\
-8ODBeuGFF5SYmBjDytCXcQr4DGRkZMjlcn3pLqzq6mplZ2fHqKrepXOcvmoMs7Ozv3RTTVtbm2pr\
-a60d5wULFmjlypV6++23NWjQoMj67OxstbS0qK6uLqr/F8fzZOPduc0W8fHxOu+881RQUKDi4mKN\
-GzdOTzzxBGP4NZWVlammpkbf+ta35Ha75Xa7VVJSol//+tdyu93KyspiPM9QWlqazj//fO3atYuf\
-S3QbAuAZiI+PV0FBgVavXh1ZFw6HtXr1avn9/hhW1nsMHTpU2dnZUWMYCoW0YcOGyBj6/X7V1dWp\
-rKws0mfNmjUKh8MqLCzs8ZpjyRijBQsWaMWKFVqzZo2GDh0atb2goEBxcXFR47ljxw5VVFREjeeW\
-LVuiQvWqVavk9XqVn5/fMztyFgqHw2pubmYMv6bJkydry5YtKi8vj7QJEyZozpw5kceM55lpaGjQ\
-7t27lZOTw88luk+s70LprZYvX248Ho955plnzLZt28xdd91l0tLSou7Csl19fb3ZtGmT2bRpk5Fk\
-/u3f/s1s2rTJ7Nu3zxhjzGOPPWbS0tLMn//8Z7N582Zz/fXXm6FDh5rjx49HnuPqq682F154odmw\
-YYN55513zPDhw83s2bNjtUsxM2/ePOPz+czatWtNVVVVpB07dizS5+677zZ5eXlmzZo15sMPPzR+\
-v9/4/f7I9ra2NjN69GgzdepUU15ebl5//XUzYMAAs3jx4ljsUkz8+Mc/NiUlJWbPnj1m8+bN5sc/\
-/rFxOBzmzTffNMYwht/UiXcBG8N4nq777rvPrF271uzZs8e8++67ZsqUKSYjI8PU1NQYYxhHdA8C\
-4Dfw7//+7yYvL8/Ex8ebiy66yKxfvz7WJZ1V3n77bSPpS23u3LnGmI6pYH7605+arKws4/F4zOTJ\
-k82OHTuinuPIkSNm9uzZJiUlxXi9XnP77beb+vr6GOxNbJ1sHCWZp59+OtLn+PHj5oc//KHp16+f\
-SUpKMjfccIOpqqqKep69e/eaadOmmcTERJORkWHuu+8+09ra2sN7Ezt///d/bwYPHmzi4+PNgAED\
-zOTJkyPhzxjG8Jv6YgBkPE/PTTfdZHJyckx8fLw555xzzE033WR27doV2c44ojs4jDEmNsceAQAA\
-EAtcAwgAAGAZAiAAAIBlCIAAAACWIQACAABYhgAIAABgGQIgAACAZQiAAAAAliEAAgAAWIYACAAA\
-YBkCIAAAgGUIgAAAAJYhAAIAAFiGAAgAAGAZAiAAAIBlCIAAAACWIQACAABYhgAIAABgGQIgAACA\
-ZQiAAAAAliEAAgAAWIYACAAAYBkCIAAAgGUIgAAAAJYhAAIAAFiGAAgAAGAZAiAAAIBlCIAAAACW\
-IQACAABYhgAIAABgGQIgAACAZQiAAAAAliEAAgAAWIYACAAAYBkCIAAAgGUIgAAAAJYhAAIAAFiG\
-AAgAAGAZAiAAAIBlCIAAAACWIQACAABYhgAIAABgGQIgAACAZQiAAAAAliEAAgAAWIYACAAAYBkC\
-IAAAgGUIgAAAAJYhAAIAAFiGAAgAAGAZAiAAAIBlCIAAAACW+f8BdKBo4NrkTLMAAAAASUVORK5C\
-YII=\
-"
-  frames[2] = "data:image/png;base64,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\
-4W/Nmq4AEolINTXS6tXxq3Wg634vEhKkSZOkxx/vmo5EpNpa6X//t+uxMVIwKL32mtTWFr96AfS8\
-fh0AFy5cqJUrV2rDhg0aOnTol/YtKiqSJO3Zs0cjR45UTk6O3n333Zg+1dXVkqScnJwTvobX65XX\
-6+2Bys9MpcXFuu+88xRsa1OC06mnPvww3iVhAOsOIW63NGaMdM45XdPdoePyy7umw2GpurorpHCS\
-fu/ofi9cLiknR/r+97umjZGam6VvfEPq6OgKhXV10v/8T9d7AqD/6pcB0Bije+65RytWrND69es1\
-YsSIv/mciooKSVJubq4kqbi4WD/72c9UU1OjrKwsSdKaNWvk8/k0bty4Xqv9TPaNvDy5HQ5lJiZq\
-YmbmV3quw+HUuHElSk3JUChUreaWejU3H1dT03G1tjYoEun+y93vzzlCL+kOIQ6HNGjQXwOgJLW3\
-S1OmSLffHpfSrPPp9yI1Vbr44r8u6+yULrpI+ta3ug4XA+if+mUAXLBggZ599ln98Y9/VFpaWvQz\
-e36/X0lJSdq7d6+effZZXXXVVcrMzNS2bdt077336pJLLtGkSZMkSTNnztS4ceP07W9/W48++qgC\
-gYCWLl2qBQsWDOi9fF/m4pde0tabb9au48f1D3/+81d6bnraUE0eM1eJjgy1tgfV0nFcnZFmyWnk\
-cDrV3t6oxqZjamisUVPzUTU11amp+bg6OlpkImFFTFiRSFjGRKJfYZdPX4+gvV06erTrcTgsVVZK\
-S5bEpy4bffq96Ozsei8ika5WXS09+ijhD+jv+mUAfOKJJyR1Xerl05566il95zvfkcfj0RtvvKHH\
-HntMTU1Nys/P19y5c7V06dJoX5fLpZUrV+ruu+9WcXGxUlJSNH/+/JjrBtombIwmPffcKT133lW/\
-V13HhyrIvOBzyyImrM5IqzrCTQo2H1ZbZ0idplVyRBQ2nWppqVdTc61CTdVqajqqppY6tbaFFAl3\
-KhzuUGdnm8KRDrW0hBQOt5/uZuIM0R0yIpGugPHRR13zwmFp/37pLz/m6APd74UxUmOjtHVr7Ocx\
-f/ObrkPBAAaOfhkA/9alC/Pz81VWVvY3X2fYsGF69dVXe6osqwXb9sufNOyEy5wOlzyuFHlcKUrx\
-ZMUsi5hOdYbb1Gla1d7ZpPbORoVNm4zC6uhsUUt7UM0tx1TfXKkPP35DtbW7+2Jz0Au6f2zb27vO\
-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\
-sVG1tbUKBAIKBAKqrq6Ofq2urh6wN1vobQTAfsDn8+mSSy5RYWGhbr31Vq1fv16/+c1vtHnz5l5Z\
-X07mBE0ae73crmQlJgySUUSh1kPaU/mm6oOHJEnt4SYluFJ6Zf0nEjbt6gy3q7099r95jydFbrdH\
-zc3H+6wWAD3joosu0tKlSzVlyhRlZWX1yPVEHQ6H0tPTVVhYqPPOO09XXXWVjh8/rv379+uPf/yj\
-Xn75ZVVWVlp9uDEjI0NXX321rr76ak2cOFGZmZny+/1faU9fT3M4HEpOTlZycrJycnJilhlj1NHR\
-ofb2drW1tX3u65EjR3Tw4EFVVlZG24EDB3T06FG1tLRwwtAXIAD2IykpKRoxYoSGDRumW265RW++\
-+ab+7d/+TVu3blVDQ0MP/RfkUFKSTwlej9I8uXLKrfZwo3YdeU379r+jSKRTDodTHZEmJbrTe2B9\
-J6ets0Ed7a2SHMrNHafh+RdoSOZIOVxGu/eWaeeHr/dZLQBOXUpKioYPH66f/vSnmjVrlhISEnrt\
-LklOp1N+v18+n0/Dhg3TRRddpNLSUr333nt6/vnn9dprr6mmpkbNzc0DNiR4PB4lJSUpKytLl19+\
-uebOnauLL75YLpdLLpdLDoej1y/kf7ocDoc8Ho88Ho9SU1NjlhljNH78eBljYlokElFHR4eqq6uj\
-J6ns378/eqLKJ598oiOWX4qLANjPdF9YOikpSVdddZVmzZql9evX63e/+53eeecdffLJJ2ptbT3l\
-1z+nYLpKLnlQHZEmJSdkyhijw8FNqjy4RQ1N1dF+rZ0hJSdkKhzpkNPh7vVfIK0dQTU21koyyh4y\
-RucOn6XByWNkZHS0dr+83lS1tTX2ag0ATt2gQYM0btw43X777frud7/bp6Gje11ut1tut1sXXXSR\
-LrroIjU2NurPf/6zVq9erffee08HDx5UIBA4rd+hZ4LU1FTl5ubqrLPO0gUXXKDLL79cRUVF8vn6\
-5qoNfenLAmxiYqLS0tI+d7hZkkKh0El9znQgIwD2cw6HQ5dddpm+/vWva9u2bXr99de1fv16vfXW\
-W6f0S2z2JQ+rvmOfclPPkyQ1tgdUWbNRH+9dG9OvI9ykhvYqtXTWd936zuGVy+n9y4WhvXI7vHI7\
-vXI6EnrkF31jW0ChhkDXNkdccsqlxIR0dUZalJ5aIK83hQAInIG8Xq+uvPJKXX311br++uuVmZkZ\
-75KiUlNTVVJSopKSEtXU1Gjz5s3asmWLKioqtG3bNu3Zs6ffHCpOTU2Nnh09adIknXfeeZo8ebL1\
-IQdfjAA4QHi9Xk2bNk3nnXeebrrpJr3//vt68cUXtXr1ah0/fnKfj5tx/o90vO0TpScOk8eVqs5w\
-q6obt+uDHX+K6WdMRG+/+1ulJg9RSlKmkpMy5E/NVUrKECV607qu1Wc6o7du8ziTleBKUYIrWR5n\
-StdjZ5KczpP/9gs2HVJLS70kqbm5XqHWw8rzF8rl8GhQWoG83lRJ1V/6GgD61uzZs3XnnXeqsLDw\
-lE/u6CtZWVmaNWuWrrjiCtXW1urAgQPatWuX1q1bp7KyMh04cCDeJX5OSkqKpk6dqksuuUTTpk3T\
-8OHDVVBQQOjDSSEADjBut1ujRo3S2Wefrcsuu0wff/yxnnnmGf3ud79TU1PTl5xG71Bm5jA5nS75\
-EofKGKNjLbu1d/8GHTu+/3O9Kw9vktPplsuZIKczQS6nW06nSw6HUwnuJKWlZMufepbS04bK7ztL\
-qSmZ8niTZRxhdUSa1Rlplcvpkdflk9ftk8eVJq8rTV53mtzOJDnkkPTXPYdt4QY1N3fdN/nY8f2q\
-bz4gY4ycjgSlJecoOWnQX/pzmQAgnpxOp6ZOnaqf/OQnKiwsVGZm5hn/GbNPc7vdys3NVW5urqZN\
-m6brrrtO9fX12rp1q1566SW9/PLLam5ujsueQafTKYfDoQsvvFDXX3+9LrvsMuXk5CgtLU1JSUn9\
-apwRfwTAAcrpdCojI0NFRUWaNm2aHnzwQf3617/Wc889p9ra2s+FwcuK/kERb6uyUibI6XCpueOY\
-joZ264NdK2XMiX/RRSKdikQ6JX3+unx1wf3SX2KcPvVLyZuQKn/qUKX78jXIN1RpqdlKSvbL5XYr\
-4uhUp2mRw+FQUkK6EhPS5XX75XWnyTjDam3tCoDHg5VyRjxq6qiVz5snr9unQf5hOuzeps7O9p4b\
-RAAnLS0tTfn5+Vq2bJnmzJkTPcGgP3O5XEpPT5ff79ewYcN07bXXqr29XX/605/0v//7v3r33XdV\
-V1enhoaGXrlGq9vtVkpKinw+nyZOnKjrrrtO1157rQYPHhwNg/19jBE/BMABrvukke67jNxzzz1a\
-vny5XnvtNW3btk1VVVWSpKqj2+RJSVBd4l6leXMVbD2oip3/q6bmutNYu+naH/epoNnaHlJr3U5V\
-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\
-AJYhAAIAAFiGAAgAAGAZAiAAAIBlCIAAAACWcce7gP7MGCNJCoVCca4EAACcrO6/291/x21EADwN\
-x44dkyTl5+fHuRIAAPBVNTQ0yO/3x7uMuCAAnoaMjAxJUmVlpbXfQD0lFAopPz9fBw8elM/ni3c5\
-/Rpj2TMYx57DWPYcxrJnGGPU0NCgvLy8eJcSNwTA0+B0dn2E0u/384PYQ3w+H2PZQxjLnsE49hzG\
-sucwlqfP9h03nAQCAABgGQIgAACAZQiAp8Hr9eqhhx6S1+uNdyn9HmPZcxjLnsE49hzGsucwlugp\
-DmPzOdAAAAAWYg8gAACAZQiAAAAAliEAAgAAWIYAeBoef/xxDR8+XImJiSoqKtK7774b75LOKBs2\
-bNA111yjvLw8ORwOvfzyyzHLjTF68MEHlZubq6SkJM2YMUO7d++O6VNXV6d58+bJ5/MpPT1dd9xx\
-hxobG/twK84MpaWlmjZtmtLS0pSVlaU5c+Zo165dMX1aW1u1YMECZWZmKjU1VXPnzlV1dXVMn8rK\
-Ss2ePVvJycnKysrS/fffr87Ozr7clLh64oknNGnSpOg11IqLi7Vq1arocsbw1D3yyCNyOBxatGhR\
-dB7jeXL+6Z/+SQ6HI6aNHTs2upxxRG8gAJ6iP/zhD1q8eLEeeughbdmyRZMnT1ZJSYlqamriXdoZ\
-o6mpSZMnT9bjjz9+wuWPPvqofvWrX+nJJ5/Uxo0blZKSopKSErW2tkb7zJs3Tzt27NCaNWu0cuVK\
-bdiwQXfddVdfbcIZo6ysTAsWLNA777yjNWvWqKOjQzNnzlRTU1O0z7333qtXXnlFL7zwgsrKynTk\
-yBHdcMMN0eXhcFizZ89We3u73n77bT3zzDN6+umn9eCDD8Zjk+Ji6NCheuSRR7R582a99957uvzy\
-y3Xddddpx44dkhjDU7Vp0yb953/+pyZNmhQzn/E8eePHj1dVVVW0vfXWW9FljCN6hcEpOf/8882C\
-BQui0+Fw2OTl5ZnS0tI4VnXmkmRWrFgRnY5EIiYnJ8f8/Oc/j86rr683Xq/XPPfcc8YYY3bu3Gkk\
-mU2bNkX7rFq1yjgcDnP48OE+q/1MVFNTYySZsrIyY0zX2CUkJJgXXngh2ufDDz80kkx5ebkxxphX\
-X33VOJ1OEwgEon2eeOIJ4/P5TFtbW99uwBlk0KBB5r/+678Yw1PU0NBgRo8ebdasWWO+8Y1vmB/8\
-4AfGGL4nv4qHHnrITJ48+YTLGEf0FvYAnoL29nZt3rxZM2bMiM5zOp2aMWOGysvL41hZ/7Fv3z4F\
-AoGYMfT7/SoqKoqOYXl5udLT0zV16tRonxkzZsjpdGrjxo19XvOZJBgMSvrr/ag3b96sjo6OmPEc\
-O3asCgoKYsZz4sSJys7OjvYpKSlRKBSK7gGzSTgc1vLly9XU1KTi4mLG8BQtWLBAs2fPjhk3ie/J\
-r2r37t3Ky8vT2WefrXnz5qmyslIS44jew72AT8HRo0cVDodjftgkKTs7Wx999FGcqupfAoGAJJ1w\
-DLuXBQIBZWVlxSx3u93KyMiI9rFRJBLRokWLdOGFF2rChAmSusbK4/EoPT09pu9nx/NE4929zBbb\
-t29XcXGxWltblZqaqhUrVmjcuHGqqKhgDL+i5cuXa8uWLdq0adPnlvE9efKKior09NNPa8yYMaqq\
-qtKyZct08cUX64MPPmAc0WsIgEA/s2DBAn3wwQcxnxHCyRszZowqKioUDAb14osvav78+SorK4t3\
-Wf3OwYMH9YMf/EBr1qxRYmJivMvp12bNmhV9PGnSJBUVFWnYsGF6/vnnlZSUFMfKMJBxCPgUDB48\
-WC6X63NnYVVXVysnJydOVfUv3eP0ZWOYk5PzuZNqOjs7VVdXZ+04L1y4UCtXrtSbb76poUOHRufn\
-5OSovb1d9fX1Mf0/O54nGu/uZbbweDwaNWqUCgsLVVpaqsmTJ+uXv/wlY/gVbd68WTU1Nfra174m\
-t9stt9utsrIy/epXv5Lb7VZ2djbjeYrS09N1zjnnaM+ePXxfotcQAE+Bx+NRYWGh1q5dG50XiUS0\
-du1aFRcXx7Gy/mPEiBHKycmJGcNQKKSNGzdGx7C4uFj19fXavHlztM+6desUiURUVFTU5zXHkzFG\
-Cxcu1IoVK7Ru3TqNGDEiZnlhYaESEhJixnPXrl2qrKyMGc/t27fHhOo1a9bI5/Np3LhxfbMhZ6BI\
-JKK2tjbG8CuaPn26tm/froqKimibOnWq5s2bF33MeJ6axsZG7d27V7m5uXxfovfE+yyU/mr58uXG\
-6/Wap59+2uzcudPcddddJj09PeYsLNs1NDSYrVu3mq1btxpJ5t///d/N1q1bzYEDB4wxxjzyyCMm\
-PT3d/PGPfzTbtm0z1113nRkxYoRpaWmJvsaVV15pzjvvPLNx40bz1ltvmdGjR5tbbrklXpsUN3ff\
-fbfx+/1m/fr1pqqqKtqam5ujfb73ve+ZgoICs27dOvPee++Z4uJiU1xcHF3e2dlpJkyYYGbOnGkq\
-KirMa6+9ZoYMGWKWLFkSj02Kix/+8IemrKzM7Nu3z2zbts388Ic/NA6Hw7z++uvGGMbwdH36LGBj\
-GM+Tdd9995n169ebffv2mT//+c9mxowZZvDgwaampsYYwziidxAAT8N//Md/mIKCAuPxeMz5559v\
-3nnnnXiXdEZ58803jaTPtfnz5xtjui4F8+Mf/9hkZ2cbr9drpk+fbnbt2hXzGseOHTO33HKLSU1N\
-NT6fz9x+++2moaEhDlsTXycaR0nmqaeeivZpaWkx3//+982gQYNMcnKyuf76601VVVXM6+zfv9/M\
-mjXLJCUlmcGDB5v77rvPdHR09PHWxM93v/tdM2zYMOPxeMyQIUPM9OnTo+HPGMbwdH02ADKeJ+em\
-m24yubm5xuPxmLPOOsvcdNNNZs+ePdHljCN6g8MYY+Kz7xEAAADxwGcAAQAALEMABAAAsAwBEAAA\
-wDIEQAAAAMsQAAEAACxDAAQAALAMARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAA\
-yxAAAQAALEMABAAAsAwBEAAAwDIEQAAAAMsQAAEAACxDAAQAALAMARAAAMAyBEAAAADLEAABAAAs\
-QwAEAACwDAEQAADAMgRAAAAAyxAAAQAALEMABAAAsAwBEAAAwDIEQAAAAMsQAAEAACxDAAQAALAM\
-ARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAAyxAAAQAALEMABAAAsAwBEAAAwDIE\
-QAAAAMsQAAEAACxDAAQAALAMARAAAMAyBEAAAADLEAABAAAsQwAEAACwDAEQAADAMgRAAAAAyxAA\
-AQAALEMABAAAsAwBEAAAwDL/P4QlU6XmBv6VAAAAAElFTkSuQmCC\
-"
-
-
-    /* set a timeout to make sure all the above elements are created before
-       the object is initialized. */
-    setTimeout(function() {
-        anima2cc03338c464776bc78930135104583 = new Animation(frames, img_id, slider_id, 200.0,
-                                 loop_select_id);
-    }, 0);
-  })()
-</script>
+<p><code>-</code> 깨달았음: <code>button0</code>을 누르면 1점을 받고, <code>button1</code>을 누르면 100점을 받는 “환경”이구나? <span class="math inline">\(\to\)</span> <code>button1</code>을 누르는 “동작”을 해야하는 상황이구나?</p>
+<ul>
+<li>여기에서 <span class="math inline">\(\to\)</span>의 과정을 체계화 시킨 학문이 강화학습</li>
+</ul>
+<div id="3095c3b3-ea5b-4fb9-b262-b370f61a83dd" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    action <span class="op">=</span> action_space[<span class="dv">1</span>]</span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="st">'button0'</span>: </span>
+<span id="cb10-4"><a href="#cb10-4"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="cf">else</span>: </span>
+<span id="cb10-6"><a href="#cb10-6"></a>        reward <span class="op">=</span> <span class="dv">100</span>     </span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="bu">print</span>(action,reward) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100
+button1 100</code></pre>
+</div>
+</div>
+<ul>
+<li>게임 클리어</li>
+</ul>
+<p><code>-</code> 강화학습: 환경을 이해 <span class="math inline">\(\to\)</span> 행동을 결정</p>
+<p><strong><em>위의 과정이 잘 되었다는 의미로 사용하는 문장들</em></strong></p>
+<ul>
+<li>강화학습이 성공적으로 잘 되었다.</li>
+<li>에이전트가 환경의 과제를 완료했다.</li>
+<li>에이전트가 환경에서 성공적으로 학습했다.</li>
+<li>에이전트가 올바른 행동을 학습했다.</li>
+<li>게임 클리어 (비공식)</li>
+</ul>
+<p><code>-</code> 게임이 클리어 되었다는 것을 의미하는 지표를 정하고 싶다.</p>
+<ul>
+<li>첫 생각: <code>button1</code>을 누르는 순간 게임클리어로 보면 되지 않나?</li>
+<li>두번째 생각: 아니지? 우연히 누를수도 있잖아?</li>
+<li>게임클리어조건: 최근 20번의 보상이 1900점 이상이면 게임이 클리어 되었다고 생각하자.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<code>button1</code>을 눌러야 하는건 맞지만 20번에 한번정도의 실수는 눈감아 주는 조건</p></li></div><p><code>-</code> 무지한자 – 게임을 클리어할 수 없다.</p>
+<div id="fdd0f72b-5433-42e4-b504-e19b1b4ad1cf" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>action_space <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>]</span>
+<span id="cb12-2"><a href="#cb12-2"></a>rewards <span class="op">=</span> [] </span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 10000번을 해도 못깸 </span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    action <span class="op">=</span> np.random.choice(action_space) <span class="co"># 무지한자의 행동 (찍어) </span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb12-6"><a href="#cb12-6"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb12-7"><a href="#cb12-7"></a>        rewards.append(reward)</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="cf">else</span>: </span>
+<span id="cb12-9"><a href="#cb12-9"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>        rewards.append(reward)</span>
+<span id="cb12-11"><a href="#cb12-11"></a>    <span class="bu">print</span>(</span>
+<span id="cb12-12"><a href="#cb12-12"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>        <span class="ss">f"action= </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>    )</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb12-18"><a href="#cb12-18"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 1   reward= 100 reward20= 100   
+n_try = 2   action= 0   reward= 1   reward20= 101   
+n_try = 3   action= 0   reward= 1   reward20= 102   
+n_try = 4   action= 0   reward= 1   reward20= 103   
+n_try = 5   action= 1   reward= 100 reward20= 203   
+n_try = 6   action= 1   reward= 100 reward20= 303   
+n_try = 7   action= 1   reward= 100 reward20= 403   
+n_try = 8   action= 0   reward= 1   reward20= 404   
+n_try = 9   action= 1   reward= 100 reward20= 504   
+n_try = 10  action= 1   reward= 100 reward20= 604   
+n_try = 11  action= 0   reward= 1   reward20= 605   
+n_try = 12  action= 0   reward= 1   reward20= 606   
+n_try = 13  action= 1   reward= 100 reward20= 706   
+n_try = 14  action= 0   reward= 1   reward20= 707   
+n_try = 15  action= 0   reward= 1   reward20= 708   
+n_try = 16  action= 0   reward= 1   reward20= 709   
+n_try = 17  action= 1   reward= 100 reward20= 809   
+n_try = 18  action= 1   reward= 100 reward20= 909   
+n_try = 19  action= 0   reward= 1   reward20= 910   
+n_try = 20  action= 1   reward= 100 reward20= 1010  
+n_try = 21  action= 1   reward= 100 reward20= 1010  
+n_try = 22  action= 0   reward= 1   reward20= 1010  
+n_try = 23  action= 0   reward= 1   reward20= 1010  
+n_try = 24  action= 1   reward= 100 reward20= 1109  
+n_try = 25  action= 1   reward= 100 reward20= 1109  
+n_try = 26  action= 0   reward= 1   reward20= 1010  
+n_try = 27  action= 1   reward= 100 reward20= 1010  
+n_try = 28  action= 1   reward= 100 reward20= 1109  
+n_try = 29  action= 1   reward= 100 reward20= 1109  
+n_try = 30  action= 1   reward= 100 reward20= 1109  
+n_try = 31  action= 0   reward= 1   reward20= 1109  
+n_try = 32  action= 0   reward= 1   reward20= 1109  
+n_try = 33  action= 0   reward= 1   reward20= 1010  
+n_try = 34  action= 0   reward= 1   reward20= 1010  
+n_try = 35  action= 1   reward= 100 reward20= 1109  
+n_try = 36  action= 0   reward= 1   reward20= 1109  
+n_try = 37  action= 1   reward= 100 reward20= 1109  
+n_try = 38  action= 1   reward= 100 reward20= 1109  
+n_try = 39  action= 0   reward= 1   reward20= 1109  
+n_try = 40  action= 1   reward= 100 reward20= 1109  
+n_try = 41  action= 1   reward= 100 reward20= 1109  
+n_try = 42  action= 1   reward= 100 reward20= 1208  
+n_try = 43  action= 1   reward= 100 reward20= 1307  
+n_try = 44  action= 1   reward= 100 reward20= 1307  
+n_try = 45  action= 1   reward= 100 reward20= 1307  
+n_try = 46  action= 1   reward= 100 reward20= 1406  
+n_try = 47  action= 1   reward= 100 reward20= 1406  
+n_try = 48  action= 1   reward= 100 reward20= 1406  
+n_try = 49  action= 1   reward= 100 reward20= 1406  
+n_try = 50  action= 1   reward= 100 reward20= 1406  </code></pre>
+</div>
+</div>
+<p><code>-</code> 깨달은자 – 게임클리어</p>
+<div id="eed38ded-287b-455a-ac78-00648ccda990" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>action_space <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>]</span>
+<span id="cb14-2"><a href="#cb14-2"></a>rewards <span class="op">=</span> [] </span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): <span class="co"># 10000번을 해도 못깸 </span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="co">#action = np.random.choice(action_space) # 무지한자의 행동 (찍어) </span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>    action <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb14-7"><a href="#cb14-7"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb14-8"><a href="#cb14-8"></a>        rewards.append(reward)</span>
+<span id="cb14-9"><a href="#cb14-9"></a>    <span class="cf">else</span>: </span>
+<span id="cb14-10"><a href="#cb14-10"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>        rewards.append(reward)</span>
+<span id="cb14-12"><a href="#cb14-12"></a>    <span class="bu">print</span>(</span>
+<span id="cb14-13"><a href="#cb14-13"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a>        <span class="ss">f"action= </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb14-17"><a href="#cb14-17"></a>    )</span>
+<span id="cb14-18"><a href="#cb14-18"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb14-19"><a href="#cb14-19"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 1   reward= 100 reward20= 100   
+n_try = 2   action= 1   reward= 100 reward20= 200   
+n_try = 3   action= 1   reward= 100 reward20= 300   
+n_try = 4   action= 1   reward= 100 reward20= 400   
+n_try = 5   action= 1   reward= 100 reward20= 500   
+n_try = 6   action= 1   reward= 100 reward20= 600   
+n_try = 7   action= 1   reward= 100 reward20= 700   
+n_try = 8   action= 1   reward= 100 reward20= 800   
+n_try = 9   action= 1   reward= 100 reward20= 900   
+n_try = 10  action= 1   reward= 100 reward20= 1000  
+n_try = 11  action= 1   reward= 100 reward20= 1100  
+n_try = 12  action= 1   reward= 100 reward20= 1200  
+n_try = 13  action= 1   reward= 100 reward20= 1300  
+n_try = 14  action= 1   reward= 100 reward20= 1400  
+n_try = 15  action= 1   reward= 100 reward20= 1500  
+n_try = 16  action= 1   reward= 100 reward20= 1600  
+n_try = 17  action= 1   reward= 100 reward20= 1700  
+n_try = 18  action= 1   reward= 100 reward20= 1800  
+n_try = 19  action= 1   reward= 100 reward20= 1900  </code></pre>
+</div>
+</div>
+</section>
+<section id="수정1-action_space의-수정" class="level1">
+<h1>수정1: <code>action_space</code>의 수정</h1>
+<div id="2c397a13-6784-42fc-91e8-75ebbc051b86" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>action_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Discrete(2)</code></pre>
+</div>
+</div>
+<p><code>-</code> 좋은점1: sample</p>
+<div id="f522c24a-7947-4f4f-b19d-b51f1224cfa9" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb18-2"><a href="#cb18-2"></a>    <span class="bu">print</span>(action_space.sample())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+1
+0
+0
+0
+0
+0
+1
+1
+1</code></pre>
+</div>
+</div>
+<p><code>-</code> 좋은점2: in</p>
+<div id="13c5c948-755a-409b-aa4a-cc9b76c05a07" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="dv">0</span> <span class="kw">in</span> action_space <span class="co"># 유효한 액션을 검사 -- 0은 유효한 액션</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="c8c12ef4-d45c-4015-948e-e2aa63b42d8c" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="dv">1</span> <span class="kw">in</span> action_space <span class="co"># 유효한 액션을 검사 -- 1은 유효한 액션 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="2ed458e5-ddb4-4bf6-989b-2ed34cb039d7" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="dv">2</span> <span class="kw">in</span> action_space <span class="co"># 유효한 액션을 검사 -- 2는 유효하지 않은 액션 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p><code>-</code> 코드 1차수정</p>
+<div id="e50169bd-4db0-4e18-aa76-d2ee35790e56" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>) </span>
+<span id="cb26-2"><a href="#cb26-2"></a>rewards <span class="op">=</span> [] </span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb26-4"><a href="#cb26-4"></a>    action <span class="op">=</span> action_space.sample()</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    <span class="co">#action = 1</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>    <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>: </span>
+<span id="cb26-7"><a href="#cb26-7"></a>        reward <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb26-8"><a href="#cb26-8"></a>        rewards.append(reward)</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="cf">else</span>: </span>
+<span id="cb26-10"><a href="#cb26-10"></a>        reward <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a>        rewards.append(reward)</span>
+<span id="cb26-12"><a href="#cb26-12"></a>    <span class="bu">print</span>(</span>
+<span id="cb26-13"><a href="#cb26-13"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>        <span class="ss">f"action= </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb26-16"><a href="#cb26-16"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb26-17"><a href="#cb26-17"></a>    )</span>
+<span id="cb26-18"><a href="#cb26-18"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb26-19"><a href="#cb26-19"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 0   reward= 1   reward20= 1 
+n_try = 2   action= 0   reward= 1   reward20= 2 
+n_try = 3   action= 1   reward= 100 reward20= 102   
+n_try = 4   action= 1   reward= 100 reward20= 202   
+n_try = 5   action= 1   reward= 100 reward20= 302   
+n_try = 6   action= 0   reward= 1   reward20= 303   
+n_try = 7   action= 0   reward= 1   reward20= 304   
+n_try = 8   action= 0   reward= 1   reward20= 305   
+n_try = 9   action= 0   reward= 1   reward20= 306   
+n_try = 10  action= 1   reward= 100 reward20= 406   
+n_try = 11  action= 0   reward= 1   reward20= 407   
+n_try = 12  action= 0   reward= 1   reward20= 408   
+n_try = 13  action= 0   reward= 1   reward20= 409   
+n_try = 14  action= 1   reward= 100 reward20= 509   
+n_try = 15  action= 1   reward= 100 reward20= 609   
+n_try = 16  action= 0   reward= 1   reward20= 610   
+n_try = 17  action= 1   reward= 100 reward20= 710   
+n_try = 18  action= 0   reward= 1   reward20= 711   
+n_try = 19  action= 0   reward= 1   reward20= 712   
+n_try = 20  action= 1   reward= 100 reward20= 812   
+n_try = 21  action= 1   reward= 100 reward20= 911   
+n_try = 22  action= 0   reward= 1   reward20= 911   
+n_try = 23  action= 0   reward= 1   reward20= 812   
+n_try = 24  action= 0   reward= 1   reward20= 713   
+n_try = 25  action= 0   reward= 1   reward20= 614   
+n_try = 26  action= 0   reward= 1   reward20= 614   
+n_try = 27  action= 0   reward= 1   reward20= 614   
+n_try = 28  action= 0   reward= 1   reward20= 614   
+n_try = 29  action= 0   reward= 1   reward20= 614   
+n_try = 30  action= 0   reward= 1   reward20= 515   
+n_try = 31  action= 1   reward= 100 reward20= 614   
+n_try = 32  action= 1   reward= 100 reward20= 713   
+n_try = 33  action= 0   reward= 1   reward20= 713   
+n_try = 34  action= 1   reward= 100 reward20= 713   
+n_try = 35  action= 1   reward= 100 reward20= 713   
+n_try = 36  action= 0   reward= 1   reward20= 713   
+n_try = 37  action= 1   reward= 100 reward20= 713   
+n_try = 38  action= 0   reward= 1   reward20= 713   
+n_try = 39  action= 1   reward= 100 reward20= 812   
+n_try = 40  action= 0   reward= 1   reward20= 713   
+n_try = 41  action= 1   reward= 100 reward20= 713   
+n_try = 42  action= 0   reward= 1   reward20= 713   
+n_try = 43  action= 1   reward= 100 reward20= 812   
+n_try = 44  action= 1   reward= 100 reward20= 911   
+n_try = 45  action= 1   reward= 100 reward20= 1010  
+n_try = 46  action= 1   reward= 100 reward20= 1109  
+n_try = 47  action= 1   reward= 100 reward20= 1208  
+n_try = 48  action= 0   reward= 1   reward20= 1208  
+n_try = 49  action= 0   reward= 1   reward20= 1208  
+n_try = 50  action= 0   reward= 1   reward20= 1208  </code></pre>
+</div>
+</div>
+</section>
+<section id="수정2-env-클래스" class="level1">
+<h1>수정2: Env 클래스</h1>
+<p><code>-</code> env 클래스 선언</p>
+<div id="4c0c0620-e9f5-4b2d-a464-21d462974a4c" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">class</span> Bandit: </span>
+<span id="cb28-2"><a href="#cb28-2"></a>    <span class="kw">def</span> step(<span class="va">self</span>, action):</span>
+<span id="cb28-3"><a href="#cb28-3"></a>        <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb28-4"><a href="#cb28-4"></a>            <span class="cf">return</span> <span class="dv">1</span> </span>
+<span id="cb28-5"><a href="#cb28-5"></a>        <span class="cf">else</span>: </span>
+<span id="cb28-6"><a href="#cb28-6"></a>            <span class="cf">return</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="188ec458-5a17-48c4-ba7b-eb6362cf2fea" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>) </span>
+<span id="cb29-2"><a href="#cb29-2"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb29-3"><a href="#cb29-3"></a>rewards <span class="op">=</span> []</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb29-5"><a href="#cb29-5"></a>    <span class="co">#action = action_space.sample()</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>    action <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>    reward <span class="op">=</span> env.step(action)</span>
+<span id="cb29-8"><a href="#cb29-8"></a>    rewards.append(reward)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    <span class="bu">print</span>(</span>
+<span id="cb29-10"><a href="#cb29-10"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>        <span class="ss">f"action= </span><span class="sc">{</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a>    )</span>
+<span id="cb29-15"><a href="#cb29-15"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb29-16"><a href="#cb29-16"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 1   reward= 100 reward20= 100   
+n_try = 2   action= 1   reward= 100 reward20= 200   
+n_try = 3   action= 1   reward= 100 reward20= 300   
+n_try = 4   action= 1   reward= 100 reward20= 400   
+n_try = 5   action= 1   reward= 100 reward20= 500   
+n_try = 6   action= 1   reward= 100 reward20= 600   
+n_try = 7   action= 1   reward= 100 reward20= 700   
+n_try = 8   action= 1   reward= 100 reward20= 800   
+n_try = 9   action= 1   reward= 100 reward20= 900   
+n_try = 10  action= 1   reward= 100 reward20= 1000  
+n_try = 11  action= 1   reward= 100 reward20= 1100  
+n_try = 12  action= 1   reward= 100 reward20= 1200  
+n_try = 13  action= 1   reward= 100 reward20= 1300  
+n_try = 14  action= 1   reward= 100 reward20= 1400  
+n_try = 15  action= 1   reward= 100 reward20= 1500  
+n_try = 16  action= 1   reward= 100 reward20= 1600  
+n_try = 17  action= 1   reward= 100 reward20= 1700  
+n_try = 18  action= 1   reward= 100 reward20= 1800  
+n_try = 19  action= 1   reward= 100 reward20= 1900  </code></pre>
+</div>
+</div>
+</section>
+<section id="수정3-agnet-클래스" class="level1">
+<h1>수정3: Agnet 클래스</h1>
+<p><code>-</code> Agent 클래스를 만들자. (액션을 하고, 환경에서 받은 reward를 간직)</p>
+<div id="3dec4bbb-05aa-441e-88b1-5ee2a28f2a0a" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">class</span> Agent1:</span>
+<span id="cb31-2"><a href="#cb31-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb31-3"><a href="#cb31-3"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>) </span>
+<span id="cb31-4"><a href="#cb31-4"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb31-5"><a href="#cb31-5"></a>        <span class="va">self</span>.reward <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb31-6"><a href="#cb31-6"></a>        <span class="va">self</span>.actions <span class="op">=</span> [] </span>
+<span id="cb31-7"><a href="#cb31-7"></a>        <span class="va">self</span>.rewards <span class="op">=</span> []</span>
+<span id="cb31-8"><a href="#cb31-8"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb31-9"><a href="#cb31-9"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.action_space.sample() <span class="co"># 무지한자 </span></span>
+<span id="cb31-10"><a href="#cb31-10"></a>        <span class="co">#self.action = 1 # 깨달은 자</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>    <span class="kw">def</span> save_experience(<span class="va">self</span>):</span>
+<span id="cb31-12"><a href="#cb31-12"></a>        <span class="va">self</span>.actions.append(<span class="va">self</span>.action)</span>
+<span id="cb31-13"><a href="#cb31-13"></a>        <span class="va">self</span>.rewards.append(<span class="va">self</span>.reward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>— 대충 아래와 같은 느낌으로 코드가 돌아가요 —</p>
+<p><strong>시점0</strong>: init</p>
+<div id="bc6800c5-1150-45bb-a92d-7353102a6bb7" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>env <span class="op">=</span> Bandit()</span>
+<span id="cb32-2"><a href="#cb32-2"></a>agent <span class="op">=</span> Agent1() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7a4ed1ca-2d30-424c-bb61-0e88f9568023" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>agent.action, agent.reward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>(None, None)</code></pre>
+</div>
+</div>
+<p><strong>시점1</strong>: agent &gt;&gt; env</p>
+<div id="1b3031b7-dd5f-4794-a5f4-ca3efa4530c5" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>agent.act()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="82edf659-c379-45f2-86b5-777740919145" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>agent.action, agent.reward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>(0, None)</code></pre>
+</div>
+</div>
+<div id="44281576-2b8e-45fb-9864-c0b2ebcc8110" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>env.agent_action <span class="op">=</span> agent.action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>시점2</strong>: agent &lt;&lt; env</p>
+<div id="eada8cbf-4634-485d-a1b8-a2b6a1b45871" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>agent.reward <span class="op">=</span> env.step(env.agent_action)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="563f8f89-0306-473d-9160-7bcf1588adb0" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>agent.action, agent.reward, env.agent_action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>(0, 1, 0)</code></pre>
+</div>
+</div>
+<div id="69a4d505-421c-404b-80aa-592f44c8b713" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>agent.actions,agent.rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>([], [])</code></pre>
+</div>
+</div>
+<div id="1b60a437-83eb-4acc-9c23-aeb0c140f787" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>agent.save_experience()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7cac5485-34be-4d46-b630-37d8bfd5a161" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>agent.actions,agent.rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>([0], [1])</code></pre>
+</div>
+</div>
+<p>– 전체코드 –</p>
+<div id="6f788df4-f84e-4e6e-8a21-ec3490e27674" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>env <span class="op">=</span> Bandit() </span>
+<span id="cb47-2"><a href="#cb47-2"></a>agent <span class="op">=</span> Agent1()</span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb47-4"><a href="#cb47-4"></a>    <span class="co">## 1. main 코드 </span></span>
+<span id="cb47-5"><a href="#cb47-5"></a>    <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb47-6"><a href="#cb47-6"></a>    agent.act() </span>
+<span id="cb47-7"><a href="#cb47-7"></a>    env.agent_action <span class="op">=</span> agent.action</span>
+<span id="cb47-8"><a href="#cb47-8"></a>    <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb47-9"><a href="#cb47-9"></a>    agent.reward <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb47-10"><a href="#cb47-10"></a>    agent.save_experience() </span>
+<span id="cb47-11"><a href="#cb47-11"></a></span>
+<span id="cb47-12"><a href="#cb47-12"></a>    <span class="co">## 2. 비본질적 코드 </span></span>
+<span id="cb47-13"><a href="#cb47-13"></a>    <span class="bu">print</span>(</span>
+<span id="cb47-14"><a href="#cb47-14"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb47-15"><a href="#cb47-15"></a>        <span class="ss">f"action= </span><span class="sc">{</span>agent<span class="sc">.</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb47-16"><a href="#cb47-16"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>agent<span class="sc">.</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb47-17"><a href="#cb47-17"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb47-18"><a href="#cb47-18"></a>    )</span>
+<span id="cb47-19"><a href="#cb47-19"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb47-20"><a href="#cb47-20"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 0   reward= 1   reward20= 1 
+n_try = 2   action= 1   reward= 100 reward20= 101   
+n_try = 3   action= 1   reward= 100 reward20= 201   
+n_try = 4   action= 0   reward= 1   reward20= 202   
+n_try = 5   action= 1   reward= 100 reward20= 302   
+n_try = 6   action= 0   reward= 1   reward20= 303   
+n_try = 7   action= 0   reward= 1   reward20= 304   
+n_try = 8   action= 1   reward= 100 reward20= 404   
+n_try = 9   action= 0   reward= 1   reward20= 405   
+n_try = 10  action= 0   reward= 1   reward20= 406   
+n_try = 11  action= 1   reward= 100 reward20= 506   
+n_try = 12  action= 0   reward= 1   reward20= 507   
+n_try = 13  action= 1   reward= 100 reward20= 607   
+n_try = 14  action= 1   reward= 100 reward20= 707   
+n_try = 15  action= 1   reward= 100 reward20= 807   
+n_try = 16  action= 1   reward= 100 reward20= 907   
+n_try = 17  action= 1   reward= 100 reward20= 1007  
+n_try = 18  action= 1   reward= 100 reward20= 1107  
+n_try = 19  action= 0   reward= 1   reward20= 1108  
+n_try = 20  action= 1   reward= 100 reward20= 1208  
+n_try = 21  action= 0   reward= 1   reward20= 1208  
+n_try = 22  action= 0   reward= 1   reward20= 1109  
+n_try = 23  action= 0   reward= 1   reward20= 1010  
+n_try = 24  action= 1   reward= 100 reward20= 1109  
+n_try = 25  action= 0   reward= 1   reward20= 1010  
+n_try = 26  action= 0   reward= 1   reward20= 1010  
+n_try = 27  action= 1   reward= 100 reward20= 1109  
+n_try = 28  action= 0   reward= 1   reward20= 1010  
+n_try = 29  action= 0   reward= 1   reward20= 1010  
+n_try = 30  action= 1   reward= 100 reward20= 1109  
+n_try = 31  action= 1   reward= 100 reward20= 1109  
+n_try = 32  action= 1   reward= 100 reward20= 1208  
+n_try = 33  action= 1   reward= 100 reward20= 1208  
+n_try = 34  action= 1   reward= 100 reward20= 1208  
+n_try = 35  action= 0   reward= 1   reward20= 1109  
+n_try = 36  action= 0   reward= 1   reward20= 1010  
+n_try = 37  action= 1   reward= 100 reward20= 1010  
+n_try = 38  action= 1   reward= 100 reward20= 1010  
+n_try = 39  action= 0   reward= 1   reward20= 1010  
+n_try = 40  action= 1   reward= 100 reward20= 1010  
+n_try = 41  action= 0   reward= 1   reward20= 1010  
+n_try = 42  action= 0   reward= 1   reward20= 1010  
+n_try = 43  action= 1   reward= 100 reward20= 1109  
+n_try = 44  action= 1   reward= 100 reward20= 1109  
+n_try = 45  action= 0   reward= 1   reward20= 1109  
+n_try = 46  action= 0   reward= 1   reward20= 1109  
+n_try = 47  action= 1   reward= 100 reward20= 1109  
+n_try = 48  action= 0   reward= 1   reward20= 1109  
+n_try = 49  action= 0   reward= 1   reward20= 1109  
+n_try = 50  action= 1   reward= 100 reward20= 1109  </code></pre>
+</div>
+</div>
+</section>
+<section id="수정4-학습과정을-포함" class="level1 page-columns page-full">
+<h1>수정4: 학습과정을 포함</h1>
+<p><code>-</code> Game1에 대한 생각:</p>
+<ul>
+<li>사실 강화학습은 “환경을 이해 <span class="math inline">\(\to\)</span> 행동을 결정” 의 과정에서 <span class="math inline">\(\to\)</span>의 과정을 수식화 한 것이다.</li>
+<li>그런데 지금까지 했던 코드는 환경(env)를 이해하는 순간 에이전트가 최적의 행동(action)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>을 직관적으로 결정하였으므로 기계가 스스로 학습을 했다고 볼 수 없다.</li>
+</ul>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<code>button1</code>을 누른다</p></li></div><p><code>-</code> 지금까지의 코드 복습</p>
+<ol type="1">
+<li>클래스를 선언하는 부분
+<ul>
+<li>Env 클래스의 선언</li>
+<li>Agent 클래스의 선언</li>
+</ul></li>
+<li>환경과 에이전트를 인스턴스화 (초기화)</li>
+<li>for loop를 반복하여 게임을 진행
+<ul>
+<li>메인코드: (1) agent <span class="math inline">\(\to\)</span> env (2) agent <span class="math inline">\(\leftarrow\)</span> env</li>
+<li>비본질적코드: 학습과정을 display, 학습의 종료조건체크</li>
+</ul></li>
+</ol>
+<p><code>-</code> 앞으로 구성할 코드의 형태: 에이전트가 데이터를 보고 스스로 <code>button1</code>을 눌러야 한다는 생각을 했으면 좋겠음.</p>
+<ol type="1">
+<li>클래스를 선언하는 부분
+<ul>
+<li>Env 클래스의 선언</li>
+<li><strong>Agent 클래스의 선언</strong> // &lt;—- <code>학습의 과정이 포함되어야 한다</code>, <code>act함수의 수정</code>, <code>learn함수의 추가</code></li>
+</ul></li>
+<li>환경과 에이전트를 인스턴스화 (초기화)</li>
+<li>for loop를 반복하여 게임을 진행
+<ul>
+<li><strong>메인코드</strong> (1) agent <span class="math inline">\(\to\)</span> env (2) agent <span class="math inline">\(\leftarrow\)</span> env // &lt;—- <code>agent가 데이터를 분석하고 학습하는 과정이 추가</code></li>
+<li>비본질적코드: 학습과정을 display, 학습의 종료조건체크</li>
+</ul></li>
+</ol>
+<p><code>-</code> 에이전트가 학습을 어떻게 하는가? 아래와 같이 버튼을 누르도록 한다면</p>
+<ul>
+<li>버튼0을 누를 확률: <span class="math inline">\(\frac{q_0}{q_0+q_1}\)</span></li>
+<li>버튼1을 누를 확률: <span class="math inline">\(\frac{q_1}{q_0+q_1}\)</span></li>
+</ul>
+<p>시간이 지날수록 버튼1을 주로 누를 것이다.</p>
+<p><code>-</code> 걱정: <span class="math inline">\(t=0\)</span> 이면 어쩌지? <span class="math inline">\(t=1\)</span>이면 어쩌지?… <span class="math inline">\(\to\)</span> 해결책: 일정시간동안 랜덤액션을 하면서 데이터를 쌓고 그 뒤에 <span class="math inline">\(q_0,q_1\)</span>을 계산</p>
+<p><code>-</code> 쌓은 데이터를 바탕으로 환경을 이해하고 action을 뽑는 코드</p>
+<div id="17846ed9-1a22-4fab-978f-dbce2a7f8938" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>agent.actions <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>] </span>
+<span id="cb49-2"><a href="#cb49-2"></a>agent.rewards <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">101</span>,<span class="dv">102</span>,<span class="dv">1</span>,<span class="dv">99</span>,<span class="dv">1</span>,<span class="fl">1.2</span>] </span>
+<span id="cb49-3"><a href="#cb49-3"></a>actions <span class="op">=</span> np.array(agent.actions)</span>
+<span id="cb49-4"><a href="#cb49-4"></a>rewards <span class="op">=</span> np.array(agent.rewards)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9e1a9c75-12d6-4f06-a9ad-f40b2b01b197" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>q0 <span class="op">=</span> rewards[actions <span class="op">==</span> <span class="dv">0</span>].mean()</span>
+<span id="cb50-2"><a href="#cb50-2"></a>q1 <span class="op">=</span> rewards[actions <span class="op">==</span> <span class="dv">1</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="450b3144-2b92-4b4b-b77e-0d44ad3a3e9b" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>agent.q <span class="op">=</span> np.array([q0,q1]) </span>
+<span id="cb51-2"><a href="#cb51-2"></a>agent.q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>array([  1.05      , 100.66666667])</code></pre>
+</div>
+</div>
+<div id="549734b0-8ccf-44d3-bafd-2f669ef6a5e4" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>prob <span class="op">=</span> agent.q <span class="op">/</span> agent.q.<span class="bu">sum</span>()</span>
+<span id="cb53-2"><a href="#cb53-2"></a>prob </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>array([0.01032279, 0.98967721])</code></pre>
+</div>
+</div>
+<div id="3a899fc5-975e-4e60-898d-2545f4bfd283" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>action <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>], p<span class="op">=</span> agent.q <span class="op">/</span> agent.q.<span class="bu">sum</span>())</span>
+<span id="cb55-2"><a href="#cb55-2"></a>action</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p><code>-</code> 최종코드정리</p>
+<div id="c02f44fe-91c9-4ac7-a715-6d965889a9fc" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="kw">class</span> Bandit: </span>
+<span id="cb57-2"><a href="#cb57-2"></a>    <span class="kw">def</span> step(<span class="va">self</span>, action):</span>
+<span id="cb57-3"><a href="#cb57-3"></a>        <span class="cf">if</span> action <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb57-4"><a href="#cb57-4"></a>            <span class="cf">return</span> <span class="dv">1</span> </span>
+<span id="cb57-5"><a href="#cb57-5"></a>        <span class="cf">else</span>: </span>
+<span id="cb57-6"><a href="#cb57-6"></a>            <span class="cf">return</span> <span class="dv">100</span> </span>
+<span id="cb57-7"><a href="#cb57-7"></a><span class="kw">class</span> Agent:</span>
+<span id="cb57-8"><a href="#cb57-8"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb57-9"><a href="#cb57-9"></a>        <span class="va">self</span>.action_space <span class="op">=</span> gym.spaces.Discrete(<span class="dv">2</span>) </span>
+<span id="cb57-10"><a href="#cb57-10"></a>        <span class="va">self</span>.action <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb57-11"><a href="#cb57-11"></a>        <span class="va">self</span>.reward <span class="op">=</span> <span class="va">None</span> </span>
+<span id="cb57-12"><a href="#cb57-12"></a>        <span class="va">self</span>.actions <span class="op">=</span> [] </span>
+<span id="cb57-13"><a href="#cb57-13"></a>        <span class="va">self</span>.rewards <span class="op">=</span> []</span>
+<span id="cb57-14"><a href="#cb57-14"></a>        <span class="va">self</span>.q <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>]) </span>
+<span id="cb57-15"><a href="#cb57-15"></a>        <span class="va">self</span>.n_experience <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb57-16"><a href="#cb57-16"></a>    <span class="kw">def</span> act(<span class="va">self</span>):</span>
+<span id="cb57-17"><a href="#cb57-17"></a>        <span class="cf">if</span> <span class="va">self</span>.n_experience<span class="op">&lt;</span><span class="dv">30</span>: </span>
+<span id="cb57-18"><a href="#cb57-18"></a>            <span class="va">self</span>.action <span class="op">=</span> <span class="va">self</span>.action_space.sample() </span>
+<span id="cb57-19"><a href="#cb57-19"></a>        <span class="cf">else</span>: </span>
+<span id="cb57-20"><a href="#cb57-20"></a>            <span class="va">self</span>.action <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>], p<span class="op">=</span> <span class="va">self</span>.q <span class="op">/</span> <span class="va">self</span>.q.<span class="bu">sum</span>())</span>
+<span id="cb57-21"><a href="#cb57-21"></a>    <span class="kw">def</span> save_experience(<span class="va">self</span>):</span>
+<span id="cb57-22"><a href="#cb57-22"></a>        <span class="va">self</span>.actions.append(<span class="va">self</span>.action)</span>
+<span id="cb57-23"><a href="#cb57-23"></a>        <span class="va">self</span>.rewards.append(<span class="va">self</span>.reward)</span>
+<span id="cb57-24"><a href="#cb57-24"></a>        <span class="va">self</span>.n_experience <span class="op">+=</span> <span class="dv">1</span> </span>
+<span id="cb57-25"><a href="#cb57-25"></a>    <span class="kw">def</span> learn(<span class="va">self</span>):</span>
+<span id="cb57-26"><a href="#cb57-26"></a>        <span class="cf">if</span> <span class="va">self</span>.n_experience<span class="op">&lt;</span><span class="dv">30</span>: </span>
+<span id="cb57-27"><a href="#cb57-27"></a>            <span class="cf">pass</span> </span>
+<span id="cb57-28"><a href="#cb57-28"></a>        <span class="cf">else</span>: </span>
+<span id="cb57-29"><a href="#cb57-29"></a>            actions <span class="op">=</span> np.array(<span class="va">self</span>.actions)</span>
+<span id="cb57-30"><a href="#cb57-30"></a>            rewards <span class="op">=</span> np.array(<span class="va">self</span>.rewards)</span>
+<span id="cb57-31"><a href="#cb57-31"></a>            q0 <span class="op">=</span> rewards[actions <span class="op">==</span> <span class="dv">0</span>].mean()</span>
+<span id="cb57-32"><a href="#cb57-32"></a>            q1 <span class="op">=</span> rewards[actions <span class="op">==</span> <span class="dv">1</span>].mean()</span>
+<span id="cb57-33"><a href="#cb57-33"></a>            <span class="va">self</span>.q <span class="op">=</span> np.array([q0,q1]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="16591779-af01-412a-ab5a-798c9141b63b" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>env <span class="op">=</span> Bandit() </span>
+<span id="cb58-2"><a href="#cb58-2"></a>agent <span class="op">=</span> Agent()</span>
+<span id="cb58-3"><a href="#cb58-3"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">50</span>): </span>
+<span id="cb58-4"><a href="#cb58-4"></a>    <span class="co">## 1. main 코드 </span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>    <span class="co"># step1: agent &gt;&gt; env </span></span>
+<span id="cb58-6"><a href="#cb58-6"></a>    agent.act() </span>
+<span id="cb58-7"><a href="#cb58-7"></a>    env.agent_action <span class="op">=</span> agent.action</span>
+<span id="cb58-8"><a href="#cb58-8"></a>    <span class="co"># step2: agent &lt;&lt; env </span></span>
+<span id="cb58-9"><a href="#cb58-9"></a>    agent.reward <span class="op">=</span> env.step(env.agent_action)</span>
+<span id="cb58-10"><a href="#cb58-10"></a>    agent.save_experience() </span>
+<span id="cb58-11"><a href="#cb58-11"></a>    <span class="co"># step3: learn </span></span>
+<span id="cb58-12"><a href="#cb58-12"></a>    agent.learn()</span>
+<span id="cb58-13"><a href="#cb58-13"></a>    <span class="co">## 2. 비본질적 코드 </span></span>
+<span id="cb58-14"><a href="#cb58-14"></a>    <span class="bu">print</span>(</span>
+<span id="cb58-15"><a href="#cb58-15"></a>        <span class="ss">f"n_try = </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb58-16"><a href="#cb58-16"></a>        <span class="ss">f"action= </span><span class="sc">{</span>agent<span class="sc">.</span>action<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb58-17"><a href="#cb58-17"></a>        <span class="ss">f"reward= </span><span class="sc">{</span>agent<span class="sc">.</span>reward<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb58-18"><a href="#cb58-18"></a>        <span class="ss">f"reward20= </span><span class="sc">{</span><span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="sc">}</span><span class="ch">\t</span><span class="ss">"</span></span>
+<span id="cb58-19"><a href="#cb58-19"></a>        <span class="ss">f"q = </span><span class="sc">{</span>agent<span class="sc">.</span>q<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb58-20"><a href="#cb58-20"></a>    )</span>
+<span id="cb58-21"><a href="#cb58-21"></a>    <span class="cf">if</span> np.<span class="bu">sum</span>(agent.rewards[<span class="op">-</span><span class="dv">20</span>:])<span class="op">&gt;=</span><span class="dv">1900</span>:</span>
+<span id="cb58-22"><a href="#cb58-22"></a>        <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n_try = 1   action= 0   reward= 1   reward20= 1 q = [0 0]
+n_try = 2   action= 0   reward= 1   reward20= 2 q = [0 0]
+n_try = 3   action= 1   reward= 100 reward20= 102   q = [0 0]
+n_try = 4   action= 0   reward= 1   reward20= 103   q = [0 0]
+n_try = 5   action= 0   reward= 1   reward20= 104   q = [0 0]
+n_try = 6   action= 0   reward= 1   reward20= 105   q = [0 0]
+n_try = 7   action= 0   reward= 1   reward20= 106   q = [0 0]
+n_try = 8   action= 0   reward= 1   reward20= 107   q = [0 0]
+n_try = 9   action= 1   reward= 100 reward20= 207   q = [0 0]
+n_try = 10  action= 0   reward= 1   reward20= 208   q = [0 0]
+n_try = 11  action= 1   reward= 100 reward20= 308   q = [0 0]
+n_try = 12  action= 1   reward= 100 reward20= 408   q = [0 0]
+n_try = 13  action= 1   reward= 100 reward20= 508   q = [0 0]
+n_try = 14  action= 0   reward= 1   reward20= 509   q = [0 0]
+n_try = 15  action= 1   reward= 100 reward20= 609   q = [0 0]
+n_try = 16  action= 0   reward= 1   reward20= 610   q = [0 0]
+n_try = 17  action= 0   reward= 1   reward20= 611   q = [0 0]
+n_try = 18  action= 0   reward= 1   reward20= 612   q = [0 0]
+n_try = 19  action= 1   reward= 100 reward20= 712   q = [0 0]
+n_try = 20  action= 1   reward= 100 reward20= 812   q = [0 0]
+n_try = 21  action= 0   reward= 1   reward20= 812   q = [0 0]
+n_try = 22  action= 1   reward= 100 reward20= 911   q = [0 0]
+n_try = 23  action= 0   reward= 1   reward20= 812   q = [0 0]
+n_try = 24  action= 1   reward= 100 reward20= 911   q = [0 0]
+n_try = 25  action= 1   reward= 100 reward20= 1010  q = [0 0]
+n_try = 26  action= 1   reward= 100 reward20= 1109  q = [0 0]
+n_try = 27  action= 1   reward= 100 reward20= 1208  q = [0 0]
+n_try = 28  action= 1   reward= 100 reward20= 1307  q = [0 0]
+n_try = 29  action= 1   reward= 100 reward20= 1307  q = [0 0]
+n_try = 30  action= 1   reward= 100 reward20= 1406  q = [  1. 100.]
+n_try = 31  action= 1   reward= 100 reward20= 1406  q = [  1. 100.]
+n_try = 32  action= 1   reward= 100 reward20= 1406  q = [  1. 100.]
+n_try = 33  action= 1   reward= 100 reward20= 1406  q = [  1. 100.]
+n_try = 34  action= 1   reward= 100 reward20= 1505  q = [  1. 100.]
+n_try = 35  action= 1   reward= 100 reward20= 1505  q = [  1. 100.]
+n_try = 36  action= 1   reward= 100 reward20= 1604  q = [  1. 100.]
+n_try = 37  action= 1   reward= 100 reward20= 1703  q = [  1. 100.]
+n_try = 38  action= 1   reward= 100 reward20= 1802  q = [  1. 100.]
+n_try = 39  action= 1   reward= 100 reward20= 1802  q = [  1. 100.]
+n_try = 40  action= 1   reward= 100 reward20= 1802  q = [  1. 100.]
+n_try = 41  action= 1   reward= 100 reward20= 1901  q = [  1. 100.]</code></pre>
 </div>
 </div>
 
+
+</section>
 
 
 </main> <!-- /main -->
@@ -1907,6 +1302,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
   const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
     if (id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1919,6 +1324,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return note.innerHTML;
       }
     } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
       return note.innerHTML;
     }
   }
@@ -1928,33 +1338,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       instance.disable();
       let url = xref.getAttribute('href');
       let hash = undefined; 
-      try { hash = new URL(url).hash; } catch {}
-      const id = hash.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note !== null) {
-        try {
-          const html = processXRef(id, note);
-          instance.setContent(html);
-        } finally {
-          instance.enable();
-          instance.show();
-        }
+      if (url.startsWith('#')) {
+        hash = url;
       } else {
-        // See if we can fetch this
-        fetch(url.split('#')[0])
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.getElementById(id);
-          if (note !== null) {
-            const html = processXRef(id, note);
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
             instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
       }
     }, function(instance) {
     });
@@ -2026,6 +1442,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {

@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/4. 강화학습/A1.html",
+      "/posts/4. 강화학습/A2.html",
       "/posts/2023-06-20-15wk-2-fin.html",
       "/posts/3. MCMC/2023-06-08-15wk-1.html",
       "/posts/3. MCMC/2023-06-01-14wk-1.html",
@@ -16,8 +17,8 @@
       "/posts/2. 마코프체인/2023-04-27-9wk-1.html",
       "/posts/2. 마코프체인/2023-04-25-8wk-2.html",
       "/posts/2. 마코프체인/2023-04-20-8wk-1.html",
-      "/posts/2. 마코프체인/2023-04-13-7wk-2.html",
       "/posts/2. 마코프체인/2023-04-13-7wk-1.html",
+      "/posts/2. 마코프체인/2023-04-13-7wk-2.html",
       "/posts/2. 마코프체인/2023-03-30-5wk-1.html",
       "/posts/1. 측도론/2023-03-29-5wk-2-hw1.html",
       "/posts/1. 측도론/2023-03-28-4wk-2.html",
