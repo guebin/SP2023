@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,23 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-<<<<<<< HEAD
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-=======
-  <a href="../../posts/Untitled.html" class="sidebar-item-text sidebar-link"><code>1</code>. 다음을 읽고 참 거짓을 판단하여라. (30점)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
->>>>>>> bf687c0a14443c6c64a6d779860a087699848949
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -450,10 +435,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#시각화" id="toc-시각화" class="nav-link" data-scroll-target="#시각화">시각화</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-06-08-15wk-1.out.ipynb" download="2023-06-08-15wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">15wk-1: MCMC (3)</h1>
@@ -492,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>생략</li>
 </ul>
 </section>
-<section id="문제소개" class="level1">
+<section id="문제소개" class="level1 page-columns page-full">
 <h1>문제소개</h1>
 <p><code>-</code> 3개의 문서가 있으며 각 문서에는 아래와 같이 2개의 단어가 있는 데이터를 고려하자.</p>
 <div id="f3ff1e89-fad5-4424-8378-93cca3109512" class="cell" data-execution_count="8">
@@ -536,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>{'doc1': [1, 1], 'doc2': [1, 2], 'doc3': [2, 2]}</code></pre>
 </div>
 </div>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;1: 우리가 원하는것 (1)</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -600,8 +585,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 원하는 것2: 특정한 하나의 <span class="math inline">\({\boldsymbol \theta}\)</span> 값이 아니라 아래와 같이</p>
 <p><span class="math display">\[{\boldsymbol \theta} \sim {\boldsymbol \pi}\]</span></p>
 <p><span class="math inline">\({\boldsymbol \theta}\)</span>를 뽑아낼 수 있는 분포 <span class="math inline">\({\boldsymbol \pi}\)</span>를 알아내는게 더 좋지 않을까?</p>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;2: 우리가 원하는것 (2)</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -686,14 +671,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 어려운점: 현재 <span class="math inline">\({\boldsymbol \pi}\)</span> (=<span class="math inline">\({\boldsymbol \theta}\)</span>의 pmf) 의 수식을 알 수 없어서 직접 뽑기 어렵다.</p>
 </section>
-<section id="가능한-해결책-아이디어-단계" class="level1">
+<section id="가능한-해결책-아이디어-단계" class="level1 page-columns page-full">
 <h1>가능한 해결책: 아이디어 단계</h1>
 <p><code>-</code> 이론적인 근거는 아직 설명하기 어렵지만 되게 그럴듯한 해결책이 있습니다.</p>
 <p><code>-</code> 문제의 단순화:</p>
 <ul>
 <li>결국 길이가 6인 랜덤벡터 <span class="math inline">\({\boldsymbol \theta}=(\theta[0],\dots,\theta[5])\)</span> 를 뽑는 일이다.</li>
 </ul>
-<section id="단계1-아무값이나-넣어서-boldsymbol-theta_0를-초기화한다." class="level2">
+<section id="단계1-아무값이나-넣어서-boldsymbol-theta_0를-초기화한다." class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="단계1-아무값이나-넣어서-boldsymbol-theta_0를-초기화한다."><strong><em>단계1: 아무값이나 넣어서 <span class="math inline">\({\boldsymbol \theta}_0\)</span>를 초기화한다.</em></strong></h2>
 <p><code>-</code> <span class="math inline">\({\boldsymbol \theta}_0=(\theta_0[0],\dots,\theta_0[5])\)</span>를 아무값이나 셋팅</p>
 <div id="f054c929-780a-4161-9d4b-6fa347ae6fef" class="cell" data-execution_count="10">
@@ -707,8 +692,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\({\boldsymbol \theta}_0 = [2,1,1,2,2,1]\)</span> 이라고 생각하자.</li>
 </ul>
 <p><code>-</code> 임의의 초기값이 셋팅된 상황은 아래와 같다.</p>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;3: 초기상태요약</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -790,7 +775,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="단계2-boldsymbol-theta_00-boldsymbol-theta_01-cdots-boldsymbol-theta_05-을-순서대로-샘플링" class="level2">
+<section id="단계2-boldsymbol-theta_00-boldsymbol-theta_01-cdots-boldsymbol-theta_05-을-순서대로-샘플링" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="단계2-boldsymbol-theta_00-boldsymbol-theta_01-cdots-boldsymbol-theta_05-을-순서대로-샘플링"><strong><em>단계2: <span class="math inline">\({\boldsymbol \theta}_0[0], {\boldsymbol \theta}_0[1] \cdots, {\boldsymbol \theta}_0[5]\)</span> 을 순서대로 샘플링</em></strong></h2>
 <p><strong><em><code>-</code> 예비개념: MCMC에서 베타분포를 뽑았던 예제로 돌아가보자</em></strong></p>
 <ol type="1">
@@ -799,14 +784,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\(x\)</span>가 그럴듯한지, <span class="math inline">\(y\)</span>가 그럴듯한지 판단하고 <span class="math inline">\(x'\)</span>의 값은 어떠한확률로 <span class="math inline">\(x,y\)</span> 중에서 선택</li>
 </ol>
 <p><code>-</code> 전략: 그동안 pmf 혹은 pdf의 정보가 필요했던 것은 “그럴듯한 정도” 를 판단할 기준을 얻기 위해서였다. 그런데 만약, “그럴듯한 정도”를 판단하는 기준을 pmf, pdf 로 정하지 않는다면? pmf 혹은 pdf 가 필요하지 않다.</p>
-<section id="stage0-boldsymbol-theta_00을-sampling" class="level3">
+<section id="stage0-boldsymbol-theta_00을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage0-boldsymbol-theta_00을-sampling">stage0: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[0]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
 <li>빨간색/볼드: 지금 focus하는 것</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;4: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc1}\)</span>, <span class="math inline">\(w={\tt 손흥민}\)</span></p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -953,18 +938,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>θ[<span class="st">'doc1'</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stage1-boldsymbol-theta_01을-sampling" class="level3">
+<section id="stage1-boldsymbol-theta_01을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage1-boldsymbol-theta_01을-sampling">stage1: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[1]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
 <li>빨간색/볼드: 지금 focus하는 것</li>
 <li>파란색/볼드: 과거 / 업데이트O</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;5: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc1}\)</span>, <span class="math inline">\(w={\tt 골}\)</span></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\(D\)</span>: 코퍼스(=관찰한자료)</caption>
@@ -994,7 +979,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(b) <span class="math inline">\({\boldsymbol \theta}_t\)</span>: 추정된 토픽</caption>
 <colgroup>
@@ -1022,10 +1007,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;원래 2였는데 업데이트되었음</p></li></div></div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-panel-4" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
+<div id="tbl-panel-4" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(c) 토픽별로 등장하는 단어</caption>
 <colgroup>
@@ -1049,7 +1034,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;원래 2에 있었은데 1로 옮겼음</p></li></div></div>
 <div id="tbl-panel-5" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(d) <span class="math inline">\(\theta_0[1]\)</span>의 고민 = 나는 토픽1인가 토픽2인가?</caption>
@@ -1091,7 +1076,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p><code>-</code> 업데이트: 안함.. 난 토픽1이 맞는것 같음</p>
 </section>
-<section id="stage2-boldsymbol-theta_02을-sampling" class="level3">
+<section id="stage2-boldsymbol-theta_02을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage2-boldsymbol-theta_02을-sampling">stage2: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[2]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
@@ -1099,11 +1084,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파란색/볼드: 과거 / 업데이트O</li>
 <li>파란색/볼드X: 과거 / 업데이트X</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;6: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc2}\)</span>, <span class="math inline">\(w={\tt 골}\)</span></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\(D\)</span>: 코퍼스(=관찰한자료)</caption>
@@ -1133,7 +1118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(b) <span class="math inline">\({\boldsymbol \theta}_t\)</span>: 추정된 토픽</caption>
 <colgroup>
@@ -1161,10 +1146,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;원래 2였는데 업데이트되었음</p></li></div></div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-panel-6" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
+<div id="tbl-panel-6" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(c) 토픽별로 등장하는 단어</caption>
 <colgroup>
@@ -1188,7 +1173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;원래 2에 있었은데 1로 옮겼음</p></li></div></div>
 <div id="tbl-panel-7" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(d) <span class="math inline">\(\theta_0[2]\)</span>의 고민 = 나는 토픽1인가 토픽2인가?</caption>
@@ -1239,7 +1224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>θ[<span class="st">'doc2'</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stage3-boldsymbol-theta_03을-sampling" class="level3">
+<section id="stage3-boldsymbol-theta_03을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage3-boldsymbol-theta_03을-sampling">stage3: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[3]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
@@ -1247,11 +1232,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파란색/볼드: 과거 / 업데이트O</li>
 <li>파란색/볼드X: 과거 / 업데이트X</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;7: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc2}\)</span>, <span class="math inline">\(w={\tt 확률}\)</span></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\(D\)</span>: 코퍼스(=관찰한자료)</caption>
@@ -1281,7 +1266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(b) <span class="math inline">\({\boldsymbol \theta}_t\)</span>: 추정된 토픽</caption>
 <colgroup>
@@ -1309,10 +1294,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;원래 2였는데 업데이트되었음</p></li><li id="fn6"><p><sup>6</sup>&nbsp;원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.</p></li></div></div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-panel-8" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
+<div id="tbl-panel-8" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(c) 토픽별로 등장하는 단어</caption>
 <colgroup>
@@ -1336,7 +1321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;원래 2에 있었은데 1로 옮겼음</p></li><li id="fn8"><p><sup>8</sup>&nbsp;원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.</p></li></div></div>
 <div id="tbl-panel-9" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(d) <span class="math inline">\(\theta_0[3]\)</span>의 고민 = 나는 토픽1인가 토픽2인가?</caption>
@@ -1378,7 +1363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p><code>-</code> 업데이트: 안함. 난 토픽2가 확실한듯</p>
 </section>
-<section id="stage4-boldsymbol-theta_04을-sampling" class="level3">
+<section id="stage4-boldsymbol-theta_04을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage4-boldsymbol-theta_04을-sampling">stage4: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[4]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
@@ -1386,11 +1371,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파란색/볼드: 과거 / 업데이트O</li>
 <li>파란색/볼드X: 과거 / 업데이트X</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;8: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc3}\)</span>, <span class="math inline">\(w={\tt 확률}\)</span></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\(D\)</span>: 코퍼스(=관찰한자료)</caption>
@@ -1420,7 +1405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(b) <span class="math inline">\({\boldsymbol \theta}_t\)</span>: 추정된 토픽</caption>
 <colgroup>
@@ -1448,10 +1433,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="no-row-height column-margin column-container"><li id="fn9"><p><sup>9</sup>&nbsp;원래 2였는데 업데이트되었음</p></li><li id="fn10"><p><sup>10</sup>&nbsp;원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.</p></li></div></div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-panel-10" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
+<div id="tbl-panel-10" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(c) 토픽별로 등장하는 단어</caption>
 <colgroup>
@@ -1475,7 +1460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn11"><p><sup>11</sup>&nbsp;원래 2에 있었은데 1로 옮겼음</p></li><li id="fn12"><p><sup>12</sup>&nbsp;원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.</p></li></div></div>
 <div id="tbl-panel-11" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(d) <span class="math inline">\(\theta_0[4]\)</span>의 고민 = 나는 토픽1인가 토픽2인가?</caption>
@@ -1517,7 +1502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p><code>-</code> 업데이트: 안함. 난 토픽1인것 같긴한데, 확실하지 않아서 그냥 토픽2에 머무르겠음.</p>
 </section>
-<section id="stage5-boldsymbol-theta_05을-sampling" class="level3">
+<section id="stage5-boldsymbol-theta_05을-sampling" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="stage5-boldsymbol-theta_05을-sampling">stage5: <strong><em><span class="math inline">\({\boldsymbol \theta}_0[5]\)</span>을 sampling</em></strong></h3>
 <p><code>-</code> 현재상태</p>
 <ul>
@@ -1525,11 +1510,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파란색/볼드: 과거 / 업데이트O</li>
 <li>파란색/볼드X: 과거 / 업데이트X</li>
 </ul>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;9: <span class="math inline">\(t=0\)</span>, <span class="math inline">\(d={\tt doc3}\)</span>, <span class="math inline">\(w={\tt 데이터과학}\)</span></p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\(D\)</span>: 코퍼스(=관찰한자료)</caption>
@@ -1559,7 +1544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(b) <span class="math inline">\({\boldsymbol \theta}_t\)</span>: 추정된 토픽</caption>
 <colgroup>
@@ -1587,10 +1572,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="no-row-height column-margin column-container"><li id="fn13"><p><sup>13</sup>&nbsp;원래 2였는데 업데이트되었음</p></li><li id="fn14"><p><sup>14</sup>&nbsp;원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.</p></li><li id="fn15"><p><sup>15</sup>&nbsp;업데이트 할수도 있었는데 안했음</p></li></div></div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-panel-12" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
+<div id="tbl-panel-12" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(c) 토픽별로 등장하는 단어</caption>
 <colgroup>
@@ -1614,7 +1599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn16"><p><sup>16</sup>&nbsp;원래 2에 있었은데 1로 옮겼음</p></li><li id="fn17"><p><sup>17</sup>&nbsp;1로 바뀔수도 있었는데 안바꾸었음</p></li><li id="fn18"><p><sup>18</sup>&nbsp;원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.</p></li></div></div>
 <div id="tbl-panel-13" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <caption>(d) <span class="math inline">\(\theta_0[5]\)</span>의 고민 = 나는 토픽1인가 토픽2인가?</caption>
@@ -1666,7 +1651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="단계3-t1234dots-에-대하여-단계2를-반복" class="level2">
+<section id="단계3-t1234dots-에-대하여-단계2를-반복" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="단계3-t1234dots-에-대하여-단계2를-반복">단계3: <span class="math inline">\(t=1,2,3,4,\dots\)</span> 에 대하여 단계2를 반복</h2>
 <div id="e29e4dfe-7a4b-473b-8711-cd148f6bdd26" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>θ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1675,11 +1660,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 초기상태와 지금을 비교하면 아래와 같다.</p>
-<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
+<div id="tbl-panel" class="tbl-parent quarto-layout-panel anchored page-columns page-full">
+<div class="panel-caption table-caption margin-caption">
 <p>Table&nbsp;10: 수정된 상태</p>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div id="tbl-panel-14" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(a) <span class="math inline">\({\boldsymbol \pi}\)</span></caption>
@@ -1733,7 +1718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
-<div id="tbl-panel-16" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-panel-16" class="quarto-layout-cell quarto-layout-cell-subref anchored page-columns page-full" data-ref-parent="tbl-panel" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(c) <span class="math inline">\({\boldsymbol \theta}_1\)</span></caption>
 <thead>
@@ -1756,7 +1741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</div>
+<div class="no-row-height column-margin column-container"><li id="fn19"><p><sup>19</sup>&nbsp;1일수도 있었음</p></li><li id="fn20"><p><sup>20</sup>&nbsp;1일 수도 있었음</p></li></div></div>
 </div>
 </div>
 <p><code>-</code> <span class="math inline">\(t=1,2,3,4\dots\)</span>로 진행하다보면 서로 눈치를 보면서 아래와 같은 원리로 이동한다.</p>
@@ -2441,31 +2426,7 @@ ccc</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>원래 2였는데 업데이트되었음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>원래 2에 있었은데 1로 옮겼음<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>원래 2였는데 업데이트되었음<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>원래 2에 있었은데 1로 옮겼음<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>원래 2였는데 업데이트되었음<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>원래 2에 있었은데 1로 옮겼음<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>원래 2였는데 업데이트되었음<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>원래 2에 있었은데 1로 옮겼음<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>원래 2였는데 업데이트되었음<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>원래 1이었는데 업데이트되었음, 업데이트 안될수도 있었음.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>업데이트 할수도 있었는데 안했음<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>원래 2에 있었은데 1로 옮겼음<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p>1로 바뀔수도 있었는데 안바꾸었음<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>원래 1에 있었은데 2로 옮겼음, 안바뀔수도 있었음.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19"><p>1일수도 있었음<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20"><p>1일 수도 있었음<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

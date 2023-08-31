@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -186,23 +186,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-<<<<<<< HEAD
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-=======
-  <a href="../../posts/Untitled.html" class="sidebar-item-text sidebar-link"><code>1</code>. 다음을 읽고 참 거짓을 판단하여라. (30점)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
->>>>>>> bf687c0a14443c6c64a6d779860a087699848949
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -418,10 +403,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#polish-space" id="toc-polish-space" class="nav-link" data-scroll-target="#polish-space">Polish space</a></li>
   <li><a href="#메트로폴리스-헤이스팅스" id="toc-메트로폴리스-헤이스팅스" class="nav-link" data-scroll-target="#메트로폴리스-헤이스팅스">메트로폴리스-헤이스팅스</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-06-01-14wk-1.out.ipynb" download="2023-06-01-14wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">14wk-1,2: MCMC (2)</h1>
@@ -447,16 +432,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="약간의-이론" class="level1">
+<section id="약간의-이론" class="level1 page-columns page-full">
 <h1>약간의 이론</h1>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 라고 하자.</p>
-<ol type="1">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;irreducible 한 homogeneous markov chain</p></li></div><ol type="1">
 <li>만약에 <span class="math inline">\(\{X_t\}\)</span>가 정상분포를 가진다면 그 정상분포는 유일한 정상분포이다.</li>
 <li>1이 성립한다면 <span class="math inline">\(\{X_t\}\)</span>는 positive recurrent HMC가 된다.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 <li><span class="math inline">\(\{X_t\}\)</span>는 IRR-PR-HMC 이므로 주기를 논의할 수 있다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> 만약에 <span class="math inline">\(\{X_t\}\)</span>가 aperiodic 이면<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <span class="math inline">\(\{X_t\}\)</span>는 에르고딕 마코프체인이 된다.</li>
 <li>따라서 이 경우는 <span class="math inline">\(\bar{\boldsymbol \pi} \to {\boldsymbol \pi} = {\bf p}_{\star}\)</span> 가 성립한다. (<strong><em>nice case</em></strong>)</li>
 </ol>
-<p><code>-</code> 무기: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC라고 할때 (1) 어떠한 방식으로든 정상분포가 존재함을 보이고 (유일함을 보이지 않더라도 유일해짐) (2) AP 임을 보이면 <strong><em>nice case</em></strong>가 된다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;IRR-HMC 에서는 PR 조건과 <span class="math inline">\(\exists! {\boldsymbol \pi}\)</span> 조건이 동치이므로.</p></li><li id="fn3"><p><sup>3</sup>&nbsp;주기를 논의할 수 있는 이유는 모든 상태가 recurrent 하므로.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;즉 모든 상태에 대한 주기가 1이라면.</p></li></div><p><code>-</code> 무기: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC라고 할때 (1) 어떠한 방식으로든 정상분포가 존재함을 보이고 (유일함을 보이지 않더라도 유일해짐) (2) AP 임을 보이면 <strong><em>nice case</em></strong>가 된다.</p>
 <blockquote class="blockquote">
 <p>사실상 periodicity는 <span class="math inline">\(\frac{1}{2}({\bf P} + {\bf I})\)</span> 와 같은 방식으로 쉽게 kill 할 수 있으므로 “<span class="math inline">\(\exists {\boldsymbol \pi}\)</span>”를 보이면 <strong><em>nice case</em></strong> 를 만들수 있다고 봐야함.</p>
 </blockquote>
@@ -478,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p><code>-</code> (용어) DBC를 만족하는 마코프체인을 <strong><em>reversible</em></strong> 하다고 표현하다.</p>
 </section>
-<section id="toy-example" class="level1">
+<section id="toy-example" class="level1 page-columns page-full">
 <h1>Toy Example</h1>
 <p><code>-</code> 예시1: 아래와 같은 transitio matrix를 고려하자. (08wk-1에 소개된 예제)</p>
 <div id="cd2e920d-7abc-499d-ad3c-befa17903e91" class="cell" data-execution_count="44">
@@ -499,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><span class="math inline">\({\boldsymbol \pi}\)</span>가 DBC조건을 만족하는지 체크하자.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
-<div id="5607d4d2-acd4-4492-bf80-80aec1200ed7" class="cell" data-execution_count="54">
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;아직은 <span class="math inline">\({\boldsymbol \pi}\)</span>가 정상분포인것은 모르지만 만약에 DBC를 만족하면 <span class="math inline">\({\boldsymbol \pi}\)</span>를 정상분포라고 주장할 수 있음</p></li></div><div id="5607d4d2-acd4-4492-bf80-80aec1200ed7" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># i=0, j=0</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>π[<span class="dv">0</span>]<span class="op">*</span>P[<span class="dv">0</span>,<span class="dv">0</span>], π[<span class="dv">0</span>]<span class="op">*</span>P[<span class="dv">0</span>,<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
@@ -590,14 +575,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>와 같은 샘플을 모아서 그려야 하지만</p>
 <p><span class="math display">\[X_{T_0}(\omega_1),X_{T_0+1}(\omega_1),X_{T_0+2}(\omega_2),\dots\]</span></p>
 <p>와 같은 샘플을 모아서 그릴 수 있다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 여기에서 <span class="math inline">\(T_0\)</span>는 적당히 큰 숫자이고 우리의 예제의 경우 <span class="math inline">\(T_0=500\)</span>을 설정하였다.</p>
-<p><code>-</code> 주의: 물론 이 예제는 샘플링이 어렵지 않습니다. 아래와 같이 뽑아도 됩니다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;<span class="math inline">\(X_{T_0}(\omega_1),X_{T_0+1}(\omega_1),X_{T_0+2}(\omega_2),\dots\)</span> 는 동일한 분포를 가짐</p></li></div><p><code>-</code> 주의: 물론 이 예제는 샘플링이 어렵지 않습니다. 아래와 같이 뽑아도 됩니다.</p>
 <div id="887a0259-8f4c-4272-b66b-6fed7e890e39" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>xx <span class="op">=</span> (np.random.rand(<span class="dv">10000</span>) <span class="op">&lt;</span> <span class="fl">0.4</span>)<span class="op">*</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="mcmc" class="level1">
+<section id="mcmc" class="level1 page-columns page-full">
 <h1>MCMC</h1>
-<section id="샘플추천x-이산형" class="level2">
+<section id="샘플추천x-이산형" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="샘플추천x-이산형">샘플추천X &amp; 이산형</h2>
 <p><code>-</code> 모티브: 위의 예제에서 전이행렬이 꼭 아래와 같을 필요는 없는것 아닌가?</p>
 <div id="b9fea8a7-3638-48e1-892a-92af76805b84" class="cell" data-execution_count="91">
@@ -642,7 +627,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[\forall i,j \in E:~ \pi_i\pi_{j}=\pi_j\pi_{i}\]</span></p>
 <p>가 되므로 성립한다.</p>
 <p><code>-</code> 따라서 전이행렬 <span class="math inline">\({\bf P}\)</span>를 가지는 마코프체인은 <span class="math inline">\({\boldsymbol \pi}^\top=[0.4,0.6]\)</span>를 정상분포로 가지는 마코프체인이다.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> 이 마코프체인은 IRR 이므로 정상분포 <span class="math inline">\({\boldsymbol \pi}\)</span>는 유일한 정상분포가 되고, 따라서 PR조건이 만족된다. 또한 AP를 만족하므로 에르고딕 마코프체인이 된다.</p>
-<div id="440cb42e-1725-4903-b467-2e43fe258b0c" class="cell" data-execution_count="112">
+<div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;DBC를 만족하기 때문에</p></li></div><div id="440cb42e-1725-4903-b467-2e43fe258b0c" class="cell" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="112">
 <pre><code>array([[0.6, 0.4],
@@ -896,18 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>irreducible 한 homogeneous markov chain<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>IRR-HMC 에서는 PR 조건과 <span class="math inline">\(\exists! {\boldsymbol \pi}\)</span> 조건이 동치이므로.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>주기를 논의할 수 있는 이유는 모든 상태가 recurrent 하므로.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>즉 모든 상태에 대한 주기가 1이라면.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>아직은 <span class="math inline">\({\boldsymbol \pi}\)</span>가 정상분포인것은 모르지만 만약에 DBC를 만족하면 <span class="math inline">\({\boldsymbol \pi}\)</span>를 정상분포라고 주장할 수 있음<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(X_{T_0}(\omega_1),X_{T_0+1}(\omega_1),X_{T_0+2}(\omega_2),\dots\)</span> 는 동일한 분포를 가짐<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>DBC를 만족하기 때문에<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

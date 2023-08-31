@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,23 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-<<<<<<< HEAD
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-=======
-  <a href="../../posts/Untitled.html" class="sidebar-item-text sidebar-link"><code>1</code>. 다음을 읽고 참 거짓을 판단하여라. (30점)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
->>>>>>> bf687c0a14443c6c64a6d779860a087699848949
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -419,10 +404,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#정리-high-resolution" id="toc-정리-high-resolution" class="nav-link" data-scroll-target="#정리-high-resolution">정리 (high-resolution)</a></li>
   <li><a href="#정리-low-resolution" id="toc-정리-low-resolution" class="nav-link" data-scroll-target="#정리-low-resolution">정리 (low-resolution)</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-25-13wk-1.out.ipynb" download="2023-05-25-13wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">13wk-1: 마코프체인 (12)</h1>
@@ -443,9 +428,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="nature와-정상분포-cont" class="level1">
+<section id="nature와-정상분포-cont" class="level1 page-columns page-full">
 <h1>nature와 정상분포 (cont)</h1>
-<section id="지난시간" class="level2">
+<section id="지난시간" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="지난시간">지난시간</h2>
 <p><code>-</code> <strong>정의</strong> <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하자. 아래의 식을 만족하는</p>
 <p><span class="math display">\[\tilde{\boldsymbol \pi}^\top {\bf P} = \tilde{\boldsymbol \pi}^\top\]</span></p>
@@ -498,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 라고 하자. <span class="math inline">\(\{X_t\}\)</span>가 정상분포를 가진다는 조건과 유일한 정상분포를 가질 조건은 동치이다.</p>
-<ul>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;irreducible 한 homogeneous markov chain</p></li></div><ul>
 <li>즉 <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC 일때, 정상분포가 존재한다는 사실만 보이면 자동으로 유일성이 보장된다.</li>
 </ul>
 <p><code>-</code> <strong>Thm</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC 라고 하자. 그러면 <strong><em>positvite recurrent</em></strong> 와 <span class="math inline">\(\exists! {\boldsymbol \pi}\)</span> 은 동치조건이다. 즉</p>
@@ -551,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 </section>
 </section>
-<section id="periodicity" class="level1">
+<section id="periodicity" class="level1 page-columns page-full">
 <h1>periodicity</h1>
 <p><code>-</code> <strong>예제1</strong> – 주기를 뭐라고 할 수 없어..</p>
 <p><span class="math inline">\(\{X_t\}\)</span>를 아래와 같은 transition matrix를 가지는 HMC라고 하자.</p>
@@ -640,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>모든 상태 <span class="math inline">\(i\)</span>에 대하여 주기를 구하라.</p>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-TR-HMC<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>는 극한분포가 존재하지 않는다.</p>
-<ul>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;irreducible and transient homogeneous markov chain</p></li></div><ul>
 <li>왜냐하면 <span class="math inline">\({\bf P}^{\star}={\bf 0}\)</span> 이므로</li>
 </ul>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-NR-HMC 역시 극한분포가 존재하지 않는다.</p>
@@ -768,13 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>irreducible 한 homogeneous markov chain<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>irreducible and transient homogeneous markov chain<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -92,7 +92,7 @@ div.csl-indent {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -171,23 +171,8 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-<<<<<<< HEAD
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-=======
-  <a href="../../posts/Untitled.html" class="sidebar-item-text sidebar-link"><code>1</code>. 다음을 읽고 참 거짓을 판단하여라. (30점)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
->>>>>>> bf687c0a14443c6c64a6d779860a087699848949
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -395,10 +380,10 @@ div.csl-indent {
   <li><a href="#nature-cont" id="toc-nature-cont" class="nav-link" data-scroll-target="#nature-cont">nature (cont)</a></li>
   <li><a href="#nature와-정상분포" id="toc-nature와-정상분포" class="nav-link" data-scroll-target="#nature와-정상분포">nature와 정상분포</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-05-23-12wk-2.out.ipynb" download="2023-05-23-12wk-2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">12wk-2: 마코프체인 (11)</h1>
@@ -413,7 +398,7 @@ div.csl-indent {
 <p>youtube: <a href="https://youtube.com/playlist?list=PLQqh36zP38-yZaqMvt2jojFKOeDaomqzi" class="uri">https://youtube.com/playlist?list=PLQqh36zP38-yZaqMvt2jojFKOeDaomqzi</a></p>
 </blockquote>
 </section>
-<section id="예비학습" class="level1">
+<section id="예비학습" class="level1 page-columns page-full">
 <h1>예비학습</h1>
 <p><code>-</code> <strong>약어</strong>: <span class="math inline">\(X\)</span>가 <span class="math inline">\(\mathbb{N}_0\)</span>에서 값을 가지는 이산형확률변수이고 <span class="math inline">\({\boldsymbol \mu}^\top\)</span> 가 <span class="math inline">\(X\)</span>의 분포라고 하자. 이해를 위해서 아래와 같은 확률분포표를 가정한다면</p>
 <table class="table">
@@ -537,7 +522,7 @@ div.csl-indent {
 </tbody>
 </table>
 <p>이 경우 아래의 표현들이 가능하다. (??)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<ol type="1">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;사실 이렇게 쓰는걸 본적은 없음</p></li></div><ol type="1">
 <li><span class="math inline">\(\mathbb{E}_{{\boldsymbol \delta}_6}(X)=6\)</span>, <span class="math inline">\(\mathbb{E}_{{\boldsymbol \delta}_1}(X)=1\)</span></li>
 <li><span class="math inline">\(\mathbb{P}_{{\boldsymbol \delta}_6}(X=1)=0\)</span>, <span class="math inline">\(\mathbb{P}_{{\boldsymbol \delta}_6}(X=6)=1\)</span>, <span class="math inline">\(\mathbb{P}_{{\boldsymbol \delta}_1}(X=1)=1\)</span>, <span class="math inline">\(\mathbb{P}_{{\boldsymbol \delta}_1}(X=6)=0\)</span></li>
 </ol>
@@ -547,11 +532,11 @@ div.csl-indent {
 <li>1의 표현에서 <span class="math inline">\({\boldsymbol \delta}_x\)</span> 대신에 일반적인 <span class="math inline">\({\boldsymbol \mu}\)</span>를 쓰기도 함.</li>
 <li><span class="math inline">\(\mathbb{P}_{\boldsymbol \pi}(X_t=k)=\pi_k\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ol>
-<blockquote class="blockquote">
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\(X_0 \sim {\boldsymbol \delta}_i^\top\)</span> 를 가정하고 구한 확률</p></li><li id="fn3"><p><sup>3</sup>&nbsp;<span class="math inline">\(X_t \sim {\boldsymbol \pi}^\top\)</span> 를 가정하고 구한 확률인것 처럼 보임, 하지만 사실 <span class="math inline">\(X_0 \sim {\boldsymbol \pi}^\top\)</span>를 가정한 것</p></li></div><blockquote class="blockquote">
 <p><span class="math inline">\(\mathbb{P}_{i}\)</span>, <span class="math inline">\(\mathbb{P}_{\boldsymbol \pi}\)</span> 등이 자명한 기호는 아니므로 교재마다 초반부에 정의하고 들어감헷갈리는 편임. 일반적인 기호와 충돌이 오지만 정상분포일 경우 그 의미가 같음.</p>
 </blockquote>
 </section>
-<section id="nature-cont" class="level1">
+<section id="nature-cont" class="level1 page-columns page-full">
 <h1>nature (cont)</h1>
 <p><code>-</code> <strong>정의</strong>: <span class="math inline">\(\{X_t\}\)</span>가 상태공간 <span class="math inline">\(E\)</span>에서 정의된 HMC 라고 하자. <span class="math inline">\(y \in E\)</span>, <span class="math inline">\(t \in \mathbb{N}_0\)</span>에 대하여 아래와 같은 기호를 정의하자.</p>
 <ol type="1">
@@ -569,7 +554,7 @@ div.csl-indent {
 <li><span class="math inline">\(\mathbb{P}_y(T_y&lt;\infty)=\)</span> 초기상태를 마을 <span class="math inline">\(y\)</span>에 출발한 나그네<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>가 언젠가 다시 <span class="math inline">\(y\)</span>로 돌아올 확률</li>
 <li>7의 의미는 “마을 <span class="math inline">\(y\)</span>에 존재하던 나그네가 언젠가 다시 마을 <span class="math inline">\(y\)</span>로 돌아올 확률”이라 해석해도 무방하다.</li>
 </ol>
-<p><code>-</code> <strong>정의</strong>: <span class="math inline">\(\{X_t\}\)</span>가 상태공간 <span class="math inline">\(E\)</span>에서 정의된 HMC 라고 하자. <span class="math inline">\(T_i\)</span>를 상태 <span class="math inline">\(i \in E\)</span>에 대한 <strong><em>return time</em></strong> 이라고 하자. 만약에 상태 <span class="math inline">\(i \in E\)</span> 가 아래의 식을 만족한다면</p>
+<div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;<span class="math inline">\(t=0\)</span> 시점에 마을 <span class="math inline">\(y\)</span>에 존재하던 나그네</p></li></div><p><code>-</code> <strong>정의</strong>: <span class="math inline">\(\{X_t\}\)</span>가 상태공간 <span class="math inline">\(E\)</span>에서 정의된 HMC 라고 하자. <span class="math inline">\(T_i\)</span>를 상태 <span class="math inline">\(i \in E\)</span>에 대한 <strong><em>return time</em></strong> 이라고 하자. 만약에 상태 <span class="math inline">\(i \in E\)</span> 가 아래의 식을 만족한다면</p>
 <p><span class="math display">\[\mathbb{P}_i(T_i&lt;\infty)=1\]</span></p>
 <p><span class="math inline">\(i\)</span>는 recurrent 하다고 표현하고, 그렇지 않으면 <span class="math inline">\(i\)</span>는 transient 하다고 표현한다. 만약에 recurrent state <span class="math inline">\(i\)</span>가 아래식을 만족한다면</p>
 <p><span class="math display">\[\mathbb{E}_i[T_i] &lt; \infty\]</span></p>
@@ -592,7 +577,9 @@ div.csl-indent {
 </ol>
 <p>이다.</p>
 <p><code>-</code> <strong>Thm</strong>(상태의분해2)<span class="citation" data-cites="durrett2019probability">(<a href="#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>, Thm 5.3.5)</span>: <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하고, <span class="math inline">\(E\)</span>를 <span class="math inline">\(\{X_t\}\)</span>가 정의되는 상태공간이라고 하자. 집합 <span class="math inline">\(E\)</span>는 아래와 같이 분해할 수 있다.</p>
-<p><span class="math display">\[E = \uplus_{k=1}^{\infty} E_k\]</span></p>
+<div class="no-row-height column-margin column-container"><div id="ref-durrett2019probability" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. Vol. 49. Cambridge university press.
+</div></div><p><span class="math display">\[E = \uplus_{k=1}^{\infty} E_k\]</span></p>
 <p>이때</p>
 <ol type="1">
 <li><span class="math inline">\(E_1,E_2,E_3,\dots\)</span> 는 서로소</li>
@@ -601,14 +588,16 @@ div.csl-indent {
 </ol>
 <p>이다.</p>
 <p><code>-</code> 따라서 transition matrix는 일반적으로 아래와 같이 분해하여 생각할 수 있다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="2023-05-23-12wk-2_files/figure-html/2a16b0df-c88d-47d6-855b-2cc6431bddec-1-8b3f396e-7f77-475a-85a5-713ab40b25ff.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">그림1: 전이행렬의 분해 <span class="citation" data-cites="bremaud2020markov">(<a href="#ref-bremaud2020markov" role="doc-biblioref">Brémaud 2020</a>, p 117)</span></figcaption>
+<figcaption class="figure-caption margin-caption">그림1: 전이행렬의 분해 <span class="citation" data-cites="bremaud2020markov">(<a href="#ref-bremaud2020markov" role="doc-biblioref">Brémaud 2020</a>, p 117)</span><div id="ref-bremaud2020markov" class="csl-entry" role="listitem">
+Brémaud, Pierre. 2020. <em>Markov Chains: Gibbs Fields, Monte Carlo Simulation, and Queues</em>. Springer Cham.
+</div></figcaption>
 </figure>
 </div>
 </section>
-<section id="nature와-정상분포" class="level1">
+<section id="nature와-정상분포" class="level1 page-columns page-full">
 <h1>nature와 정상분포</h1>
 <p><code>-</code> <strong>정의</strong> <span class="math inline">\(\{X_t\}\)</span>가 HMC라고 하자. 아래의 식을 만족하는</p>
 <p><span class="math display">\[\tilde{\boldsymbol \pi}^\top {\bf P} = \tilde{\boldsymbol \pi}^\top\]</span></p>
@@ -661,7 +650,7 @@ div.csl-indent {
 </tbody>
 </table>
 <p><code>-</code> <strong>이론</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 라고 하자. <span class="math inline">\(\{X_t\}\)</span>가 정상분포를 가진다는 조건과 유일한 정상분포를 가질 조건은 동치이다.</p>
-<ul>
+<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;irreducible 한 homogeneous markov chain</p></li></div><ul>
 <li>즉 <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC 일때, 정상분포가 존재한다는 사실만 보이면 자동으로 유일성이 보장된다.</li>
 </ul>
 <p><code>-</code> <strong>Thm</strong>: <span class="math inline">\(\{X_t\}\)</span>가 IRR-HMC 라고 하자. 그러면 <strong><em>positvite recurrent</em></strong> 와 <span class="math inline">\(\exists! {\boldsymbol \pi}\)</span> 은 동치조건이다. 즉</p>
@@ -675,23 +664,7 @@ div.csl-indent {
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-bremaud2020markov" class="csl-entry" role="listitem">
-Brémaud, Pierre. 2020. <em>Markov Chains: Gibbs Fields, Monte Carlo Simulation, and Queues</em>. Springer Cham.
-</div>
-<div id="ref-durrett2019probability" class="csl-entry" role="listitem">
-Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. Vol. 49. Cambridge university press.
-</div>
-</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>사실 이렇게 쓰는걸 본적은 없음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(X_0 \sim {\boldsymbol \delta}_i^\top\)</span> 를 가정하고 구한 확률<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(X_t \sim {\boldsymbol \pi}^\top\)</span> 를 가정하고 구한 확률인것 처럼 보임, 하지만 사실 <span class="math inline">\(X_0 \sim {\boldsymbol \pi}^\top\)</span>를 가정한 것<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><span class="math inline">\(t=0\)</span> 시점에 마을 <span class="math inline">\(y\)</span>에 존재하던 나그네<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>irreducible 한 homogeneous markov chain<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

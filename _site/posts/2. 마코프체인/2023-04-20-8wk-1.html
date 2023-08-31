@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -186,23 +186,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-<<<<<<< HEAD
   <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01wk-2: 강의소개</span></a>
-=======
-  <a href="../../posts/Untitled.html" class="sidebar-item-text sidebar-link"><code>1</code>. 다음을 읽고 참 거짓을 판단하여라. (30점)</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-03-07-1wk-2.html" class="sidebar-item-text sidebar-link">01wk-2: 강의소개</a>
->>>>>>> bf687c0a14443c6c64a6d779860a087699848949
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/2023-04-10-6wk-2-mid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">06wk-2: 중간고사</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -411,10 +396,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#distribution-distribution-function" id="toc-distribution-distribution-function" class="nav-link" data-scroll-target="#distribution-distribution-function">Distribution, Distribution Function</a></li>
   <li><a href="#the-stationary-distribution-of-an-hmc" id="toc-the-stationary-distribution-of-an-hmc" class="nav-link" data-scroll-target="#the-stationary-distribution-of-an-hmc">The Stationary Distribution of an HMC</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-04-20-8wk-1.out.ipynb" download="2023-04-20-8wk-1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header">
 <h1 class="title display-7">08wk-1: 마코프체인 (4)</h1>
@@ -438,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="markovchain-transition-matrix" class="level1">
+<section id="markovchain-transition-matrix" class="level1 page-columns page-full">
 <h1>Markovchain, Transition Matrix</h1>
 <p><code>-</code> <strong>정의:</strong> 카운터블한 상태공간 <span class="math inline">\(E\)</span>을 가지는 이산시간 확률과정 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>을 고려하자. 아래가 성립한다면 확률과정 <span class="math inline">\(\{X_t\}\)</span>을 마코프체인(Markov chain, MC)라고 한다.</p>
 <ul>
@@ -446,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><span class="math display">\[\mathbb{P}(X_{t+1}=j | X_t=i, X_{t-1}=i_{t-1}, \dots, X_0=i_0) = \mathbb{P}(X_{t+1}=j|X_t=i)\]</span></p>
 <p>만약에 <span class="math inline">\(P(X_{t+1} =j | X_t=i)\)</span>가 모든 <span class="math inline">\(t\)</span>에 대하여 일정하다면 <span class="math inline">\(\{X_t\}\)</span>를 균질마코프체인<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>(homogeneous Markov chain, HMC) 라고 한다.</p>
-<p><code>-</code> 정의: 아래의 수식을 마코프성질 (Markov property) 이라고 한다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;진짜 억지로 변형한것, 마땅한 한글용어가 없음</p></li></div><p><code>-</code> 정의: 아래의 수식을 마코프성질 (Markov property) 이라고 한다.</p>
 <ul>
 <li><span class="math inline">\(\forall t\geq 0, \forall i_0,i_1,\dots,i_{n-1},i,j \in E\)</span>:</li>
 </ul>
@@ -461,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\(\sum_{j\in E}p_{ij}=1\)</span></li>
 </ul>
 <p>첫번째 식은 확률이 양수이어야 한다는 내용이고<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 두번째 식은 임의의 시점에서 상태 <span class="math inline">\(i\)</span>에 존재할 경우, 그 다음시점에서 상태집합 <span class="math inline">\(V\)</span> 중 어딘가로는 이동해야한다는 의미이다.</p>
-<p><code>-</code> 정의: 카운터블한 상태공간 <span class="math inline">\(V\)</span>를 가지는 HMC <span class="math inline">\(\{X_t\}_{t \geq 0}\)</span>를 고려하자. <span class="math inline">\(p_{ij}\)</span>를 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>의 전이확률이라고 하자. <span class="math inline">\((i,j)\)</span>-th 원소를 <span class="math inline">\(p_{ij}\)</span>로 가지는 행렬 <span class="math inline">\({\bf P}\)</span>를 전이확률행렬 (transition probability matrix) 혹은 줄여서 전이행렬 (transition matrix) 이라고 한다.</p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;쓸모없는 내용</p></li></div><p><code>-</code> 정의: 카운터블한 상태공간 <span class="math inline">\(V\)</span>를 가지는 HMC <span class="math inline">\(\{X_t\}_{t \geq 0}\)</span>를 고려하자. <span class="math inline">\(p_{ij}\)</span>를 <span class="math inline">\(\{X_t\}_{t\geq 0}\)</span>의 전이확률이라고 하자. <span class="math inline">\((i,j)\)</span>-th 원소를 <span class="math inline">\(p_{ij}\)</span>로 가지는 행렬 <span class="math inline">\({\bf P}\)</span>를 전이확률행렬 (transition probability matrix) 혹은 줄여서 전이행렬 (transition matrix) 이라고 한다.</p>
 <p><code>-</code> 참고(<span class="math inline">\(\star\)</span>): 상태공간 <span class="math inline">\(V\)</span>의 원소수가 무한일 수도 있으므로, 원래 <span class="math inline">\({\bf P}\)</span>를 행렬이라고 하기에는 무리가 있다. 하지만 행렬의 덧셈, 행렬의 곱셈과 같은 연산들은 일반적으로 잘 정의되므로 <span class="math inline">\({\bf P}\)</span>를 행렬로 생각할 수 있다. 이러한 <span class="math inline">\({\bf P}\)</span>는 row와 col이 무한대로 있다고 생각하면 된다.</p>
 <ul>
 <li><span class="math inline">\(|E|=\infty\)</span> 인 경우 <span class="math inline">\({\bf P}\)</span>의 예시: <span class="math inline">\({\bf P}=\begin{bmatrix} p_{00} &amp; p_{01} &amp; \cdots \\ p_{10} &amp; p_{11} &amp; \cdots \\ \cdots &amp; \cdots &amp; \cdots \end{bmatrix}\)</span></li>
@@ -818,13 +803,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>진짜 억지로 변형한것, 마땅한 한글용어가 없음<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>쓸모없는 내용<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
